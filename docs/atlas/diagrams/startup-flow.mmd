@@ -1,0 +1,23 @@
+sequenceDiagram
+  participant User
+  participant EntryPoint
+  participant CrashDetector
+  participant Swing
+  participant RendererNativeLibraryLoader
+  participant StageIDE
+  participant IDE
+  participant DocumentFrame
+
+  User->>EntryPoint: launch(args)
+  EntryPoint->>CrashDetector: open/check previous close
+  EntryPoint->>EntryPoint: register FlatLaf and parse args
+  EntryPoint->>RendererNativeLibraryLoader: initializeIfNecessary()
+  EntryPoint->>Swing: invokeLater(start UI)
+  Swing->>EntryPoint: loadClassInfos()
+  Swing->>StageIDE: new StageIDE(crashDetector)
+  StageIDE->>IDE: constructor and locale setup
+  Swing->>StageIDE: initialize(args)
+  StageIDE->>IDE: initialize(args)
+  IDE->>DocumentFrame: initialize()
+  Swing->>DocumentFrame: show frame
+

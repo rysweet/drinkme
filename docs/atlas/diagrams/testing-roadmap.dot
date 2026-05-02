@@ -1,0 +1,13 @@
+digraph TestingRoadmap {
+  rankdir=LR;
+  node [shape=box, style="rounded"];
+  existing [label="Existing tests\nutil + tweedle + ast"];
+  phase1 [label="Phase 1\npure formats/parser/math"];
+  phase2 [label="Phase 2\nproject/model/resource persistence"];
+  phase3 [label="Phase 3\nIDE commands and journeys"];
+  phase4 [label="Phase 4\nrendering-adjacent invariants"];
+  phase5 [label="Phase 5\nNetBeans Java transition"];
+  refactor [label="Safe incremental refactor"];
+  existing -> phase1 -> phase2 -> phase3 -> phase4 -> phase5 -> refactor;
+}
+

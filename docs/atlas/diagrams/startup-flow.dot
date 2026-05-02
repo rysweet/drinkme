@@ -1,0 +1,16 @@
+digraph AliceStartupFlow {
+  rankdir=LR;
+  node [shape=box, style="rounded"];
+  User -> EntryPoint [label="launch(args)"];
+  EntryPoint -> CrashDetector [label="check/open"];
+  EntryPoint -> FlatLaf [label="theme setup"];
+  EntryPoint -> RendererNativeLibraryLoader [label="initialize"];
+  EntryPoint -> Swing [label="invokeLater"];
+  Swing -> ClassInfoManager [label="load classinfos.json"];
+  Swing -> StageIDE [label="construct"];
+  StageIDE -> IDE [label="base init"];
+  Swing -> StageIDE [label="initialize(args)"];
+  IDE -> DocumentFrame [label="initialize"];
+  DocumentFrame -> User [label="visible IDE"];
+}
+

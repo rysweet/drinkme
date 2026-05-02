@@ -1,0 +1,36 @@
+flowchart TD
+  Root["alice3 root POM<br/>Java 21 / Maven reactor"]
+  Core["core reactor"]
+  External["external libraries"]
+  AliceIDE["alice-ide<br/>desktop app jar"]
+  NetBeans["netbeans<br/>NBM plugin"]
+  TweedleLang["tweedle-lang<br/>grammar submodule"]
+  Nonfree["core-nonfree<br/>asset overlays"]
+
+  Root --> Core
+  Root --> External
+  Root --> AliceIDE
+  Root --> NetBeans
+  Root --> TweedleLang
+  Core -. optional profile / overlay .-> Nonfree
+
+  Core --> Util["util"]
+  Core --> AST["ast"]
+  Core --> Croquet["croquet UI framework"]
+  Core --> IDE["ide"]
+  Core --> Resources["resources"]
+  Core --> Scenegraph["scenegraph"]
+  Core --> GLRender["glrender"]
+  Core --> StoryAPI["story-api"]
+  Core --> ModelLoading["model-loading"]
+  Core --> Tweedle["tweedle"]
+  Core --> Models["models"]
+
+  AliceIDE --> IDE
+  AliceIDE --> Resources
+  AliceIDE --> Nonfree
+  NetBeans --> AST
+  NetBeans --> StoryAPI
+  NetBeans --> Tweedle
+  NetBeans --> Models
+

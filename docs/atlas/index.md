@@ -1,0 +1,46 @@
+# Alice 3 code atlas
+
+This is the first-pass atlas for the Alice 3 investigation. It is intentionally stored in `drinkme`, not in the Alice source fork.
+
+## Current diagrams
+
+### Repository surface
+
+![Repo surface Mermaid](diagrams/repo-surface-mermaid.svg)
+
+![Repo surface Graphviz](diagrams/repo-surface-dot.svg)
+
+### Startup flow
+
+![Startup flow Mermaid](diagrams/startup-flow-mermaid.svg)
+
+![Startup flow Graphviz](diagrams/startup-flow-dot.svg)
+
+### Testing roadmap
+
+![Testing roadmap Mermaid](diagrams/testing-roadmap-mermaid.svg)
+
+![Testing roadmap Graphviz](diagrams/testing-roadmap-dot.svg)
+
+## Atlas layers started
+
+| Layer | Status | Notes |
+| --- | --- | --- |
+| repo-surface | started | Maven reactor and major module groups mapped. |
+| ast-lsp-bindings | not started | Needs Java LSP or static symbol pass. |
+| compile-deps | started | Initial module dependency map only; needs full POM extraction. |
+| runtime-topology | not applicable/service-light | Desktop app, not a service topology; still needs runtime component map. |
+| api-contracts | not applicable/http-light | No HTTP API found in first pass; plugin and Java APIs need contract docs. |
+| data-flow | started | Startup flow mapped; project/model persistence flows still needed. |
+| service-components | started | Major Java modules mapped; package-level diagrams still needed. |
+| user-journeys | started | Testing roadmap identifies journey candidates; executable journeys still needed. |
+
+## Next atlas expansion
+
+1. Generate POM dependency graph directly from Maven metadata.
+2. Add package-level diagrams for `core/ide`, `core/tweedle`, `core/model-loading`, `core/resources`, `core/glrender`, and `netbeans`.
+3. Trace project load/save and model import/export data flows.
+4. Trace Alice-to-Java NetBeans workflow.
+5. Add static symbol and entry-point inventory.
+6. Add staleness triggers keyed to Maven modules and source/resource folders.
+

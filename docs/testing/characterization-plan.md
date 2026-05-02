@@ -1,0 +1,85 @@
+# Characterization test plan
+
+Goal: create a complete enough test suite that the current Alice 3 code passes it before any major refactor or rewrite. The first suite should model current behavior, not idealized behavior.
+
+## Current test inventory
+
+| Module | Active coverage |
+| --- | --- |
+| `core/util` | math and immutable geometry tests |
+| `core/tweedle` | Tweedle parser, literals, statements, lambdas, manifest encoding |
+| `core/ast` | version parsing/compatibility |
+| `core/model-loading` | test file exists, but meaningful model export test is commented out |
+
+Frameworks are mixed JUnit 4 and JUnit 5. The root POM configures Surefire with `surefire-junit47`; `core/util` adds JUnit Jupiter; `core/tweedle` has its own Surefire `argLine` for Java module opens.
+
+CI currently runs checkstyle only, not tests.
+
+## Phase 1: lock down pure logic and formats
+
+These tests should be fast, deterministic, and run on every PR.
+
+- Version parsing and round-trip compatibility.
+- Tweedle literal parsing: null, booleans, strings, escapes, integers, decimals, negative values.
+- Tweedle statements: `countUpTo`, conditionals, blocks, variable declaration/assignment.
+- Tweedle lambdas inside method calls.
+- Manifest JSON encoding/decoding shape, including metadata, provenance, root joints, texture sets, model lists, and date formats.
+- Math/geometry invariants: matrices, quaternions, Euler angles, transforms, epsilon equality.
+
+## Phase 2: project, model, and resource persistence
+
+These tests should establish behavioral confidence around Alice artifacts.
+
+- Project load/save round trips using small fixture worlds.
+- Project version migration and compatibility checks.
+- Model manifest export/import and resource ID stability.
+- Gallery resource lookup with `includeSims=false`.
+- Re-enabled equivalent of `ModelExportTest`, using minimal fixtures that can be committed safely.
+- Localization resource lookup and fallback behavior.
+
+## Phase 3: IDE command and user-journey characterization
+
+These tests can use headless-friendly seams where possible, with a small number of UI smoke tests.
+
+- Launch argument parsing: locale, project path, window coordinates.
+- Startup classinfo loading.
+- Crash detector open/close behavior.
+- StageIDE initialization side effects, especially gallery directory setup.
+- Project open flow from command-line argument.
+- Command availability for scene editing, adding objects, run/stop story, save/export.
+- License prompt gating and accepted-preference behavior.
+
+## Phase 4: rendering-adjacent behavior
+
+Avoid brittle pixel tests at first. Start with structural and invariant tests.
+
+- Scenegraph construction from story/model resources.
+- Renderer native library loader selection logic.
+- Platform-native resource path resolution.
+- Transform hierarchy invariants.
+- Visual/resource wiring for simple model fixtures.
+
+## Phase 5: NetBeans plugin and Java transition
+
+These tests model the website promise that Alice can bridge to Java.
+
+- Project template generation.
+- Generated Java source shape from Alice project fixtures.
+- Completion/palette registration smoke tests.
+- NBM package build smoke.
+- Alice-to-Java tutorial fixtures as executable regression tests.
+
+## CI plan
+
+1. Add a Maven test workflow running `mvn -DincludeSims=false -Dinstall4j.skip test`.
+2. Keep checkstyle as a separate fast signal.
+3. Split slow or UI-heavy tests into profiles after the characterization suite grows.
+4. Require every refactor PR to preserve all current characterization tests.
+
+## Test data policy
+
+- Prefer tiny synthetic fixtures.
+- Keep Sims/nonfree assets out of public test fixtures unless their license explicitly allows the use.
+- Preserve fixture provenance and license notes.
+- Store large/generated fixture inventories as metadata, not copied binaries.
+

@@ -1,0 +1,11 @@
+flowchart LR
+  Existing["Existing tests<br/>util + tweedle + ast"]
+  Phase1["Phase 1<br/>pure formats/parser/math"]
+  Phase2["Phase 2<br/>project/model/resource persistence"]
+  Phase3["Phase 3<br/>IDE commands and journeys"]
+  Phase4["Phase 4<br/>rendering-adjacent invariants"]
+  Phase5["Phase 5<br/>NetBeans Java transition"]
+  Refactor["Safe incremental refactor"]
+
+  Existing --> Phase1 --> Phase2 --> Phase3 --> Phase4 --> Phase5 --> Refactor
+

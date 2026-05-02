@@ -1,0 +1,36 @@
+digraph AliceRepoSurface {
+  rankdir=TB;
+  node [shape=box, style="rounded"];
+  root [label="alice3 root POM\nJava 21 / Maven reactor"];
+  core [label="core reactor"];
+  external [label="external libraries"];
+  aliceide [label="alice-ide\ndesktop app jar"];
+  netbeans [label="netbeans\nNBM plugin"];
+  tweedlelang [label="tweedle-lang\ngrammar submodule"];
+  nonfree [label="core-nonfree\nasset overlays"];
+  root -> core;
+  root -> external;
+  root -> aliceide;
+  root -> netbeans;
+  root -> tweedlelang;
+  core -> nonfree [style=dashed, label="optional overlay"];
+  core -> util;
+  core -> ast;
+  core -> croquet;
+  core -> ide;
+  core -> resources;
+  core -> scenegraph;
+  core -> glrender;
+  core -> storyapi;
+  core -> modelloading;
+  core -> tweedle;
+  core -> models;
+  aliceide -> ide;
+  aliceide -> resources;
+  aliceide -> nonfree;
+  netbeans -> ast;
+  netbeans -> storyapi;
+  netbeans -> tweedle;
+  netbeans -> models;
+}
+
