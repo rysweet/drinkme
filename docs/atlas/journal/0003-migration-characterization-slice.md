@@ -57,10 +57,10 @@ mvn -DincludeSims=false -Dinstall4j.skip -pl core/ast,core/story-api-migration -
 mvn -DincludeSims=false -Dinstall4j.skip clean test
 ```
 
-Standalone CI started for commit `79d3941e58`:
+Standalone CI passed for commit `79d3941e58`:
 
-- Alice Checkstyle CI: `25269757370`
-- Alice Test CI: `25269757378`
+- Alice Checkstyle CI: success, run `25269757370`
+- Alice Test CI: success, run `25269757378`
 
 ## Next useful slices
 
