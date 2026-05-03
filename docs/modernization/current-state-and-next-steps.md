@@ -84,6 +84,7 @@ Covered areas include:
 - Current coverage is far below the 70% target.
 - Many production classes still exceed the desired 500-line target.
 - NetBeans Java export is a high-value seam because it is both compatibility-sensitive and teaching-facing.
+- Model resource export now has its first active no-Sims characterization, but only for XML serialization and generated resource Java compilation.
 - The generated foreach loop currently emits `COUNT__` as the item variable when the AST item local has no explicit name.
   - This is internally coherent and compiles when referenced.
   - It remains readability debt for teaching-facing generated Java.
@@ -95,7 +96,7 @@ Covered areas include:
 
 - Historical `.a3p` migration fixtures are not yet covered.
 - Real StageIDE-generated projects, thumbnails, gallery resources, and provenance-sensitive assets remain mostly uncovered.
-- Model binary export remains mostly untested.
+- Model binary export, thumbnails, real gallery resources, and full model package output remain mostly untested.
 - Backup recovery dialogs and recursive UI side effects are not directly tested.
 - Full wizard execution is not covered.
 - Real JavaFX launcher startup is not covered.
@@ -103,34 +104,30 @@ Covered areas include:
 - Deep NBM install semantics are not covered.
 - A standalone exported Ant project build/run against a populated `Alice3Library` is not yet proven.
 - Meaningful story API calls, scenes, events, and rendering behavior are not yet characterized.
-- The main generated-source test class recently exceeded the 500-line maintainability target and should be split.
+- The generated-source export tests were split so both focused NetBeans export test classes are under 500 lines.
 
 ## Immediate next steps
 
-1. Finish the paused test maintainability refactor:
-   - split generated user-method/control-flow tests out of `ProjectCodeGeneratorTest`;
-   - keep behavior unchanged;
-   - get the original test class back under the 500-line target if practical.
-2. Continue generated-source characterization where it protects real exported Java behavior:
+1. Continue generated-source characterization where it protects real exported Java behavior:
    - named foreach loop variables;
    - iterable foreach loops;
    - loop-variable use in more realistic method bodies;
    - simple story API calls that compile against exported project dependencies.
-3. Prove exported project behavior beyond compile-only tests:
+2. Prove exported project behavior beyond compile-only tests:
    - create a synthetic exported project;
    - materialize or simulate the `Alice3Library` classpath;
    - compile/run the exported launcher where possible.
-4. Add higher-level user journey tests where feasible:
+3. Add higher-level user journey tests where feasible:
    - export project journey;
    - open/load/save journey;
    - failure/recovery journey;
    - package/install smoke path.
-5. Use code-atlas bug hunting on the next high-value seam:
+4. Use code-atlas bug hunting on the next high-value seam:
    - NetBeans export path;
    - project IO/load-save path;
    - resource/model path.
-6. Keep journaling every slice in `drinkme`.
-7. Do not start broad refactors until the affected behavior has characterization coverage.
+5. Keep journaling every slice in `drinkme`.
+6. Do not start broad refactors until the affected behavior has characterization coverage.
 
 ## Strategic direction
 
@@ -143,4 +140,3 @@ The safest modernization path remains incremental:
 5. only consider rewrite or non-Java components after enough evidence exists.
 
 Core Alice should remain Java for now. Rust or other languages may be useful later for optional tooling, static analysis, packaging helpers, graphing, or external AI-assisted tools, but moving core runtime behavior out of Java would be premature without much stronger test coverage.
-

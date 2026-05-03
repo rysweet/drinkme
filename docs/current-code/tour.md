@@ -130,7 +130,6 @@ Only four modules contain Java test source files:
 - `core/util`: math tests, mostly JUnit 5.
 - `core/tweedle`: parser/manifest tests, JUnit 4.
 - `core/ast`: version tests, JUnit 4.
-- `core/model-loading`: a commented-out model export test file.
+- `core/model-loading`: active no-Sims model exporter tests for XML serialization and generated resource Java compilation.
 
 The current test suite is useful but not representative of the full application behavior.
-

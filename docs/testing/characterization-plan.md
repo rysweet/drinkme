@@ -9,7 +9,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/util` | math and immutable geometry tests |
 | `core/tweedle` | Tweedle parser, literals, statements, lambdas, manifest encoding |
 | `core/ast` | version parsing/compatibility; resource wrapper field mapping |
-| `core/model-loading` | test file exists, but meaningful model export test is commented out |
+| `core/model-loading` | model exporter XML serialization and generated resource Java compilation |
 | `core/story-api` | model resource XML metadata parsing, variant selection, manifest generation, model-only/placement edge cases, and subresource tag isolation |
 | `core/story-api-migration` | migration table ordering, applicability thresholds, representative text rewrite chains, synthetic project IO round-trip, and synthetic resource IO round-trip |
 | `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, backup-directory path handling, and VR project-loader save-path behavior |
@@ -67,12 +67,13 @@ Completed characterization slices:
 - CI package artifact assertions: the NetBeans package workflow now verifies a single top-level NBM, the NetBeans module jar, `aliceSource.jar`, `aliceDocs.zip`, `Alice3Library.xml`, `layer.xml`, `SProgram.java`, and the javadoc overview entry.
 - NetBeans generated launcher runtime handoff: a headless test compiles the generated `AliceJavaFXLauncher` with test-only JavaFX stubs and verifies `AliceJavaFXLauncher.main(args)` passes the exact args array to `Program.main(args)`.
 - NetBeans generated-source test split: generated user-method/control-flow tests now live in `ProjectCodeGeneratorGeneratedSourceTest`, keeping both export test classes below 500 lines.
+- Model resource exporter output: no-Sims tests now cover XML serialization for a synthetic prop resource and JDK compilation of generated resource enum Java code.
 
 Known limits:
 
 - Historical `.a3p` fixture migration is not yet covered. Add only tiny fixtures with explicit provenance and no Sims/nonfree assets.
 - The synthetic project/resource IO tests are intentionally minimal. They do not cover real StageIDE-generated projects, manifests supplied by `ProjectFileUtilities`, thumbnails, gallery resource subclasses, or historical fixtures.
-- Model export remains mostly untested because the existing test body is commented and tied to gallery resources; current model-resource coverage is still XML/manifest-only.
+- Model export is still only lightly covered: the first active exporter tests cover XML serialization and generated Java compilation for a synthetic prop resource, but not Collada/glTF binary output, thumbnails, real gallery resources, or full file packaging.
 - Resource wrapper tests cover the mapping seam only; full Java source generation from Alice project fixtures still belongs in the NetBeans/export phase.
 - Backup recovery dialogs and recursive load side effects themselves are not yet tested headlessly; current coverage locks the lower-level loader contract, backup candidate selection policy, and branch-planning decision only.
 - `copyDefaultBackupDirectory()` is not yet directly covered because it depends on `StageIDE.getActiveInstance()` for the default projects directory. The earlier file-vs-directory concern appears lower risk because `backupDirectory(file, false)` creates the named directory before `createNewFile()` is called.
