@@ -14,7 +14,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/story-api-migration` | migration table ordering, applicability thresholds, representative text rewrite chains, synthetic project IO round-trip, and synthetic resource IO round-trip |
 | `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, backup-directory path handling, and VR project-loader save-path behavior |
 | `alice-ide` | launch argument parsing |
-| `netbeans` | generated Alice-to-Java launcher, project template archive contents, main-class alignment, generated project metadata renaming, synthetic Alice project source generation, generated resource export foothold, generated-source compile smokes, generated resource runtime loading, resource filename mismatch coverage, duplicate resource filename coverage, and blank resource filename fallback |
+| `netbeans` | generated Alice-to-Java launcher, project template archive contents, main-class alignment, generated project metadata renaming, synthetic Alice project source generation, generated resource export foothold, generated-source compile smokes, generated resource runtime loading, resource filename mismatch coverage, duplicate resource filename coverage, blank resource filename fallback, and unsafe resource filename sanitization |
 
 Frameworks are mixed JUnit 4 and JUnit 5. The root POM configures Surefire with `surefire-junit47`; `core/util` adds JUnit Jupiter; `core/tweedle` has its own Surefire `argLine` for Java module opens.
 
@@ -48,6 +48,7 @@ Completed characterization slices:
 - NetBeans resource filename mismatch: generated exports copy resource bytes by `originalFileName`, matching `Resources.java`, even when the user-visible resource name differs.
 - NetBeans duplicate resource filenames: generated exports assign unique `resources`, `resources2`, ... paths when multiple resources share an `originalFileName`, and runtime loading preserves both byte payloads.
 - NetBeans blank resource filenames: generated exports fall back to the fixed resource display name when `originalFileName` is blank, and runtime loading still preserves bytes.
+- NetBeans unsafe resource filenames: generated exports sanitize slash/backslash path separators and bare parent-directory names so copied resource files stay inside the generated resources layout.
 
 Known limits:
 
@@ -58,7 +59,7 @@ Known limits:
 - Backup recovery dialogs and recursive load side effects themselves are not yet tested headlessly; current coverage locks the lower-level loader contract, backup candidate selection policy, and branch-planning decision only.
 - `copyDefaultBackupDirectory()` is not yet directly covered because it depends on `StageIDE.getActiveInstance()` for the default projects directory. The earlier file-vs-directory concern appears lower risk because `backupDirectory(file, false)` creates the named directory before `createNewFile()` is called.
 - The `ModelResourceExporter` binary/model export path is still not covered; Loop 4 intentionally stopped at pure metadata parsing to avoid asset/license and rendering dependencies.
-- The NetBeans slices cover launcher generation, template archive shape, generated project metadata, minimal Alice-project-to-Java source generation, a synthetic generated-resource path, compilation of generated program/launcher/resource source, runtime loading of generated resource bytes, display-name/original-filename mismatch behavior, duplicate original-filename behavior, and blank original-filename fallback. They do not yet cover full wizard execution, formatted output, generated launcher execution, palette/completion behavior, or NBM package behavior.
+- The NetBeans slices cover launcher generation, template archive shape, generated project metadata, minimal Alice-project-to-Java source generation, a synthetic generated-resource path, compilation of generated program/launcher/resource source, runtime loading of generated resource bytes, display-name/original-filename mismatch behavior, duplicate original-filename behavior, blank original-filename fallback, and unsafe filename sanitization. They do not yet cover full wizard execution, formatted output, generated launcher execution, palette/completion behavior, or NBM package behavior.
 
 ## Phase 1: lock down pure logic and formats
 
