@@ -11,6 +11,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/ast` | version parsing/compatibility |
 | `core/model-loading` | test file exists, but meaningful model export test is commented out |
 | `core/story-api-migration` | migration table ordering, applicability thresholds, and representative text rewrite chains |
+| `core/ide` | corrupt project-load IO failure delegation to backup recovery flow |
 | `alice-ide` | launch argument parsing |
 
 Frameworks are mixed JUnit 4 and JUnit 5. The root POM configures Surefire with `surefire-junit47`; `core/util` adds JUnit Jupiter; `core/tweedle` has its own Surefire `argLine` for Java module opens.
@@ -24,11 +25,13 @@ Completed characterization slices:
 - Alice IDE launch arguments: locale flag handling, project path, window geometry defaults/fallbacks, and legacy quirks.
 - Version parsing and comparison: historical version round trips, trailing-zero comparison behavior, prerelease ordering, and metadata ordering behavior.
 - Project migration tables: text/AST migration result versions are valid and increasing; migration applicability is threshold-based; representative legacy story/resource strings are rewritten to current forms.
+- Project-load failure seam: corrupt `.a3p` IO failures return `null` and delegate to the load-exception hook so `ProjectApplication` can drive backup recovery UI.
 
 Known limits:
 
 - Historical `.a3p` fixture migration is not yet covered. Add only tiny fixtures with explicit provenance and no Sims/nonfree assets.
 - Model export remains mostly untested because the existing test body is commented and tied to gallery resources.
+- Backup recovery dialogs themselves are not yet tested headlessly; current coverage locks the lower-level loader contract only.
 
 ## Phase 1: lock down pure logic and formats
 
