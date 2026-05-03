@@ -2,7 +2,11 @@
 
 Private investigation artifacts for improving the Alice programming environment.
 
-This repository intentionally stores plans, notes, maps, graphs, and generated documentation only. Alice source code lives in the public fork at https://github.com/rysweet/alice3, with upstream at https://github.com/TheAliceProject/alice3.
+This repository intentionally stores plans, notes, maps, graphs, prompts, and generated documentation only.
+
+Active Alice source work lives in the public standalone modernization repository at https://github.com/rysweet/alice3-modernization. The original upstream source is https://github.com/TheAliceProject/alice3 and is fetch-only for reference; do not open upstream issues, open upstream pull requests, or push upstream.
+
+An older public fork/reference may exist at https://github.com/rysweet/alice3, but it is not the active implementation repository for this modernization effort.
 
 ## Artifact map
 
