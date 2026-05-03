@@ -12,7 +12,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/model-loading` | model exporter XML serialization and generated resource Java compilation |
 | `core/story-api` | model resource XML metadata parsing, variant selection, manifest generation, model-only/placement edge cases, and subresource tag isolation |
 | `core/story-api-migration` | migration table ordering, applicability thresholds, representative text rewrite chains, synthetic project IO round-trip, and synthetic resource IO round-trip |
-| `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, backup-directory path handling, and VR project-loader save-path behavior |
+| `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, backup-directory path handling, VR project-loader save-path behavior, and player export artifact shape |
 | `alice-ide` | launch argument parsing |
 | `netbeans` | generated Alice-to-Java launcher, project template archive contents, main-class alignment, generated project metadata renaming, exported build-property contract, `Alice3Library` registration, library packaging source, synthetic Alice project source generation, generated resource export foothold, generated-source compile smokes, generated resource runtime loading, resource filename mismatch coverage, duplicate resource filename coverage, blank resource filename fallback, unsafe resource filename sanitization, non-empty generated user method source, local declaration source, user parameter source, user-method invocation source, invocation-argument source, conditional/count/while/foreach-array/foreach-iterable source including named foreach items, story API generated-source call, launcher runtime handoff, standalone-style exported project compile/launcher smoke, and template-shaped exported project classpath smoke |
 
@@ -29,6 +29,7 @@ Completed characterization slices:
 - Project migration tables: text/AST migration result versions are valid and increasing; migration applicability is threshold-based; representative legacy story/resource strings are rewritten to current forms.
 - Project-load failure seam: corrupt `.a3p` IO failures return `null` and delegate to the load-exception hook so `ProjectApplication` can drive backup recovery UI.
 - File project loader VR save-path: temp-file tests cover non-VR URI/save state, make-VR-ready renamed URI, and existing/missing VR-copy `shouldBeSaved()` behavior.
+- Project export artifact: a headless `ProjectFileUtilities.exportCopyOfProjectTo` smoke verifies the player archive contains version, manifest, thumbnail, and `src/Program.twe` entries, and that manifest metadata names the program and thumbnail.
 - Backup selection policy: headless tests cover the next-backup decision for corrupted main projects, unloadable backups, recent-backup probes, missing timestamps, and exhausted candidates.
 - Project-load failure plan: headless tests cover the current dialog/load branch choice for manually loaded corrupt backups, corrupt main projects, corrupt backups during recovery, default unsaved backups, exhausted saved-project backups, and failed recent-backup probes.
 - Model resource metadata: synthetic no-Sims XML covers metadata defaults, malformed optional fields, subresource tag inheritance, texture-specific subresource lookup, model-only fallback, manifest variant/resource/texture-set generation, and structure/texture-set de-duplication.
@@ -77,7 +78,7 @@ Completed characterization slices:
 Known limits:
 
 - Historical `.a3p` fixture migration is not yet covered. Add only tiny fixtures with explicit provenance and no Sims/nonfree assets.
-- The synthetic project/resource IO tests are intentionally minimal. They do not cover real StageIDE-generated projects, manifests supplied by `ProjectFileUtilities`, thumbnails, gallery resource subclasses, or historical fixtures.
+- The synthetic project/resource IO tests are intentionally minimal. They do not cover real StageIDE-generated projects, gallery resource subclasses, or historical fixtures. `ProjectFileUtilities` now has a player export artifact smoke for a synthetic project and thumbnail, but not a full StageIDE export journey.
 - Model export is still only lightly covered: the first active exporter tests cover XML serialization and generated Java compilation for a synthetic prop resource, but not Collada/glTF binary output, thumbnails, real gallery resources, or full file packaging.
 - Resource wrapper tests cover the mapping seam only; full Java source generation from Alice project fixtures still belongs in the NetBeans/export phase.
 - Backup recovery dialogs and recursive load side effects themselves are not yet tested headlessly; current coverage locks the lower-level loader contract, backup candidate selection policy, and branch-planning decision only.
