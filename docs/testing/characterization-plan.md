@@ -14,7 +14,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/story-api-migration` | migration table ordering, applicability thresholds, representative text rewrite chains, synthetic project IO round-trip, and synthetic resource IO round-trip |
 | `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, backup-directory path handling, and VR project-loader save-path behavior |
 | `alice-ide` | launch argument parsing |
-| `netbeans` | generated Alice-to-Java launcher, project template archive contents, main-class alignment, generated project metadata renaming, synthetic Alice project source generation, generated resource export foothold, and generated-source compile smoke |
+| `netbeans` | generated Alice-to-Java launcher, project template archive contents, main-class alignment, generated project metadata renaming, synthetic Alice project source generation, generated resource export foothold, and generated-source compile smokes |
 
 Frameworks are mixed JUnit 4 and JUnit 5. The root POM configures Surefire with `surefire-junit47`; `core/util` adds JUnit Jupiter; `core/tweedle` has its own Surefire `argLine` for Java module opens.
 
@@ -43,6 +43,7 @@ Completed characterization slices:
 - NetBeans source generation foothold: a synthetic `.a3p` generates `Program.java` and `AliceJavaFXLauncher.java` in a headless test, while the public IDE path still performs NetBeans editor formatting.
 - NetBeans resource generation foothold: a synthetic resource generates `resources/note.txt` and `Resources.java`, requiring both `valueOf(String)` and public `(Class, String, String)` constructors on generated resource classes.
 - NetBeans generated-source compile smoke: a synthetic program with static `main(String[] args)` compiles generated `Program.java` and `AliceJavaFXLauncher.java` with the JDK compiler and test classpath.
+- NetBeans resource-backed compile smoke: a synthetic resource project compiles generated `Program.java`, `AliceJavaFXLauncher.java`, and `Resources.java` together.
 
 Known limits:
 
@@ -53,7 +54,7 @@ Known limits:
 - Backup recovery dialogs and recursive load side effects themselves are not yet tested headlessly; current coverage locks the lower-level loader contract, backup candidate selection policy, and branch-planning decision only.
 - `copyDefaultBackupDirectory()` is not yet directly covered because it depends on `StageIDE.getActiveInstance()` for the default projects directory. The earlier file-vs-directory concern appears lower risk because `backupDirectory(file, false)` creates the named directory before `createNewFile()` is called.
 - The `ModelResourceExporter` binary/model export path is still not covered; Loop 4 intentionally stopped at pure metadata parsing to avoid asset/license and rendering dependencies.
-- The NetBeans slices cover launcher generation, template archive shape, generated project metadata, minimal Alice-project-to-Java source generation, a synthetic generated-resource path, and compilation of generated program/launcher source. They do not yet cover full wizard execution, formatted output, resource-backed generated-source compilation, runtime launch, palette/completion behavior, or NBM package behavior.
+- The NetBeans slices cover launcher generation, template archive shape, generated project metadata, minimal Alice-project-to-Java source generation, a synthetic generated-resource path, and compilation of generated program/launcher/resource source. They do not yet cover full wizard execution, formatted output, runtime launch, palette/completion behavior, or NBM package behavior.
 
 ## Phase 1: lock down pure logic and formats
 
