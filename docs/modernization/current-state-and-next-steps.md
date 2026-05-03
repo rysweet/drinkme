@@ -7,11 +7,11 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
+  - `a15d6a49e3 Characterize project save copy roundtrip`
   - `fa0054eb9d Characterize project export artifact`
   - `b48ab476ff Characterize story API generated source`
   - `a9ecf4bd56 Add template project export smoke`
   - `cdc1b2b5df Characterize iterable foreach generation`
-  - `e4dd96408f Characterize named foreach generation`
 
 ## Build and CI state
 
@@ -58,6 +58,7 @@ Covered areas include:
 - synthetic `.a3p` project IO round trips;
 - synthetic resource IO round trips;
 - headless player export archive shape through `ProjectFileUtilities`;
+- headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
 - NetBeans generated launcher shape and launcher argument handoff;
 - NetBeans project-template archive and generated metadata;
 - exported build-property contract;
@@ -93,6 +94,7 @@ Covered areas include:
 - NetBeans export now also has a template-shaped project smoke that extracts the packaged template, checks the `Alice3Library` classpath contract, and compiles generated sources into `build/classes` using the test classpath as a surrogate.
 - Generated source now includes one actual story API call smoke, `this.setSimulationSpeedFactor(1.5);`, in a new focused test class.
 - `ProjectFileUtilities.exportCopyOfProjectTo` now has a headless player artifact smoke for version, manifest, thumbnail, and program Tweedle entries.
+- `ProjectFileUtilities.saveCopyOfProjectTo` now has a headless editor-save roundtrip smoke for manifest, thumbnail, program XML, resource XML/bytes, and reload fidelity.
 - The generated foreach loop currently emits `COUNT__` as the item variable when the AST item local has no explicit name.
   - This is internally coherent and compiles when referenced.
   - It remains readability debt for teaching-facing generated Java.
@@ -107,6 +109,7 @@ Covered areas include:
 - Historical `.a3p` migration fixtures are not yet covered.
 - Real StageIDE-generated projects, thumbnails, gallery resources, and provenance-sensitive assets remain mostly uncovered.
 - The player export artifact smoke uses a synthetic project and 1x1 thumbnail; it does not prove the full StageIDE export UI journey.
+- The editor save-copy roundtrip also uses a synthetic project and test resource; it does not prove the full StageIDE save UI journey.
 - Model binary export, thumbnails, real gallery resources, and full model package output remain mostly untested.
 - Backup recovery dialogs and recursive UI side effects are not directly tested.
 - Full wizard execution is not covered.
