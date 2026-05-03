@@ -7,11 +7,11 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
+  - `e12e1b4348 Characterize resource player export boundary`
   - `54b74d2476 Extract project save target plan`
   - `bf20204906 Characterize backup recovery IO path`
   - `5cbfc03f0d Characterize project save export snapshots`
   - `f43e35cf2b Characterize backup recovery candidate skipping`
-  - `a15d6a49e3 Characterize project save copy roundtrip`
 
 ## Build and CI state
 
@@ -60,6 +60,7 @@ Covered areas include:
 - synthetic `.a3p` project IO round trips;
 - synthetic resource IO round trips;
 - headless player export archive shape through `ProjectFileUtilities`;
+- resource-bearing player export archive boundary and current editor-reader rejection;
 - headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
 - project save/export snapshot source selection and default auto-backup migration;
 - project save target planning for new/default-backup/backup saves;
@@ -98,6 +99,7 @@ Covered areas include:
 - NetBeans export now also has a template-shaped project smoke that extracts the packaged template, checks the `Alice3Library` classpath contract, and compiles generated sources into `build/classes` using the test classpath as a surrogate.
 - Generated source now includes one actual story API call smoke, `this.setSimulationSpeedFactor(1.5);`, in a new focused test class.
 - `ProjectFileUtilities.exportCopyOfProjectTo` now has a headless player artifact smoke for version, manifest, thumbnail, and program Tweedle entries.
+- Resource-bearing player export now proves referenced image bytes and manifest metadata are written, while also proving the current `IoUtilities.readProject(...)` XML-reader path rejects player/Tweedle exports instead of reopening them as editor projects.
 - `ProjectFileUtilities.saveCopyOfProjectTo` now has a headless editor-save roundtrip smoke for manifest, thumbnail, program XML, resource XML/bytes, and reload fidelity.
 - `ProjectFileUtilities` now has source-selection tests proving export forces a fresh project snapshot while save-copy uses the normal up-to-date snapshot, plus default backup migration coverage for auto backups.
 - `ProjectApplication.saveProjectTo` now delegates its target decision to `ProjectSaveTargetPlan`, giving the oversized application class a characterized save-orchestration seam without changing save order or UI behavior.
