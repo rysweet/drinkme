@@ -21,7 +21,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
 - The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test`.
-- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 26 Java test files after the first thirty-one modernization slices.
+- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 26 Java test files after the first thirty-two modernization slices.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -54,6 +54,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Twenty-ninth implementation slice added user-method invocation generated-source coverage: a synthetic method emits and compiles a `this.sayHello();` call to another generated user method.
 - Thirtieth implementation slice added user-method invocation argument coverage: a synthetic method emits and compiles `this.remember("hello alice");`, exercising generated arguments alongside parameter access.
 - Thirty-first implementation slice added conditional generated-source coverage: a synthetic method emits and compiles a minimal `if(true) ... else ...` body.
+- Thirty-second implementation slice added count-loop generated-source coverage: a synthetic method emits and compiles a minimal `for(Integer indexA=0;indexA<3;indexA++)` body.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
