@@ -7,11 +7,12 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
-  - `7a64e1c70e Characterize JSON player audio resource read`
-  - `42b7c673b3 Make JSON player resource entries path safe`
-  - `c57606b81f Report future versions for JSON player archives`
-  - `c1243a39e7 Read player export resources through JSON IO`
-  - `259a3d02b6 Characterize image resource save roundtrip`
+  - `e2f08d89b4 Extract project load success plan`
+  - `4218bc9aaa Characterize NetBeans template compiler structure`
+  - `da7b191089 Characterize JSON type archive resource reads`
+  - `89e771d339 Characterize model resource player archive read`
+  - `85589b3888 Surface corrupt manifest IO errors`
+  - `4f1509f1a3 Isolate JSON player resource reads by UUID`
 
 ## Build and CI state
 
@@ -64,6 +65,10 @@ Covered areas include:
 - manifest-based JSON reader dispatch and image-resource restoration for player exports;
 - JSON/player audio resource restoration through the same resource-only reader boundary;
 - future-version detection for JSON/player archives through the shared `ProjectReader` seam;
+- explicit corrupt-manifest IO dispatch errors instead of silent XML fallback;
+- JSON/player image/audio resource identity isolation when separate archive reads reuse UUIDs;
+- JSON/player model/generated type manifest-reference boundaries;
+- JSON `.a3c` resource-only type archive reads;
 - duplicate-safe and path-safe JSON/player resource zip entries;
 - headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
 - AST-referenced image resource editor save-copy and reopen fidelity;
@@ -74,6 +79,7 @@ Covered areas include:
 - exported build-property contract;
 - `Alice3Library` registration and packaging source;
 - NetBeans package-phase CI and artifact assertions;
+- NetBeans template compiler-surrogate structure;
 - generated resource export/runtime loading;
 - generated resource filename mismatch, duplicate name, blank name, and unsafe path behavior;
 - generated Java source compilation for:
@@ -102,11 +108,16 @@ Covered areas include:
 - Model resource export now has its first active no-Sims characterization, but only for XML serialization and generated resource Java compilation.
 - NetBeans export now has a standalone-style compile/launcher smoke, but not a full Ant/NetBeans run with a populated `Alice3Library`.
 - NetBeans export now also has a template-shaped project smoke that extracts the packaged template, checks the `Alice3Library` classpath contract, and compiles generated sources into `build/classes` using the test classpath as a surrogate.
+- The template-shaped NetBeans compile smoke now verifies the template build/classpath properties and resolves its classes directory from the template rather than hardcoding `build/classes`.
 - Generated source now includes one actual story API call smoke, `this.setSimulationSpeedFactor(1.5);`, in a new focused test class.
 - `ProjectFileUtilities.exportCopyOfProjectTo` now has a headless player artifact smoke for version, manifest, thumbnail, and program Tweedle entries.
 - Resource-bearing player export now proves referenced image bytes and manifest metadata are written. `IoUtilities.readProject(...)` now routes manifest-declared `.a3w` archives to `JsonProjectIo` and can restore manifest-listed image resources, but Tweedle program-type decoding is still not implemented.
 - JSON/player export/readback now also covers AST-referenced `AudioResource` with synthetic bytes, preserving UUID, names, content type, byte payload, and normalized duration.
 - JSON/player archives now report future `version.txt` values through `JsonProjectIo.checkForFutureVersion()`, so loader warning behavior is no longer XML-only at that seam.
+- Corrupt `manifest.json` in IO dispatch now surfaces an `IOException` instead of being treated like an absent manifest and falling through to XML.
+- JSON/player resource reads no longer reuse mutable static UUID-map instances for image/audio resources, preventing one archive read from mutating an earlier read with the same UUID.
+- JSON/player archives with model and generated type manifest references are characterized as manifest entries, not binary `Resource`s, until Tweedle/model decoding is implemented.
+- JSON `.a3c` archives now route to JSON IO, restore manifest-listed resources, and still return `null` type while Tweedle decoding is unimplemented.
 - JSON/player export now flattens path-like image resource filenames and allocates distinct `resources`, `resources2`, ... entry directories for duplicate filenames while preserving resource bytes on reopen.
 - `ProjectFileUtilities.saveCopyOfProjectTo` now has a headless editor-save roundtrip smoke for manifest, thumbnail, program XML, resource XML/bytes, and reload fidelity.
 - Editor save-copy now has a real `ImageResource` roundtrip: an AST-referenced image resource is written to `resources/picture.png` and reopens with identity and bytes intact.
@@ -114,6 +125,7 @@ Covered areas include:
 - `ProjectApplication.saveProjectTo` now delegates its target decision to `ProjectSaveTargetPlan`, giving the oversized application class a characterized save-orchestration seam without changing save order or UI behavior.
 - Recent-backup recovery now covers the case where the newest candidate is known unloadable: the next candidate is considered, but still must be newer than the main project to be selected.
 - Backup recovery now has a real-file headless path covering corrupt main file, skipped unloadable backup, selected valid backup, failure-plan action, and `FileProjectLoader` resource fidelity.
+- Project-load success planning now has a pure seam for backup-prompt/open-loader decisions, while UI dialogs and application state mutations remain in `ProjectApplication`.
 - The generated foreach loop currently emits `COUNT__` as the item variable when the AST item local has no explicit name.
   - This is internally coherent and compiles when referenced.
   - It remains readability debt for teaching-facing generated Java.
@@ -123,6 +135,7 @@ Covered areas include:
 - Real JavaFX/UI behavior, story execution, and rendering-adjacent behavior remain mostly unprotected.
 - Git LFS budget exhaustion can break CI checkout if no-Sims workflows fetch LFS objects; no-Sims CI should avoid LFS unless a job explicitly needs it.
 - Process correction: every coding lane and subagent must follow `DEFAULT_WORKFLOW`; parallel coding should use isolated worktrees/branches, while this main lane remains serialized for integration.
+- Loop 62 proved the parallel pattern: six isolated implementation branches were developed concurrently, then rebased and integrated sequentially behind local gates and CI.
 
 ## Known limits
 
@@ -132,6 +145,7 @@ Covered areas include:
 - The editor save-copy roundtrip also uses a synthetic project and test resource; it does not prove the full StageIDE save UI journey.
 - Model binary export, thumbnails, real gallery resources, and full model package output remain mostly untested.
 - Backup recovery dialogs and recursive UI side effects are not directly tested.
+- Project-load success branching is now tested through `ProjectLoadSuccessPlan`, but the higher-level UI side effects still need characterization.
 - Full wizard execution is not covered.
 - Real JavaFX launcher startup is not covered.
 - Palette/completion behavior is not covered.
@@ -139,6 +153,7 @@ Covered areas include:
 - A standalone exported Ant project build/run against a populated `Alice3Library` is not yet proven; current coverage uses a JDK compiler, JavaFX stubs, and a test-classpath surrogate for the NetBeans library.
 - Scene/model story API calls, events, and rendering behavior are not yet characterized.
 - Player export JSON reads are currently resource-only; the program type is still `null` because the Tweedle decoder remains a stub.
+- JSON `.a3c` type reads are also resource-only; the type remains `null` until Tweedle type decoding is implemented.
 - The generated-source export tests were split so both focused NetBeans export test classes are under 500 lines.
 
 ## Immediate next steps

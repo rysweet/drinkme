@@ -21,7 +21,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
 - The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test` and a no-Sims NetBeans package gate.
-- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 29 Java test files after the first forty-five modernization slices.
+- Current test coverage is still small relative to the codebase, but the characterization suite now covers key IO, recovery, and NetBeans generation seams after the first sixty-two modernization slices.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -83,6 +83,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Fifty-eighth implementation slice made JSON/player archives report future `version.txt` values through `ProjectReader.checkForFutureVersion()`, matching the XML reader warning path used by file loaders.
 - Fifty-ninth implementation slice made JSON/player export resource entries duplicate-safe and path-safe: duplicate resource filenames use `resources2/...`, and slash/backslash path-like filenames are flattened before zip entry creation while resource bytes still round-trip.
 - Sixtieth implementation slice characterized JSON/player export and readback for an AST-referenced `AudioResource`, using synthetic bytes and preserving the current resource-only player reader boundary.
+- Sixty-first implementation wave used six isolated workflow-aware implementation branches plus fifteen scout/review lanes. It fixed JSON/player resource read identity isolation, hardened corrupt-manifest dispatch, characterized model/generated type references in player archives, added JSON `.a3c` resource-only type reads, strengthened the NetBeans template compiler surrogate, and extracted the project-load success decision seam.
 - Going forward, every coding lane and subagent must explicitly follow `DEFAULT_WORKFLOW`. Parallel implementation should use isolated worktrees/branches for independent modules; never parallel-edit the same working tree.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
