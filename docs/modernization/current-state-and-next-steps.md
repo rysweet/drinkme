@@ -7,11 +7,11 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
+  - `259a3d02b6 Characterize image resource save roundtrip`
   - `e12e1b4348 Characterize resource player export boundary`
   - `54b74d2476 Extract project save target plan`
   - `bf20204906 Characterize backup recovery IO path`
   - `5cbfc03f0d Characterize project save export snapshots`
-  - `f43e35cf2b Characterize backup recovery candidate skipping`
 
 ## Build and CI state
 
@@ -62,6 +62,7 @@ Covered areas include:
 - headless player export archive shape through `ProjectFileUtilities`;
 - resource-bearing player export archive boundary and current editor-reader rejection;
 - headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
+- AST-referenced image resource editor save-copy and reopen fidelity;
 - project save/export snapshot source selection and default auto-backup migration;
 - project save target planning for new/default-backup/backup saves;
 - NetBeans generated launcher shape and launcher argument handoff;
@@ -101,6 +102,7 @@ Covered areas include:
 - `ProjectFileUtilities.exportCopyOfProjectTo` now has a headless player artifact smoke for version, manifest, thumbnail, and program Tweedle entries.
 - Resource-bearing player export now proves referenced image bytes and manifest metadata are written, while also proving the current `IoUtilities.readProject(...)` XML-reader path rejects player/Tweedle exports instead of reopening them as editor projects.
 - `ProjectFileUtilities.saveCopyOfProjectTo` now has a headless editor-save roundtrip smoke for manifest, thumbnail, program XML, resource XML/bytes, and reload fidelity.
+- Editor save-copy now has a real `ImageResource` roundtrip: an AST-referenced image resource is written to `resources/picture.png` and reopens with identity and bytes intact.
 - `ProjectFileUtilities` now has source-selection tests proving export forces a fresh project snapshot while save-copy uses the normal up-to-date snapshot, plus default backup migration coverage for auto backups.
 - `ProjectApplication.saveProjectTo` now delegates its target decision to `ProjectSaveTargetPlan`, giving the oversized application class a characterized save-orchestration seam without changing save order or UI behavior.
 - Recent-backup recovery now covers the case where the newest candidate is known unloadable: the next candidate is considered, but still must be newer than the main project to be selected.
