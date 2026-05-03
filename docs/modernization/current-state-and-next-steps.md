@@ -7,11 +7,11 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
+  - `bf20204906 Characterize backup recovery IO path`
   - `5cbfc03f0d Characterize project save export snapshots`
   - `f43e35cf2b Characterize backup recovery candidate skipping`
   - `a15d6a49e3 Characterize project save copy roundtrip`
   - `fa0054eb9d Characterize project export artifact`
-  - `b48ab476ff Characterize story API generated source`
 
 ## Build and CI state
 
@@ -54,6 +54,7 @@ Covered areas include:
 - corrupt project-load failure delegation;
 - project backup candidate selection and branch planning;
 - backup recovery candidate skipping when a newer backup is known unloadable;
+- backup recovery IO path from corrupt files to valid backup load;
 - VR project-loader save-path behavior;
 - model resource XML metadata, manifest behavior, tag parsing, subresource lookup, and edge cases;
 - synthetic `.a3p` project IO round trips;
@@ -99,6 +100,7 @@ Covered areas include:
 - `ProjectFileUtilities.saveCopyOfProjectTo` now has a headless editor-save roundtrip smoke for manifest, thumbnail, program XML, resource XML/bytes, and reload fidelity.
 - `ProjectFileUtilities` now has source-selection tests proving export forces a fresh project snapshot while save-copy uses the normal up-to-date snapshot, plus default backup migration coverage for auto backups.
 - Recent-backup recovery now covers the case where the newest candidate is known unloadable: the next candidate is considered, but still must be newer than the main project to be selected.
+- Backup recovery now has a real-file headless path covering corrupt main file, skipped unloadable backup, selected valid backup, failure-plan action, and `FileProjectLoader` resource fidelity.
 - The generated foreach loop currently emits `COUNT__` as the item variable when the AST item local has no explicit name.
   - This is internally coherent and compiles when referenced.
   - It remains readability debt for teaching-facing generated Java.
