@@ -6,19 +6,24 @@ Alice 3 is a valuable educational programming environment with strong public tea
 
 ## Repository model
 
-- Public source fork: `https://github.com/rysweet/alice3`
+- Standalone modernization repo: `https://github.com/rysweet/alice3-modernization`
+- Public source fork/reference: `https://github.com/rysweet/alice3`
 - Upstream source: `https://github.com/TheAliceProject/alice3`
 - Private artifact repo: `https://github.com/rysweet/drinkme`
 
 `drinkme` stores only investigation outputs: plans, notes, maps, diagrams, journals, and generated documentation. It must not vendor the Alice source tree.
+
+The active implementation repo is `rysweet/alice3-modernization`, not the upstream fork network. Do not open issues or pull requests against `TheAliceProject/alice3`; use the standalone repo namespace only.
 
 ## Current findings
 
 - Alice 3 is a Java 21/Maven desktop IDE with a NetBeans plugin.
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
+- The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test`.
 - Current test coverage is very small relative to the codebase: 4,528 production Java files and 15 Java test files.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
+- First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
@@ -40,4 +45,3 @@ Alice 3 is a valuable educational programming environment with strong public tea
 - Refactor proposals are tied to measured pain points and protected by tests.
 - License-sensitive assets and no-Sims workflows stay explicit.
 - Any Rust or non-Java work is isolated, optional, and justified by clear tooling or performance value.
-
