@@ -82,7 +82,8 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Fifty-seventh implementation slice added manifest-based reader dispatch for player exports and minimal JSON IO resource reads: exported `.a3w`/Tweedle archives now route to `JsonProjectIo` and restore manifest-listed image resources while leaving program-type Tweedle decoding explicitly unimplemented.
 - Fifty-eighth implementation slice made JSON/player archives report future `version.txt` values through `ProjectReader.checkForFutureVersion()`, matching the XML reader warning path used by file loaders.
 - Fifty-ninth implementation slice made JSON/player export resource entries duplicate-safe and path-safe: duplicate resource filenames use `resources2/...`, and slash/backslash path-like filenames are flattened before zip entry creation while resource bytes still round-trip.
-- Going forward, run a serialized implementation lane plus parallel non-mutating lanes for crusty-old-engineer review, qa-team outside-in scenario design, code-atlas bug hunting, and documentation/journal updates.
+- Sixtieth implementation slice characterized JSON/player export and readback for an AST-referenced `AudioResource`, using synthetic bytes and preserving the current resource-only player reader boundary.
+- Going forward, every coding lane and subagent must explicitly follow `DEFAULT_WORKFLOW`. Parallel implementation should use isolated worktrees/branches for independent modules; never parallel-edit the same working tree.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 

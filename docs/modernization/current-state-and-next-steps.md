@@ -7,11 +7,11 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
+  - `7a64e1c70e Characterize JSON player audio resource read`
   - `42b7c673b3 Make JSON player resource entries path safe`
   - `c57606b81f Report future versions for JSON player archives`
   - `c1243a39e7 Read player export resources through JSON IO`
   - `259a3d02b6 Characterize image resource save roundtrip`
-  - `e12e1b4348 Characterize resource player export boundary`
 
 ## Build and CI state
 
@@ -62,6 +62,7 @@ Covered areas include:
 - headless player export archive shape through `ProjectFileUtilities`;
 - resource-bearing player export archive boundary and current editor-reader rejection;
 - manifest-based JSON reader dispatch and image-resource restoration for player exports;
+- JSON/player audio resource restoration through the same resource-only reader boundary;
 - future-version detection for JSON/player archives through the shared `ProjectReader` seam;
 - duplicate-safe and path-safe JSON/player resource zip entries;
 - headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
@@ -104,6 +105,7 @@ Covered areas include:
 - Generated source now includes one actual story API call smoke, `this.setSimulationSpeedFactor(1.5);`, in a new focused test class.
 - `ProjectFileUtilities.exportCopyOfProjectTo` now has a headless player artifact smoke for version, manifest, thumbnail, and program Tweedle entries.
 - Resource-bearing player export now proves referenced image bytes and manifest metadata are written. `IoUtilities.readProject(...)` now routes manifest-declared `.a3w` archives to `JsonProjectIo` and can restore manifest-listed image resources, but Tweedle program-type decoding is still not implemented.
+- JSON/player export/readback now also covers AST-referenced `AudioResource` with synthetic bytes, preserving UUID, names, content type, byte payload, and normalized duration.
 - JSON/player archives now report future `version.txt` values through `JsonProjectIo.checkForFutureVersion()`, so loader warning behavior is no longer XML-only at that seam.
 - JSON/player export now flattens path-like image resource filenames and allocates distinct `resources`, `resources2`, ... entry directories for duplicate filenames while preserving resource bytes on reopen.
 - `ProjectFileUtilities.saveCopyOfProjectTo` now has a headless editor-save roundtrip smoke for manifest, thumbnail, program XML, resource XML/bytes, and reload fidelity.
@@ -120,6 +122,7 @@ Covered areas include:
 - Headless tests can cover important exported-code behavior without launching real JavaFX.
 - Real JavaFX/UI behavior, story execution, and rendering-adjacent behavior remain mostly unprotected.
 - Git LFS budget exhaustion can break CI checkout if no-Sims workflows fetch LFS objects; no-Sims CI should avoid LFS unless a job explicitly needs it.
+- Process correction: every coding lane and subagent must follow `DEFAULT_WORKFLOW`; parallel coding should use isolated worktrees/branches, while this main lane remains serialized for integration.
 
 ## Known limits
 
