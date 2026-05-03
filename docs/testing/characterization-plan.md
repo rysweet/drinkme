@@ -14,6 +14,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/story-api-migration` | migration table ordering, applicability thresholds, and representative text rewrite chains |
 | `core/ide` | corrupt project-load IO failure delegation to backup recovery flow |
 | `alice-ide` | launch argument parsing |
+| `netbeans` | generated Alice-to-Java launcher and project template main-class alignment |
 
 Frameworks are mixed JUnit 4 and JUnit 5. The root POM configures Surefire with `surefire-junit47`; `core/util` adds JUnit Jupiter; `core/tweedle` has its own Surefire `argLine` for Java module opens.
 
@@ -28,6 +29,7 @@ Completed characterization slices:
 - Project migration tables: text/AST migration result versions are valid and increasing; migration applicability is threshold-based; representative legacy story/resource strings are rewritten to current forms.
 - Project-load failure seam: corrupt `.a3p` IO failures return `null` and delegate to the load-exception hook so `ProjectApplication` can drive backup recovery UI.
 - Model resource metadata: synthetic no-Sims XML covers metadata defaults, malformed optional fields, subresource tag inheritance, and manifest variant/resource/texture-set generation.
+- NetBeans launcher generation: generated `AliceJavaFXLauncher.java` is written by the generator and remains aligned with the template `main.class` used by exported Java projects.
 
 Known limits:
 
@@ -35,6 +37,7 @@ Known limits:
 - Model export remains mostly untested because the existing test body is commented and tied to gallery resources.
 - Backup recovery dialogs themselves are not yet tested headlessly; current coverage locks the lower-level loader contract only.
 - The `ModelResourceExporter` binary/model export path is still not covered; Loop 4 intentionally stopped at pure metadata parsing to avoid asset/license and rendering dependencies.
+- The NetBeans slice covers launcher generation only. It does not yet cover full Alice-project-to-Java source generation, palette/completion behavior, or NBM package behavior.
 
 ## Phase 1: lock down pure logic and formats
 
