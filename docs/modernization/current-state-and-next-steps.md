@@ -7,11 +7,11 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
+  - `a9ecf4bd56 Add template project export smoke`
   - `cdc1b2b5df Characterize iterable foreach generation`
   - `e4dd96408f Characterize named foreach generation`
   - `09072e5743 Add standalone export launcher smoke`
   - `eb34ad9c6a Characterize model resource export output`
-  - `643467e751 Split generated source export tests`
 
 ## Build and CI state
 
@@ -88,6 +88,7 @@ Covered areas include:
 - NetBeans Java export is a high-value seam because it is both compatibility-sensitive and teaching-facing.
 - Model resource export now has its first active no-Sims characterization, but only for XML serialization and generated resource Java compilation.
 - NetBeans export now has a standalone-style compile/launcher smoke, but not a full Ant/NetBeans run with a populated `Alice3Library`.
+- NetBeans export now also has a template-shaped project smoke that extracts the packaged template, checks the `Alice3Library` classpath contract, and compiles generated sources into `build/classes` using the test classpath as a surrogate.
 - The generated foreach loop currently emits `COUNT__` as the item variable when the AST item local has no explicit name.
   - This is internally coherent and compiles when referenced.
   - It remains readability debt for teaching-facing generated Java.
@@ -107,7 +108,7 @@ Covered areas include:
 - Real JavaFX launcher startup is not covered.
 - Palette/completion behavior is not covered.
 - Deep NBM install semantics are not covered.
-- A standalone exported Ant project build/run against a populated `Alice3Library` is not yet proven; current coverage uses a JDK compiler plus JavaFX stubs.
+- A standalone exported Ant project build/run against a populated `Alice3Library` is not yet proven; current coverage uses a JDK compiler, JavaFX stubs, and a test-classpath surrogate for the NetBeans library.
 - Meaningful story API calls, scenes, events, and rendering behavior are not yet characterized.
 - The generated-source export tests were split so both focused NetBeans export test classes are under 500 lines.
 
@@ -117,9 +118,9 @@ Covered areas include:
    - loop-variable use in more realistic method bodies;
    - simple story API calls that compile against exported project dependencies.
 2. Prove exported project behavior beyond compile-only tests:
-   - create a synthetic exported project;
-   - materialize or simulate the `Alice3Library` classpath;
-   - compile/run the exported launcher where possible.
+   - run an actual Ant/NetBeans project build once the required tool/runtime harness is stable;
+   - replace the classpath surrogate with a populated `Alice3Library` definition;
+   - compile/run the exported launcher against real JavaFX where possible.
 3. Add higher-level user journey tests where feasible:
    - export project journey;
    - open/load/save journey;
