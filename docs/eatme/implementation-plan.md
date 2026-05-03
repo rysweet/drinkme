@@ -10,27 +10,58 @@ This `drinkme` copy records the current planning direction and links the plan to
 
 ## Current direction
 
-The plan has been constrained by first-pass reviews:
+Second-pass review tightened the plan:
 
-- Build the first thin, real, repeatable vertical slice before expanding the agentic classroom crew.
-- Use Rust for orchestration, asset validation, memory adapters, reporting, and process control.
-- Keep Alice itself Java/Maven.
-- Use Xvfb and screenshot/log/process evidence for the real Alice desktop app.
-- Use Playwright for Alice.org web resources only, not for the Swing/Croquet IDE.
-- Treat true desktop/Swing support as an `eatme` harness first, then consider upstreaming a gadugi `DESKTOP` agent later.
-- Keep personas, prompts, rubrics, lessons, and scenarios as editable YAML/Markdown.
+- Milestone 0 is a deterministic real-Alice launch smoke only.
+- No personas, gadugi dependency, lesson evaluation, or parallel GUI runs in Milestone 0.
+- `eatme` owns desktop execution: Alice packaging, Xvfb, display allocation, window/process lifecycle, screenshots, logs, and manifests.
+- Gadugi initially treats `eatme` as a CLI/system harness and asserts against `manifest.json`.
+- Pass/fail initially comes from deterministic evidence, not agentic judgment.
+- Alice.org curriculum scenarios begin after the launch smoke.
 
-## First vertical slice
+## Milestone 0
 
-Given one editable lesson asset:
+Milestone 0 proves:
 
-1. Package real Alice from `/home/azureuser/src/alice3-modernization`.
-2. Start Xvfb with isolated user state.
-3. Launch Alice via direct Java using `org.alice.stageide.EntryPoint`.
-4. Load a known starter project.
-5. Capture process status, Alice logs, and screenshot evidence.
-6. Produce a deterministic pass/fail verdict.
-7. Store artifacts under `runs/<scenario>/<timestamp>/`.
+1. Host dependencies are detected.
+2. Real Alice packages from `/home/azureuser/src/alice3-modernization`.
+3. Long-lived Xvfb starts with GLX enabled.
+4. Alice launches via direct Java and `org.alice.stageide.EntryPoint`.
+5. The run uses isolated user home, prefs root, and temp/cache directories.
+6. The harness captures process status, logs, window/display data, screenshot, command log, and `manifest.json`.
+7. The deterministic assertions pass.
+
+## Required manifest contract
+
+The manifest must include:
+
+- scenario id and run id
+- Alice repo path and commit
+- eatme commit
+- Java/Maven versions
+- dependency checks
+- build command and exit status
+- launch command
+- `DISPLAY`
+- Xvfb PID and Alice PID
+- timeout values
+- screenshot path, size, and hash
+- log path, size, and hash
+- fatal log scan
+- assertion results
+- failure category
+
+## Post-launch scenario path
+
+After Milestone 0:
+
+1. `building-a-scene-first-world`
+2. `code-editor-first-run`
+3. `control-structures-visible-change`
+4. `introduction-to-events-first-binding`
+5. `design-process-thin-slice`
+
+Export/player, collision/proximity games, and broader creative scenarios come later.
 
 ## Review artifacts
 
@@ -38,4 +69,8 @@ Given one editable lesson asset:
 - `docs/eatme/reviews/0002-rust-memory-architecture.md`
 - `docs/eatme/reviews/0003-gadugi-capability-audit.md`
 - `docs/eatme/reviews/0004-real-alice-harness-design.md`
+- `docs/eatme/reviews/0005-second-pass-harness-review.md`
+- `docs/eatme/reviews/0006-second-pass-crusty-review.md`
+- `docs/eatme/reviews/0007-second-pass-curriculum-review.md`
+- `docs/eatme/reviews/0008-second-pass-gadugi-review.md`
 - `docs/eatme/research/0001-alice-org-resource-map.raw.md`
