@@ -7,11 +7,11 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
+  - `f43e35cf2b Characterize backup recovery candidate skipping`
   - `a15d6a49e3 Characterize project save copy roundtrip`
   - `fa0054eb9d Characterize project export artifact`
   - `b48ab476ff Characterize story API generated source`
   - `a9ecf4bd56 Add template project export smoke`
-  - `cdc1b2b5df Characterize iterable foreach generation`
 
 ## Build and CI state
 
@@ -53,6 +53,7 @@ Covered areas include:
 - project migration/version behavior;
 - corrupt project-load failure delegation;
 - project backup candidate selection and branch planning;
+- backup recovery candidate skipping when a newer backup is known unloadable;
 - VR project-loader save-path behavior;
 - model resource XML metadata, manifest behavior, tag parsing, subresource lookup, and edge cases;
 - synthetic `.a3p` project IO round trips;
@@ -95,6 +96,7 @@ Covered areas include:
 - Generated source now includes one actual story API call smoke, `this.setSimulationSpeedFactor(1.5);`, in a new focused test class.
 - `ProjectFileUtilities.exportCopyOfProjectTo` now has a headless player artifact smoke for version, manifest, thumbnail, and program Tweedle entries.
 - `ProjectFileUtilities.saveCopyOfProjectTo` now has a headless editor-save roundtrip smoke for manifest, thumbnail, program XML, resource XML/bytes, and reload fidelity.
+- Recent-backup recovery now covers the case where the newest candidate is known unloadable: the next candidate is considered, but still must be newer than the main project to be selected.
 - The generated foreach loop currently emits `COUNT__` as the item variable when the AST item local has no explicit name.
   - This is internally coherent and compiles when referenced.
   - It remains readability debt for teaching-facing generated Java.
@@ -122,24 +124,26 @@ Covered areas include:
 
 ## Immediate next steps
 
-1. Continue generated-source characterization where it protects real exported Java behavior:
-   - loop-variable use in more realistic method bodies;
+1. Continue project IO/load-save characterization where it protects data-loss seams:
+   - backup/save-as behavior with real temporary files;
+   - failure/recovery journey branches above the headless selector/plan seams.
+2. Continue generated-source characterization where it protects real exported Java behavior:
    - scene/model story API calls that compile against exported project dependencies.
-2. Prove exported project behavior beyond compile-only tests:
+3. Prove exported project behavior beyond compile-only tests:
    - run an actual Ant/NetBeans project build once the required tool/runtime harness is stable;
    - replace the classpath surrogate with a populated `Alice3Library` definition;
    - compile/run the exported launcher against real JavaFX where possible.
-3. Add higher-level user journey tests where feasible:
+4. Add higher-level user journey tests where feasible:
    - export project journey;
    - open/load/save journey;
    - failure/recovery journey;
    - package/install smoke path.
-4. Use code-atlas bug hunting on the next high-value seam:
+5. Use code-atlas bug hunting on the next high-value seam:
    - NetBeans export path;
    - project IO/load-save path;
    - resource/model path.
-5. Keep journaling every slice in `drinkme`.
-6. Do not start broad refactors until the affected behavior has characterization coverage.
+6. Keep journaling every slice in `drinkme`.
+7. Do not start broad refactors until the affected behavior has characterization coverage.
 
 ## Strategic direction
 
