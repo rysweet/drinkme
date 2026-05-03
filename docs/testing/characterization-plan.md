@@ -11,7 +11,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/ast` | version parsing/compatibility; resource wrapper field mapping |
 | `core/model-loading` | test file exists, but meaningful model export test is commented out |
 | `core/story-api` | model resource XML metadata parsing, variant selection, manifest generation, model-only/placement edge cases, and subresource tag isolation |
-| `core/story-api-migration` | migration table ordering, applicability thresholds, representative text rewrite chains, and synthetic project IO round-trip |
+| `core/story-api-migration` | migration table ordering, applicability thresholds, representative text rewrite chains, synthetic project IO round-trip, and synthetic resource IO round-trip |
 | `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, backup-directory path handling, and VR project-loader save-path behavior |
 | `alice-ide` | launch argument parsing |
 | `netbeans` | generated Alice-to-Java launcher, project template archive contents, main-class alignment, and generated project metadata renaming |
@@ -39,11 +39,12 @@ Completed characterization slices:
 - Model resource manifest edges: synthetic XML tests cover explicit subresource `placeOnGround=false` overriding a true parent, missing subresource placement inheriting from the parent, and model-only resources producing manifest names without `_null`.
 - Model resource tag parsing: synthetic XML tests cover grouped subresource tags and confirm nested unrelated `Tag`, `GroupTag`, and `ThemeTag` descendants do not leak into variant metadata.
 - Project IO foothold: synthetic in-memory project tests write a temporary `.a3p`, read it back, verify the program type and default camera metadata, and verify core zip entries without checking in binary fixtures.
+- Resource IO foothold: a test-only `Resource` class implements Alice's `valueOf(String)` reflection contract; tests verify resource UUID, names, content type, bytes, `resources.xml`, and resource zip entry survive the `.a3p` round trip.
 
 Known limits:
 
 - Historical `.a3p` fixture migration is not yet covered. Add only tiny fixtures with explicit provenance and no Sims/nonfree assets.
-- The synthetic project IO test is intentionally minimal. It does not cover real StageIDE-generated projects, resources, manifests supplied by `ProjectFileUtilities`, thumbnails, or historical fixtures.
+- The synthetic project/resource IO tests are intentionally minimal. They do not cover real StageIDE-generated projects, manifests supplied by `ProjectFileUtilities`, thumbnails, gallery resource subclasses, or historical fixtures.
 - Model export remains mostly untested because the existing test body is commented and tied to gallery resources; current model-resource coverage is still XML/manifest-only.
 - Resource wrapper tests cover the mapping seam only; full Java source generation from Alice project fixtures still belongs in the NetBeans/export phase.
 - Backup recovery dialogs and recursive load side effects themselves are not yet tested headlessly; current coverage locks the lower-level loader contract, backup candidate selection policy, and branch-planning decision only.
