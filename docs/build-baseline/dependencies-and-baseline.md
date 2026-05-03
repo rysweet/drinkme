@@ -1,13 +1,15 @@
 # Alice 3 build baseline
 
-Source checkout: `/home/azureuser/src/alice3`  
-Public fork: `https://github.com/rysweet/alice3`  
-Upstream: `https://github.com/TheAliceProject/alice3`  
-Baseline commit: `0e2f80df62 Merge pull request #550 from jennej/eventListeners`
+Historical source checkout used for the first baseline: `/home/azureuser/src/alice3`  
+Active modernization checkout: `/home/azureuser/src/alice3-modernization`  
+Active source repository: `https://github.com/rysweet/alice3-modernization`  
+Older public fork/reference: `https://github.com/rysweet/alice3`  
+Upstream reference: `https://github.com/TheAliceProject/alice3`  
+Initial baseline commit: `0e2f80df62 Merge pull request #550 from jennej/eventListeners`
 
 ## Repository separation
 
-`drinkme` is a private artifact repository. It must contain investigation notes, plans, maps, diagrams, and generated documentation only. Alice source code remains in the public fork.
+`drinkme` is a private artifact repository. It must contain investigation notes, plans, maps, diagrams, prompts, and generated documentation only. Active Alice source work happens in `rysweet/alice3-modernization`. The upstream source is reference-only; do not open upstream issues, open upstream pull requests, or push upstream.
 
 ## Required build tools
 
@@ -26,7 +28,7 @@ Ant and Gradle are not part of the documented main build path.
 ## Baseline command
 
 ```bash
-cd /home/azureuser/src/alice3
+cd /home/azureuser/src/alice3-modernization
 git submodule update --init --recursive
 git lfs pull
 mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test
@@ -75,5 +77,12 @@ Active tests are concentrated in `core/util`, `core/tweedle`, and `core/ast`. `c
 
 ## CI baseline
 
-The only workflow found is `.github/workflows/alice-checkstyle-ci.yml`; it runs `mvn checkstyle:check -Dcheckstyle.config.location=checkstyle.xml` on push. It does not run Maven tests.
+The initial upstream baseline only had `.github/workflows/alice-checkstyle-ci.yml`; it ran `mvn checkstyle:check -Dcheckstyle.config.location=checkstyle.xml` on push and did not run Maven tests.
 
+The active modernization repository now has:
+
+- Alice Test CI: `mvn -DincludeSims=false -Dinstall4j.skip clean test`
+- Alice Checkstyle CI: `mvn checkstyle:check -Dcheckstyle.config.location=checkstyle.xml`
+- Alice NetBeans Package CI: `mvn -DincludeSims=false -Dinstall4j.skip -pl netbeans -am package -DskipTests`
+
+No-Sims CI avoids Git LFS checkout unless a future job explicitly needs LFS assets.
