@@ -85,6 +85,7 @@ Covered areas include:
 - Many production classes still exceed the desired 500-line target.
 - NetBeans Java export is a high-value seam because it is both compatibility-sensitive and teaching-facing.
 - Model resource export now has its first active no-Sims characterization, but only for XML serialization and generated resource Java compilation.
+- NetBeans export now has a standalone-style compile/launcher smoke, but not a full Ant/NetBeans run with a populated `Alice3Library`.
 - The generated foreach loop currently emits `COUNT__` as the item variable when the AST item local has no explicit name.
   - This is internally coherent and compiles when referenced.
   - It remains readability debt for teaching-facing generated Java.
@@ -102,7 +103,7 @@ Covered areas include:
 - Real JavaFX launcher startup is not covered.
 - Palette/completion behavior is not covered.
 - Deep NBM install semantics are not covered.
-- A standalone exported Ant project build/run against a populated `Alice3Library` is not yet proven.
+- A standalone exported Ant project build/run against a populated `Alice3Library` is not yet proven; current coverage uses a JDK compiler plus JavaFX stubs.
 - Meaningful story API calls, scenes, events, and rendering behavior are not yet characterized.
 - The generated-source export tests were split so both focused NetBeans export test classes are under 500 lines.
 
