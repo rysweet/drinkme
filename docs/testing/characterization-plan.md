@@ -10,7 +10,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/tweedle` | Tweedle parser, literals, statements, lambdas, manifest encoding |
 | `core/ast` | version parsing/compatibility |
 | `core/model-loading` | test file exists, but meaningful model export test is commented out |
-| `core/story-api` | model resource XML metadata parsing and manifest generation |
+| `core/story-api` | model resource XML metadata parsing, variant selection, and manifest generation |
 | `core/story-api-migration` | migration table ordering, applicability thresholds, and representative text rewrite chains |
 | `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, and VR project-loader save-path behavior |
 | `alice-ide` | launch argument parsing |
@@ -31,7 +31,7 @@ Completed characterization slices:
 - File project loader VR save-path: temp-file tests cover non-VR URI/save state, make-VR-ready renamed URI, and existing/missing VR-copy `shouldBeSaved()` behavior.
 - Backup selection policy: headless tests cover the next-backup decision for corrupted main projects, unloadable backups, recent-backup probes, missing timestamps, and exhausted candidates.
 - Project-load failure plan: headless tests cover the current dialog/load branch choice for manually loaded corrupt backups, corrupt main projects, corrupt backups during recovery, default unsaved backups, exhausted saved-project backups, and failed recent-backup probes.
-- Model resource metadata: synthetic no-Sims XML covers metadata defaults, malformed optional fields, subresource tag inheritance, and manifest variant/resource/texture-set generation.
+- Model resource metadata: synthetic no-Sims XML covers metadata defaults, malformed optional fields, subresource tag inheritance, texture-specific subresource lookup, model-only fallback, manifest variant/resource/texture-set generation, and structure/texture-set de-duplication.
 - NetBeans launcher generation: generated `AliceJavaFXLauncher.java` is written by the generator and remains aligned with the template `main.class` used by exported Java projects.
 
 Known limits:
