@@ -7,11 +7,11 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
+  - `5cbfc03f0d Characterize project save export snapshots`
   - `f43e35cf2b Characterize backup recovery candidate skipping`
   - `a15d6a49e3 Characterize project save copy roundtrip`
   - `fa0054eb9d Characterize project export artifact`
   - `b48ab476ff Characterize story API generated source`
-  - `a9ecf4bd56 Add template project export smoke`
 
 ## Build and CI state
 
@@ -60,6 +60,7 @@ Covered areas include:
 - synthetic resource IO round trips;
 - headless player export archive shape through `ProjectFileUtilities`;
 - headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
+- project save/export snapshot source selection and default auto-backup migration;
 - NetBeans generated launcher shape and launcher argument handoff;
 - NetBeans project-template archive and generated metadata;
 - exported build-property contract;
@@ -96,6 +97,7 @@ Covered areas include:
 - Generated source now includes one actual story API call smoke, `this.setSimulationSpeedFactor(1.5);`, in a new focused test class.
 - `ProjectFileUtilities.exportCopyOfProjectTo` now has a headless player artifact smoke for version, manifest, thumbnail, and program Tweedle entries.
 - `ProjectFileUtilities.saveCopyOfProjectTo` now has a headless editor-save roundtrip smoke for manifest, thumbnail, program XML, resource XML/bytes, and reload fidelity.
+- `ProjectFileUtilities` now has source-selection tests proving export forces a fresh project snapshot while save-copy uses the normal up-to-date snapshot, plus default backup migration coverage for auto backups.
 - Recent-backup recovery now covers the case where the newest candidate is known unloadable: the next candidate is considered, but still must be newer than the main project to be selected.
 - The generated foreach loop currently emits `COUNT__` as the item variable when the AST item local has no explicit name.
   - This is internally coherent and compiles when referenced.
