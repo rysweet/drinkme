@@ -10,6 +10,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/tweedle` | Tweedle parser, literals, statements, lambdas, manifest encoding |
 | `core/ast` | version parsing/compatibility |
 | `core/model-loading` | test file exists, but meaningful model export test is commented out |
+| `core/story-api` | model resource XML metadata parsing and manifest generation |
 | `core/story-api-migration` | migration table ordering, applicability thresholds, and representative text rewrite chains |
 | `core/ide` | corrupt project-load IO failure delegation to backup recovery flow |
 | `alice-ide` | launch argument parsing |
@@ -26,12 +27,14 @@ Completed characterization slices:
 - Version parsing and comparison: historical version round trips, trailing-zero comparison behavior, prerelease ordering, and metadata ordering behavior.
 - Project migration tables: text/AST migration result versions are valid and increasing; migration applicability is threshold-based; representative legacy story/resource strings are rewritten to current forms.
 - Project-load failure seam: corrupt `.a3p` IO failures return `null` and delegate to the load-exception hook so `ProjectApplication` can drive backup recovery UI.
+- Model resource metadata: synthetic no-Sims XML covers metadata defaults, malformed optional fields, subresource tag inheritance, and manifest variant/resource/texture-set generation.
 
 Known limits:
 
 - Historical `.a3p` fixture migration is not yet covered. Add only tiny fixtures with explicit provenance and no Sims/nonfree assets.
 - Model export remains mostly untested because the existing test body is commented and tied to gallery resources.
 - Backup recovery dialogs themselves are not yet tested headlessly; current coverage locks the lower-level loader contract only.
+- The `ModelResourceExporter` binary/model export path is still not covered; Loop 4 intentionally stopped at pure metadata parsing to avoid asset/license and rendering dependencies.
 
 ## Phase 1: lock down pure logic and formats
 
