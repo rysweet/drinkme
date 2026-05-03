@@ -40,10 +40,10 @@ mvn -DincludeSims=false -Dinstall4j.skip -pl core/story-api -am test
 mvn -DincludeSims=false -Dinstall4j.skip clean test
 ```
 
-Standalone CI started for commit `0ea52afbbb`:
+Standalone CI passed for commit `0ea52afbbb`:
 
-- Alice Test CI: `25270319188`
-- Alice Checkstyle CI: `25270319209`
+- Alice Test CI: success, run `25270319188`
+- Alice Checkstyle CI: success, run `25270319209`
 
 ## Next useful slices
 
