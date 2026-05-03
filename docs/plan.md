@@ -21,7 +21,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
 - The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test`.
-- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 26 Java test files after the first twenty modernization slices.
+- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 26 Java test files after the first twenty-one modernization slices.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -43,6 +43,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Eighteenth implementation slice extended NetBeans source-generation characterization to resources: a synthetic resource now generates copied resource bytes plus `Resources.java`, preserving the resource constructor/reflection contracts needed by exported code.
 - Nineteenth implementation slice added a JavaCompiler smoke test for generated `Program.java` and `AliceJavaFXLauncher.java`, and documented that even synthetic exported projects need the static `main(String[] args)` entry point expected by the launcher.
 - Twentieth implementation slice extended generated-source compilation to resource-backed exports: `Program.java`, `AliceJavaFXLauncher.java`, and `Resources.java` now compile together for a synthetic resource project.
+- Twenty-first implementation slice added a runtime smoke for generated resources: compiled `Resources.java` can load copied `resources/note.txt` bytes from the classpath through the generated static resource field.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
