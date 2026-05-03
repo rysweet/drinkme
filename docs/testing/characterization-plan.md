@@ -14,7 +14,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/story-api-migration` | migration table ordering, applicability thresholds, representative text rewrite chains, synthetic project IO round-trip, and synthetic resource IO round-trip |
 | `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, backup-directory path handling, and VR project-loader save-path behavior |
 | `alice-ide` | launch argument parsing |
-| `netbeans` | generated Alice-to-Java launcher, project template archive contents, main-class alignment, generated project metadata renaming, synthetic Alice project source generation, generated resource export foothold, generated-source compile smokes, generated resource runtime loading, resource filename mismatch coverage, duplicate resource filename coverage, blank resource filename fallback, unsafe resource filename sanitization, non-empty generated user method source, local declaration source, user parameter source, and user-method invocation source |
+| `netbeans` | generated Alice-to-Java launcher, project template archive contents, main-class alignment, generated project metadata renaming, synthetic Alice project source generation, generated resource export foothold, generated-source compile smokes, generated resource runtime loading, resource filename mismatch coverage, duplicate resource filename coverage, blank resource filename fallback, unsafe resource filename sanitization, non-empty generated user method source, local declaration source, user parameter source, user-method invocation source, and invocation-argument source |
 
 Frameworks are mixed JUnit 4 and JUnit 5. The root POM configures Surefire with `surefire-junit47`; `core/util` adds JUnit Jupiter; `core/tweedle` has its own Surefire `argLine` for Java module opens.
 
@@ -53,6 +53,7 @@ Completed characterization slices:
 - NetBeans local declaration source: a synthetic `sayHello()` method generates and compiles a final `String` local initialized from a string literal.
 - NetBeans user parameter source: a synthetic `remember(String message)` method generates and compiles a parameter access through a final local declaration.
 - NetBeans user-method invocation source: a synthetic `callSayHello()` method generates and compiles a `this.sayHello();` invocation of another generated user method.
+- NetBeans invocation argument source: a synthetic `callRemember()` method generates and compiles `this.remember("hello alice");`, with the callee consuming the parameter through a final local declaration.
 
 Known limits:
 
@@ -63,7 +64,7 @@ Known limits:
 - Backup recovery dialogs and recursive load side effects themselves are not yet tested headlessly; current coverage locks the lower-level loader contract, backup candidate selection policy, and branch-planning decision only.
 - `copyDefaultBackupDirectory()` is not yet directly covered because it depends on `StageIDE.getActiveInstance()` for the default projects directory. The earlier file-vs-directory concern appears lower risk because `backupDirectory(file, false)` creates the named directory before `createNewFile()` is called.
 - The `ModelResourceExporter` binary/model export path is still not covered; Loop 4 intentionally stopped at pure metadata parsing to avoid asset/license and rendering dependencies.
-- The NetBeans slices cover launcher generation, template archive shape, generated project metadata, minimal Alice-project-to-Java source generation, a synthetic generated-resource path, compilation of generated program/launcher/resource source, runtime loading of generated resource bytes, display-name/original-filename mismatch behavior, duplicate original-filename behavior, blank original-filename fallback, unsafe filename sanitization, a comment-only non-empty user method, a final string local declaration, a simple string parameter access, and a user-method invocation. They do not yet cover meaningful story API calls, real scenes/events, complex parameters, control flow, full wizard execution, formatted output, generated launcher execution, palette/completion behavior, or NBM package behavior.
+- The NetBeans slices cover launcher generation, template archive shape, generated project metadata, minimal Alice-project-to-Java source generation, a synthetic generated-resource path, compilation of generated program/launcher/resource source, runtime loading of generated resource bytes, display-name/original-filename mismatch behavior, duplicate original-filename behavior, blank original-filename fallback, unsafe filename sanitization, a comment-only non-empty user method, a final string local declaration, a simple string parameter access, a user-method invocation, and a string literal invocation argument. They do not yet cover meaningful story API calls, real scenes/events, complex parameters, control flow, full wizard execution, formatted output, generated launcher execution, palette/completion behavior, or NBM package behavior.
 
 ## Phase 1: lock down pure logic and formats
 
