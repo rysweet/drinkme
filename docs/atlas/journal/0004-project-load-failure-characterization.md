@@ -47,10 +47,10 @@ mvn -DincludeSims=false -Dinstall4j.skip -pl core/ide -am test
 mvn -DincludeSims=false -Dinstall4j.skip clean test
 ```
 
-Standalone CI started for commit `d278d6f9a7`:
+Standalone CI passed for commit `d278d6f9a7`:
 
-- Alice Checkstyle CI: `25270074065`
-- Alice Test CI: `25270074067`
+- Alice Checkstyle CI: success, run `25270074065`
+- Alice Test CI: success, run `25270074067`
 
 ## Next useful slices
 
