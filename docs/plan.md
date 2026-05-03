@@ -21,7 +21,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
 - The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test`.
-- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 21 Java test files after the first six modernization slices.
+- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 22 Java test files after the first seven modernization slices.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -29,6 +29,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Fourth implementation slice added no-Sims `ModelResourceInfo` XML metadata and manifest characterization tests.
 - Fifth implementation slice added NetBeans Alice-to-Java launcher generation characterization and locked the generated `AliceJavaFXLauncher` against the project template `main.class`.
 - Sixth implementation slice extracted and characterized project backup candidate selection, keeping dialogs and recursive loading in `ProjectApplication`.
+- Seventh implementation slice extracted and characterized the project-load failure branch plan, keeping Swing dialogs and recursive loading in `ProjectApplication`.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
