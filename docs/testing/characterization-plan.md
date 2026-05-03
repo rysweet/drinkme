@@ -12,7 +12,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/model-loading` | test file exists, but meaningful model export test is commented out |
 | `core/story-api` | model resource XML metadata parsing and manifest generation |
 | `core/story-api-migration` | migration table ordering, applicability thresholds, and representative text rewrite chains |
-| `core/ide` | corrupt project-load IO failure delegation to backup recovery flow |
+| `core/ide` | corrupt project-load IO failure delegation and backup candidate selection policy |
 | `alice-ide` | launch argument parsing |
 | `netbeans` | generated Alice-to-Java launcher and project template main-class alignment |
 
@@ -28,6 +28,7 @@ Completed characterization slices:
 - Version parsing and comparison: historical version round trips, trailing-zero comparison behavior, prerelease ordering, and metadata ordering behavior.
 - Project migration tables: text/AST migration result versions are valid and increasing; migration applicability is threshold-based; representative legacy story/resource strings are rewritten to current forms.
 - Project-load failure seam: corrupt `.a3p` IO failures return `null` and delegate to the load-exception hook so `ProjectApplication` can drive backup recovery UI.
+- Backup selection policy: headless tests cover the next-backup decision for corrupted main projects, unloadable backups, recent-backup probes, missing timestamps, and exhausted candidates.
 - Model resource metadata: synthetic no-Sims XML covers metadata defaults, malformed optional fields, subresource tag inheritance, and manifest variant/resource/texture-set generation.
 - NetBeans launcher generation: generated `AliceJavaFXLauncher.java` is written by the generator and remains aligned with the template `main.class` used by exported Java projects.
 
@@ -35,7 +36,7 @@ Known limits:
 
 - Historical `.a3p` fixture migration is not yet covered. Add only tiny fixtures with explicit provenance and no Sims/nonfree assets.
 - Model export remains mostly untested because the existing test body is commented and tied to gallery resources.
-- Backup recovery dialogs themselves are not yet tested headlessly; current coverage locks the lower-level loader contract only.
+- Backup recovery dialogs and recursive load actions themselves are not yet tested headlessly; current coverage locks the lower-level loader contract and backup candidate selection policy only.
 - The `ModelResourceExporter` binary/model export path is still not covered; Loop 4 intentionally stopped at pure metadata parsing to avoid asset/license and rendering dependencies.
 - The NetBeans slice covers launcher generation only. It does not yet cover full Alice-project-to-Java source generation, palette/completion behavior, or NBM package behavior.
 
