@@ -21,7 +21,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
 - The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test` and a no-Sims NetBeans package gate.
-- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 29 Java test files after the first forty-four modernization slices.
+- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 29 Java test files after the first forty-five modernization slices.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -67,6 +67,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Forty-second implementation slice split generated-source export tests into `ProjectCodeGeneratorGeneratedSourceTest`, reducing `ProjectCodeGeneratorTest` from 788 lines to 430 and keeping the new focused class at 399 lines.
 - Forty-third implementation slice replaced the dormant model export test body with active no-Sims characterization for `ModelResourceExporter` XML serialization and generated resource Java compilation.
 - Forty-fourth implementation slice added a standalone-style exported project smoke: a synthetic Alice project is generated into a `src` layout, compiled with JavaFX stubs, and the generated launcher is invoked through a child-first classloader.
+- Forty-fifth implementation slice characterized named foreach item generation: named item locals emit readable Java (`item`) while unnamed helper-created loops still emit the current `COUNT__` fallback.
 - Going forward, run a serialized implementation lane plus parallel non-mutating lanes for crusty-old-engineer review, qa-team outside-in scenario design, code-atlas bug hunting, and documentation/journal updates.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.

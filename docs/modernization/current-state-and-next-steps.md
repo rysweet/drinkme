@@ -89,6 +89,7 @@ Covered areas include:
 - The generated foreach loop currently emits `COUNT__` as the item variable when the AST item local has no explicit name.
   - This is internally coherent and compiles when referenced.
   - It remains readability debt for teaching-facing generated Java.
+- Explicitly named foreach item locals do emit readable Java names and are now characterized separately from the unnamed fallback.
 - Headless tests can cover important exported-code behavior without launching real JavaFX.
 - Real JavaFX/UI behavior, story execution, and rendering-adjacent behavior remain mostly unprotected.
 - Git LFS budget exhaustion can break CI checkout if no-Sims workflows fetch LFS objects; no-Sims CI should avoid LFS unless a job explicitly needs it.
@@ -110,7 +111,6 @@ Covered areas include:
 ## Immediate next steps
 
 1. Continue generated-source characterization where it protects real exported Java behavior:
-   - named foreach loop variables;
    - iterable foreach loops;
    - loop-variable use in more realistic method bodies;
    - simple story API calls that compile against exported project dependencies.
