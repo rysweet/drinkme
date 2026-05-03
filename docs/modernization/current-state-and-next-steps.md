@@ -7,11 +7,11 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
+  - `c57606b81f Report future versions for JSON player archives`
   - `c1243a39e7 Read player export resources through JSON IO`
   - `259a3d02b6 Characterize image resource save roundtrip`
   - `e12e1b4348 Characterize resource player export boundary`
   - `54b74d2476 Extract project save target plan`
-  - `bf20204906 Characterize backup recovery IO path`
 
 ## Build and CI state
 
@@ -62,6 +62,7 @@ Covered areas include:
 - headless player export archive shape through `ProjectFileUtilities`;
 - resource-bearing player export archive boundary and current editor-reader rejection;
 - manifest-based JSON reader dispatch and image-resource restoration for player exports;
+- future-version detection for JSON/player archives through the shared `ProjectReader` seam;
 - headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
 - AST-referenced image resource editor save-copy and reopen fidelity;
 - project save/export snapshot source selection and default auto-backup migration;
@@ -102,6 +103,7 @@ Covered areas include:
 - Generated source now includes one actual story API call smoke, `this.setSimulationSpeedFactor(1.5);`, in a new focused test class.
 - `ProjectFileUtilities.exportCopyOfProjectTo` now has a headless player artifact smoke for version, manifest, thumbnail, and program Tweedle entries.
 - Resource-bearing player export now proves referenced image bytes and manifest metadata are written. `IoUtilities.readProject(...)` now routes manifest-declared `.a3w` archives to `JsonProjectIo` and can restore manifest-listed image resources, but Tweedle program-type decoding is still not implemented.
+- JSON/player archives now report future `version.txt` values through `JsonProjectIo.checkForFutureVersion()`, so loader warning behavior is no longer XML-only at that seam.
 - `ProjectFileUtilities.saveCopyOfProjectTo` now has a headless editor-save roundtrip smoke for manifest, thumbnail, program XML, resource XML/bytes, and reload fidelity.
 - Editor save-copy now has a real `ImageResource` roundtrip: an AST-referenced image resource is written to `resources/picture.png` and reopens with identity and bytes intact.
 - `ProjectFileUtilities` now has source-selection tests proving export forces a fresh project snapshot while save-copy uses the normal up-to-date snapshot, plus default backup migration coverage for auto backups.
