@@ -21,7 +21,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
 - The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test`.
-- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 25 Java test files after the first twelve modernization slices.
+- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 25 Java test files after the first thirteen modernization slices.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -35,6 +35,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Tenth implementation slice fixed and characterized `ResourcesTypeWrapper` resource-to-field mapping, a code-atlas bug-hunt finding that broke exported-resource code generation by leaving generated fields unmapped.
 - Eleventh implementation slice characterized backup-directory path derivation and hardened parentless backup-file handling so callers can skip backup work instead of crashing on a null parent.
 - Twelfth implementation slice characterized the NetBeans project-template archive and fixed generated project metadata so `application.title` and `dist.jar` are renamed with the imported project.
+- Thirteenth implementation slice fixed `ModelResourceInfo` edge cases: explicit child `placeOnGround=false` now overrides a true parent, omitted child values still inherit, and model-only manifest entries no longer use `*_null` names.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 

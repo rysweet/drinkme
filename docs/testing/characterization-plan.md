@@ -10,7 +10,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/tweedle` | Tweedle parser, literals, statements, lambdas, manifest encoding |
 | `core/ast` | version parsing/compatibility; resource wrapper field mapping |
 | `core/model-loading` | test file exists, but meaningful model export test is commented out |
-| `core/story-api` | model resource XML metadata parsing, variant selection, and manifest generation |
+| `core/story-api` | model resource XML metadata parsing, variant selection, manifest generation, and model-only/placement edge cases |
 | `core/story-api-migration` | migration table ordering, applicability thresholds, and representative text rewrite chains |
 | `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, backup-directory path handling, and VR project-loader save-path behavior |
 | `alice-ide` | launch argument parsing |
@@ -36,11 +36,12 @@ Completed characterization slices:
 - Resource wrapper code-generation seam: generated `Resources` fields now map back to their `Resource` instances, including duplicate fixed-name handling.
 - Backup-directory path handling: temp-file tests cover saved-project `.bak` sibling directories, non-project file naming, backup-file parent reuse, and parentless backup-file null handling.
 - NetBeans project-template metadata: archive tests cover required template entries without a root-prefix directory, and property-renaming tests cover generated `application.title`/`dist.jar` values while preserving the launcher `main.class`.
+- Model resource manifest edges: synthetic XML tests cover explicit subresource `placeOnGround=false` overriding a true parent, missing subresource placement inheriting from the parent, and model-only resources producing manifest names without `_null`.
 
 Known limits:
 
 - Historical `.a3p` fixture migration is not yet covered. Add only tiny fixtures with explicit provenance and no Sims/nonfree assets.
-- Model export remains mostly untested because the existing test body is commented and tied to gallery resources.
+- Model export remains mostly untested because the existing test body is commented and tied to gallery resources; current model-resource coverage is still XML/manifest-only.
 - Resource wrapper tests cover the mapping seam only; full Java source generation from Alice project fixtures still belongs in the NetBeans/export phase.
 - Backup recovery dialogs and recursive load side effects themselves are not yet tested headlessly; current coverage locks the lower-level loader contract, backup candidate selection policy, and branch-planning decision only.
 - `copyDefaultBackupDirectory()` is not yet directly covered because it depends on `StageIDE.getActiveInstance()` for the default projects directory. The earlier file-vs-directory concern appears lower risk because `backupDirectory(file, false)` creates the named directory before `createNewFile()` is called.
