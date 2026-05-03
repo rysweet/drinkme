@@ -21,7 +21,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
 - The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test` and a no-Sims NetBeans package gate.
-- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 27 Java test files after the first thirty-six modernization slices.
+- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 27 Java test files after the first thirty-seven modernization slices.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -59,6 +59,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Thirty-fourth implementation slice characterized `Alice3Library` registration: the NetBeans layer registers `Alice3Library.xml`, and the library declares classpath, source, and javadoc volumes used by exported projects.
 - Thirty-fifth implementation slice characterized NetBeans library packaging sources: the module POM packages javadoc, story source, and renamed NBM artifacts that back `Alice3Library` source/javadoc volumes.
 - Thirty-sixth implementation slice added no-Sims NetBeans package CI so NBM/support artifact generation is checked on every `develop` push without relying on Git LFS assets.
+- Thirty-seventh implementation slice tightened NetBeans package CI with explicit assertions for the NBM, module jar, source jar, javadoc zip, library registration resources, story source, and javadoc overview.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
