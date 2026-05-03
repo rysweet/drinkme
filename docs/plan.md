@@ -21,7 +21,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
 - The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test`.
-- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 26 Java test files after the first twenty-six modernization slices.
+- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 26 Java test files after the first twenty-seven modernization slices.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -49,6 +49,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Twenty-fourth implementation slice fixed blank generated-resource filenames: when `originalFileName` is blank, export falls back to the fixed resource display name so `Resources.java` and copied bytes still use a loadable path.
 - Twenty-fifth implementation slice hardened generated-resource filenames with separators or parent-directory names: export now sanitizes slash/backslash filename segments and falls back for bare `.`/`..`, keeping generated resource files inside the expected resources layout.
 - Twenty-sixth implementation slice added non-empty generated user method coverage: a synthetic `sayHello()` method with a comment body is generated and compiled, expanding NetBeans source-generation characterization beyond empty program/resource scaffolding.
+- Twenty-seventh implementation slice added local-declaration generated-source coverage: a synthetic user method now emits and compiles a final `String` local initialized from a string literal.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
