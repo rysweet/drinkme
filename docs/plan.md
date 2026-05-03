@@ -21,7 +21,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
 - The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test` and a no-Sims NetBeans package gate.
-- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 27 Java test files after the first forty-one modernization slices.
+- Current test coverage is very small relative to the codebase: thousands of tracked production Java files and 28 Java test files after the first forty-two modernization slices.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -64,6 +64,8 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Thirty-ninth implementation slice added while-loop generated-source coverage: a synthetic method emits and compiles a minimal `while (true)` body without executing it.
 - Fortieth implementation slice added foreach-array generated-source coverage: a synthetic method emits and compiles `for(String COUNT__ : new String[]{"red", "blue"})`, exposing a suspicious current loop-variable name for future cleanup.
 - Forty-first implementation slice characterized foreach loop-item access: the same `COUNT__` variable is used coherently when the loop body reads the item, so this is readability debt rather than an immediate compile bug.
+- Forty-second implementation slice split generated-source export tests into `ProjectCodeGeneratorGeneratedSourceTest`, reducing `ProjectCodeGeneratorTest` from 788 lines to 430 and keeping the new focused class at 399 lines.
+- Going forward, run a serialized implementation lane plus parallel non-mutating lanes for crusty-old-engineer review, qa-team outside-in scenario design, code-atlas bug hunting, and documentation/journal updates.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
@@ -77,6 +79,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 6. Build characterization tests in phases, starting with pure logic and project formats.
 7. Keep CI test execution active in the standalone modernization repo.
 8. Refactor incrementally behind tests; defer any rewrite decision until behavior is documented and protected.
+9. Use crusty-old-engineer as a standing proxy review lane and qa-team as a standing outside-in testing lane, not as occasional afterthoughts.
 
 ## Success criteria
 
