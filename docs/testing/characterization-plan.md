@@ -14,7 +14,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/story-api-migration` | migration table ordering, applicability thresholds, and representative text rewrite chains |
 | `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, backup-directory path handling, and VR project-loader save-path behavior |
 | `alice-ide` | launch argument parsing |
-| `netbeans` | generated Alice-to-Java launcher and project template main-class alignment |
+| `netbeans` | generated Alice-to-Java launcher, project template archive contents, main-class alignment, and generated project metadata renaming |
 
 Frameworks are mixed JUnit 4 and JUnit 5. The root POM configures Surefire with `surefire-junit47`; `core/util` adds JUnit Jupiter; `core/tweedle` has its own Surefire `argLine` for Java module opens.
 
@@ -35,6 +35,7 @@ Completed characterization slices:
 - NetBeans launcher generation: generated `AliceJavaFXLauncher.java` is written by the generator and remains aligned with the template `main.class` used by exported Java projects.
 - Resource wrapper code-generation seam: generated `Resources` fields now map back to their `Resource` instances, including duplicate fixed-name handling.
 - Backup-directory path handling: temp-file tests cover saved-project `.bak` sibling directories, non-project file naming, backup-file parent reuse, and parentless backup-file null handling.
+- NetBeans project-template metadata: archive tests cover required template entries without a root-prefix directory, and property-renaming tests cover generated `application.title`/`dist.jar` values while preserving the launcher `main.class`.
 
 Known limits:
 
@@ -44,7 +45,7 @@ Known limits:
 - Backup recovery dialogs and recursive load side effects themselves are not yet tested headlessly; current coverage locks the lower-level loader contract, backup candidate selection policy, and branch-planning decision only.
 - `copyDefaultBackupDirectory()` is not yet directly covered because it depends on `StageIDE.getActiveInstance()` for the default projects directory. The earlier file-vs-directory concern appears lower risk because `backupDirectory(file, false)` creates the named directory before `createNewFile()` is called.
 - The `ModelResourceExporter` binary/model export path is still not covered; Loop 4 intentionally stopped at pure metadata parsing to avoid asset/license and rendering dependencies.
-- The NetBeans slice covers launcher generation only. It does not yet cover full Alice-project-to-Java source generation, palette/completion behavior, or NBM package behavior.
+- The NetBeans slices cover launcher generation, template archive shape, and generated project metadata. They do not yet cover full Alice-project-to-Java source generation, palette/completion behavior, or NBM package behavior.
 
 ## Phase 1: lock down pure logic and formats
 
