@@ -7,12 +7,14 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
-  - `e2f08d89b4 Extract project load success plan`
-  - `4218bc9aaa Characterize NetBeans template compiler structure`
-  - `da7b191089 Characterize JSON type archive resource reads`
-  - `89e771d339 Characterize model resource player archive read`
-  - `85589b3888 Surface corrupt manifest IO errors`
-  - `4f1509f1a3 Isolate JSON player resource reads by UUID`
+  - `73ca278621 Handle empty default backup copy`
+  - `67fd047b72 Characterize URI project loader path classification`
+  - `4fc78d7c88 Add JsonModelIo export format seam test`
+  - `5bd75d8c83 Isolate XML resource identity on read`
+  - `6bc25da7f0 Characterize JSON type archive version handling`
+  - `3ba86b66ad Add explicit manifest decode errors`
+  - `eb73ae08c1 Extract project load failure dispatch plan`
+  - `38ca0324b4 Characterize NetBeans Alice library classpath`
 
 ## Build and CI state
 
@@ -136,6 +138,8 @@ Covered areas include:
 - Git LFS budget exhaustion can break CI checkout if no-Sims workflows fetch LFS objects; no-Sims CI should avoid LFS unless a job explicitly needs it.
 - Process correction: every coding lane and subagent must follow `DEFAULT_WORKFLOW`; parallel coding should use isolated worktrees/branches, while this main lane remains serialized for integration.
 - Loop 62 proved the parallel pattern: six isolated implementation branches were developed concurrently, then rebased and integrated sequentially behind local gates and CI.
+- Loop 63 extended that pattern: implementation lanes ran in parallel, but integration remained serialized and CI-gated after each meaningful merge.
+- `tweedle-lang` is a required git submodule for `core/tweedle` ANTLR parser generation. Missing it in worktrees causes `TweedleParser`/`TweedleParserBaseVisitor` compile failures; see `docs/build-baseline/submodule-working-guide.md`.
 
 ## Known limits
 
@@ -146,6 +150,7 @@ Covered areas include:
 - Model binary export, thumbnails, real gallery resources, and full model package output remain mostly untested.
 - Backup recovery dialogs and recursive UI side effects are not directly tested.
 - Project-load success branching is now tested through `ProjectLoadSuccessPlan`, but the higher-level UI side effects still need characterization.
+- Project-load failure dispatch branching is now tested through `ProjectLoadFailureDispatchPlan`, but the higher-level dialog and recursive load UI side effects still need characterization.
 - Full wizard execution is not covered.
 - Real JavaFX launcher startup is not covered.
 - Palette/completion behavior is not covered.
@@ -154,6 +159,8 @@ Covered areas include:
 - Scene/model story API calls, events, and rendering behavior are not yet characterized.
 - Player export JSON reads are currently resource-only; the program type is still `null` because the Tweedle decoder remains a stub.
 - JSON `.a3c` type reads are also resource-only; the type remains `null` until Tweedle type decoding is implemented.
+- XML project reads now avoid static resource instance reuse across archive reads while preserving AST resource-expression binding to decoded resources.
+- Default-backup copy now has direct seam coverage for populated, missing, and empty `.defaultbak` directories.
 - The generated-source export tests were split so both focused NetBeans export test classes are under 500 lines.
 
 ## Immediate next steps

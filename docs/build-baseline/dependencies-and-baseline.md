@@ -38,6 +38,9 @@ mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test
 
 The baseline Maven test run passed.
 
+For submodule structure, worktree setup, and the common missing-parser failure mode, see
+`docs/build-baseline/submodule-working-guide.md`.
+
 | Metric | Value |
 | --- | --- |
 | Maven result | `BUILD SUCCESS` |
