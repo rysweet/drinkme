@@ -21,9 +21,10 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
 - The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test`.
-- Current test coverage is very small relative to the codebase: 4,528 production Java files and 15 Java test files.
+- Current test coverage is very small relative to the codebase: roughly 4,336 tracked production Java files and 17 Java test files after the first two modernization slices.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
+- Second implementation slice added project migration/version characterization tests without production code changes.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
@@ -35,7 +36,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 4. Expand the code atlas from initial diagrams into all major architectural layers.
 5. Convert website lessons, how-tos, and reference material into behavior-spec candidates.
 6. Build characterization tests in phases, starting with pure logic and project formats.
-7. Add CI test execution in the public fork once the first characterization suite is ready.
+7. Keep CI test execution active in the standalone modernization repo.
 8. Refactor incrementally behind tests; defer any rewrite decision until behavior is documented and protected.
 
 ## Success criteria
