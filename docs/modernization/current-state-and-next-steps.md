@@ -7,11 +7,11 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Latest source work at the time of this summary included:
-  - `761d4da5e2 Characterize generated foreach item access`
-  - `eeaca54f9d Characterize generated foreach loops`
-  - `531902f03a Characterize generated while loops`
-  - `57ca03ed15 Characterize generated launcher argument handoff`
-  - `ce9f40ce98 Verify NetBeans package artifacts in CI`
+  - `cdc1b2b5df Characterize iterable foreach generation`
+  - `e4dd96408f Characterize named foreach generation`
+  - `09072e5743 Add standalone export launcher smoke`
+  - `eb34ad9c6a Characterize model resource export output`
+  - `643467e751 Split generated source export tests`
 
 ## Build and CI state
 
@@ -76,7 +76,9 @@ Covered areas include:
   - count loop;
   - while loop;
   - foreach-array loop;
-  - foreach item access.
+  - foreach item access;
+  - named foreach item access;
+  - iterable foreach loop.
 
 ## Important findings
 
@@ -90,6 +92,7 @@ Covered areas include:
   - This is internally coherent and compiles when referenced.
   - It remains readability debt for teaching-facing generated Java.
 - Explicitly named foreach item locals do emit readable Java names and are now characterized separately from the unnamed fallback.
+- Iterable foreach loops over a generated `Arrays.asList(...)` expression compile and import `java.util.Arrays`; the current characterization preserves explicit item local naming.
 - Headless tests can cover important exported-code behavior without launching real JavaFX.
 - Real JavaFX/UI behavior, story execution, and rendering-adjacent behavior remain mostly unprotected.
 - Git LFS budget exhaustion can break CI checkout if no-Sims workflows fetch LFS objects; no-Sims CI should avoid LFS unless a job explicitly needs it.
@@ -111,7 +114,6 @@ Covered areas include:
 ## Immediate next steps
 
 1. Continue generated-source characterization where it protects real exported Java behavior:
-   - iterable foreach loops;
    - loop-variable use in more realistic method bodies;
    - simple story API calls that compile against exported project dependencies.
 2. Prove exported project behavior beyond compile-only tests:

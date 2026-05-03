@@ -68,6 +68,7 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 - Forty-third implementation slice replaced the dormant model export test body with active no-Sims characterization for `ModelResourceExporter` XML serialization and generated resource Java compilation.
 - Forty-fourth implementation slice added a standalone-style exported project smoke: a synthetic Alice project is generated into a `src` layout, compiled with JavaFX stubs, and the generated launcher is invoked through a child-first classloader.
 - Forty-fifth implementation slice characterized named foreach item generation: named item locals emit readable Java (`item`) while unnamed helper-created loops still emit the current `COUNT__` fallback.
+- Forty-sixth implementation slice characterized iterable foreach generation: a synthetic `ForEachInIterableLoop` over `Arrays.asList("red","blue")` emits compilable Java, imports `java.util.Arrays`, and preserves the explicit loop item name.
 - Going forward, run a serialized implementation lane plus parallel non-mutating lanes for crusty-old-engineer review, qa-team outside-in scenario design, code-atlas bug hunting, and documentation/journal updates.
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
