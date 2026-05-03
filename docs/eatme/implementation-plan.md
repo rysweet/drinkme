@@ -63,6 +63,12 @@ After Milestone 0:
 
 Export/player, collision/proximity games, and broader creative scenarios come later.
 
+## Governance boundaries
+
+- Supporting tool repos such as `amplihack-rs`, `gadugi-agentic-test`, `amplihack-recipe-runner`, and `amplihack-memory-lib` are in scope for bug fixes or feature work when needed.
+- Any supporting-tool repo change must follow the default workflow, and subagents doing that work must follow the default workflow too.
+- No silent repo mutation.
+
 ## Review artifacts
 
 - `docs/eatme/reviews/0001-crusty-old-engineer.md`
