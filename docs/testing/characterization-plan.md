@@ -12,7 +12,7 @@ Goal: create a complete enough test suite that the current Alice 3 code passes i
 | `core/model-loading` | test file exists, but meaningful model export test is commented out |
 | `core/story-api` | model resource XML metadata parsing, variant selection, and manifest generation |
 | `core/story-api-migration` | migration table ordering, applicability thresholds, and representative text rewrite chains |
-| `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, and VR project-loader save-path behavior |
+| `core/ide` | corrupt project-load IO failure delegation, backup recovery policy seams, backup-directory path handling, and VR project-loader save-path behavior |
 | `alice-ide` | launch argument parsing |
 | `netbeans` | generated Alice-to-Java launcher and project template main-class alignment |
 
@@ -34,6 +34,7 @@ Completed characterization slices:
 - Model resource metadata: synthetic no-Sims XML covers metadata defaults, malformed optional fields, subresource tag inheritance, texture-specific subresource lookup, model-only fallback, manifest variant/resource/texture-set generation, and structure/texture-set de-duplication.
 - NetBeans launcher generation: generated `AliceJavaFXLauncher.java` is written by the generator and remains aligned with the template `main.class` used by exported Java projects.
 - Resource wrapper code-generation seam: generated `Resources` fields now map back to their `Resource` instances, including duplicate fixed-name handling.
+- Backup-directory path handling: temp-file tests cover saved-project `.bak` sibling directories, non-project file naming, backup-file parent reuse, and parentless backup-file null handling.
 
 Known limits:
 
@@ -41,6 +42,7 @@ Known limits:
 - Model export remains mostly untested because the existing test body is commented and tied to gallery resources.
 - Resource wrapper tests cover the mapping seam only; full Java source generation from Alice project fixtures still belongs in the NetBeans/export phase.
 - Backup recovery dialogs and recursive load side effects themselves are not yet tested headlessly; current coverage locks the lower-level loader contract, backup candidate selection policy, and branch-planning decision only.
+- `copyDefaultBackupDirectory()` is not yet directly covered because it depends on `StageIDE.getActiveInstance()` for the default projects directory. The earlier file-vs-directory concern appears lower risk because `backupDirectory(file, false)` creates the named directory before `createNewFile()` is called.
 - The `ModelResourceExporter` binary/model export path is still not covered; Loop 4 intentionally stopped at pure metadata parsing to avoid asset/license and rendering dependencies.
 - The NetBeans slice covers launcher generation only. It does not yet cover full Alice-project-to-Java source generation, palette/completion behavior, or NBM package behavior.
 
