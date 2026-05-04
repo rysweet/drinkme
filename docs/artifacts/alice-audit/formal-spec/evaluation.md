@@ -8,7 +8,9 @@ Alice project save, load, export, backup recovery, and adjacent data-loss behavi
 
 The specification covers observable project archive and data-loss-prevention behavior. It does not formalize simple menu clicks, file chooser navigation, dialog copy, or other trivial UI mechanics.
 
-## Finished behavior
+## Specified behavior
+
+This document specifies target behaviors for the formal-spec lane. It does not assert that every behavior is currently implemented; see [`reference/formal-spec-contracts.md`](reference/formal-spec-contracts.md) for current implementation and test coverage status.
 
 ### Editor project save
 
