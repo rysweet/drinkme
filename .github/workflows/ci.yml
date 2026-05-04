@@ -40,7 +40,7 @@ jobs:
           from urllib.parse import unquote, urlsplit
 
           ROOT = Path.cwd().resolve()
-          INLINE_LINK = re.compile(r'!?\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)')
+          INLINE_LINK = re.compile(r'!?\[[^\]]*\]\((?:<([^>]*)>|([^)\s]+))(?:\s+"[^"]*")?\)')
           REFERENCE_DEFINITION = re.compile(r'^\s*\[[^\]]+\]:\s+(\S+)', re.MULTILINE)
           EXTERNAL_SCHEMES = {
               "http",
@@ -135,7 +135,7 @@ jobs:
               for markdown_file in MARKDOWN_FILES:
                   text = markdown_file.read_text(encoding="utf-8")
                   for match in INLINE_LINK.finditer(text):
-                      check_markdown_target(markdown_file, match.group(1))
+                      check_markdown_target(markdown_file, match.group(1) or match.group(2))
                   for match in REFERENCE_DEFINITION.finditer(text):
                       check_markdown_target(markdown_file, match.group(1))
 

@@ -213,6 +213,19 @@ class WorkflowScriptTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_markdown_link_validation_checks_angle_wrapped_paths_with_spaces(self):
+        with tracked_repo(
+            {
+                "README.md": "[Missing](<docs/missing file.md>)\n",
+                "docs/index.md": "# Docs\n",
+            }
+        ) as repo:
+            result = run_step("Validate repository artifacts", repo)
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("missing target", result.stderr)
+        self.assertIn("docs/missing file.md", result.stderr)
+
     def test_markdown_link_validation_handles_newlines_in_tracked_markdown_paths(self):
         with tracked_repo(
             {
