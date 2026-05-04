@@ -61,9 +61,16 @@ set -euo pipefail
 test -f README.md
 test -d docs
 
-unexpected_markdown="$(git ls-files '*.md' | awk '$0 != "README.md" && $0 !~ /^docs\// { print }')"
-if [[ -n "$unexpected_markdown" ]]; then
-  printf 'Markdown files must live in README.md or docs/:\n%s\n' "$unexpected_markdown" >&2
+unexpected_markdown=()
+while IFS= read -r -d '' file; do
+  if [[ "$file" != "README.md" && "$file" != docs/* ]]; then
+    unexpected_markdown+=("$file")
+  fi
+done < <(git ls-files -z '*.md')
+
+if (( ${#unexpected_markdown[@]} > 0 )); then
+  printf 'Markdown files must live in README.md or docs/:\n' >&2
+  printf '%s\n' "${unexpected_markdown[@]}" >&2
   exit 1
 fi
 
@@ -77,7 +84,7 @@ if (( ${#yaml_files[@]} > 0 )); then
 fi
 ```
 
-For Markdown links, use the pull request CI result as the source of truth. The workflow reads tracked Markdown paths with null-delimited Git output, then performs path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting.
+For Markdown inventory and links, use the pull request CI result as the source of truth. The workflow reads tracked Markdown paths with null-delimited Git output, then performs path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting for links.
 
 ## Adding documentation safely
 

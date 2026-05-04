@@ -65,6 +65,18 @@ class WorkflowScriptTests(unittest.TestCase):
         self.assertIn("Markdown files must live in README.md or docs/", result.stderr)
         self.assertIn("NOTES.md", result.stderr)
 
+    def test_repository_shape_handles_newlines_in_tracked_markdown_paths(self):
+        with tracked_repo(
+            {
+                "README.md": "# Example\n",
+                "docs/index.md": "# Docs\n",
+                "docs/linked\nfile.md": "# Odd path\n",
+            }
+        ) as repo:
+            result = run_step("Validate documentation repository shape", repo)
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_json_validation_accepts_json_and_ignores_json_lines(self):
         with tracked_repo(
             {
