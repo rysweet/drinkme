@@ -33,33 +33,48 @@ Every tracked `*.json` file must parse as valid JSON with the Python standard li
 
 Every tracked `*.yml` and `*.yaml` file must parse as valid YAML. This includes the CI workflow itself.
 
+This is syntax-only validation. It does not perform GitHub Actions schema validation, prove that marketplace actions exist, validate job semantics, or enforce repository policy beyond the literal workflow content.
+
 ### Internal Markdown links
 
-CI checks local relative links and image references in tracked Markdown files. A link fails CI when it:
+CI checks common inline links, image references, and reference definitions in tracked Markdown files. A local link fails CI when it:
 
-- points to a missing file or directory;
-- resolves outside the repository root; or
-- uses a malformed local file path.
+- cannot be resolved to an existing local file or directory; or
+- resolves outside the repository root.
 
 CI intentionally skips:
 
-- external URLs such as `https://...`;
-- non-file schemes such as `mailto:` and `ssh:`;
+- external schemes in the current allow-list: `http`, `https`, `mailto`, `tel`, `ftp`, `irc`, `ircs`, and `ssh`;
+- URLs with a network location such as `//example.test/path`;
 - pure same-page anchors such as `#artifact-map`; and
 - network availability checks.
 
-The link check focuses on local file existence. It does not validate that a GitHub heading anchor exists inside a target Markdown file.
+The link check focuses on local file existence. It does not validate that a GitHub heading anchor exists inside a target Markdown file, and it may miss unusual Markdown syntax outside the common inline, image, and reference-definition forms.
 
 ## Local usage
 
 Before opening a pull request, run checks that match the CI intent with standard shell tools. The YAML command requires Ruby; the GitHub Actions runner provides it.
 
 ```bash
+set -euo pipefail
+
 test -f README.md
 test -d docs
-git ls-files '*.md' | awk '$0 != "README.md" && $0 !~ /^docs\// { print }'
-git ls-files '*.json' | xargs -r -n1 python3 -m json.tool >/dev/null
-ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file) }' -- $(git ls-files '*.yml' '*.yaml')
+
+unexpected_markdown="$(git ls-files '*.md' | awk '$0 != "README.md" && $0 !~ /^docs\// { print }')"
+if [[ -n "$unexpected_markdown" ]]; then
+  printf 'Markdown files must live in README.md or docs/:\n%s\n' "$unexpected_markdown" >&2
+  exit 1
+fi
+
+git ls-files -z '*.json' | while IFS= read -r -d '' file; do
+  python3 -m json.tool "$file" >/dev/null
+done
+
+mapfile -d '' yaml_files < <(git ls-files -z '*.yml' '*.yaml')
+if (( ${#yaml_files[@]} > 0 )); then
+  ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file) }' -- "${yaml_files[@]}"
+fi
 ```
 
 For Markdown links, use the pull request CI result as the source of truth. The workflow performs path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting.
