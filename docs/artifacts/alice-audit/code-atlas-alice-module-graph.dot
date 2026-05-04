@@ -1,97 +1,136 @@
-digraph alice_code_atlas {
-  rankdir=LR;
-  node [shape=box];
+digraph AliceCodeAtlas {
+  graph [
+    label="Alice source-truth code-atlas",
+    labelloc="t",
+    fontsize=20,
+    rankdir=LR,
+    compound=true
+  ];
 
-  root [label="root pom.xml\norg.alice:parent"];
-  core [label="core aggregator"];
-  external [label="external aggregator"];
-  alice_ide [label="alice-ide\norg.alice:alice-ide"];
-  netbeans [label="netbeans\norg.alice:netbeans"];
-  installer [label="installer\nprofile: buildInstaller"];
-  nonfree [label="core-nonfree\nprofile: includeSims"];
+  node [shape=box, style="rounded,filled", fillcolor="#eef7ff", color="#4b83b6", fontname="Arial"];
+  edge [fontname="Arial", color="#555555"];
 
-  root -> core;
-  root -> external;
-  root -> alice_ide;
-  root -> netbeans;
-  root -> installer [style=dashed, label="buildInstaller"];
-  root -> nonfree [style=dashed, label="includeSims"];
+  repo [label="rysweet/alice3-modernization\nsource-truth input"];
+  rootPom [label="root pom.xml\ndefault reactor"];
+  repo -> rootPom;
 
-  core -> util;
-  core -> tweedle;
-  core -> ast;
-  core -> scenegraph;
-  core -> glrender;
-  core -> story_api;
-  core -> models;
-  core -> story_api_migration;
-  core -> model_loading;
-  core -> croquet;
-  core -> ide;
-  core -> resources;
-  core -> i18n;
-  core -> image_editor;
-  core -> issue_reporting;
-  external -> collada;
-  external -> collada_schema;
-  external -> wrapped_flow_layout;
+  subgraph cluster_default {
+    label="Default Maven reactor (pom.xml:101-126)";
+    color="#4b83b6";
+    style="rounded";
+    core [label="core"];
+    coreAst [label="core/ast"];
+    coreCroquet [label="core/croquet"];
+    coreI18n [label="core/i18n"];
+    coreIde [label="core/ide"];
+    coreImageEditor [label="core/image-editor"];
+    coreIssueReporting [label="core/issue-reporting"];
+    coreResources [label="core/resources"];
+    coreScenegraph [label="core/scenegraph"];
+    coreGlrender [label="core/glrender"];
+    coreMigration [label="core/story-api-migration"];
+    coreStoryApi [label="core/story-api"];
+    coreUtil [label="core/util"];
+    coreModelLoading [label="core/model-loading"];
+    coreTweedle [label="core/tweedle"];
+    coreModels [label="core/models"];
+    external [label="external"];
+    externalCollada [label="external/collada"];
+    externalColladaSchema [label="external/collada-schema-1-4-1"];
+    externalWrappedFlow [label="external/wrapped-flow-layout"];
+    aliceIde [label="alice-ide"];
+    netbeans [label="netbeans"];
+  }
 
-  ast -> tweedle;
-  ast -> util;
-  scenegraph -> util;
-  glrender -> scenegraph;
-  story_api -> ast;
-  story_api -> scenegraph;
-  story_api -> glrender;
-  story_api -> tweedle;
-  story_api -> util;
-  story_api -> collada_schema;
-  models -> story_api;
-  models -> util;
-  story_api_migration -> ast;
-  story_api_migration -> story_api;
-  story_api_migration -> model_loading;
-  story_api_migration -> models;
-  story_api_migration -> tweedle;
-  model_loading -> story_api;
-  model_loading -> scenegraph;
-  model_loading -> glrender;
-  model_loading -> ast;
-  model_loading -> util;
-  model_loading -> collada;
-  model_loading -> collada_schema;
-  croquet -> util;
-  croquet -> wrapped_flow_layout;
-  image_editor -> croquet;
-  issue_reporting -> util;
-  ide -> story_api;
-  ide -> story_api_migration;
-  ide -> models;
-  ide -> scenegraph;
-  ide -> glrender;
-  ide -> ast;
-  ide -> croquet;
-  ide -> resources;
-  ide -> i18n;
-  ide -> image_editor;
-  ide -> issue_reporting;
-  ide -> util;
-  alice_ide -> ide;
-  netbeans -> story_api;
-  netbeans -> story_api_migration;
-  netbeans -> models;
-  netbeans -> scenegraph;
-  netbeans -> glrender;
-  netbeans -> ast;
-  netbeans -> tweedle;
-  netbeans -> util;
-  installer -> alice_ide;
+  rootPom -> core [lhead=cluster_default];
+  core -> coreAst;
+  core -> coreCroquet;
+  core -> coreI18n;
+  core -> coreIde;
+  core -> coreImageEditor;
+  core -> coreIssueReporting;
+  core -> coreResources;
+  core -> coreScenegraph;
+  core -> coreGlrender;
+  core -> coreMigration;
+  core -> coreStoryApi;
+  core -> coreUtil;
+  core -> coreModelLoading;
+  core -> coreTweedle;
+  core -> coreModels;
+  external -> externalCollada;
+  external -> externalColladaSchema;
+  external -> externalWrappedFlow;
 
-  models_nonfree -> story_api;
-  models_nonfree -> util;
-  story_api_nonfree -> story_api;
-  story_api_nonfree -> models_nonfree;
-  ide_nonfree -> ide;
-  ide_nonfree -> story_api_nonfree;
-  ide_nonfree -> resources_nonfree;
+  subgraph cluster_includeSims {
+    label="includeSims profile - default active unless -DincludeSims=false (pom.xml:681-696)";
+    color="#b67b00";
+    style="rounded";
+    node [fillcolor="#fff4dc", color="#b67b00"];
+    coreNonfree [label="core-nonfree"];
+    ideNonfree [label="core-nonfree/ide-nonfree"];
+    resourcesNonfree [label="core-nonfree/resources-nonfree"];
+    storyApiNonfree [label="core-nonfree/story-api-nonfree"];
+    modelsNonfree [label="core-nonfree/models-nonfree"];
+  }
+
+  rootPom -> coreNonfree [style=dashed, label="profile"];
+  coreNonfree -> ideNonfree;
+  coreNonfree -> resourcesNonfree;
+  coreNonfree -> storyApiNonfree;
+  coreNonfree -> modelsNonfree;
+
+  subgraph cluster_buildInstaller {
+    label="buildInstaller profile - -DbuildInstaller=true (pom.xml:765-776)";
+    color="#b67b00";
+    style="rounded";
+    node [fillcolor="#fff4dc", color="#b67b00"];
+    installer [label="installer"];
+  }
+
+  rootPom -> installer [style=dashed, label="profile"];
+
+  subgraph cluster_tweedle {
+    label="Tweedle generation seam";
+    color="#7353ba";
+    style="rounded";
+    node [fillcolor="#f2ecff", color="#7353ba"];
+    tweedleLang [label="tweedle-lang/Grammar\nTweedleLexer.g4\nTweedleParser.g4"];
+    antlr [label="antlr4-maven-plugin\ncore/tweedle/pom.xml:90-107"];
+    generatedTweedle [label="target/generated-sources/antlr4/org/alice/tweedle"];
+  }
+
+  tweedleLang -> antlr -> generatedTweedle -> coreTweedle;
+
+  subgraph cluster_runtime {
+    label="Alice IDE runtime-root seam";
+    color="#7353ba";
+    style="rounded";
+    node [fillcolor="#f2ecff", color="#7353ba"];
+    execPlugin [label="exec-maven-plugin\nalice-ide/pom.xml:172-180"];
+    rootProperty [label="org.alice.ide.rootDirectory"];
+    resourcesDistribution [label="../core/resources/target/distribution"];
+    applicationRoot [label="ApplicationRoot.initializeIfNecessary()\nhard failure if missing"];
+  }
+
+  aliceIde -> execPlugin -> rootProperty -> resourcesDistribution;
+  rootProperty -> applicationRoot;
+  coreResources -> resourcesDistribution;
+
+  subgraph cluster_netbeans {
+    label="NetBeans packaging and template seam";
+    color="#7353ba";
+    style="rounded";
+    node [fillcolor="#f2ecff", color="#7353ba"];
+    nbmPlugin [label="nbm-maven-plugin\nnetbeans/pom.xml:430-441"];
+    pack200 [label="installerPack200Enable=true"];
+    projectTemplate [label="ProjectTemplate.zip"];
+    antSmoke [label="Alice3ProjectTemplateAntSmokeTest"];
+    optionalArtifacts [label="optional models-nonfree\nstory-api-nonfree", fillcolor="#ffecec", color="#b64b4b"];
+  }
+
+  netbeans -> nbmPlugin -> pack200;
+  netbeans -> projectTemplate -> antSmoke;
+  antSmoke -> optionalArtifacts;
+  optionalArtifacts -> coreNonfree [style=dashed, label="candidate path mismatch"];
 }

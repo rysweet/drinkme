@@ -11,4 +11,4 @@
 | Curriculum/textbooks | curriculum and textbook pages | end-to-end learning journeys as regression scenarios |
 | Research | mediated-transfer research | architectural requirement to preserve learning transfer, not just code execution |
 | Open-source announcement | `alice-3-open-source-on-github` | contribution workflow, license boundaries, restricted asset handling |
-
+| High-risk data-loss journeys | Formal-spec expansion in `docs/artifacts/alice-audit/formal-spec/specs/high-risk-data-loss/user-journeys.feature` | dirty-session navigation, template/gallery source immutability, legacy migration original preservation, NetBeans destination preservation |

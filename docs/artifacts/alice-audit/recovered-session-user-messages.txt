@@ -1,0 +1,85 @@
+/dev-orchestrator we are going to be working on and improving the Alice programming environment and tools: https://www.alice.org/ - please mkae a detailed map of the website and reference material, memorize important aspects, make a private fork of the repo for the latest code, isntall any and all dependencies required to run it, and then deep dive into the code using our code mapping and graphing skills, code-atlas, various subagents and other means of investigation. As you go keep a journal of key things you learn. The current Alice code is well documented in references, examples, etc (on the website) but has few tests. It also is poorly organized and hard to maintain. Our goal will be to establish a complete and throough test suite that enables us to completely model the current functionality (and the current code should pass that test suite). Once we have attained that, we then want to plan either a wholesale rewrite, or a targeted and incremental refactor - with a goal of making the code easier to learn, maintain, teach, and evolve. we want to pave the way for future generations to expand and grow alice, as well as for bringing in new experiences that leverage AI and other tools. Most importantly we want to improve the codebase and make it easy to work with. As a part of your investigation and planning, please seek to understand if it makes sense to keep it all in java or if portions of the code may benefit from moving to rust or other languages. Please keep track of your investigation and planning at each stage. dont amke assumptions - cross-check things. In the end come up with a plan and store your analysis and the plan and related artifacts like code atlas, graphs, etc in a new private repo "drinkme". This should include a complete documentation tour of the existing code, as well as a documentation guide to the envisioned new code.
+
+I want a public fork of alice and I want drinkme to be a private repo that just holds the artifacts you are producing from this investigation, - the plans, docs, etc. two separate repos.
+
+/dev-orchestrator can you please begin the process in my alice fork, making sure to leverage all teh information you learned and he documents you stored in drinkme? please proceed to carry out the full implementation of tests for all functionality, then go forward with clean refactoring of the most important targets. we should strive for all classes less than 500 lines and test coverage above 70%. We must be fully compatible with the current version of alice. please continue until the project is complete
+
+please do not open any upstream issues or prs - very important - remember this and change my fork if you can or just start a new repo instead, preserving history but making sure to not use the upstream issues db. make sure all subagents receive the same instructions
+
+please use the crusty-old-engineer skill as my proxy, iterating on this in a loop until crusty is fully satisfied with your work
+
+your task is not complete until all of the modernization work is complete - you must work autonomously and independently - you must use the crusty-old-engineer skill as your guide, iterating in a loop until she is satisfied AND all of the tests and modernization is complete. you must each time you think your task is complete go back and check if you have tests for everything and have refcactored all of the code. you must run multiple levels of the quality-audit skill. you must use the code-atlas skill to bug hunt. you must buiild and test things like a user would, using playwright, etc. us the qa-team skill for testing. install any missing deps. keep going in a loop until you attain the highest levels of quality, completeness, and correctness. please consider using formal specifications like gherkin and tla+ to define tests and then proveably correct code.
+
+please take all of the messages/prompts I have given you interactively since the beginning of this session and consolidate them into a single prompt that I can use to repeat this exercise and save it in the drinkme repo. then separately please create an overall summary of the current state and next steps
+
+no need to pause - it can continue in the background
+
+are you sure the readme in drinkme is up to date wrt which repos are being used? i think it is not
+
+I'd like you to consider whether you are using enough parallelism for this effort or whether it could be further parallelized. Also - are you still using crusty-old-engineer skill as my proxy to review and guide your work? that is very important. Lastly - please make sure that you are making good use of the qa-team skill for outside-in-testing - ie testing like a user would.
+
+where did you land on parallelism? are you able to spawn more subagents in parallel to accellerate this work?
+
+so yes, you need to lean harder into parallelism - this is a big machine and we have lots of room - please lean into it you could have twenty or more parallel subagents
+
+are you using the amplihack recipe runner and default workflow for the coding work? it appears that you are not and thats a failure because the workflow has a lot of very specific steps that are important to make sure the work is done correctly
+
+all of your subagents MUST MUST also use the workflow
+
+dont forget the opportunities for parallelism
+
+cant the coding work also be parallelised? tests for different modules, refactor of different modules that dont interdepend?
+
+I think you need to troubleshoot the session todo tables - you may need to give them heirarchy
+
+and namespacing
+
+is there a guide to the submodule structure and wht is required for working on it? if not we should add that to our todo list
+
+as you work, can you include current status and in between each round updates in a issue in the drinkme repository?
+
+/dev-orchestrator I have a sub workstream I want to create that is independent of the main workstreams but that I want you to pursue in parallal: I want you to go read all of the alice materials at the main alice.org site and all or the tutorials/sample lessons etc. Then I want you to figure out how you can use playwright, virtual ttys, virtual x servers etc and the qa-team skill (use the skill tool) nd I want you to build an agentic set of "alice users" that map onto the key constiuencies for alice: instructors and thier students. I want this agentic "alice user" crew to have qa-team (gadugi-agentic-test) scenarios that cover all the main functionality - the way that an instructor setting up alice for their students would, and the way that students using alice to learn would. I want you to create agentic "personalities" for each, where the instructors have specific goals: creating meaningful exercises that teach important programming concepts to their students using the Alice toolset. The agentic students should also have speicfic goals: curiosity, creativity, and experiential learning through using alice in applied learning scenarios. soome guidelines: 1) use gadugi-agentic-test - its our repo and if there is a feature missing that you need or a bug that you find you can go build it. 2) keep assets such as prompts/personality/scenarios in files that are separate from code and can be edited by non-coders. 3) use the existing alice resources as a guide and frame, and build the agentic counterparts that would normally consume those resources, and in doing so, what you build should also then act as an external qa framework for those resources. 4) rely more on agentic steps than brittle code. 5) use the amplihack-memory-lib (build new bindings for it if you need to). 6) this project should be in a new private repo called "eatme", next to drinkme and the alice work. update the drinkme repo with this prompt (the one I'm giving you now) and then as you go keep an issue in the drinkme repo up to date with the plan as you go and do not forget to use the drinkme repo as your base for assets that describe the alice code. make use of web search to help you discover assets from the alice resources on alice.org. 7) I'd sort of prefer this project to be in rust. it might be helpful to build rust bindings for some of the alice work - I'm not sure. 8) use maximum parallelism on this project - make a thorough plan, have it reviewed by multiple models,multiple subagents, at multiple layers. have cruty-old-engineer also review but remind them that we are tyring to create something very ambitious here. adapt the plan after synthesizing all the feedback, and have the adapted plan reviewed again, and then update it. Then determine just how much of it you can do in multiple parallel workstreams - note that this is separate from the other work you already are doing. when making memories or TODOs you need to namespace them/give them heirarchy that is specific to this workstream. 8) keep your modules under 500 lines and your test coverage at 70%. 9) be creative - once you have the existing resources covered, go think up ten new scenarios for teaching/learning and build instructor/student sets for each of them. 10) you need to ACTUALLY EXERCISE THE REAL ALICE CODE while doing this - I prefer you to exercise the refactored fork that we are working on (see the plan in drinkme repo).
+
+note: its ok to checkout the tools we are using like amplihack-rs and gadugi-agentic-test and amplihack-recipe-runner or amplihack-memory-lib and to fix bugs or add features as needed - but you MUST always follow the default-workflow
+
+I just want to make sure that you are still actively working on all of the workstreams in parallel - it seems like the loops for the tests/refactor have stopped. my intent is that all of the workstreams I have asked you to take on must run in parallel
+
+remember - here was one of the earlier reminders about the testing and refactor work: your task is not complete until all of the modernization work is complete - you must work autonomously and independently - you must use the crusty-old-engineer skill as your guide, iterating in a loop until she is satisfied AND all of the tests and modernization is complete. you must each time you think your task is complete go back and check if you have tests for everything and have refcactored all of the code. you must run multiple levels of the quality-audit skill. you must use the code-atlas skill to bug hunt. you must buiild and test things like a user would, using playwright, etc. us the qa-team skill for testing. install any missing deps. keep going in a loop until you attain the highest levels of quality, completeness, and correctness. please consider using formal specifications like gherkin and tla+ to define tests and then proveably correct code.
+
+I'm confised - you are talking aobut loop63 but https://github.com/rysweet/drinkme/issues/1 shows that you were on loop64. did you lose some progress?
+
+also you must not foreground sleep - always detach when sleeping
+
+I want you to output a table listing all workstreams and current status
+
+woah - you must stop and do a cleanup of /home if need be
+
+ok that is great - please create drinkme issue and every ten minutes or so update it with that same table
+
+did you resume work on all workstreams? it looks like some are paused
+
+so are you keeping all the tracking issues up to date?
+
+I see mention of timeouts - timeouts for any agentic steps should be *very* long (many minutes) if used at all
+
+It does not look like you are keeping https://github.com/rysweet/drinkme/issues/1 up to date
+
+and it does not look like you are keeping issue 2 up to date either
+
+so basically when I look at issue3, it seems to me that you have stalled/stopped continuing successfully on the modernization plan and the eatme workstreams? or are they still continuing?
+
+you should never make code changes without using the default-workflow
+
+we are trying to resume after a crash - you were running a large number of parallel agents working different workstreams. please find the most recent session that was run from this directory and was working on alice modernization, was using the drinkme repo to keep plan and status updates (drinkme issues 1, 2, 3) and was also working on building an agentic team of instructors and students in the eatme repo. pelase find the session, resume, and restart all the workstreams that were killed
+
+I think you should continually go back and refer to the plans outlined in the drinkme repo and make sure that you are tracking to them.
+
+your job is continue until the original missions described are fully completed. there should not be any next steps when you are finished. you must continue
+
+you must use maximum parallelism
+
+no you also must divide up the work amongst parallel agents eg: modules that dont depend on one another can modernize separately
+
+you must review all of the work very carefully and continually seek to bring it to the highest quality
+
+please review the transcript of this session and the one before it that you recovered and extract all the messages I typed to you and save them in a file with one line between each
