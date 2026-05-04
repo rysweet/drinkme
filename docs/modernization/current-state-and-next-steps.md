@@ -139,12 +139,17 @@ Covered areas include:
 - Process correction: every coding lane and subagent must follow `DEFAULT_WORKFLOW`; parallel coding should use isolated worktrees/branches, while this main lane remains serialized for integration.
 - Loop 62 proved the parallel pattern: six isolated implementation branches were developed concurrently, then rebased and integrated sequentially behind local gates and CI.
 - Loop 63 extended that pattern: implementation lanes ran in parallel, but integration remained serialized and CI-gated after each meaningful merge.
+- Loop 64 recovery/integration completed the crash-resume work:
+  - Alice `develop` integrated formal specs/recovery contracts, source save/export tests, Story IO/NetBeans quality fixes, outside-in QA hardening, Wave2 Story JSON boundaries, Wave2 NetBeans export harness, and Wave2 outside-in QA scenarios.
+  - `eatme` `master` integrated the Building-a-Scene and Code Editor first-run lesson smoke lanes.
+  - `gadugi-agentic-test` `main` integrated the `cwd`/`workingDirectory` scenario command fix.
+  - Code-atlas and crusty review branches remained no-go for Alice source and were routed to drinkme artifacts instead.
 - `tweedle-lang` is a required git submodule for `core/tweedle` ANTLR parser generation. Missing it in worktrees causes `TweedleParser`/`TweedleParserBaseVisitor` compile failures; see `docs/build-baseline/submodule-working-guide.md`.
 - Recovered artifact-only lanes have been consolidated into `drinkme` rather than Alice source:
   - Crusty modernization review: `docs/artifacts/alice-audit/2026-05-03-crusty-modernization-review.md`.
   - Code-atlas bug-hunt artifacts: `docs/artifacts/alice-audit/code-atlas-alice-source-truth.md`, `docs/artifacts/alice-audit/code-atlas-alice-bughunt-findings.md`, `docs/artifacts/alice-audit/code-atlas-alice-hotspots.md`, `docs/artifacts/alice-audit/code-atlas-alice-staleness-map.md`, and the companion module graphs.
   - Formal save/load/export specification artifacts: `docs/artifacts/alice-audit/formal-spec/evaluation.md`, Gherkin scenarios, TLA+ recovery model/config, and usage/reference notes under `docs/artifacts/alice-audit/formal-spec/`.
-- This recovery is a planning/artifact wave only. It preserves evidence for the next parallel modernization wave; it does not claim the Alice modernization mission or source implementation work is complete.
+- This recovery wave is closed: the source/support-tool workstreams that passed review were integrated, and the artifact-only lanes were preserved in drinkme without merging inappropriate runtime code into Alice.
 
 ## Known limits
 
