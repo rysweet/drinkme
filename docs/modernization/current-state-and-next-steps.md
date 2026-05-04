@@ -6,6 +6,7 @@
 - Private investigation artifacts are in `rysweet/drinkme` on branch `main`.
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
+- Current restarted campaign status is tracked in `docs/modernization/restarted-full-scope-status.md`.
 - Latest source work at the time of this summary included:
   - `73ca278621 Handle empty default backup copy`
   - `67fd047b72 Characterize URI project loader path classification`
