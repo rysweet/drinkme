@@ -140,6 +140,11 @@ Covered areas include:
 - Loop 62 proved the parallel pattern: six isolated implementation branches were developed concurrently, then rebased and integrated sequentially behind local gates and CI.
 - Loop 63 extended that pattern: implementation lanes ran in parallel, but integration remained serialized and CI-gated after each meaningful merge.
 - `tweedle-lang` is a required git submodule for `core/tweedle` ANTLR parser generation. Missing it in worktrees causes `TweedleParser`/`TweedleParserBaseVisitor` compile failures; see `docs/build-baseline/submodule-working-guide.md`.
+- Recovered artifact-only lanes have been consolidated into `drinkme` rather than Alice source:
+  - Crusty modernization review: `docs/artifacts/alice-audit/2026-05-03-crusty-modernization-review.md`.
+  - Code-atlas bug-hunt artifacts: `docs/artifacts/alice-audit/code-atlas-alice-source-truth.md`, `docs/artifacts/alice-audit/code-atlas-alice-bughunt-findings.md`, `docs/artifacts/alice-audit/code-atlas-alice-hotspots.md`, `docs/artifacts/alice-audit/code-atlas-alice-staleness-map.md`, and the companion module graphs.
+  - Formal save/load/export specification artifacts: `docs/artifacts/alice-audit/formal-spec/evaluation.md`, Gherkin scenarios, TLA+ recovery model/config, and usage/reference notes under `docs/artifacts/alice-audit/formal-spec/`.
+- This recovery is a planning/artifact wave only. It preserves evidence for the next parallel modernization wave; it does not claim the Alice modernization mission or source implementation work is complete.
 
 ## Known limits
 
@@ -180,7 +185,7 @@ Covered areas include:
    - open/load/save journey;
    - failure/recovery journey;
    - package/install smoke path.
-5. Use code-atlas bug hunting on the next high-value seam:
+5. Use the recovered code-atlas bug-hunt artifacts on the next high-value seam:
    - NetBeans export path;
    - project IO/load-save path;
    - resource/model path.
