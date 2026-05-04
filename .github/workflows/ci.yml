@@ -62,6 +62,27 @@ jobs:
               ).stdout
               return [Path(os.fsdecode(path)) for path in output.split(b"\0") if path]
 
+          TRACKED_FILES = set()
+          TRACKED_DIRECTORIES = {ROOT}
+          MARKDOWN_FILES = []
+          JSON_FILES = []
+
+          for tracked_path in tracked_paths():
+              tracked_file = (ROOT / tracked_path).resolve()
+              TRACKED_FILES.add(tracked_file)
+
+              for parent in tracked_file.parents:
+                  if parent == ROOT.parent:
+                      break
+                  TRACKED_DIRECTORIES.add(parent)
+                  if parent == ROOT:
+                      break
+
+              if tracked_path.suffix == ".md":
+                  MARKDOWN_FILES.append(tracked_path)
+              elif tracked_path.suffix == ".json":
+                  JSON_FILES.append(tracked_path)
+
           def add_error(message):
               errors.append(message)
 
@@ -70,17 +91,17 @@ jobs:
               return parsed.scheme in EXTERNAL_SCHEMES or bool(parsed.netloc)
 
           def check_repository_shape():
-              if not Path("README.md").is_file():
+              if (ROOT / "README.md") not in TRACKED_FILES:
                   add_error("Missing required README.md")
-              if not Path("docs").is_dir():
+              if (ROOT / "docs") not in TRACKED_DIRECTORIES:
                   add_error("Missing required docs/ directory")
 
-              for markdown_file in tracked_paths("*.md"):
+              for markdown_file in MARKDOWN_FILES:
                   if markdown_file != Path("README.md") and markdown_file.parts[:1] != ("docs",):
                       add_error(f"Markdown files must live in README.md or docs/: {markdown_file}")
 
           def check_json_syntax():
-              for json_file in tracked_paths("*.json"):
+              for json_file in JSON_FILES:
                   try:
                       with json_file.open(encoding="utf-8") as handle:
                           json.load(handle)
@@ -103,13 +124,15 @@ jobs:
                   add_error(f"{source}: link escapes repository: {raw_target}")
                   return
 
-              if candidate.exists() or candidate.with_suffix(candidate.suffix + ".md").exists():
+              if candidate in TRACKED_FILES or candidate in TRACKED_DIRECTORIES:
+                  return
+              if candidate.with_suffix(candidate.suffix + ".md") in TRACKED_FILES:
                   return
 
               add_error(f"{source}: missing target: {raw_target}")
 
           def check_markdown_links():
-              for markdown_file in tracked_paths("*.md"):
+              for markdown_file in MARKDOWN_FILES:
                   text = markdown_file.read_text(encoding="utf-8")
                   for match in INLINE_LINK.finditer(text):
                       check_markdown_target(markdown_file, match.group(1))

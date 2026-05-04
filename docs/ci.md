@@ -11,7 +11,7 @@ CI runs automatically for:
 - every pull request targeting the repository; and
 - every push to `main`.
 
-The workflow uses read-only repository permissions (`contents: read`) and checks only tracked files from Git's inventory. Untracked local files, editor scratch files, and session artifacts do not affect CI.
+The workflow uses read-only repository permissions (`contents: read`) and builds one tracked artifact inventory from Git before validation. Untracked local files, editor scratch files, and session artifacts do not affect CI.
 
 ## What CI validates
 
@@ -39,7 +39,7 @@ This is syntax-only validation. It does not perform GitHub Actions schema valida
 
 The repository artifact validator checks common inline links, image references, and reference definitions in tracked Markdown files. A local link fails CI when it:
 
-- cannot be resolved to an existing local file or directory; or
+- cannot be resolved to an existing tracked local file or directory; or
 - resolves outside the repository root.
 
 CI intentionally skips:
@@ -49,7 +49,7 @@ CI intentionally skips:
 - pure same-page anchors such as `#artifact-map`; and
 - network availability checks.
 
-The link check focuses on local file existence. It does not validate that a GitHub heading anchor exists inside a target Markdown file, and it may miss unusual Markdown syntax outside the common inline, image, and reference-definition forms.
+The link check focuses on tracked local file and directory existence. It does not validate that a GitHub heading anchor exists inside a target Markdown file, and it may miss unusual Markdown syntax outside the common inline, image, and reference-definition forms.
 
 ## Local usage
 
@@ -66,7 +66,7 @@ if (( ${#files[@]} > 0 )); then
 fi
 ```
 
-The workflow reads tracked Markdown paths with null-delimited Git output, then performs path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting for links. Use the pull request CI result as the source of truth when local Ruby is unavailable.
+The workflow reads all tracked paths once with null-delimited Git output, caches tracked file and directory sets, then filters that inventory for Markdown and JSON validation. Link checks reuse the cached inventory while performing path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting. Use the pull request CI result as the source of truth when local Ruby is unavailable.
 
 ## Adding documentation safely
 

@@ -7,39 +7,31 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW_PATH = REPO_ROOT / ".github" / "workflows" / "ci.yml"
+WORKFLOW_TEXT = WORKFLOW_PATH.read_text(encoding="utf-8")
+WORKFLOW_LINES = WORKFLOW_TEXT.splitlines()
 
 
 class WorkflowContractTests(unittest.TestCase):
     def test_workflow_runs_on_pull_requests_and_pushes_to_main(self):
-        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
-
-        self.assertIn("on:\n  pull_request:\n  push:\n    branches:\n      - main", workflow)
+        self.assertIn("on:\n  pull_request:\n  push:\n    branches:\n      - main", WORKFLOW_TEXT)
 
     def test_workflow_uses_read_only_permissions(self):
-        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
-
-        self.assertIn("permissions:\n  contents: read", workflow)
+        self.assertIn("permissions:\n  contents: read", WORKFLOW_TEXT)
 
     def test_repository_validation_job_uses_ubuntu_latest(self):
-        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
-
-        self.assertIn("repository-validation:", workflow)
-        self.assertIn("name: Repository validation", workflow)
-        self.assertIn("runs-on: ubuntu-latest", workflow)
+        self.assertIn("repository-validation:", WORKFLOW_TEXT)
+        self.assertIn("name: Repository validation", WORKFLOW_TEXT)
+        self.assertIn("runs-on: ubuntu-latest", WORKFLOW_TEXT)
 
     def test_workflow_checks_out_repository_with_current_checkout_action(self):
-        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
-
-        self.assertIn("uses: actions/checkout@v4", workflow)
+        self.assertIn("uses: actions/checkout@v4", WORKFLOW_TEXT)
 
     def test_workflow_runs_this_test_suite_before_validation_gates(self):
-        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
-
-        self.assertIn("name: Run CI workflow tests", workflow)
-        self.assertIn("python3 -m unittest discover -s tests -v", workflow)
+        self.assertIn("name: Run CI workflow tests", WORKFLOW_TEXT)
+        self.assertIn("python3 -m unittest discover -s tests -v", WORKFLOW_TEXT)
         self.assertLess(
-            workflow.index("name: Run CI workflow tests"),
-            workflow.index("name: Validate repository artifacts"),
+            WORKFLOW_TEXT.index("name: Run CI workflow tests"),
+            WORKFLOW_TEXT.index("name: Validate repository artifacts"),
         )
 
 
@@ -151,6 +143,22 @@ class WorkflowScriptTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_markdown_link_validation_ignores_untracked_local_targets(self):
+        with tracked_repo(
+            {
+                "README.md": "[Untracked](docs/untracked.md)\n",
+                "docs/index.md": "# Docs\n",
+            },
+            untracked_files={
+                "docs/untracked.md": "# Local only\n",
+            },
+        ) as repo:
+            result = run_step("Validate repository artifacts", repo)
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("missing target", result.stderr)
+        self.assertIn("docs/untracked.md", result.stderr)
+
     def test_markdown_link_validation_rejects_missing_targets(self):
         with tracked_repo(
             {
@@ -219,25 +227,24 @@ class WorkflowScriptTests(unittest.TestCase):
 
 
 def workflow_step_script(step_name):
-    lines = WORKFLOW_PATH.read_text(encoding="utf-8").splitlines()
     marker = f"      - name: {step_name}"
 
     try:
-        step_start = lines.index(marker)
+        step_start = WORKFLOW_LINES.index(marker)
     except ValueError as exc:
         raise AssertionError(f"Missing workflow step: {step_name}") from exc
 
     try:
         run_line = next(
             index
-            for index in range(step_start + 1, len(lines))
-            if lines[index] == "        run: |"
+            for index in range(step_start + 1, len(WORKFLOW_LINES))
+            if WORKFLOW_LINES[index] == "        run: |"
         )
     except StopIteration as exc:
         raise AssertionError(f"Workflow step has no run block: {step_name}") from exc
 
     script_lines = []
-    for line in lines[run_line + 1 :]:
+    for line in WORKFLOW_LINES[run_line + 1 :]:
         if line.startswith("      - name: "):
             break
         if line.startswith("          "):
@@ -263,8 +270,9 @@ def run_step(step_name, cwd):
 
 
 class tracked_repo:
-    def __init__(self, files):
+    def __init__(self, files, untracked_files=None):
         self.files = files
+        self.untracked_files = untracked_files or {}
         self._temporary_directory = tempfile.TemporaryDirectory()
         self.path = Path(self._temporary_directory.name)
 
@@ -275,6 +283,10 @@ class tracked_repo:
             file_path.parent.mkdir(parents=True, exist_ok=True)
             file_path.write_text(content, encoding="utf-8")
         subprocess.run(["git", "add", "."], cwd=self.path, check=True)
+        for relative_path, content in self.untracked_files.items():
+            file_path = self.path / relative_path
+            file_path.parent.mkdir(parents=True, exist_ok=True)
+            file_path.write_text(content, encoding="utf-8")
         return self.path
 
     def __exit__(self, exc_type, exc_value, traceback):
