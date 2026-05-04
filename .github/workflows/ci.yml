@@ -25,35 +25,107 @@ jobs:
 
           python3 -m unittest discover -s tests -v
 
-      - name: Validate documentation repository shape
+      - name: Validate repository artifacts
         shell: bash
         run: |
           set -euo pipefail
 
-          test -f README.md
-          test -d docs
+          python3 <<'PY'
+          import json
+          import os
+          import re
+          import subprocess
+          import sys
+          from pathlib import Path
+          from urllib.parse import unquote, urlsplit
 
-          unexpected_markdown=()
-          while IFS= read -r -d '' file; do
-            if [[ "$file" != "README.md" && "$file" != docs/* ]]; then
-              unexpected_markdown+=("$file")
-            fi
-          done < <(git ls-files -z '*.md')
+          ROOT = Path.cwd().resolve()
+          INLINE_LINK = re.compile(r'!?\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)')
+          REFERENCE_DEFINITION = re.compile(r'^\s*\[[^\]]+\]:\s+(\S+)', re.MULTILINE)
+          EXTERNAL_SCHEMES = {
+              "http",
+              "https",
+              "mailto",
+              "tel",
+              "ftp",
+              "irc",
+              "ircs",
+              "ssh",
+          }
+          errors = []
 
-          if (( ${#unexpected_markdown[@]} > 0 )); then
-            printf 'Markdown files must live in README.md or docs/:\n' >&2
-            printf '%s\n' "${unexpected_markdown[@]}" >&2
-            exit 1
-          fi
+          def tracked_paths(*patterns):
+              output = subprocess.run(
+                  ["git", "ls-files", "-z", *patterns],
+                  check=True,
+                  stdout=subprocess.PIPE,
+              ).stdout
+              return [Path(os.fsdecode(path)) for path in output.split(b"\0") if path]
 
-      - name: Validate JSON syntax
-        shell: bash
-        run: |
-          set -euo pipefail
+          def add_error(message):
+              errors.append(message)
 
-          git ls-files -z '*.json' | while IFS= read -r -d '' file; do
-            python3 -m json.tool "$file" >/dev/null
-          done
+          def is_external(target):
+              parsed = urlsplit(target)
+              return parsed.scheme in EXTERNAL_SCHEMES or bool(parsed.netloc)
+
+          def check_repository_shape():
+              if not Path("README.md").is_file():
+                  add_error("Missing required README.md")
+              if not Path("docs").is_dir():
+                  add_error("Missing required docs/ directory")
+
+              for markdown_file in tracked_paths("*.md"):
+                  if markdown_file != Path("README.md") and markdown_file.parts[:1] != ("docs",):
+                      add_error(f"Markdown files must live in README.md or docs/: {markdown_file}")
+
+          def check_json_syntax():
+              for json_file in tracked_paths("*.json"):
+                  try:
+                      with json_file.open(encoding="utf-8") as handle:
+                          json.load(handle)
+                  except json.JSONDecodeError as exc:
+                      add_error(f"{json_file}: invalid JSON: {exc}")
+
+          def check_markdown_target(source, raw_target):
+              target = raw_target.strip("<>")
+              if not target or target.startswith("#") or is_external(target):
+                  return
+
+              path = unquote(urlsplit(target).path)
+              if not path:
+                  return
+
+              candidate = (source.parent / path).resolve()
+              try:
+                  candidate.relative_to(ROOT)
+              except ValueError:
+                  add_error(f"{source}: link escapes repository: {raw_target}")
+                  return
+
+              if candidate.exists() or candidate.with_suffix(candidate.suffix + ".md").exists():
+                  return
+
+              add_error(f"{source}: missing target: {raw_target}")
+
+          def check_markdown_links():
+              for markdown_file in tracked_paths("*.md"):
+                  text = markdown_file.read_text(encoding="utf-8")
+                  for match in INLINE_LINK.finditer(text):
+                      check_markdown_target(markdown_file, match.group(1))
+                  for match in REFERENCE_DEFINITION.finditer(text):
+                      check_markdown_target(markdown_file, match.group(1))
+
+          check_repository_shape()
+          check_json_syntax()
+          check_markdown_links()
+
+          if errors:
+              print("Repository validation failed:", file=sys.stderr)
+              for error in errors:
+                  print(f"- {error}", file=sys.stderr)
+              sys.exit(1)
+          PY
 
       - name: Validate YAML syntax
         shell: bash
@@ -66,88 +138,3 @@ jobs:
           fi
 
           ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file) }' -- "${files[@]}"
-
-      - name: Check internal Markdown links
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          python3 <<'PY'
-          import os
-          import re
-          import subprocess
-          import sys
-          from pathlib import Path
-          from urllib.parse import unquote, urlsplit
-
-          markdown_files = [
-              Path(os.fsdecode(path))
-              for path in subprocess.run(
-                  ["git", "ls-files", "-z", "*.md"],
-                  check=True,
-                  stdout=subprocess.PIPE,
-              ).stdout.split(b"\0")
-              if path
-          ]
-
-          inline_link = re.compile(r'!?\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)')
-          reference_definition = re.compile(r'^\s*\[[^\]]+\]:\s+(\S+)', re.MULTILINE)
-          external_schemes = {
-              "http",
-              "https",
-              "mailto",
-              "tel",
-              "ftp",
-              "irc",
-              "ircs",
-              "ssh",
-          }
-          errors = []
-
-          def is_external(target: str) -> bool:
-              parsed = urlsplit(target)
-              return bool(parsed.scheme in external_schemes or parsed.netloc)
-
-          def check_target(source: Path, raw_target: str) -> None:
-              target = raw_target.strip("<>")
-              if (
-                  not target
-                  or target.startswith("#")
-                  or is_external(target)
-              ):
-                  return
-
-              parsed = urlsplit(target)
-              path = unquote(parsed.path)
-              if not path or path.startswith("#"):
-                  return
-
-              candidate = (source.parent / path).resolve()
-              root = Path.cwd().resolve()
-              try:
-                  candidate.relative_to(root)
-              except ValueError:
-                  errors.append(f"{source}: link escapes repository: {raw_target}")
-                  return
-
-              if candidate.exists():
-                  return
-
-              if candidate.with_suffix(candidate.suffix + ".md").exists():
-                  return
-
-              errors.append(f"{source}: missing target: {raw_target}")
-
-          for markdown_file in markdown_files:
-              text = markdown_file.read_text(encoding="utf-8")
-              for match in inline_link.finditer(text):
-                  check_target(markdown_file, match.group(1))
-              for match in reference_definition.finditer(text):
-                  check_target(markdown_file, match.group(1))
-
-          if errors:
-              print("Broken internal Markdown links:", file=sys.stderr)
-              for error in errors:
-                  print(f"- {error}", file=sys.stderr)
-              sys.exit(1)
-          PY

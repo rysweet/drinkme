@@ -17,7 +17,7 @@ The workflow uses read-only repository permissions (`contents: read`) and checks
 
 ### Repository shape
 
-The repository is treated as a docs/status repository. CI requires:
+The repository is treated as a docs/status repository. The repository artifact validator requires:
 
 - `README.md` at the repository root;
 - a `docs/` directory; and
@@ -27,7 +27,7 @@ Put new documentation under `docs/` unless it is the root README.
 
 ### JSON syntax
 
-Every tracked `*.json` file must parse as valid JSON with the Python standard library. JSON Lines files are not included because they use the `*.jsonl` extension.
+The repository artifact validator parses every tracked `*.json` file as valid JSON with the Python standard library. JSON Lines files are not included because they use the `*.jsonl` extension.
 
 ### YAML syntax
 
@@ -37,7 +37,7 @@ This is syntax-only validation. It does not perform GitHub Actions schema valida
 
 ### Internal Markdown links
 
-CI checks common inline links, image references, and reference definitions in tracked Markdown files. A local link fails CI when it:
+The repository artifact validator checks common inline links, image references, and reference definitions in tracked Markdown files. A local link fails CI when it:
 
 - cannot be resolved to an existing local file or directory; or
 - resolves outside the repository root.
@@ -58,33 +58,15 @@ Before opening a pull request, run checks that match the CI intent with standard
 ```bash
 set -euo pipefail
 
-test -f README.md
-test -d docs
+python3 -m unittest discover -s tests -v
 
-unexpected_markdown=()
-while IFS= read -r -d '' file; do
-  if [[ "$file" != "README.md" && "$file" != docs/* ]]; then
-    unexpected_markdown+=("$file")
-  fi
-done < <(git ls-files -z '*.md')
-
-if (( ${#unexpected_markdown[@]} > 0 )); then
-  printf 'Markdown files must live in README.md or docs/:\n' >&2
-  printf '%s\n' "${unexpected_markdown[@]}" >&2
-  exit 1
-fi
-
-git ls-files -z '*.json' | while IFS= read -r -d '' file; do
-  python3 -m json.tool "$file" >/dev/null
-done
-
-mapfile -d '' yaml_files < <(git ls-files -z '*.yml' '*.yaml')
-if (( ${#yaml_files[@]} > 0 )); then
-  ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file) }' -- "${yaml_files[@]}"
+mapfile -d '' files < <(git ls-files -z '*.yml' '*.yaml')
+if (( ${#files[@]} > 0 )); then
+  ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file) }' -- "${files[@]}"
 fi
 ```
 
-For Markdown inventory and links, use the pull request CI result as the source of truth. The workflow reads tracked Markdown paths with null-delimited Git output, then performs path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting for links.
+The workflow reads tracked Markdown paths with null-delimited Git output, then performs path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting for links. Use the pull request CI result as the source of truth when local Ruby is unavailable.
 
 ## Adding documentation safely
 

@@ -37,6 +37,10 @@ class WorkflowContractTests(unittest.TestCase):
 
         self.assertIn("name: Run CI workflow tests", workflow)
         self.assertIn("python3 -m unittest discover -s tests -v", workflow)
+        self.assertLess(
+            workflow.index("name: Run CI workflow tests"),
+            workflow.index("name: Validate repository artifacts"),
+        )
 
 
 class WorkflowScriptTests(unittest.TestCase):
@@ -47,7 +51,7 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/index.md": "# Docs\n",
             }
         ) as repo:
-            result = run_step("Validate documentation repository shape", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
@@ -59,7 +63,7 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/index.md": "# Docs\n",
             }
         ) as repo:
-            result = run_step("Validate documentation repository shape", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Markdown files must live in README.md or docs/", result.stderr)
@@ -73,7 +77,7 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/linked\nfile.md": "# Odd path\n",
             }
         ) as repo:
-            result = run_step("Validate documentation repository shape", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
@@ -86,7 +90,7 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/events.jsonl": '{"ok": true}\nnot-json\n',
             }
         ) as repo:
-            result = run_step("Validate JSON syntax", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
@@ -98,7 +102,7 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/broken.json": '{"missing": }\n',
             }
         ) as repo:
-            result = run_step("Validate JSON syntax", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertNotEqual(result.returncode, 0)
 
@@ -143,7 +147,7 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/assets/logo.svg": "<svg />\n",
             }
         ) as repo:
-            result = run_step("Check internal Markdown links", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
@@ -154,10 +158,10 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/index.md": "# Docs\n",
             }
         ) as repo:
-            result = run_step("Check internal Markdown links", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("Broken internal Markdown links", result.stderr)
+        self.assertIn("Repository validation failed", result.stderr)
         self.assertIn("missing target", result.stderr)
         self.assertIn("docs/missing.md", result.stderr)
 
@@ -168,7 +172,7 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/index.md": "# Docs\n",
             }
         ) as repo:
-            result = run_step("Check internal Markdown links", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("link escapes repository", result.stderr)
@@ -185,7 +189,7 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/index.md": "# Docs\n",
             }
         ) as repo:
-            result = run_step("Check internal Markdown links", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
@@ -197,7 +201,7 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/spaced name.md": "# Spaced\n",
             }
         ) as repo:
-            result = run_step("Check internal Markdown links", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
@@ -209,7 +213,7 @@ class WorkflowScriptTests(unittest.TestCase):
                 "docs/linked\nfile.md": "# Odd path\n",
             }
         ) as repo:
-            result = run_step("Check internal Markdown links", repo)
+            result = run_step("Validate repository artifacts", repo)
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
