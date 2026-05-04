@@ -1,0 +1,121 @@
+flowchart LR
+  root["root pom.xml\norg.alice:parent"]
+  core["core aggregator"]
+  external["external aggregator"]
+  aliceIde["alice-ide\norg.alice:alice-ide"]
+  netbeans["netbeans\norg.alice:netbeans"]
+  installer["installer\nprofile: buildInstaller"]
+  nonfree["core-nonfree\nprofile: includeSims"]
+
+  util["core/util"]
+  tweedle["core/tweedle\nTweedle submodule grammar"]
+  ast["core/ast"]
+  scenegraph["core/scenegraph"]
+  glrender["core/glrender"]
+  storyApi["core/story-api"]
+  models["core/models"]
+  migration["core/story-api-migration"]
+  modelLoading["core/model-loading"]
+  croquet["core/croquet"]
+  ide["core/ide"]
+  resources["core/resources"]
+  i18n["core/i18n"]
+  imageEditor["core/image-editor"]
+  issueReporting["core/issue-reporting"]
+  collada["external/collada"]
+  colladaSchema["external/collada-schema-1-4-1"]
+  wrappedFlow["external/wrapped-flow-layout"]
+  modelsNonfree["core-nonfree/models-nonfree"]
+  storyApiNonfree["core-nonfree/story-api-nonfree"]
+  resourcesNonfree["core-nonfree/resources-nonfree"]
+  ideNonfree["core-nonfree/ide-nonfree"]
+
+  root --> core
+  root --> external
+  root --> aliceIde
+  root --> netbeans
+  root -. buildInstaller .-> installer
+  root -. includeSims .-> nonfree
+
+  core --> util
+  core --> tweedle
+  core --> ast
+  core --> scenegraph
+  core --> glrender
+  core --> storyApi
+  core --> models
+  core --> migration
+  core --> modelLoading
+  core --> croquet
+  core --> ide
+  core --> resources
+  core --> i18n
+  core --> imageEditor
+  core --> issueReporting
+
+  external --> collada
+  external --> colladaSchema
+  external --> wrappedFlow
+
+  ast --> tweedle
+  ast --> util
+  scenegraph --> util
+  glrender --> scenegraph
+  storyApi --> ast
+  storyApi --> scenegraph
+  storyApi --> glrender
+  storyApi --> tweedle
+  storyApi --> util
+  storyApi --> colladaSchema
+  models --> storyApi
+  models --> util
+  migration --> ast
+  migration --> storyApi
+  migration --> modelLoading
+  migration --> models
+  migration --> tweedle
+  modelLoading --> storyApi
+  modelLoading --> scenegraph
+  modelLoading --> glrender
+  modelLoading --> ast
+  modelLoading --> util
+  modelLoading --> collada
+  modelLoading --> colladaSchema
+  croquet --> util
+  croquet --> wrappedFlow
+  imageEditor --> croquet
+  issueReporting --> util
+  ide --> storyApi
+  ide --> migration
+  ide --> models
+  ide --> scenegraph
+  ide --> glrender
+  ide --> ast
+  ide --> croquet
+  ide --> resources
+  ide --> i18n
+  ide --> imageEditor
+  ide --> issueReporting
+  ide --> util
+  aliceIde --> ide
+  netbeans --> storyApi
+  netbeans --> migration
+  netbeans --> models
+  netbeans --> scenegraph
+  netbeans --> glrender
+  netbeans --> ast
+  netbeans --> tweedle
+  netbeans --> util
+  installer --> aliceIde
+
+  nonfree --> modelsNonfree
+  nonfree --> storyApiNonfree
+  nonfree --> resourcesNonfree
+  nonfree --> ideNonfree
+  modelsNonfree --> storyApi
+  modelsNonfree --> util
+  storyApiNonfree --> storyApi
+  storyApiNonfree --> modelsNonfree
+  ideNonfree --> ide
+  ideNonfree --> storyApiNonfree
+  ideNonfree --> resourcesNonfree
