@@ -9,6 +9,7 @@ Gherkin, TLA+, and JUnit artifacts listed here.
 | Artifact | Path | Role |
 | --- | --- | --- |
 | Gherkin feature | [`../specs/save-load-export/project-archive.feature`](../specs/save-load-export/project-archive.feature) | Acceptance contract for save, load, export, resource safety, and backup recovery scenarios. |
+| Gherkin feature | [`../specs/high-risk-data-loss/user-journeys.feature`](../specs/high-risk-data-loss/user-journeys.feature) | Acceptance contract for dirty-session navigation, template/gallery immutability, legacy migration, and Java-transition generation safety beyond archive recovery. |
 | TLA+ module | [`../tla/backup-load-recovery/BackupLoadRecovery.tla`](../tla/backup-load-recovery/BackupLoadRecovery.tla) | Formal state machine for corrupt primary load and backup recovery. |
 | TLA+ config | [`../tla/backup-load-recovery/BackupLoadRecovery.cfg`](../tla/backup-load-recovery/BackupLoadRecovery.cfg) | Example model constants, invariants, and liveness property for TLC. |
 | Archive I/O tests | `core/story-api-migration/src/test/java/org/lgna/project/io/IoUtilitiesTest.java` | Characterization tests for low-level archive reading, writing, export, resource safety, and reader failure modes. |
@@ -79,6 +80,40 @@ Required behavior:
 - Fail predictably for missing resource data, unsupported future versions,
   missing `version.txt`, and corrupt JSON manifests.
 
+## High-risk data-loss journey contract
+
+`user-journeys.feature` extends the formal-spec lane beyond archive recovery. It
+keeps the specification at user-observable outcomes and deliberately avoids
+menu-click or dialog-copy details.
+
+Required behavior:
+
+- Dirty projects must reach an explicit save, discard, or cancel decision before
+  new/open/quit workflows replace or close the editor state.
+- Canceling a destructive navigation request preserves the current project and
+  all unsaved edits.
+- Save failures block project replacement and keep the unsaved editor state
+  visible.
+- Discarding unsaved work may close or replace only the in-memory edits; it must
+  not corrupt or partially rewrite the last-saved project file.
+- Projects created from templates own their edits; saving or editing a derived
+  project must not mutate the template used by future projects.
+- Scene instances created from gallery resources may be renamed or deleted
+  without deleting or corrupting the shared gallery source.
+- Missing or restricted gallery media fails before partially replacing the
+  current scene.
+- Legacy migration failures leave the original legacy file and current editor
+  state unchanged. Successful migrations keep the original file unchanged until
+  the user explicitly saves or saves as.
+- Java-transition/NetBeans generation writes only agreed generated locations and
+  reports conflicts before overwriting hand-authored destination files.
+
+No new TLA+ artifact was added for these journeys. Dirty-session and generation
+flows include UI decisions and filesystem effects that should first be
+characterized with executable JUnit tests. A TLA+ model would be useful only
+after those decision boundaries are explicit; until then, any model would risk
+proving an invented workflow rather than Alice behavior.
+
 ## Backup recovery model
 
 The TLA+ module models recovery after the primary project cannot be loaded.
@@ -138,7 +173,7 @@ The formal-spec lane has no runtime configuration.
 
 | Concern | Configuration |
 | --- | --- |
-| Gherkin execution | None. The `.feature` file is a committed acceptance contract and is not wired to Cucumber. |
+| Gherkin execution | None. The `.feature` files are committed acceptance contracts and are not wired to Cucumber. |
 | TLA+ execution | Optional local TLC invocation using `docs/artifacts/alice-audit/formal-spec/tla/backup-load-recovery/BackupLoadRecovery.cfg`; no Maven or CI plugin is required. |
 | Java validation | Existing Maven/JUnit module tests. |
 
@@ -151,6 +186,9 @@ mvn -pl core/story-api-migration -am -Dtest=IoUtilitiesTest -Dsurefire.failIfNoS
 mvn -pl core/ide -am -Dtest=ProjectFileUtilitiesTest -Dsurefire.failIfNoSpecifiedTests=false test
 mvn -pl core/ide -am -Dtest=ProjectBackupSelectorTest -Dsurefire.failIfNoSpecifiedTests=false test
 mvn -pl core/ide -am -Dtest=ProjectLoadFailurePlanTest,ProjectLoadFailureDispatchPlanTest -Dsurefire.failIfNoSpecifiedTests=false test
+mvn -pl core/ide -am -Dtest=SaveOperationFlowTest,SaveProjectOperationTest,SaveAsProjectOperationTest -Dsurefire.failIfNoSpecifiedTests=false test
+mvn -pl core/story-api-migration -am -Dtest=ProjectMigrationManagerTest -Dsurefire.failIfNoSpecifiedTests=false test
+mvn -pl netbeans -am -Dtest=ProjectCodeGeneratorStandaloneProjectTest,Alice3ProjectTemplateAntSmokeTest -Dsurefire.failIfNoSpecifiedTests=false test
 ```
 
 The Surefire flag keeps upstream modules without the named test from failing the
@@ -174,6 +212,10 @@ java -cp /path/to/tla2tools.jar tlc2.TLC BackupLoadRecovery.cfg
 | Missing, future, or corrupt archive metadata | Gherkin `@load @failure` scenarios | `IoUtilitiesTest` |
 | Corrupt primary backup recovery | Gherkin `@backup-recovery` scenarios and TLA+ `MainLoadFails` | `ProjectBackupSelectorTest`, `ProjectLoadFailurePlanTest`, `ProjectLoadFailureDispatchPlanTest` |
 | Newest readable backup selection | TLA+ `NextBackup`, `OfferReadableBackup`, and `SkipUnreadableBackup` | `ProjectBackupSelectorTest` |
+| Dirty-session save/cancel/failure flow | Gherkin `@dirty-session` scenarios | Partial coverage in `SaveOperationFlowTest`, `SaveProjectOperationTest`, and `SaveAsProjectOperationTest`; missing coordinator tests for new/open/quit replacement guards. |
+| Template and gallery source immutability | Gherkin `@template` and `@gallery` scenarios | Gap: needs project-template and gallery-resource characterization tests that assert source artifacts are unchanged. |
+| Legacy migration original-file preservation | Gherkin `@migration` scenarios | Partial coverage in `ProjectMigrationManagerTest`; gap: file-level migration handoff must prove original `.a3p` remains unchanged until explicit save. |
+| Java-transition destination preservation | Gherkin `@netbeans-transition` scenario | Partial coverage in `ProjectCodeGeneratorStandaloneProjectTest` and template smoke tests; gap: non-empty destination conflict/preservation test. |
 | Terminal recovery outcome | TLA+ final-state invariants | `ProjectLoadFailurePlanTest` and `ProjectLoadFailureDispatchPlanTest` |
 
 ## Implemented coverage
@@ -183,3 +225,5 @@ java -cp /path/to/tla2tools.jar tlc2.TLC BackupLoadRecovery.cfg
 | Saved `.a3p` archives include `manifest.json`. | `IoUtilitiesTest.writtenProjectContainsVersionManifestAndProgramTypeEntries`; `ProjectFileUtilitiesTest.saveCopyWritesReadableEditorArchiveWithResourceManifestAndThumbnail` |
 | Saved `.a3p` thumbnail behavior is characterized. | `IoUtilitiesTest.writeProjectIncludesProvidedThumbnailAndManifestIcon` and `IoUtilitiesTest.writeProjectRemainsReadableWithoutThumbnailEntry` |
 | Backup recovery rejects traversal or out-of-directory candidates. | `ProjectBackupSelectorTest.corruptedMainProjectSkipsBackupSymlinkEscapingBackupDirectory`; `ProjectBackupSelectorTest.corruptedMainProjectSkipsBackupSymlinkEvenWhenTargetStaysInBackupDirectory`; `ProjectBackupSelectorTest.corruptedMainProjectSkipsCandidatesFromSymlinkedBackupDirectory` |
+| Save prompt mechanics have executable coverage for current-file save, save-as prompting, cancel, and save-failure retry behavior. | `SaveOperationFlowTest`, `SaveProjectOperationTest`, `SaveAsProjectOperationTest` |
+| High-risk dirty-session, template/gallery, migration handoff, and NetBeans destination-preservation journeys now have Gherkin acceptance coverage but need additional source-repo JUnit characterization before they can be called fully executable. | `../specs/high-risk-data-loss/user-journeys.feature` |

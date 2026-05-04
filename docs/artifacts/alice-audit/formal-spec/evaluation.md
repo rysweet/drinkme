@@ -1,11 +1,12 @@
 # Alice save-load/export formal specification
 
-Alice project save, load, export, and backup recovery behavior is specified by two reusable artifacts:
+Alice project save, load, export, backup recovery, and adjacent data-loss behavior is specified by three reusable artifacts:
 
 - `docs/artifacts/alice-audit/formal-spec/specs/save-load-export/project-archive.feature` defines executable user-facing acceptance criteria for editor archives, player exports, archive validation, resource safety, and backup recovery.
+- `docs/artifacts/alice-audit/formal-spec/specs/high-risk-data-loss/user-journeys.feature` defines Gherkin acceptance criteria for dirty-session navigation, template/gallery immutability, legacy migration, and Java-transition destination preservation beyond the archive recovery lane.
 - `docs/artifacts/alice-audit/formal-spec/tla/backup-load-recovery/BackupLoadRecovery.tla` and `docs/artifacts/alice-audit/formal-spec/tla/backup-load-recovery/BackupLoadRecovery.cfg` define a model-checkable TLA+ recovery policy for corrupt primary loads, ordered backups, skipped unloadable backups, user recovery choices, and stale asynchronous completion handling.
 
-The specification covers observable project archive behavior. It does not formalize simple menu clicks, file chooser navigation, dialog copy, or other trivial UI mechanics.
+The specification covers observable project archive and data-loss-prevention behavior. It does not formalize simple menu clicks, file chooser navigation, dialog copy, or other trivial UI mechanics.
 
 ## Finished behavior
 
@@ -86,6 +87,32 @@ Recovery behavior is:
 8. A background load completion cannot replace project state after a final recovery or new-project outcome has been reached.
 
 The current valid editor state remains unchanged until a readable project has loaded or the user has chosen an explicit final outcome.
+
+### High-risk journeys outside archive recovery
+
+The new high-risk Gherkin feature covers Alice data-loss journeys that are not
+just save/load/export archive contracts:
+
+1. Dirty-project new/open/quit decisions must preserve unsaved work on cancel or
+   save failure.
+2. Discard closes only in-memory edits and must not corrupt the last-saved file.
+3. Template-derived projects and gallery-derived scene instances must not mutate
+   shared template/gallery sources.
+4. Missing gallery media must fail before partially replacing the current scene.
+5. Legacy migration must leave the original `.a3p` untouched until the user
+   explicitly saves a migrated project.
+6. Java-transition/NetBeans generation must not delete hand-authored files in a
+   destination directory.
+
+These scenarios are executable-specification targets, not proof artifacts. The
+existing JUnit lane partially covers save-prompt mechanics, migration transforms,
+and NetBeans generated source shape. It does not yet fully execute the new/open/
+quit coordinator, template/gallery source immutability, file-level migration
+handoff, or non-empty NetBeans destination-preservation journeys.
+
+No new TLA+ artifact was added for this expansion. Modeling dirty-session or
+NetBeans generation behavior before the Java decision seams are explicit would
+produce misleading validation, so the caveat is intentional.
 
 ## Usage documentation
 
@@ -188,9 +215,10 @@ The Gherkin artifact is stored at:
 
 ```text
 docs/artifacts/alice-audit/formal-spec/specs/save-load-export/project-archive.feature
+docs/artifacts/alice-audit/formal-spec/specs/high-risk-data-loss/user-journeys.feature
 ```
 
-Use it as the acceptance contract for modernization work. The scenarios are written at the user-observable outcome level and are implemented through the existing JUnit characterization lane; no Cucumber runner is required for this feature.
+Use these files as acceptance contracts for modernization work. The scenarios are written at the user-observable outcome level and are implemented or targeted through the existing JUnit characterization lane; no Cucumber runner is required for this feature.
 
 The feature file deliberately avoids:
 
@@ -199,6 +227,7 @@ The feature file deliberately avoids:
 - Dialog copy assertions.
 - Internal ZIP writer algorithms.
 - Mandatory thumbnail creation in headless environments.
+- Premature formal proofs for workflows that lack explicit executable seams.
 
 ### TLA+ recovery model
 

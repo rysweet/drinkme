@@ -17,3 +17,4 @@ An older public fork/reference may exist at https://github.com/rysweet/alice3, b
 - `docs/modernization/` - refactor/rewrite and language-boundary analysis.
 - `docs/atlas/` - code atlas diagrams, graph sources, and investigation journal.
 - `docs/build-baseline/` - dependency and build/test baseline notes.
+- `docs/artifacts/alice-audit/formal-spec/` - reusable Alice formal/Gherkin specification artifacts and validation handoff notes.
