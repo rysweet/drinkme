@@ -18,6 +18,13 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Run CI workflow tests
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python3 -m unittest discover -s tests -v
+
       - name: Validate documentation repository shape
         shell: bash
         run: |
