@@ -7,15 +7,18 @@
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Current restarted campaign status is tracked in `docs/modernization/restarted-full-scope-status.md`.
-- Latest source work at the time of this summary included:
-  - `73ca278621 Handle empty default backup copy`
-  - `67fd047b72 Characterize URI project loader path classification`
-  - `4fc78d7c88 Add JsonModelIo export format seam test`
-  - `5bd75d8c83 Isolate XML resource identity on read`
-  - `6bc25da7f0 Characterize JSON type archive version handling`
-  - `3ba86b66ad Add explicit manifest decode errors`
-  - `eb73ae08c1 Extract project load failure dispatch plan`
-  - `38ca0324b4 Characterize NetBeans Alice library classpath`
+- Latest restarted-wave source work integrated into `develop` includes:
+  - Alice PR #35: extracted model resource XML generation.
+  - Alice PR #36: added reporting-only module coverage baseline tooling.
+  - Alice PR #37: added IO load/save characterization tests.
+  - Alice PR #38: expanded outside-in Alice desktop QA scenarios.
+  - Alice PR #39: characterized JSON/XML player program boundary null-safety.
+  - Alice PR #40: characterized Story API generated code and repaired stale cached foreach item names.
+  - Alice PR #42: added starter project XML fallback readability tests.
+  - Alice PR #43: added headless Croquet tool palette layout tests.
+  - Alice PR #44: added scenegraph model characterization tests and fixed `Joint` bounds/scale behavior.
+  - Alice PR #45: added no-Sims nonfree boundary guards and includeSims library overwrite validation.
+  - Alice PR #46: characterized NetBeans export classpath with populated `Alice3Library` entries.
 
 ## Build and CI state
 
@@ -81,8 +84,10 @@ Covered areas include:
 - NetBeans project-template archive and generated metadata;
 - exported build-property contract;
 - `Alice3Library` registration and packaging source;
+- populated `Alice3Library` compile classpath entries, including authorized JavaFX and includeSims/nonfree boundary variants;
 - NetBeans package-phase CI and artifact assertions;
 - NetBeans template compiler-surrogate structure;
+- NetBeans install NBM rename behavior and timeout-hardened Ant smoke handling;
 - generated resource export/runtime loading;
 - generated resource filename mismatch, duplicate name, blank name, and unsafe path behavior;
 - generated Java source compilation for:
@@ -100,7 +105,12 @@ Covered areas include:
   - foreach item access;
   - named foreach item access;
   - iterable foreach loop;
-  - story API call on `SProgram`.
+- story API call on `SProgram`.
+- generated foreach loops with stale cached `COUNT__` item names, now repaired to readable generated item names while preserving explicit item names;
+- committed starter `.a3p` archive XML fallback readability for representative fixtures;
+- headless Croquet tool-palette layout invariants;
+- scenegraph Mesh, WeightedMesh, SkeletonVisual, and Joint behavior, including Joint scale/bounds fixes;
+- public no-Sims package boundaries and authorized includeSims library overwrite behavior;
 
 ## Important findings
 
@@ -129,11 +139,11 @@ Covered areas include:
 - Recent-backup recovery now covers the case where the newest candidate is known unloadable: the next candidate is considered, but still must be newer than the main project to be selected.
 - Backup recovery now has a real-file headless path covering corrupt main file, skipped unloadable backup, selected valid backup, failure-plan action, and `FileProjectLoader` resource fidelity.
 - Project-load success planning now has a pure seam for backup-prompt/open-loader decisions, while UI dialogs and application state mutations remain in `ProjectApplication`.
-- The generated foreach loop currently emits `COUNT__` as the item variable when the AST item local has no explicit name.
-  - This is internally coherent and compiles when referenced.
-  - It remains readability debt for teaching-facing generated Java.
-- Explicitly named foreach item locals do emit readable Java names and are now characterized separately from the unnamed fallback.
+- Generated foreach loops no longer emit stale cached synthetic `COUNT__` item names; the repaired path emits readable generated item names and preserves explicit item names.
 - Iterable foreach loops over a generated `Arrays.asList(...)` expression compile and import `java.util.Arrays`; the current characterization preserves explicit item local naming.
+- Public no-Sims package checks now assert nonfree jars are omitted, while authorized includeSims checks assert `models-nonfree.jar` and `story-api-nonfree.jar` are restored through an explicit resources overwrite.
+- Starter `.a3p` fixtures now prove XML fallback readability for selected committed archives, but not full semantic migration of historical project content.
+- Headless Croquet and scenegraph characterization caught real behavior seams without requiring a full JavaFX desktop.
 - Headless tests can cover important exported-code behavior without launching real JavaFX.
 - Real JavaFX/UI behavior, story execution, and rendering-adjacent behavior remain mostly unprotected.
 - Git LFS budget exhaustion can break CI checkout if no-Sims workflows fetch LFS objects; no-Sims CI should avoid LFS unless a job explicitly needs it.
@@ -154,7 +164,7 @@ Covered areas include:
 
 ## Known limits
 
-- Historical `.a3p` migration fixtures are not yet covered.
+- Historical `.a3p` semantic migration remains thinly covered; selected committed starter `.a3p` archives now have XML fallback readability coverage.
 - Real StageIDE-generated projects, thumbnails, gallery resources, and provenance-sensitive assets remain mostly uncovered.
 - The player export artifact smoke uses a synthetic project and 1x1 thumbnail; it does not prove the full StageIDE export UI journey.
 - The editor save-copy roundtrip also uses a synthetic project and test resource; it does not prove the full StageIDE save UI journey.
@@ -164,10 +174,10 @@ Covered areas include:
 - Project-load failure dispatch branching is now tested through `ProjectLoadFailureDispatchPlan`, but the higher-level dialog and recursive load UI side effects still need characterization.
 - Full wizard execution is not covered.
 - Real JavaFX launcher startup is not covered.
-- Palette/completion behavior is not covered.
-- Deep NBM install semantics are not covered.
-- A standalone exported Ant project build/run against a populated `Alice3Library` is not yet proven; current coverage uses a JDK compiler, JavaFX stubs, and a test-classpath surrogate for the NetBeans library.
-- Scene/model story API calls, events, and rendering behavior are not yet characterized.
+- Palette layout behavior has headless coverage, but full palette/completion UI behavior is not covered.
+- Deep NBM install semantics are still thin; rename/package smoke coverage exists but not full IDE install execution.
+- A standalone exported Ant project build/run against a populated `Alice3Library` is still not fully proven; current coverage validates populated classpath contracts and compile behavior, not a full launched exported project.
+- Some scene/model story API and scenegraph behavior is characterized, but events, runtime story execution, and rendering behavior remain mostly unprotected.
 - Player export JSON reads are currently resource-only; the program type is still `null` because the Tweedle decoder remains a stub.
 - JSON `.a3c` type reads are also resource-only; the type remains `null` until Tweedle type decoding is implemented.
 - XML project reads now avoid static resource instance reuse across archive reads while preserving AST resource-expression binding to decoded resources.
@@ -181,10 +191,10 @@ Covered areas include:
    - backup/save-as behavior with real temporary files;
    - failure/recovery journey branches above the headless selector/plan seams.
 2. Continue generated-source characterization where it protects real exported Java behavior:
-   - scene/model story API calls that compile against exported project dependencies.
-3. Prove exported project behavior beyond compile-only tests:
+   - more scene/model story API calls that compile against exported project dependencies;
+   - event/listener and runtime story execution seams that can be tested headlessly.
+3. Prove exported project behavior beyond compile/classpath-contract tests:
    - run an actual Ant/NetBeans project build once the required tool/runtime harness is stable;
-   - replace the classpath surrogate with a populated `Alice3Library` definition;
    - compile/run the exported launcher against real JavaFX where possible.
 4. Add higher-level user journey tests where feasible:
    - export project journey;
