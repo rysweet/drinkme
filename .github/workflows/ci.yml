@@ -1,0 +1,133 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  repository-validation:
+    name: Repository validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate documentation repository shape
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -f README.md
+          test -d docs
+
+          unexpected_markdown="$(git ls-files '*.md' | awk '$0 != "README.md" && $0 !~ /^docs\// { print }')"
+          if [[ -n "$unexpected_markdown" ]]; then
+            printf 'Markdown files must live in README.md or docs/:\n%s\n' "$unexpected_markdown" >&2
+            exit 1
+          fi
+
+      - name: Validate JSON syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git ls-files -z '*.json' | while IFS= read -r -d '' file; do
+            python3 -m json.tool "$file" >/dev/null
+          done
+
+      - name: Validate YAML syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mapfile -d '' files < <(git ls-files -z '*.yml' '*.yaml')
+          if (( ${#files[@]} == 0 )); then
+            exit 0
+          fi
+
+          ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file) }' -- "${files[@]}"
+
+      - name: Check internal Markdown links
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python3 <<'PY'
+          import os
+          import re
+          import sys
+          from pathlib import Path
+          from urllib.parse import unquote, urlsplit
+
+          markdown_files = [
+              Path(path)
+              for path in os.popen("git ls-files '*.md'").read().splitlines()
+          ]
+
+          inline_link = re.compile(r'!?\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)')
+          reference_definition = re.compile(r'^\s*\[[^\]]+\]:\s+(\S+)', re.MULTILINE)
+          external_schemes = {
+              "http",
+              "https",
+              "mailto",
+              "tel",
+              "ftp",
+              "irc",
+              "ircs",
+              "ssh",
+          }
+          errors = []
+
+          def is_external(target: str) -> bool:
+              parsed = urlsplit(target)
+              return bool(parsed.scheme in external_schemes or parsed.netloc)
+
+          def check_target(source: Path, raw_target: str) -> None:
+              target = raw_target.strip("<>")
+              if (
+                  not target
+                  or target.startswith("#")
+                  or is_external(target)
+              ):
+                  return
+
+              parsed = urlsplit(target)
+              path = unquote(parsed.path)
+              if not path or path.startswith("#"):
+                  return
+
+              candidate = (source.parent / path).resolve()
+              root = Path.cwd().resolve()
+              try:
+                  candidate.relative_to(root)
+              except ValueError:
+                  errors.append(f"{source}: link escapes repository: {raw_target}")
+                  return
+
+              if candidate.exists():
+                  return
+
+              if candidate.with_suffix(candidate.suffix + ".md").exists():
+                  return
+
+              errors.append(f"{source}: missing target: {raw_target}")
+
+          for markdown_file in markdown_files:
+              text = markdown_file.read_text(encoding="utf-8")
+              for match in inline_link.finditer(text):
+                  check_target(markdown_file, match.group(1))
+              for match in reference_definition.finditer(text):
+                  check_target(markdown_file, match.group(1))
+
+          if errors:
+              print("Broken internal Markdown links:", file=sys.stderr)
+              for error in errors:
+                  print(f"- {error}", file=sys.stderr)
+              sys.exit(1)
+          PY
