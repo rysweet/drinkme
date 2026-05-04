@@ -189,6 +189,18 @@ class WorkflowScriptTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_markdown_link_validation_handles_newlines_in_tracked_markdown_paths(self):
+        with tracked_repo(
+            {
+                "README.md": "[Odd path](docs/linked%0Afile.md)\n",
+                "docs/index.md": "# Docs\n",
+                "docs/linked\nfile.md": "# Odd path\n",
+            }
+        ) as repo:
+            result = run_step("Check internal Markdown links", repo)
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+
 
 def workflow_step_script(step_name):
     lines = WORKFLOW_PATH.read_text(encoding="utf-8").splitlines()

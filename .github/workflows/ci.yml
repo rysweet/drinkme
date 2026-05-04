@@ -68,13 +68,19 @@ jobs:
           python3 <<'PY'
           import os
           import re
+          import subprocess
           import sys
           from pathlib import Path
           from urllib.parse import unquote, urlsplit
 
           markdown_files = [
-              Path(path)
-              for path in os.popen("git ls-files '*.md'").read().splitlines()
+              Path(os.fsdecode(path))
+              for path in subprocess.run(
+                  ["git", "ls-files", "-z", "*.md"],
+                  check=True,
+                  stdout=subprocess.PIPE,
+              ).stdout.split(b"\0")
+              if path
           ]
 
           inline_link = re.compile(r'!?\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)')

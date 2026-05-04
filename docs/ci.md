@@ -11,7 +11,7 @@ CI runs automatically for:
 - every pull request targeting the repository; and
 - every push to `main`.
 
-The workflow uses read-only repository permissions (`contents: read`) and checks only tracked files. Untracked local files, editor scratch files, and session artifacts do not affect CI.
+The workflow uses read-only repository permissions (`contents: read`) and checks only tracked files from Git's inventory. Untracked local files, editor scratch files, and session artifacts do not affect CI.
 
 ## What CI validates
 
@@ -77,7 +77,7 @@ if (( ${#yaml_files[@]} > 0 )); then
 fi
 ```
 
-For Markdown links, use the pull request CI result as the source of truth. The workflow performs path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting.
+For Markdown links, use the pull request CI result as the source of truth. The workflow reads tracked Markdown paths with null-delimited Git output, then performs path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting.
 
 ## Adding documentation safely
 
