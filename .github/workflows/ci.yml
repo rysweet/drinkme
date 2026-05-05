@@ -1,0 +1,151 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    name: Docs repository checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate repository shape
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -f README.md
+          test -d docs
+
+          misplaced_markdown="$(
+            git ls-files '*.md' |
+              awk '$0 != "README.md" && $0 !~ /^docs\// { print }'
+          )"
+          if [[ -n "$misplaced_markdown" ]]; then
+            echo "Markdown files must live in README.md or docs/:" >&2
+            echo "$misplaced_markdown" >&2
+            exit 1
+          fi
+
+      - name: Validate JSON syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python3 <<'PY'
+          import json
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          files = subprocess.run(
+              ["git", "ls-files", "-z", "*.json"],
+              check=True,
+              stdout=subprocess.PIPE,
+          ).stdout.split(b"\0")
+
+          failed = False
+          for raw_file in files:
+              if not raw_file:
+                  continue
+              path = Path(raw_file.decode())
+              try:
+                  with path.open(encoding="utf-8") as handle:
+                      json.load(handle)
+              except json.JSONDecodeError as exc:
+                  print(f"{path}: invalid JSON: {exc}", file=sys.stderr)
+                  failed = True
+
+          if failed:
+              sys.exit(1)
+          PY
+
+      - name: Validate YAML syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mapfile -d '' files < <(git ls-files -z '*.yml' '*.yaml')
+          if (( ${#files[@]} == 0 )); then
+            exit 0
+          fi
+
+          ruby -e 'require "psych"; ARGV.each { |file| Psych.parse_stream(File.read(file)) }' -- "${files[@]}"
+
+      - name: Validate internal Markdown links
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python3 <<'PY'
+          import re
+          import subprocess
+          import sys
+          from pathlib import Path
+          from urllib.parse import unquote, urlsplit
+
+          ROOT = Path.cwd().resolve()
+          LINK_PATTERN = re.compile(r'!?\[[^\]]*\]\((?:<([^>]*)>|([^)\s]+))')
+          REF_PATTERN = re.compile(r'^\s*\[[^\]]+\]:\s+(?:<([^>]*)>|(\S+))', re.MULTILINE)
+          EXTERNAL_SCHEMES = {"http", "https", "mailto", "tel", "ftp", "ssh"}
+          errors = []
+
+          tracked_output = subprocess.run(
+              ["git", "ls-files", "-z"],
+              check=True,
+              stdout=subprocess.PIPE,
+          ).stdout
+          tracked = [Path(raw.decode()) for raw in tracked_output.split(b"\0") if raw]
+          tracked_files = {(ROOT / path).resolve() for path in tracked}
+          tracked_dirs = {ROOT}
+          for path in tracked_files:
+              tracked_dirs.update(path.parents)
+
+          def check_target(source, raw_target):
+              target = raw_target.strip("<>")
+              parsed = urlsplit(target)
+              if (
+                  not target
+                  or target.startswith("#")
+                  or parsed.scheme in EXTERNAL_SCHEMES
+                  or parsed.netloc
+              ):
+                  return
+
+              path = unquote(parsed.path)
+              if not path:
+                  return
+
+              candidate = (source.parent / path).resolve()
+              try:
+                  candidate.relative_to(ROOT)
+              except ValueError:
+                  errors.append(f"{source}: link escapes repository: {raw_target}")
+                  return
+
+              if candidate in tracked_files or candidate in tracked_dirs:
+                  return
+              errors.append(f"{source}: missing target: {raw_target}")
+
+          for markdown_file in [path for path in tracked if path.suffix == ".md"]:
+              text = markdown_file.read_text(encoding="utf-8")
+              for match in LINK_PATTERN.finditer(text):
+                  check_target(markdown_file, match.group(1) or match.group(2))
+              for match in REF_PATTERN.finditer(text):
+                  check_target(markdown_file, match.group(1) or match.group(2))
+
+          if errors:
+              print("Internal Markdown link validation failed:", file=sys.stderr)
+              for error in errors:
+                  print(f"- {error}", file=sys.stderr)
+              sys.exit(1)
+          PY
