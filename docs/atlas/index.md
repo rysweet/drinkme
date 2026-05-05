@@ -44,3 +44,6 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 5. Add static symbol and entry-point inventory.
 6. Add staleness triggers keyed to Maven modules and source/resource folders.
 
+## Recent journal entries
+
+- [0065 - RabbitHole comparison harness wave](journal/0065-rabbithole-compare-harness-wave.md)
