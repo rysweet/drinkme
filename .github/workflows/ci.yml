@@ -41,7 +41,7 @@ jobs:
 
           ROOT = Path.cwd().resolve()
           INLINE_LINK = re.compile(r'!?\[[^\]]*\]\((?:<([^>]*)>|([^)\s]+))(?:\s+"[^"]*")?\)')
-          REFERENCE_DEFINITION = re.compile(r'^\s*\[[^\]]+\]:\s+(\S+)', re.MULTILINE)
+          REFERENCE_DEFINITION = re.compile(r'^\s*\[[^\]]+\]:\s+(?:<([^>]*)>|(\S+))', re.MULTILINE)
           EXTERNAL_SCHEMES = {
               "http",
               "https",
@@ -148,7 +148,7 @@ jobs:
                   for match in INLINE_LINK.finditer(text):
                       check_markdown_target(markdown_file, match.group(1) or match.group(2))
                   for match in REFERENCE_DEFINITION.finditer(text):
-                      check_markdown_target(markdown_file, match.group(1))
+                      check_markdown_target(markdown_file, match.group(1) or match.group(2))
 
           check_repository_shape()
           check_json_syntax()

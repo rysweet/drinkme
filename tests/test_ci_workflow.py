@@ -242,6 +242,18 @@ class WorkflowScriptTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_markdown_link_validation_checks_angle_wrapped_reference_paths_with_spaces(self):
+        with tracked_repo(
+            {
+                "README.md": "[Spaced][spaced]\n\n[spaced]: <docs/spaced file.md>\n",
+                "docs/index.md": "# Docs\n",
+                "docs/spaced file.md": "# Spaced\n",
+            }
+        ) as repo:
+            result = run_step("Validate repository artifacts", repo)
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_markdown_link_validation_checks_angle_wrapped_paths_with_spaces(self):
         with tracked_repo(
             {
