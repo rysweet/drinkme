@@ -15,7 +15,7 @@ reference-only.
 flowchart LR
   A["Original Alice 3<br/>TheAliceProject/alice3"] --> B["RabbitHole<br/>modernized Alice"]
   C["Alice.org resources<br/>lessons, how-tos, exercises"] --> D["eatme scenarios<br/>editable instructor/student assets"]
-  D --> E["eatme harness<br/>target registry, launch smoke, comparison contract"]
+  D --> E["eatme harness<br/>target registry, launch smoke, comparison contract checks"]
   A --> E
   B --> E
   E --> F["Comparison evidence<br/>functionality, timing, artifacts"]
@@ -35,7 +35,7 @@ The project is making real progress, but it is not complete.
 | Prove teaching-facing project behavior | Save/load/export and classroom project behavior landed in [PR #119](https://github.com/rysweet/RabbitHole/pull/119), [PR #122](https://github.com/rysweet/RabbitHole/pull/122), and [PR #126](https://github.com/rysweet/RabbitHole/pull/126). | Headless and controlled evidence is growing. Full desktop use remains thin. |
 | Prove exported project behavior | NetBeans/Ant evidence landed in [PR #124](https://github.com/rysweet/RabbitHole/pull/124). | Export behavior is better protected. Full launched exported-project runtime behavior remains open. |
 | Decode modern project/player formats | Field-only and primitive Tweedle decode work landed in [PR #120](https://github.com/rysweet/RabbitHole/pull/120), [PR #121](https://github.com/rysweet/RabbitHole/pull/121), and [PR #126](https://github.com/rysweet/RabbitHole/pull/126). | Basic paths are covered. Methods, constructors, complex initializers, and unresolved supertypes remain bounded gaps. |
-| Build eatme into a baseline-vs-modernized harness | eatme now has target registry, comparison manifests, scorecards, required-path preflight, an embedded comparison contract, and a lesson-session contract in [PR #56](https://github.com/rysweet/eatme/pull/56), [PR #57](https://github.com/rysweet/eatme/pull/57), [PR #58](https://github.com/rysweet/eatme/pull/58), [PR #59](https://github.com/rysweet/eatme/pull/59), [PR #60](https://github.com/rysweet/eatme/pull/60), and [PR #61](https://github.com/rysweet/eatme/pull/61). | The harness can compare launch smoke and now records the first-lesson session boundary. It does not yet run a full instructor/student lesson session. |
+| Build eatme into a baseline-vs-modernized harness | eatme now has target registry, comparison manifests, scorecards, required-path preflight, an embedded comparison contract, a lesson-session contract, and a CLI checker in [PR #56](https://github.com/rysweet/eatme/pull/56), [PR #57](https://github.com/rysweet/eatme/pull/57), [PR #58](https://github.com/rysweet/eatme/pull/58), [PR #59](https://github.com/rysweet/eatme/pull/59), [PR #60](https://github.com/rysweet/eatme/pull/60), [PR #61](https://github.com/rysweet/eatme/pull/61), and [PR #62](https://github.com/rysweet/eatme/pull/62). | The harness can compare launch smoke, records the first-lesson session boundary, and can fail manifests that omit or weaken that boundary. It does not yet run a full instructor/student lesson session. |
 | Connect Alice.org scenarios to agentic tests | eatme has 31 editable scenario assets, 32 generated Gadugi adapters, 11 instructor personas, and 13 student personas. | The curriculum-facing asset corpus is broad. Real execution depth is still shallow. |
 
 The chart is qualitative. It is a guide to evidence maturity, not a substitute
@@ -46,7 +46,7 @@ xychart-beta
   title "Progress against the plan"
   x-axis ["Behavior safety", "Oversized code", "Teaching behavior", "Export behavior", "Tweedle/player", "eatme comparison", "Scenario assets"]
   y-axis "Evidence maturity" 0 --> 10
-  bar [6, 2, 5, 5, 5, 6, 5]
+  bar [6, 2, 5, 5, 5, 7, 5]
 ```
 
 ## RabbitHole code areas
@@ -78,7 +78,7 @@ Alice against both original Alice and RabbitHole.
 | User area | Alice/eatme scenario assets | Agentic system coverage | Current proof | Remaining work |
 | --- | --- | --- | --- | --- |
 | Launch readiness | [real-alice-launch-smoke](https://github.com/rysweet/eatme/blob/master/assets/scenarios/eatme/real-alice-launch-smoke.yaml) | eatme CLI packages Alice, starts Xvfb, launches Alice, records manifest, artifacts, assertions, and timing. | Baseline and RabbitHole both pass repeated launch-smoke comparisons after [PR #58](https://github.com/rysweet/eatme/pull/58). | This is startup evidence only. |
-| Baseline-vs-modernized comparison | [comparison target registry](https://github.com/rysweet/eatme/blob/master/assets/alice-comparison-targets.yaml) | eatme comparison contract, lesson-session contract, target preflight, scorecard, diff, and timing rules. | [PR #56](https://github.com/rysweet/eatme/pull/56), [#57](https://github.com/rysweet/eatme/pull/57), [#58](https://github.com/rysweet/eatme/pull/58), [#59](https://github.com/rysweet/eatme/pull/59), [#60](https://github.com/rysweet/eatme/pull/60), [#61](https://github.com/rysweet/eatme/pull/61) | Expand from machine-readable lesson-session boundaries to executable instructor/student lesson sessions. |
+| Baseline-vs-modernized comparison | [comparison target registry](https://github.com/rysweet/eatme/blob/master/assets/alice-comparison-targets.yaml) | eatme comparison contract, lesson-session contract, target preflight, scorecard, diff, timing rules, and `alice check-lesson-session`. | [PR #56](https://github.com/rysweet/eatme/pull/56), [#57](https://github.com/rysweet/eatme/pull/57), [#58](https://github.com/rysweet/eatme/pull/58), [#59](https://github.com/rysweet/eatme/pull/59), [#60](https://github.com/rysweet/eatme/pull/60), [#61](https://github.com/rysweet/eatme/pull/61), [#62](https://github.com/rysweet/eatme/pull/62) | Expand from checked lesson-session manifests to executable instructor/student lesson sessions. |
 | First Alice lessons | [first-lessons-real-ui-actions](https://github.com/rysweet/eatme/blob/master/assets/scenarios/eatme/first-lessons-real-ui-actions.yaml), [building-a-scene-first-world](https://github.com/rysweet/eatme/blob/master/assets/scenarios/eatme/building-a-scene-first-world.yaml), [code-editor-first-run](https://github.com/rysweet/eatme/blob/master/assets/scenarios/eatme/code-editor-first-run.yaml) | Student and instructor personas define visible actions, reflections, and artifact expectations. Gadugi adapters are generated. | Asset validation and generated-adapter freshness pass. | Real UI action automation is still intentionally limited. |
 | Instructor preparation | [instructor-lesson-materials-remix](https://github.com/rysweet/eatme/blob/master/assets/scenarios/eatme/instructor-lesson-materials-remix.yaml), [workshop-facilitator-live-studio](https://github.com/rysweet/eatme/blob/master/assets/scenarios/eatme/workshop-facilitator-live-studio.yaml) | Instructor personas model setup, facilitation, prompt cards, and classroom handoff. | Editable YAML assets and generated adapters exist. | Need executable instructor creates-assignment comparison. |
 | Student artifact and sharing | [student-artifact-package-share-evidence](https://github.com/rysweet/eatme/blob/master/assets/scenarios/eatme/student-artifact-package-share-evidence.yaml), [teacher-community-sharing-loop](https://github.com/rysweet/eatme/blob/master/assets/scenarios/eatme/teacher-community-sharing-loop.yaml) | Student personas preserve reflection, ownership, sharing, and peer review evidence. | Scenario corpus covers packaging and sharing expectations. | Need actual open/change/run/save/share evidence against both targets. |
@@ -90,7 +90,7 @@ xychart-beta
   title "eatme evidence maturity by user area"
   x-axis ["Launch", "Comparison", "First lessons", "Instructor prep", "Sharing", "Save/load", "Assessment"]
   y-axis "Evidence maturity" 0 --> 10
-  bar [6, 6, 5, 4, 4, 3, 2]
+  bar [6, 7, 5, 4, 4, 3, 2]
 ```
 
 ## Processes being used
@@ -121,7 +121,8 @@ flowchart TD
   A["Choose Alice.org-grounded instructor/student scenario"] --> Y["Encode editable YAML scenario and persona evidence"]
   Y --> G["Validate assets and regenerate Gadugi adapters"]
   G --> H["Run manifest-only or executable harness evidence"]
-  H --> C["Compare original Alice and RabbitHole when both targets are prepared"]
+  H --> L["Validate comparison and lesson-session contracts"]
+  L --> C["Compare original Alice and RabbitHole when both targets are prepared"]
   C --> B["Record functionality, timing, artifacts, and explicit non-claims"]
   B --> R["Focused review plus quality gates"]
   R --> M["Merge to eatme"]
