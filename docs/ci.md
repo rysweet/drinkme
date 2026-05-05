@@ -48,7 +48,8 @@ CI intentionally skips:
 
 - external schemes in the current allow-list: `http`, `https`, `mailto`, `tel`, `ftp`, `irc`, `ircs`, and `ssh`;
 - URLs with a network location such as `//example.test/path`;
-- pure same-page anchors such as `#artifact-map`; and
+- pure same-page anchors such as `#artifact-map`;
+- empty link destinations such as `<>`; and
 - network availability checks.
 
 The link check focuses on tracked local file and directory existence. It does not validate that a GitHub heading anchor exists inside a target Markdown file, and it may miss unusual Markdown syntax outside the common inline, image, and reference-definition forms.

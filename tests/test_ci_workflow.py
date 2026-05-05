@@ -254,6 +254,17 @@ class WorkflowScriptTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_markdown_link_validation_skips_empty_angle_wrapped_targets(self):
+        with tracked_repo(
+            {
+                "README.md": "[Empty](<>)\n[Empty reference][empty]\n\n[empty]: <>\n",
+                "docs/index.md": "# Docs\n",
+            }
+        ) as repo:
+            result = run_step("Validate repository artifacts", repo)
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_markdown_link_validation_checks_angle_wrapped_paths_with_spaces(self):
         with tracked_repo(
             {

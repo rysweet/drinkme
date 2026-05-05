@@ -142,13 +142,18 @@ jobs:
 
               add_error(f"{source}: missing target: {raw_target}")
 
+          def markdown_target(match):
+              if match.group(1) is not None:
+                  return match.group(1)
+              return match.group(2)
+
           def check_markdown_links():
               for markdown_file in MARKDOWN_FILES:
                   text = markdown_file.read_text(encoding="utf-8")
                   for match in INLINE_LINK.finditer(text):
-                      check_markdown_target(markdown_file, match.group(1) or match.group(2))
+                      check_markdown_target(markdown_file, markdown_target(match))
                   for match in REFERENCE_DEFINITION.finditer(text):
-                      check_markdown_target(markdown_file, match.group(1) or match.group(2))
+                      check_markdown_target(markdown_file, markdown_target(match))
 
           check_repository_shape()
           check_json_syntax()
