@@ -138,6 +138,8 @@ Hard rules:
 - Keep status in [drinkme issues](https://github.com/rysweet/drinkme/issues),
   not hidden in chat.
 - Keep diagrams and code-atlas artifacts in [docs/atlas](docs/atlas/index.md).
+- Keep this README current on every loop when project state, process diagrams,
+  progress visuals, evidence links, or the RabbitHole/eatme strategy changes.
 
 ## Visual atlas
 
