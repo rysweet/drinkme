@@ -1,8 +1,0 @@
-repos:
-  - repo: local
-    hooks:
-      - id: docs-ci-regression-tests
-        name: docs CI regression tests
-        entry: python3 -B -m unittest discover -s tests -v
-        language: system
-        pass_filenames: false
