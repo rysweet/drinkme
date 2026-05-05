@@ -1,0 +1,47 @@
+{
+  "hooks": {
+    "agentStop": [
+      {
+        "bash": "/tmp/drinkme-ci-docs/.github/hooks/stop",
+        "timeoutSec": 30,
+        "type": "command"
+      }
+    ],
+    "postToolUse": [
+      {
+        "bash": "/tmp/drinkme-ci-docs/.github/hooks/post-tool-use",
+        "timeoutSec": 30,
+        "type": "command"
+      }
+    ],
+    "preCompact": [
+      {
+        "bash": "/tmp/drinkme-ci-docs/.github/hooks/pre-compact",
+        "timeoutSec": 30,
+        "type": "command"
+      }
+    ],
+    "preToolUse": [
+      {
+        "bash": "/tmp/drinkme-ci-docs/.github/hooks/pre-tool-use",
+        "timeoutSec": 30,
+        "type": "command"
+      }
+    ],
+    "sessionStart": [
+      {
+        "bash": "/tmp/drinkme-ci-docs/.github/hooks/session-start",
+        "timeoutSec": 30,
+        "type": "command"
+      }
+    ],
+    "userPromptSubmitted": [
+      {
+        "bash": "/tmp/drinkme-ci-docs/.github/hooks/user-prompt-submit",
+        "timeoutSec": 30,
+        "type": "command"
+      }
+    ]
+  },
+  "version": 1
+}
