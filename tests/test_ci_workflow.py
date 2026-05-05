@@ -26,6 +26,11 @@ class WorkflowContractTests(unittest.TestCase):
     def test_workflow_checks_out_repository_with_current_checkout_action(self):
         self.assertIn("uses: actions/checkout@v4", WORKFLOW_TEXT)
 
+    def test_yaml_validation_uses_syntax_parse_without_deserialization(self):
+        self.assertIn('require "psych"', WORKFLOW_TEXT)
+        self.assertIn("Psych.parse_stream", WORKFLOW_TEXT)
+        self.assertNotIn("YAML.load", WORKFLOW_TEXT)
+
     def test_workflow_runs_this_test_suite_before_validation_gates(self):
         self.assertIn("name: Run CI workflow tests", WORKFLOW_TEXT)
         self.assertIn("python3 -m unittest discover -s tests -v", WORKFLOW_TEXT)
@@ -142,6 +147,30 @@ class WorkflowScriptTests(unittest.TestCase):
             result = run_step("Validate repository artifacts", repo)
 
         self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_repository_validation_rejects_tracked_symlinked_artifacts(self):
+        with tempfile.TemporaryDirectory() as outside:
+            outside_file = Path(outside) / "outside.md"
+            outside_file.write_text("[Outside](missing.md)\n", encoding="utf-8")
+
+            try:
+                repo_context = tracked_repo(
+                    {
+                        "README.md": "# Example\n",
+                        "docs/index.md": "# Docs\n",
+                    },
+                    symlinks={
+                        "docs/leak.md": outside_file,
+                    },
+                )
+                with repo_context as repo:
+                    result = run_step("Validate repository artifacts", repo)
+            except OSError as exc:
+                self.skipTest(f"Symlink creation is unavailable: {exc}")
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Tracked symlinks are not supported: docs/leak.md", result.stderr)
+        self.assertNotIn("missing.md", result.stderr)
 
     def test_markdown_link_validation_ignores_untracked_local_targets(self):
         with tracked_repo(
@@ -283,9 +312,10 @@ def run_step(step_name, cwd):
 
 
 class tracked_repo:
-    def __init__(self, files, untracked_files=None):
+    def __init__(self, files, untracked_files=None, symlinks=None):
         self.files = files
         self.untracked_files = untracked_files or {}
+        self.symlinks = symlinks or {}
         self._temporary_directory = tempfile.TemporaryDirectory()
         self.path = Path(self._temporary_directory.name)
 
@@ -295,6 +325,10 @@ class tracked_repo:
             file_path = self.path / relative_path
             file_path.parent.mkdir(parents=True, exist_ok=True)
             file_path.write_text(content, encoding="utf-8")
+        for relative_path, target in self.symlinks.items():
+            symlink_path = self.path / relative_path
+            symlink_path.parent.mkdir(parents=True, exist_ok=True)
+            symlink_path.symlink_to(target)
         subprocess.run(["git", "add", "."], cwd=self.path, check=True)
         for relative_path, content in self.untracked_files.items():
             file_path = self.path / relative_path

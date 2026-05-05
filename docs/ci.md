@@ -29,11 +29,13 @@ Put new documentation under `docs/` unless it is the root README.
 
 The repository artifact validator parses every tracked `*.json` file as valid JSON with the Python standard library. JSON Lines files are not included because they use the `*.jsonl` extension.
 
+Tracked symlinks are rejected before artifact parsing so validation never follows repository paths outside the checkout.
+
 ### YAML syntax
 
 Every tracked `*.yml` and `*.yaml` file must parse as valid YAML. This includes the CI workflow itself.
 
-This is syntax-only validation. It does not perform GitHub Actions schema validation, prove that marketplace actions exist, validate job semantics, or enforce repository policy beyond the literal workflow content.
+This is syntax-only validation through Ruby Psych's parser. It does not deserialize YAML objects, perform GitHub Actions schema validation, prove that marketplace actions exist, validate job semantics, or enforce repository policy beyond the literal workflow content.
 
 ### Internal Markdown links
 
@@ -62,11 +64,11 @@ python3 -m unittest discover -s tests -v
 
 mapfile -d '' files < <(git ls-files -z '*.yml' '*.yaml')
 if (( ${#files[@]} > 0 )); then
-  ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file) }' -- "${files[@]}"
+  ruby -e 'require "psych"; ARGV.each { |file| Psych.parse_stream(File.read(file)) }' -- "${files[@]}"
 fi
 ```
 
-The workflow reads all tracked paths once with null-delimited Git output, caches tracked file and directory sets, then filters that inventory for Markdown and JSON validation. Link checks reuse the cached inventory while performing path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting. Use the pull request CI result as the source of truth when local Ruby is unavailable.
+The workflow reads all tracked paths once with null-delimited Git output, rejects tracked symlinks, caches tracked file and directory sets, then filters that inventory for Markdown and JSON validation. Link checks reuse the cached inventory while performing path normalization, URL decoding, fragment/query stripping, repository-boundary checks, and missing-target reporting. Use the pull request CI result as the source of truth when local Ruby is unavailable.
 
 ## Adding documentation safely
 

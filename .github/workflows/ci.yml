@@ -54,6 +54,9 @@ jobs:
           }
           errors = []
 
+          def add_error(message):
+              errors.append(message)
+
           def tracked_paths(*patterns):
               output = subprocess.run(
                   ["git", "ls-files", "-z", *patterns],
@@ -68,7 +71,18 @@ jobs:
           JSON_FILES = []
 
           for tracked_path in tracked_paths():
-              tracked_file = (ROOT / tracked_path).resolve()
+              tracked_file = ROOT / tracked_path
+              if tracked_file.is_symlink():
+                  add_error(f"Tracked symlinks are not supported: {tracked_path}")
+                  continue
+
+              tracked_file = tracked_file.resolve()
+              try:
+                  tracked_file.relative_to(ROOT)
+              except ValueError:
+                  add_error(f"Tracked path escapes repository: {tracked_path}")
+                  continue
+
               TRACKED_FILES.add(tracked_file)
 
               for parent in tracked_file.parents:
@@ -82,9 +96,6 @@ jobs:
                   MARKDOWN_FILES.append(tracked_path)
               elif tracked_path.suffix == ".json":
                   JSON_FILES.append(tracked_path)
-
-          def add_error(message):
-              errors.append(message)
 
           def is_external(target):
               parsed = urlsplit(target)
@@ -160,4 +171,4 @@ jobs:
             exit 0
           fi
 
-          ruby -e 'require "yaml"; ARGV.each { |file| YAML.load_file(file) }' -- "${files[@]}"
+          ruby -e 'require "psych"; ARGV.each { |file| Psych.parse_stream(File.read(file)) }' -- "${files[@]}"
