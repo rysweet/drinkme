@@ -57,11 +57,42 @@ PROOF_BOUNDARY_TERMS = [
     "is not grading",
 ]
 
-OPEN_WORK_TERMS = [
-    "Launcher evidence checks are green, but review is still running.",
-    "Old archive/image recovery checks are still waiting on coverage.",
-    "Instructor/student readiness is green, but review is still running.",
+MERGED_SOURCE_PR_REQUIREMENTS = {
+    "RabbitHole PR #154": [
+        "RabbitHole PR #154",
+        "Merged.",
+        "Records that Alice put the Run panel into the Run window area.",
+    ],
+    "RabbitHole PR #155": [
+        "RabbitHole PR #155",
+        "Merged.",
+        "Records launcher steps and no-go messages",
+        "does not prove rendering",
+    ],
+    "RabbitHole PR #156": [
+        "RabbitHole PR #156",
+        "Merged.",
+        "Keeps old image recovery while safely rejecting unsupported old code.",
+    ],
+    "eatme PR #89": [
+        "eatme PR #89",
+        "Merged.",
+        "Improves instructor/student readiness reports",
+        "does not grade work or prove full lesson completion",
+    ],
+}
+
+STALE_STATUS_TERMS = [
+    "review is still running",
+    "waiting on coverage",
+    "under review",
+    "pending review",
+    "still pending",
+    "blocked on review",
+    "marked review-running",
 ]
+
+PLAIN_LANGUAGE_JARGON = ["gate", "lane", "affordance", "render target"]
 
 EVIDENCE_TERMS = [
     "desktop-run-execution-20260506182000",
@@ -80,6 +111,13 @@ EVIDENCE_TERMS = [
 
 def plain(text):
     return re.sub(r"\s+", " ", text.replace("**", " "))
+
+
+def without_markdown_link_targets(text):
+    def keep_label(match):
+        return match.group("label")
+
+    return re.sub(r"\[(?P<label>[^\]]+)\]\([^)]+\)", keep_label, text)
 
 
 def section(text, heading):
@@ -102,13 +140,37 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         missing = [term for term in expected if term not in text]
         self.assertEqual([], missing, f"{source} is missing expected terms")
 
+    def assert_merged_source_status_is_plain(self, text, source):
+        normalized = plain(text).lower()
+        missing = {}
+        for work_item, terms in MERGED_SOURCE_PR_REQUIREMENTS.items():
+            missing_terms = [term for term in terms if term.lower() not in normalized]
+            if missing_terms:
+                missing[work_item] = missing_terms
+
+        self.assertEqual({}, missing, f"{source} is missing merged source PR status")
+
+    def assert_no_stale_status_near_source_prs(self, text, source):
+        normalized = plain(text).lower()
+        for pr_name in MERGED_SOURCE_PR_REQUIREMENTS:
+            index = normalized.find(pr_name.lower())
+            self.assertNotEqual(-1, index, f"{source} is missing {pr_name}")
+            nearby = normalized[index : index + 350]
+            for term in STALE_STATUS_TERMS:
+                self.assertNotIn(
+                    term,
+                    nearby,
+                    f"{source} uses stale status near {pr_name}: {term}",
+                )
+
     def test_readme_plan_summary_links_to_controlling_docs_and_latest_evidence(self):
         plan_summary = section(self.docs["README"], "Plan summary")
 
         self.assert_contains_all(plan_summary, README_PLAN_LINKS, "README plan summary")
         self.assert_contains_all(plan_summary, REQUIRED_PR_LINKS, "README plan summary")
         self.assert_contains_all(plain(plan_summary), PROOF_BOUNDARY_TERMS, "README plan summary")
-        self.assert_contains_all(plan_summary, OPEN_WORK_TERMS, "README plan summary")
+        self.assert_merged_source_status_is_plain(plan_summary, "README plan summary")
+        self.assert_no_stale_status_near_source_prs(plan_summary, "README plan summary")
 
     def test_atlas_index_lists_0085_once_with_a_bounded_summary(self):
         text = self.docs["atlas index"]
@@ -125,19 +187,39 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_contains_all(text, EVIDENCE_TERMS, "atlas entry 0085")
         self.assert_contains_all(text, REQUIRED_PR_LINKS, "atlas entry 0085")
         self.assert_contains_all(plain(text), PROOF_BOUNDARY_TERMS, "atlas entry 0085")
+        self.assert_merged_source_status_is_plain(text, "atlas entry 0085")
+        self.assert_no_stale_status_near_source_prs(text, "atlas entry 0085")
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:
             with self.subTest(document=name):
                 self.assert_contains_all(plain(self.docs[name]), PROOF_BOUNDARY_TERMS, name)
 
-    def test_status_docs_list_current_open_work_plainly(self):
-        status_docs = ["README", "root plan", "current modernization plan", "restarted full-scope status"]
+    def test_status_docs_list_merged_source_prs_plainly(self):
+        status_docs = [
+            "README",
+            "root plan",
+            "current modernization plan",
+            "restarted full-scope status",
+            "eatme implementation plan",
+            "atlas entry 0085",
+        ]
 
         for name in status_docs:
             with self.subTest(document=name):
                 self.assert_contains_all(self.docs[name], REQUIRED_PR_LINKS, name)
-                self.assert_contains_all(self.docs[name], OPEN_WORK_TERMS, name)
+                self.assert_merged_source_status_is_plain(self.docs[name], name)
+                self.assert_no_stale_status_near_source_prs(self.docs[name], name)
+
+    def test_controlling_docs_avoid_unexplained_project_jargon(self):
+        for name, text in self.docs.items():
+            with self.subTest(document=name):
+                prose = without_markdown_link_targets(text)
+                for term in PLAIN_LANGUAGE_JARGON:
+                    self.assertIsNone(
+                        re.search(rf"\b{re.escape(term)}\b", prose, re.IGNORECASE),
+                        f"{name} uses project jargon without plain-language explanation: {term}",
+                    )
 
     def test_no_doc_uses_stale_repo_or_overclaim_language(self):
         forbidden_terms = [

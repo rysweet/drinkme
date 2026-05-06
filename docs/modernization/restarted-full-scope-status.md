@@ -24,10 +24,14 @@ Last updated: 2026-05-06
 
 | Work item | Plain status |
 | --- | --- |
-| [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154) | Records a narrow Run window attachment signal. It proves Alice put the Run panel into the Run window area. It does not prove pixels were drawn, does not prove the lesson finished, and is not grading. |
-| [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Launcher evidence checks are green, but review is still running. |
-| [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Old archive/image recovery checks are still waiting on coverage. |
-| [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Instructor/student readiness is green, but review is still running. |
+| [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154) | Merged. Records that Alice put the Run panel into the Run window area. |
+| [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Merged. Records launcher steps and no-go messages, but does not prove rendering. |
+| [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Merged. Keeps old image recovery while safely rejecting unsupported old code. |
+| [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor/student readiness reports, but does not grade work or prove full lesson completion. |
+
+The proof boundary remains a narrow Run window attachment signal: Alice put the
+Run panel into the Run window area. This evidence does not prove pixels were
+drawn, does not prove the lesson finished, and is not grading.
 
 ## Latest integrated evidence
 
@@ -41,7 +45,10 @@ Last updated: 2026-05-06
 - Public no-Sims builds now guard against nonfree library leakage, and includeSims builds explicitly overwrite the no-Sims `Alice3Library.xml` when authorized.
 - Eatme now has expanded instructor/student prompt assets, Alice.org-grounded lesson smoke scenarios, gadugi adapters, and split validation modules below the 500-line target.
 - Formal high-risk data-loss Gherkin scenarios are recorded in drinkme as specified behavior, with implementation status separated from completion claims.
-- RabbitHole PR #154 records only the Run window attachment signal described above; pixel drawing, lesson completion, and grading remain unproven.
+- The merged source PRs above keep the proof boundary narrow: RabbitHole PR
+  #154 records only the Run window attachment signal; RabbitHole PR #155
+  records launcher steps and no-go messages, but does not prove rendering; and
+  eatme PR #89 does not grade work or prove full lesson completion.
 
 ## No-premature-completion rule
 

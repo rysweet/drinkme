@@ -169,13 +169,14 @@ Covered areas include:
   - Formal save/load/export specification artifacts: `docs/artifacts/alice-audit/formal-spec/evaluation.md`, Gherkin scenarios, TLA+ recovery model/config, and usage/reference notes under `docs/artifacts/alice-audit/formal-spec/`.
 - This recovery wave is closed: the source/support-tool workstreams that passed review were integrated, and the artifact-only tracks were preserved in drinkme without merging inappropriate runtime code into Alice.
 
-## Still open
+## Merged source PR status
 
 | Work item | Plain status |
 | --- | --- |
-| [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Launcher evidence checks are green, but review is still running. |
-| [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Old archive/image recovery checks are still waiting on coverage. |
-| [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Instructor/student readiness is green, but review is still running. |
+| [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154) | Merged. Records that Alice put the Run panel into the Run window area. |
+| [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Merged. Records launcher steps and no-go messages, but does not prove rendering. |
+| [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Merged. Keeps old image recovery while safely rejecting unsupported old code. |
+| [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor/student readiness reports, but does not grade work or prove full lesson completion. |
 
 ## Known limits
 
@@ -219,11 +220,13 @@ Covered areas include:
     - open/load/save journey;
     - failure/recovery journey;
     - package/install smoke path.
-5. Keep desktop Run completion claims narrow until new proof exists:
-   - finish review on PR #155 after green launcher evidence checks;
-   - add coverage for PR #156 old archive/image recovery checks;
-   - keep eatme PR #89 marked review-running after green instructor/student
-     readiness checks;
+5. Keep desktop Run completion claims narrow after the source PRs merged:
+   - use PR #155 only as launcher-step and no-go-message evidence, not proof
+     that rendering happened;
+   - use PR #156 as old image recovery support plus safe rejection of
+     unsupported old code;
+   - use eatme PR #89 as instructor/student readiness reporting evidence, not
+     grading or proof of full lesson completion;
    - add separate proof before claiming pixel drawing, lesson completion, or
      grading.
 6. Use the recovered code-atlas bug-hunt artifacts on the next high-value seam:

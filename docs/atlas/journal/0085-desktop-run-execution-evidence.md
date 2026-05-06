@@ -3,10 +3,17 @@
 ## What changed
 
 - [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154)
-  is now the current source of truth for desktop Run evidence. It records a
-  narrow Run window attachment signal. It proves Alice put the Run panel into
-  the Run window area. It does not prove pixels were drawn, does not prove the
-  lesson finished, and is not grading.
+  merged. It records that Alice put the Run panel into the Run window area. In
+  plain terms, this is a narrow Run window attachment signal.
+- [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155)
+  merged. It records launcher steps and no-go messages, but does not prove
+  rendering.
+- [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156)
+  merged. It keeps old image recovery while safely rejecting unsupported old
+  code.
+- [eatme PR #89](https://github.com/rysweet/eatme/pull/89) merged. It improves
+  instructor/student readiness reports, but does not grade work or prove full
+  lesson completion.
 - [RabbitHole PR #149](https://github.com/rysweet/RabbitHole/pull/149) adds an
   older opt-in desktop Run listener evidence hook.
 - [eatme PR #84](https://github.com/rysweet/eatme/pull/84) consumes that
@@ -20,7 +27,7 @@ This evidence updates the top-level [drinkme status](../../../README.md), the
 [root investigation plan](../../plan.md), the
 [current modernization plan](../../modernization/current-state-and-next-steps.md),
 and the [eatme implementation plan](../../eatme/implementation-plan.md). Those
-plans now carry the same RabbitHole-only proof boundary and next work.
+plans now carry the same merged-source status and proof boundary.
 
 ## Evidence recorded
 
@@ -47,24 +54,27 @@ establish original Alice equivalence for object placement or the Run-frame path.
 ## What this proves
 
 RabbitHole PR #154 proves only that Alice put the Run panel into the Run window
-area.
+area. RabbitHole PR #155 records launcher steps and no-go messages, but those
+records are not proof that rendering happened.
 
 ## What this does not prove
 
 - Ctrl+F5 still does not open the Run window in the current Xvfb run.
 - This does not prove original Alice equivalence.
 - This does not prove pixels were drawn.
-- This does not prove the lesson finished.
+- This does not prove lesson completion. It does not prove the lesson finished.
 - This does not prove desktop save-menu completion.
 - This is not grading.
 
 ## Next useful work
 
-- Finish review on [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155)
-  after green launcher evidence checks.
-- Add coverage for [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156)
-  old archive/image recovery checks.
-- Keep [eatme PR #89](https://github.com/rysweet/eatme/pull/89)
-  marked review-running after green instructor/student readiness checks.
+- Use the merged [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155)
+  launcher and no-go records as trace evidence, not rendering proof.
+- Use the merged [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156)
+  old image recovery checks as recovery evidence, not a broad compatibility
+  claim.
+- Use the merged [eatme PR #89](https://github.com/rysweet/eatme/pull/89)
+  readiness reports as instructor/student reporting evidence, not grading or
+  full lesson completion proof.
 - Add separate evidence before claiming pixel drawing, lesson completion, or
   grading.
