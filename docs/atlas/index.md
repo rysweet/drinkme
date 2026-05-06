@@ -46,6 +46,7 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0070 - Object-placement progress evidence](journal/0070-object-placement-progress-evidence.md)
 - [0069 - Object-placement hook implementation](journal/0069-object-placement-hook-implementation.md)
 - [0068 - Archive guards and object-placement hook contract](journal/0068-archive-guards-and-object-placement-hook.md)
 - [0067 - Xvfb launcher and object-placement contract](journal/0067-xvfb-launcher-and-affordance-contract.md)
