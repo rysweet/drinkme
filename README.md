@@ -41,6 +41,54 @@ flowchart LR
 
 The project is making real progress, but it is not complete.
 
+The counts below are intentionally strict. An item is **done** only when the
+current repositories have executable evidence and no known "still needs work"
+for that item. **Partial** means useful proof exists, but the plan still has a
+named gap. **Not proven** means there is no accepted proof yet.
+
+| Plan slice | Counted items | Done | Partial | Not proven | What this means |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Top-level plan goals in this section | 7 | 0 | 7 | 0 | Every major goal has useful evidence, but every one still has an open gap. |
+| RabbitHole code areas below | 9 | 0 | 9 | 0 | Each area has tests or guarded changes; none is broad enough to call complete. |
+| eatme user-task areas below | 7 | 1 | 6 | 0 | Startup comparison is the only complete user-task slice; lesson automation remains partial. |
+| First-lesson action chain | 15 | 8 | 2 | 5 | RabbitHole can prove several backend steps and one Run-frame desktop result; desktop editing, rendering, save-menu completion, grading, and full lesson completion are still open. |
+
+```mermaid
+xychart-beta
+  title "Strict completion counts"
+  x-axis ["Top goals done", "RabbitHole done", "eatme done", "First-lesson done", "First-lesson partial", "First-lesson not proven"]
+  y-axis "Items" 0 --> 15
+  bar [0, 0, 1, 8, 2, 5]
+```
+
+### First-lesson action chain
+
+This is the clearest view of how much of the original instructor/student lesson
+vision is executable today.
+
+| # | First-lesson step | Original Alice | RabbitHole | Status |
+| ---: | --- | --- | --- | --- |
+| 1 | Package and launch Alice | Proven | Proven | Done |
+| 2 | Detect and focus the Alice window | Proven | Proven | Done |
+| 3 | Dispatch desktop save shortcut | Proven as input only | Proven as input only | Partial |
+| 4 | Place a Bunny in the scene | No hook; blocked | Backend proof hook passes | Done for RabbitHole comparison, not original Alice |
+| 5 | Edit the fixed first-lesson procedure | No hook; blocked | Backend proof hook passes | Done for RabbitHole comparison, not original Alice |
+| 6 | Run the edited procedure through the backend proof hook | No hook; blocked | Backend proof hook passes | Done for RabbitHole comparison, not desktop Run |
+| 7 | Save the edited project through the backend proof hook | No hook; blocked | Backend proof hook passes | Done for RabbitHole comparison, not desktop save-menu use |
+| 8 | Dispatch desktop Run shortcut (`Ctrl+F5`) | Not reached safely | Proven as input only | Partial |
+| 9 | Observe a Run window after `Ctrl+F5` | Not proven | Not proven | Not proven |
+| 10 | Open the Run frame through the toolbar fallback | Not proven | Proven with geometry check, Alice-side `run-window-created.json`, and screenshot | Done for RabbitHole Run-frame creation |
+| 11 | Prove desktop Run VM statement execution | Not proven | No merged proof | Not proven |
+| 12 | Prove visible world rendering | Not proven | Not proven | Not proven |
+| 13 | Prove desktop save-menu completion | Not proven | Not proven | Not proven |
+| 14 | Grade or assess a learner world | Not proven | Not proven | Not proven |
+| 15 | Complete an end-to-end teacher/student lesson | Not proven | Not proven | Not proven |
+
+Short version: **8 of 15 first-lesson steps have accepted proof**, **2 are
+input-only partial proof**, and **5 remain unproven**. That is enough to compare
+meaningful RabbitHole progress against original Alice, but it is not full lesson
+automation.
+
 | Goal from the plan | What exists now | Plain-language verdict |
 | --- | --- | --- |
 | Preserve Alice behavior before refactoring | Many tests have been added around saving, loading, exporting, generated Java code, old project migration, Tweedle/player file reads, and recovery paths. [PR #140](https://github.com/rysweet/RabbitHole/pull/140) adds an old-archive boundary for unresolved parent types. | There is a useful safety net, but total test coverage is still far below the long-term target. |
@@ -51,16 +99,8 @@ The project is making real progress, but it is not complete.
 | Build eatme into a comparison test runner | eatme now has target setup, comparison reports, scorecards, path checks, lesson-session checks, readiness checks, a first-lesson readiness sequence, Alice window activation, a machine-readable place-object no-go probe, proof hooks for object placement, procedure edit, bounded run-world, and project save, Ctrl+S desktop input dispatch, Ctrl+F5 Run shortcut dispatch, stale display cleanup, explicit test-only license preference seeding, and a Run-window proof path. [RabbitHole PR #148](https://github.com/rysweet/RabbitHole/pull/148) writes an opt-in `run-window-created.json` file when Alice prepares the desktop Run frame. [eatme PR #83](https://github.com/rysweet/eatme/pull/83) reads that file, checks the fixed 1000x740 Alice launch geometry before clicking the toolbar Run button, and captures a screenshot. | eatme can compare startup behavior, check first-lesson evidence, find and focus the Alice main window under bare Xvfb, dispatch real desktop save and Run shortcuts as input evidence, record the license agreement as a blocker unless an explicit test switch seeds the isolated preferences, clean stale X display files left by crashed runs, ask RabbitHole to prove backend first-lesson actions, and now prove that a geometry-checked toolbar click opens the RabbitHole Run frame. Ctrl+F5 still does not open the Run window in the current Xvfb run. eatme still does not prove desktop world execution, desktop save-menu completion, grading, or a full teacher/student lesson. |
 | Turn Alice.org lessons into tests | eatme has 31 editable scenario files, 32 generated adapter files, 11 teacher role files, and 13 student role files. | The lesson library is broad. The actual automated execution is still shallow. |
 
-The chart is a rough guide. It is not a replacement for coverage reports, CI
-logs, or the comparison reports produced by eatme.
-
-```mermaid
-xychart-beta
-  title "How well each area is covered"
-  x-axis ["Behavior tests", "Large classes", "Classroom use", "Export", "Project files", "eatme tests", "Lesson files"]
-  y-axis "Coverage level" 0 --> 10
-  bar [6, 5, 5, 8, 6, 9, 5]
-```
+The ledger is a navigation aid. It is not a replacement for coverage reports,
+CI logs, or the comparison reports produced by eatme.
 
 ## RabbitHole code areas
 
