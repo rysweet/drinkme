@@ -46,4 +46,5 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0066 - JavaFX, archive, and first-lesson action boundaries](journal/0066-javafx-archive-ui-action-boundaries.md)
 - [0065 - RabbitHole comparison harness wave](journal/0065-rabbithole-compare-harness-wave.md)
