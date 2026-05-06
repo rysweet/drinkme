@@ -56,7 +56,8 @@ hooks remain blocked, not silently successful.
 - eatme can actually place an object without the Alice-side hook.
 - eatme can edit code, run a world, save a project, grade work, or complete a
   full teacher/student lesson.
-- RabbitHole supports full method/constructor decoding or complex values.
+- RabbitHole supports full method/constructor decoding, complex values, or
+  unresolved parent types.
 
 ## Next evidence targets
 
