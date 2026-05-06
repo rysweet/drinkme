@@ -28,10 +28,18 @@ Last updated: 2026-05-06
 | [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Merged. Records launcher steps and no-go messages, but does not prove rendering. |
 | [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Merged. Keeps old image recovery while safely rejecting unsupported old code. |
 | [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
+| [eatme PR #92](https://github.com/rysweet/eatme/pull/92) | Merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
 drawn, does not prove the lesson finished, and is not grading.
+
+eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
+readiness can be marked ready: launch evidence, Run-window evidence, desktop
+execution evidence, screenshot/log/window artifacts, and
+`ui-action-contract.json`. This does not prove full Alice UI automation,
+creative assessment, learner-world grading, visible rendering correctness, or
+first-lesson completion.
 
 ## Latest integrated evidence
 
@@ -49,6 +57,9 @@ drawn, does not prove the lesson finished, and is not grading.
   #154 records only the Run window attachment signal; RabbitHole PR #155
   records launcher steps and no-go messages, but does not prove rendering; and
   eatme PR #89 does not grade work or prove full lesson completion.
+- The merged eatme PR #92 records the evidence categories RabbitHole must supply
+  before first-lesson readiness can be marked ready. It documents the
+  requirement; it is not the runtime proof.
 
 ## No-premature-completion rule
 

@@ -20,6 +20,9 @@
   older evidence after the previous Run-window check.
 - [drinkme PR #35](https://github.com/rysweet/drinkme/pull/35) added the strict
   Done / Partial / Not proven ledger that this entry updates.
+- [eatme PR #92](https://github.com/rysweet/eatme/pull/92) later merged. It
+  documents the RabbitHole evidence needed before first-lesson readiness can be
+  marked ready. It does not prove full Alice UI automation.
 
 ## Traceability
 
@@ -76,5 +79,8 @@ records are not proof that rendering happened.
 - Use the merged [eatme PR #89](https://github.com/rysweet/eatme/pull/89)
   readiness reports as instructor/student reporting evidence, not grading or
   full lesson completion proof.
+- Use the merged [eatme PR #92](https://github.com/rysweet/eatme/pull/92)
+  readiness wording as documentation of required RabbitHole evidence, not runtime
+  proof.
 - Add separate evidence before claiming pixel drawing, lesson completion, or
   grading.

@@ -28,6 +28,11 @@ network. Do not open issues or pull requests against
   records a narrow Run window attachment signal. It proves Alice put the Run
   panel into the Run window area. It does not prove pixels were drawn, does not
   prove the lesson finished, and is not grading.
+- [eatme PR #92](https://github.com/rysweet/eatme/pull/92) merged at
+  `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. eatme now documents the
+  RabbitHole evidence needed before first-lesson readiness can be marked ready:
+  launch evidence, Run-window evidence, desktop execution evidence,
+  screenshot/log/window artifacts, and `ui-action-contract.json`.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -102,6 +107,7 @@ Merged source PR status:
 | [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Merged. Records launcher steps and no-go messages, but does not prove rendering. |
 | [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Merged. Keeps old image recovery while safely rejecting unsupported old code. |
 | [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
+| [eatme PR #92](https://github.com/rysweet/eatme/pull/92) | Merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready; does not prove full Alice UI automation. |
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
@@ -120,6 +126,10 @@ Merged source PR status:
     evidence exists: it proves only that Alice put the Run panel into the Run
     window area, not that pixels were drawn, the lesson finished, or grading
     happened.
+11. Treat eatme PR #92 as documentation of the RabbitHole evidence needed before
+    first-lesson readiness can be marked ready, not as proof of full Alice UI
+    automation, creative assessment, learner-world grading, visible rendering
+    correctness, or first-lesson completion.
 
 ## Success criteria
 

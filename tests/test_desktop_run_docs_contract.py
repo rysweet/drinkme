@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 README = ROOT / "README.md"
 ATLAS_INDEX = ROOT / "docs/atlas/index.md"
 ENTRY_0085 = ROOT / "docs/atlas/journal/0085-desktop-run-execution-evidence.md"
+ENTRY_0086 = ROOT / "docs/atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -20,6 +21,7 @@ CONTROL_DOCS = {
     "restarted full-scope status": RESTARTED_STATUS,
     "eatme implementation plan": EATME_PLAN,
     "atlas entry 0085": ENTRY_0085,
+    "atlas entry 0086": ENTRY_0086,
 }
 
 DOCS = {
@@ -33,6 +35,7 @@ README_PLAN_LINKS = [
     "[restarted full-scope status](docs/modernization/restarted-full-scope-status.md)",
     "[eatme implementation plan](docs/eatme/implementation-plan.md)",
     "[atlas journal entry 0085](docs/atlas/journal/0085-desktop-run-execution-evidence.md)",
+    "[atlas journal entry 0086](docs/atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -47,6 +50,7 @@ REQUIRED_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/155",
     "https://github.com/rysweet/RabbitHole/pull/156",
     "https://github.com/rysweet/eatme/pull/89",
+    "https://github.com/rysweet/eatme/pull/92",
 ]
 
 PROOF_BOUNDARY_TERMS = [
@@ -79,6 +83,12 @@ MERGED_SOURCE_PR_REQUIREMENTS = {
         "Merged.",
         "Improves instructor and student readiness reports",
         "does not grade work or prove full lesson completion",
+    ],
+    "eatme PR #92": [
+        "eatme PR #92",
+        "Merged",
+        "Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready",
+        "does not prove full Alice UI automation",
     ],
 }
 
@@ -199,13 +209,16 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_no_stale_status_near_source_prs(plan_summary, "README plan summary")
         self.assert_no_stale_readme_table_status(self.docs["README"])
 
-    def test_atlas_index_lists_0085_once_with_a_bounded_summary(self):
+    def test_atlas_index_lists_recent_entries_once_with_bounded_summaries(self):
         text = self.docs["atlas index"]
         entry_link = "journal/0085-desktop-run-execution-evidence.md"
+        entry_0086_link = "journal/0086-eatme-pr92-rabbithole-evidence-readiness.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
         self.assertIn("limits", text)
+        self.assertEqual(1, text.count(entry_0086_link))
+        self.assertIn("eatme PR #92 documentation update", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -216,6 +229,15 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_contains_all(plain(text), PROOF_BOUNDARY_TERMS, "atlas entry 0085")
         self.assert_merged_source_status_is_plain(text, "atlas entry 0085")
         self.assert_no_stale_status_near_source_prs(text, "atlas entry 0085")
+
+    def test_0086_traceability_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0086"]
+
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0086")
+        self.assert_contains_all(text, ["eatme PR #92", "cfe1f9e364d0015a3f97e237a9de5af670ae3bd6"], "atlas entry 0086")
+        self.assert_contains_all(plain(text), PROOF_BOUNDARY_TERMS, "atlas entry 0086")
+        self.assert_merged_source_status_is_plain(text, "atlas entry 0086")
+        self.assert_no_stale_status_near_source_prs(text, "atlas entry 0086")
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:
