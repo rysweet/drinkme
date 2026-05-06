@@ -46,6 +46,7 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0078 - Desktop save shortcut dispatch](journal/0078-desktop-save-shortcut-dispatch.md)
 - [0077 - Project-save proof hook](journal/0077-project-save-proof-hook.md)
 - [0076 - Run-world proof hook](journal/0076-run-world-proof-hook.md)
 - [0075 - Run-world contract boundary](journal/0075-run-world-contract-boundary.md)
