@@ -17,4 +17,4 @@ The link check intentionally skips external URLs, URL schemes such as `https` an
 
 ## Local usage
 
-The workflow uses only tools available on `ubuntu-latest`: Bash, Git, Python 3, and Ruby. Run the documentation contract tests locally with `python3 -m unittest discover -s tests -v`. Use the pull request check as the source of truth when local tool versions differ.
+The workflow uses only tools available on `ubuntu-latest`: Bash, Git, Python 3, and Ruby. Run the documentation contract tests locally with `python3 -m unittest discover -s tests -v`, or through pre-commit with `pre-commit run --all-files`. Use the pull request check as the source of truth when local tool versions differ.
