@@ -22,13 +22,12 @@ network. Do not open issues or pull requests against
 - Alice 3 is a Java 21/Maven desktop IDE with a NetBeans plugin.
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
-- The RabbitHole modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test` and a no-Sims NetBeans package gate.
+- The RabbitHole modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test` and a no-Sims NetBeans package check.
 - Current test coverage is still small relative to the codebase, but the characterization suite now covers key IO, recovery, and NetBeans generation seams after the first sixty-two modernization slices.
-- Desktop Run execution is partly proven for RabbitHole only: eatme can use a
-  geometry-checked toolbar fallback, read RabbitHole's Run-frame and VM listener
-  artifacts, and show that the desktop Run path reached VM statement execution.
-  This does not yet prove original Alice equivalence, visible rendering, desktop
-  save-menu completion, grading, or full lesson automation.
+- [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154)
+  records a narrow Run window attachment signal. It proves Alice put the Run
+  panel into the Run window area. It does not prove pixels were drawn, does not
+  prove the lesson finished, and is not grading.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -90,10 +89,18 @@ network. Do not open issues or pull requests against
 - Fifty-eighth implementation slice made JSON/player archives report future `version.txt` values through `ProjectReader.checkForFutureVersion()`, matching the XML reader warning path used by file loaders.
 - Fifty-ninth implementation slice made JSON/player export resource entries duplicate-safe and path-safe: duplicate resource filenames use `resources2/...`, and slash/backslash path-like filenames are flattened before zip entry creation while resource bytes still round-trip.
 - Sixtieth implementation slice characterized JSON/player export and readback for an AST-referenced `AudioResource`, using synthetic bytes and preserving the current resource-only player reader boundary.
-- Sixty-first implementation wave used six isolated workflow-aware implementation branches plus fifteen scout/review lanes. It fixed JSON/player resource read identity isolation, hardened corrupt-manifest dispatch, characterized model/generated type references in player archives, added JSON `.a3c` resource-only type reads, strengthened the NetBeans template compiler surrogate, and extracted the project-load success decision seam.
-- Sixty-second implementation wave used eight workflow-aware implementation lanes plus guardrails. It fixed NetBeans `Alice3Library` classpath shape, extracted project-load failure dispatch planning, added explicit manifest decode errors, characterized JSON `.a3c` version behavior, isolated XML resource identity on read, characterized `JsonModelIo` export format selection, characterized URI project-loader path classification, and hardened default-backup copy behavior.
+- Sixty-first implementation wave used six isolated workflow-aware implementation branches plus fifteen scout/review tracks. It fixed JSON/player resource read identity isolation, hardened corrupt-manifest dispatch, characterized model/generated type references in player archives, added JSON `.a3c` resource-only type reads, strengthened the NetBeans template compiler surrogate, and extracted the project-load success decision seam.
+- Sixty-second implementation wave used eight workflow-aware implementation tracks plus guardrails. It fixed NetBeans `Alice3Library` classpath shape, extracted project-load failure dispatch planning, added explicit manifest decode errors, characterized JSON `.a3c` version behavior, isolated XML resource identity on read, characterized `JsonModelIo` export format selection, characterized URI project-loader path classification, and hardened default-backup copy behavior.
 - Added a dedicated submodule working guide for `tweedle-lang`, worktree initialization, `core/tweedle` ANTLR generation, and the common missing-submodule parser failure mode.
-- Going forward, every coding lane and subagent must explicitly follow `DEFAULT_WORKFLOW`. Parallel implementation should use isolated worktrees/branches for independent modules; never parallel-edit the same working tree.
+- Going forward, every coding track and subagent must explicitly follow `DEFAULT_WORKFLOW`. Parallel implementation should use isolated worktrees/branches for independent modules; never parallel-edit the same working tree.
+
+Current open work:
+
+| Work item | Plain status |
+| --- | --- |
+| [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Launcher evidence checks are green, but review is still running. |
+| [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Old archive/image recovery checks are still waiting on coverage. |
+| [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Instructor/student readiness is green, but review is still running. |
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
@@ -107,11 +114,11 @@ network. Do not open issues or pull requests against
 6. Build characterization tests in phases, starting with pure logic and project formats.
 7. Keep CI test execution active in the RabbitHole modernization repo.
 8. Refactor incrementally behind tests; defer any rewrite decision until behavior is documented and protected.
-9. Use crusty-old-engineer as a standing proxy review lane and qa-team as a standing outside-in testing lane, not as occasional afterthoughts.
-10. For the desktop Run path, replace coordinate toolbar clicks with a stable UI
-    or accessibility affordance, capture visible rendering after VM execution,
-    prove desktop save-menu completion, and define how original Alice can be
-    fairly proven without RabbitHole-only hooks.
+9. Use crusty-old-engineer as a standing proxy review track and qa-team as a standing outside-in testing track, not as occasional afterthoughts.
+10. For the desktop Run path, keep the PR #154 boundary narrow until separate
+    evidence exists: it proves only that Alice put the Run panel into the Run
+    window area, not that pixels were drawn, the lesson finished, or grading
+    happened.
 
 ## Success criteria
 

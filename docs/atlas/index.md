@@ -47,7 +47,7 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 ## Recent journal entries
 
 - [0085 - Desktop Run execution evidence](journal/0085-desktop-run-execution-evidence.md)
-  records the RabbitHole VM statement-execution proof and its remaining limits.
+  records the RabbitHole PR #154 Run window attachment signal and its limits.
 - [0084 - Run-window toolbar proof](journal/0084-run-window-toolbar-proof.md)
 - [0083 - Run shortcut focus delivery](journal/0083-run-shortcut-focus-delivery.md)
 - [0082 - License-preseeded Run-window check](journal/0082-license-preseeded-run-window-check.md)

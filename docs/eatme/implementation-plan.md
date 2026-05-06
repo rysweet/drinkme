@@ -18,10 +18,13 @@ Second-pass review tightened the plan:
 - Gadugi initially treats `eatme` as a CLI/system harness and asserts against `manifest.json`.
 - Pass/fail initially comes from deterministic evidence, not agentic judgment.
 - Alice.org curriculum scenarios begin after the launch smoke.
-- Desktop Run execution evidence is currently RabbitHole-only: the harness can
-  verify a geometry-checked toolbar Run-frame proof and a VM listener artifact,
-  but this does not yet prove original Alice equivalence, visible rendering,
-  desktop save-menu completion, grading, or full lesson automation.
+- [eatme PR #89](https://github.com/rysweet/eatme/pull/89)
+  instructor/student readiness is green, but review is still running.
+- eatme depends on the narrower
+  [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154)
+  boundary. PR #154 records a narrow Run window attachment signal. It proves
+  Alice put the Run panel into the Run window area. It does not prove pixels
+  were drawn, does not prove the lesson finished, and is not grading.
 
 ## Milestone 0
 
@@ -69,14 +72,15 @@ Export/player, collision/proximity games, and broader creative scenarios come la
 
 ## Desktop Run proof path
 
-The next desktop Run feature should preserve the current strict boundary:
+The next desktop Run work should preserve the current strict boundary:
 
-1. Replace the coordinate toolbar click with a stable UI or accessibility
-   affordance.
-2. Capture visible rendering evidence after VM statement execution.
-3. Prove desktop save-menu completion before counting the save step as complete.
-4. Define how original Alice can be fairly proven when RabbitHole-only hooks
-   cannot exist.
+1. Keep PR #154 limited to the Run window attachment signal.
+2. Treat [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155)
+   as green on launcher evidence checks while review is still running.
+3. Treat [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156)
+   old archive/image recovery checks as still waiting on coverage.
+4. Add separate proof before eatme claims pixels were drawn, the lesson
+   finished, or grading happened.
 
 ## Governance boundaries
 
