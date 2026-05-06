@@ -46,6 +46,7 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0080 - Run-window observation](journal/0080-run-window-observation.md)
 - [0079 - Desktop Run shortcut dispatch](journal/0079-desktop-run-shortcut-dispatch.md)
 - [0078 - Desktop save shortcut dispatch](journal/0078-desktop-save-shortcut-dispatch.md)
 - [0077 - Project-save proof hook](journal/0077-project-save-proof-hook.md)
