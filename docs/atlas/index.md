@@ -46,6 +46,7 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0083 - Run shortcut focus delivery](journal/0083-run-shortcut-focus-delivery.md)
 - [0082 - License-preseeded Run-window check](journal/0082-license-preseeded-run-window-check.md)
 - [0081 - License modal Run-window blocker](journal/0081-license-modal-run-window-blocker.md)
 - [0080 - Run-window observation](journal/0080-run-window-observation.md)
