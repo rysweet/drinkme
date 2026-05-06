@@ -2,11 +2,17 @@
 
 ## Repository state
 
-- Source work is in `rysweet/alice3-modernization` on branch `develop`.
+- Source work is in `rysweet/RabbitHole`.
 - Private investigation artifacts are in `rysweet/drinkme` on branch `main`.
 - Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
 - The active source repo has guardrails in `AGENTS.md`.
 - Current restarted campaign status is tracked in `docs/modernization/restarted-full-scope-status.md`.
+- Latest desktop Run evidence is tracked in
+  `docs/atlas/journal/0085-desktop-run-execution-evidence.md`: RabbitHole now
+  proves VM statement execution after a geometry-checked toolbar Run-frame
+  proof, while original Alice equivalence, visible rendering, desktop save-menu
+  completion, grading, and full lesson automation remain outside the proven
+  boundary.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
@@ -183,6 +189,10 @@ Covered areas include:
 - XML project reads now avoid static resource instance reuse across archive reads while preserving AST resource-expression binding to decoded resources.
 - Default-backup copy now has direct seam coverage for populated, missing, and empty `.defaultbak` directories.
 - The generated-source export tests were split so both focused NetBeans export test classes are under 500 lines.
+- The desktop Run VM listener evidence is RabbitHole-only. The current proof
+  does not establish original Alice equivalence, visible rendering correctness,
+  world completion, desktop save-menu completion, grading, or full
+  teacher/student lesson completion.
 
 ## Immediate next steps
 
@@ -197,16 +207,23 @@ Covered areas include:
    - run an actual Ant/NetBeans project build once the required tool/runtime harness is stable;
    - compile/run the exported launcher against real JavaFX where possible.
 4. Add higher-level user journey tests where feasible:
-   - export project journey;
-   - open/load/save journey;
-   - failure/recovery journey;
-   - package/install smoke path.
-5. Use the recovered code-atlas bug-hunt artifacts on the next high-value seam:
-   - NetBeans export path;
-   - project IO/load-save path;
-   - resource/model path.
-6. Keep journaling every slice in `drinkme`.
-7. Do not start broad refactors until the affected behavior has characterization coverage.
+    - export project journey;
+    - open/load/save journey;
+    - failure/recovery journey;
+    - package/install smoke path.
+5. Build the next desktop Run proof seams before expanding completion claims:
+   - replace the coordinate toolbar click with a stable UI or accessibility
+     affordance;
+   - capture visible rendering evidence after VM statement execution;
+   - prove desktop save-menu completion;
+   - define an original-Alice proof strategy for behavior that cannot use
+     RabbitHole-only hooks.
+6. Use the recovered code-atlas bug-hunt artifacts on the next high-value seam:
+    - NetBeans export path;
+    - project IO/load-save path;
+    - resource/model path.
+7. Keep journaling every slice in `drinkme`.
+8. Do not start broad refactors until the affected behavior has characterization coverage.
 
 ## Strategic direction
 

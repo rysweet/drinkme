@@ -14,11 +14,13 @@
 This evidence updates the top-level [drinkme status](../../../README.md), the
 [root investigation plan](../../plan.md), the
 [current modernization plan](../../modernization/current-state-and-next-steps.md),
-and the [eatme implementation plan](../../eatme/implementation-plan.md).
+and the [eatme implementation plan](../../eatme/implementation-plan.md). Those
+plans now carry the same RabbitHole-only proof boundary and next feature seams.
 
 ## Evidence recorded
 
-The real run `desktop-run-execution-20260506182000` passed with
+The real run `desktop-run-execution-20260506182000` passed its evidence checks,
+while overall readiness remained
 `readiness_status=blocked_until_ui_automation`.
 
 For RabbitHole, the run recorded:
@@ -34,9 +36,8 @@ For RabbitHole, the run recorded:
 - `desktop-run-runtime.log`, `run-window-created.json`,
   `ui-action-contract.json`, and the Run-frame screenshot were non-empty.
 
-For original Alice, the same run still did not prove object placement or the
-Run-frame path because original Alice does not expose the RabbitHole proof
-hooks.
+Original Alice remains uninstrumented for this proof path, so the run does not
+establish original Alice equivalence for object placement or the Run-frame path.
 
 ## What this proves
 
@@ -46,16 +47,19 @@ execution after the toolbar Run-frame proof.
 ## What this does not prove
 
 - Ctrl+F5 still does not open the Run window in the current Xvfb run.
+- This does not prove original Alice equivalence.
 - This does not prove visible rendering correctness.
 - This does not prove world completion.
 - This does not prove desktop save-menu completion.
-- This does not prove grading, creative assessment, or full teacher/student
-  lesson completion.
+- This does not prove grading, creative assessment, or full lesson automation.
 
 ## Next useful work
 
-- Replace the coordinate-based toolbar click with a stronger UI affordance or
-  accessibility path.
-- Add visible rendering evidence before claiming world playback.
+- Replace the coordinate-based toolbar click with a stable UI or accessibility
+  affordance.
+- Add visible rendering evidence after VM statement execution before claiming
+  world playback.
 - Add desktop save-menu completion evidence before counting the save step as
   fully done.
+- Define the acceptable proof strategy for original Alice where RabbitHole-only
+  hooks cannot exist.

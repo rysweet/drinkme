@@ -36,6 +36,10 @@ jobs:
             exit 1
           fi
 
+      - name: Run documentation contract tests
+        shell: bash
+        run: python3 -m unittest discover -s tests -v
+
       - name: Validate JSON syntax
         shell: bash
         run: |
@@ -104,11 +108,28 @@ jobs:
               check=True,
               stdout=subprocess.PIPE,
           ).stdout
-          tracked = [Path(raw.decode()) for raw in tracked_output.split(b"\0") if raw]
-          tracked_files = {(ROOT / path).resolve() for path in tracked}
+          tracked = tuple(Path(raw.decode()) for raw in tracked_output.split(b"\0") if raw)
+          tracked_files = set()
           tracked_dirs = {ROOT}
-          for path in tracked_files:
-              tracked_dirs.update(path.parents)
+          markdown_files = []
+
+          for path in tracked:
+              absolute = (ROOT / path).resolve()
+              tracked_files.add(absolute)
+              if path.suffix == ".md":
+                  markdown_files.append(path)
+
+              try:
+                  absolute.relative_to(ROOT)
+              except ValueError:
+                  continue
+
+              parent = absolute.parent
+              while True:
+                  tracked_dirs.add(parent)
+                  if parent == ROOT:
+                      break
+                  parent = parent.parent
 
           def check_target(source, raw_target):
               target = raw_target.strip("<>")
@@ -136,7 +157,7 @@ jobs:
                   return
               errors.append(f"{source}: missing target: {raw_target}")
 
-          for markdown_file in [path for path in tracked if path.suffix == ".md"]:
+          for markdown_file in markdown_files:
               text = markdown_file.read_text(encoding="utf-8")
               for match in LINK_PATTERN.finditer(text):
                   check_target(markdown_file, match.group(1) or match.group(2))
