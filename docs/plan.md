@@ -6,22 +6,29 @@ Alice 3 is a valuable educational programming environment with strong public tea
 
 ## Repository model
 
-- Standalone modernization repo: `https://github.com/rysweet/alice3-modernization`
+- Modernized Alice implementation repo: `https://github.com/rysweet/RabbitHole`
 - Public source fork/reference: `https://github.com/rysweet/alice3`
 - Upstream source: `https://github.com/TheAliceProject/alice3`
 - Private artifact repo: `https://github.com/rysweet/drinkme`
 
 `drinkme` stores only investigation outputs: plans, notes, maps, diagrams, journals, and generated documentation. It must not vendor the Alice source tree.
 
-The active implementation repo is `rysweet/alice3-modernization`, not the upstream fork network. Do not open issues or pull requests against `TheAliceProject/alice3`; use the standalone repo namespace only.
+The active implementation repo is `rysweet/RabbitHole`, not the upstream fork
+network. Do not open issues or pull requests against
+`TheAliceProject/alice3`; use the RabbitHole repo namespace only.
 
 ## Current findings
 
 - Alice 3 is a Java 21/Maven desktop IDE with a NetBeans plugin.
 - The documented non-installer build path works locally.
 - Baseline command passed: `mvn -DincludeSims=false -Dinstall4j.skip -DskipTests=false test`.
-- The standalone modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test` and a no-Sims NetBeans package gate.
+- The RabbitHole modernization repo now has CI running `mvn -DincludeSims=false -Dinstall4j.skip clean test` and a no-Sims NetBeans package gate.
 - Current test coverage is still small relative to the codebase, but the characterization suite now covers key IO, recovery, and NetBeans generation seams after the first sixty-two modernization slices.
+- Desktop Run execution is partly proven for RabbitHole only: eatme can use a
+  geometry-checked toolbar fallback, read RabbitHole's Run-frame and VM listener
+  artifacts, and show that the desktop Run path reached VM statement execution.
+  This does not yet prove original Alice equivalence, visible rendering, desktop
+  save-menu completion, grading, or full lesson automation.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -98,9 +105,13 @@ The active implementation repo is `rysweet/alice3-modernization`, not the upstre
 4. Expand the code atlas from initial diagrams into all major architectural layers.
 5. Convert website lessons, how-tos, and reference material into behavior-spec candidates.
 6. Build characterization tests in phases, starting with pure logic and project formats.
-7. Keep CI test execution active in the standalone modernization repo.
+7. Keep CI test execution active in the RabbitHole modernization repo.
 8. Refactor incrementally behind tests; defer any rewrite decision until behavior is documented and protected.
 9. Use crusty-old-engineer as a standing proxy review lane and qa-team as a standing outside-in testing lane, not as occasional afterthoughts.
+10. For the desktop Run path, replace coordinate toolbar clicks with a stable UI
+    or accessibility affordance, capture visible rendering after VM execution,
+    prove desktop save-menu completion, and define how original Alice can be
+    fairly proven without RabbitHole-only hooks.
 
 ## Success criteria
 

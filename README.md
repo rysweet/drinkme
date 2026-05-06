@@ -28,9 +28,15 @@ and the eatme comparison-harness plan is in
 
 The latest desktop Run evidence is recorded in
 [atlas journal entry 0085](docs/atlas/journal/0085-desktop-run-execution-evidence.md):
-RabbitHole now proves VM statement execution after the toolbar Run-frame proof,
-while original Alice, visible rendering, save-menu completion, grading, and full
-lesson completion remain outside the proven boundary.
+RabbitHole now proves VM statement execution after the geometry-checked toolbar
+Run-frame proof. The proven boundary still excludes original Alice equivalence,
+visible rendering, desktop save-menu completion, grading, and full lesson automation.
+
+The next desktop Run work should build the missing proof seams in this order:
+replace the coordinate toolbar click with a stable UI or accessibility affordance,
+capture visible rendering evidence after VM execution, prove desktop save-menu
+completion, and define an acceptable original-Alice proof strategy for behavior
+that cannot use RabbitHole-only hooks.
 
 ## Plain-English terms
 
@@ -95,7 +101,7 @@ vision is executable today.
 | 3 | Dispatch desktop save shortcut | Proven as input only | Proven as input only | Partial |
 | 4 | Place a Bunny in the scene | No hook; blocked | Backend proof hook passes | Partial: RabbitHole backend proof only; original Alice and desktop gallery placement are not proven |
 | 5 | Edit the fixed first-lesson procedure | No hook; blocked | Backend proof hook passes | Partial: RabbitHole backend proof only; original Alice and desktop editor interaction are not proven |
-| 6 | Run the edited procedure through the backend proof hook | No hook; blocked | Backend proof hook passes | Partial: RabbitHole backend proof only; desktop Run is not proven |
+| 6 | Run the edited procedure through the backend proof hook | No hook; blocked | Backend proof hook passes | Partial: RabbitHole backend proof only; desktop Run is not proven here. Separate desktop VM backend proof appears in step 11. |
 | 7 | Save the edited project through the backend proof hook | No hook; blocked | Backend proof hook passes | Partial: RabbitHole backend proof only; desktop save-menu use is not proven |
 | 8 | Dispatch desktop Run shortcut (`Ctrl+F5`) | Not reached safely | Proven as input only | Partial |
 | 9 | Observe a Run window after `Ctrl+F5` | Not proven | Not proven | Not proven |

@@ -18,13 +18,17 @@ Second-pass review tightened the plan:
 - Gadugi initially treats `eatme` as a CLI/system harness and asserts against `manifest.json`.
 - Pass/fail initially comes from deterministic evidence, not agentic judgment.
 - Alice.org curriculum scenarios begin after the launch smoke.
+- Desktop Run execution evidence is currently RabbitHole-only: the harness can
+  verify a geometry-checked toolbar Run-frame proof and a VM listener artifact,
+  but this does not yet prove original Alice equivalence, visible rendering,
+  desktop save-menu completion, grading, or full lesson automation.
 
 ## Milestone 0
 
 Milestone 0 proves:
 
 1. Host dependencies are detected.
-2. Real Alice packages from `/home/azureuser/src/alice3-modernization`.
+2. RabbitHole packages from `/home/azureuser/src/RabbitHole`.
 3. Long-lived Xvfb starts with GLX enabled.
 4. Alice launches via direct Java and `org.alice.stageide.EntryPoint`.
 5. The run uses isolated user home, prefs root, and temp/cache directories.
@@ -62,6 +66,17 @@ After Milestone 0:
 5. `design-process-thin-slice`
 
 Export/player, collision/proximity games, and broader creative scenarios come later.
+
+## Desktop Run proof path
+
+The next desktop Run feature should preserve the current strict boundary:
+
+1. Replace the coordinate toolbar click with a stable UI or accessibility
+   affordance.
+2. Capture visible rendering evidence after VM statement execution.
+3. Prove desktop save-menu completion before counting the save step as complete.
+4. Define how original Alice can be fairly proven when RabbitHole-only hooks
+   cannot exist.
 
 ## Governance boundaries
 
