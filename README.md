@@ -51,14 +51,14 @@ named gap. **Not proven** means there is no accepted proof yet.
 | Top-level plan goals in this section | 7 | 0 | 7 | 0 | Every major goal has useful evidence, but every one still has an open gap. |
 | RabbitHole code areas below | 9 | 0 | 9 | 0 | Each area has tests or guarded changes; none is broad enough to call complete. |
 | eatme user-task areas below | 7 | 1 | 6 | 0 | Startup comparison is the only complete user-task slice; lesson automation remains partial. |
-| First-lesson action chain | 15 | 8 | 2 | 5 | RabbitHole can prove several backend steps and one Run-frame desktop result; desktop editing, rendering, save-menu completion, grading, and full lesson completion are still open. |
+| First-lesson action chain | 15 | 2 | 7 | 6 | Only launch and window focus are fully done. RabbitHole can partially prove several backend steps and one Run-frame desktop result; desktop editing, rendering, save-menu completion, grading, and full lesson completion are still open. |
 
 ```mermaid
 xychart-beta
   title "Strict completion counts"
   x-axis ["Top goals done", "RabbitHole done", "eatme done", "First-lesson done", "First-lesson partial", "First-lesson not proven"]
   y-axis "Items" 0 --> 15
-  bar [0, 0, 1, 8, 2, 5]
+  bar [0, 0, 1, 2, 7, 6]
 ```
 
 ### First-lesson action chain
@@ -71,23 +71,22 @@ vision is executable today.
 | 1 | Package and launch Alice | Proven | Proven | Done |
 | 2 | Detect and focus the Alice window | Proven | Proven | Done |
 | 3 | Dispatch desktop save shortcut | Proven as input only | Proven as input only | Partial |
-| 4 | Place a Bunny in the scene | No hook; blocked | Backend proof hook passes | Done for RabbitHole comparison, not original Alice |
-| 5 | Edit the fixed first-lesson procedure | No hook; blocked | Backend proof hook passes | Done for RabbitHole comparison, not original Alice |
-| 6 | Run the edited procedure through the backend proof hook | No hook; blocked | Backend proof hook passes | Done for RabbitHole comparison, not desktop Run |
-| 7 | Save the edited project through the backend proof hook | No hook; blocked | Backend proof hook passes | Done for RabbitHole comparison, not desktop save-menu use |
+| 4 | Place a Bunny in the scene | No hook; blocked | Backend proof hook passes | Partial: RabbitHole backend proof only; original Alice and desktop gallery placement are not proven |
+| 5 | Edit the fixed first-lesson procedure | No hook; blocked | Backend proof hook passes | Partial: RabbitHole backend proof only; original Alice and desktop editor interaction are not proven |
+| 6 | Run the edited procedure through the backend proof hook | No hook; blocked | Backend proof hook passes | Partial: RabbitHole backend proof only; desktop Run is not proven |
+| 7 | Save the edited project through the backend proof hook | No hook; blocked | Backend proof hook passes | Partial: RabbitHole backend proof only; desktop save-menu use is not proven |
 | 8 | Dispatch desktop Run shortcut (`Ctrl+F5`) | Not reached safely | Proven as input only | Partial |
 | 9 | Observe a Run window after `Ctrl+F5` | Not proven | Not proven | Not proven |
-| 10 | Open the Run frame through the toolbar fallback | Not proven | Proven with geometry check, Alice-side `run-window-created.json`, and screenshot | Done for RabbitHole Run-frame creation |
+| 10 | Open the Run frame through the toolbar fallback | Not proven | Proven with geometry check, Alice-side `run-window-created.json`, and screenshot | Partial: RabbitHole Run-frame creation is proven; original Alice and a stronger UI affordance are not |
 | 11 | Prove desktop Run VM statement execution | Not proven | No merged proof | Not proven |
 | 12 | Prove visible world rendering | Not proven | Not proven | Not proven |
 | 13 | Prove desktop save-menu completion | Not proven | Not proven | Not proven |
 | 14 | Grade or assess a learner world | Not proven | Not proven | Not proven |
 | 15 | Complete an end-to-end teacher/student lesson | Not proven | Not proven | Not proven |
 
-Short version: **8 of 15 first-lesson steps have accepted proof**, **2 are
-input-only partial proof**, and **5 remain unproven**. That is enough to compare
-meaningful RabbitHole progress against original Alice, but it is not full lesson
-automation.
+Short version: **2 of 15 first-lesson steps are fully done**, **7 are partial**,
+and **6 remain unproven**. That is enough to compare meaningful RabbitHole
+progress against original Alice, but it is not full lesson automation.
 
 | Goal from the plan | What exists now | Plain-language verdict |
 | --- | --- | --- |
