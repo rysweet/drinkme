@@ -12,7 +12,7 @@
   merged. It keeps old image recovery while safely rejecting unsupported old
   code.
 - [eatme PR #89](https://github.com/rysweet/eatme/pull/89) merged. It improves
-  instructor/student readiness reports, but does not grade work or prove full
+  instructor and student readiness reports, but does not grade work or prove full
   lesson completion.
 - [RabbitHole PR #149](https://github.com/rysweet/RabbitHole/pull/149) adds an
   older opt-in desktop Run listener evidence hook.

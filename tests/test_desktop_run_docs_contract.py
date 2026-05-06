@@ -77,7 +77,7 @@ MERGED_SOURCE_PR_REQUIREMENTS = {
     "eatme PR #89": [
         "eatme PR #89",
         "Merged.",
-        "Improves instructor/student readiness reports",
+        "Improves instructor and student readiness reports",
         "does not grade work or prove full lesson completion",
     ],
 }
@@ -90,6 +90,14 @@ STALE_STATUS_TERMS = [
     "still pending",
     "blocked on review",
     "marked review-running",
+]
+
+STALE_README_TABLE_STATUS_TERMS = [
+    "review is still running",
+    "waiting",
+    "under review",
+    "finish review",
+    "add coverage for pr #156",
 ]
 
 PLAIN_LANGUAGE_JARGON = ["gate", "lane", "affordance", "render target"]
@@ -163,6 +171,24 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                     f"{source} uses stale status near {pr_name}: {term}",
                 )
 
+    def assert_no_stale_readme_table_status(self, text):
+        source_pr_rows = [
+            row
+            for row in text.splitlines()
+            if row.strip().startswith("|")
+            and any(link in row for link in REQUIRED_PR_LINKS)
+        ]
+
+        self.assertGreaterEqual(
+            len(source_pr_rows),
+            len(MERGED_SOURCE_PR_REQUIREMENTS),
+            "README is missing source PR table rows",
+        )
+
+        table_text = plain("\n".join(source_pr_rows)).lower()
+        for term in STALE_README_TABLE_STATUS_TERMS:
+            self.assertNotIn(term, table_text, f"README source PR table uses stale status: {term}")
+
     def test_readme_plan_summary_links_to_controlling_docs_and_latest_evidence(self):
         plan_summary = section(self.docs["README"], "Plan summary")
 
@@ -171,6 +197,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_contains_all(plain(plan_summary), PROOF_BOUNDARY_TERMS, "README plan summary")
         self.assert_merged_source_status_is_plain(plan_summary, "README plan summary")
         self.assert_no_stale_status_near_source_prs(plan_summary, "README plan summary")
+        self.assert_no_stale_readme_table_status(self.docs["README"])
 
     def test_atlas_index_lists_0085_once_with_a_bounded_summary(self):
         text = self.docs["atlas index"]

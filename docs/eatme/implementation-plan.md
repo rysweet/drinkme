@@ -19,7 +19,7 @@ Second-pass review tightened the plan:
 - Pass/fail initially comes from deterministic evidence, not agentic judgment.
 - Alice.org curriculum scenarios begin after the launch smoke.
 - [eatme PR #89](https://github.com/rysweet/eatme/pull/89)
-  merged. It improves instructor/student readiness reports, but does not grade
+  merged. It improves instructor and student readiness reports, but does not grade
   work or prove full lesson completion.
 - eatme depends on the merged RabbitHole source PRs:
   [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154)
@@ -88,7 +88,7 @@ The next desktop Run work should preserve the current strict boundary:
    messages, not proof that rendering happened.
 3. Treat merged RabbitHole PR #156 as old image recovery support plus safe
    rejection of unsupported old code.
-4. Treat merged eatme PR #89 as improved instructor/student readiness reports,
+4. Treat merged eatme PR #89 as improved instructor and student readiness reports,
    not grading and not proof of full lesson completion.
 5. Add separate proof before eatme claims pixels were drawn, the lesson
    finished, or grading happened.
