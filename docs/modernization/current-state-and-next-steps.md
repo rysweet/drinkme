@@ -8,11 +8,11 @@
 - The active source repo has guardrails in `AGENTS.md`.
 - Current restarted campaign status is tracked in `docs/modernization/restarted-full-scope-status.md`.
 - Latest desktop Run evidence is tracked in
-  `docs/atlas/journal/0085-desktop-run-execution-evidence.md`: RabbitHole now
-  proves VM statement execution after a geometry-checked toolbar Run-frame
-  proof, while original Alice equivalence, visible rendering, desktop save-menu
-  completion, grading, and full lesson automation remain outside the proven
-  boundary.
+  `docs/atlas/journal/0085-desktop-run-execution-evidence.md`.
+  [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154)
+  records a narrow Run window attachment signal. It proves Alice put the Run
+  panel into the Run window area. It does not prove pixels were drawn, does not
+  prove the lesson finished, and is not grading.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
@@ -30,7 +30,7 @@
 
 The no-Sims local and CI path is healthy.
 
-Current important gates:
+Current important checks:
 
 ```bash
 mvn -DincludeSims=false -Dinstall4j.skip -pl netbeans -am test
@@ -153,20 +153,30 @@ Covered areas include:
 - Headless tests can cover important exported-code behavior without launching real JavaFX.
 - Real JavaFX/UI behavior, story execution, and rendering-adjacent behavior remain mostly unprotected.
 - Git LFS budget exhaustion can break CI checkout if no-Sims workflows fetch LFS objects; no-Sims CI should avoid LFS unless a job explicitly needs it.
-- Process correction: every coding lane and subagent must follow `DEFAULT_WORKFLOW`; parallel coding should use isolated worktrees/branches, while this main lane remains serialized for integration.
-- Loop 62 proved the parallel pattern: six isolated implementation branches were developed concurrently, then rebased and integrated sequentially behind local gates and CI.
-- Loop 63 extended that pattern: implementation lanes ran in parallel, but integration remained serialized and CI-gated after each meaningful merge.
+- Process correction: every coding track and subagent must follow `DEFAULT_WORKFLOW`; parallel coding should use isolated worktrees/branches, while this main track remains serialized for integration.
+- Loop 62 proved the parallel pattern: six isolated implementation branches were developed concurrently, then rebased and integrated sequentially behind local checks and CI.
+- Loop 63 extended that pattern: implementation tracks ran in parallel, but integration remained serialized and CI-checked after each meaningful merge.
 - Loop 64 recovery/integration completed the crash-resume work:
   - Alice `develop` integrated formal specs/recovery contracts, source save/export tests, Story IO/NetBeans quality fixes, outside-in QA hardening, Wave2 Story JSON boundaries, Wave2 NetBeans export harness, and Wave2 outside-in QA scenarios.
-  - `eatme` `master` integrated the Building-a-Scene and Code Editor first-run lesson smoke lanes.
+  - `eatme` `master` integrated the Building-a-Scene and Code Editor first-run lesson smoke tracks.
   - `gadugi-agentic-test` `main` integrated the `cwd`/`workingDirectory` scenario command fix.
-  - Code-atlas and crusty review branches remained no-go for Alice source and were routed to drinkme artifacts instead.
+- Code-atlas and crusty review branches remained outside Alice source and were routed to drinkme artifacts instead.
+
 - `tweedle-lang` is a required git submodule for `core/tweedle` ANTLR parser generation. Missing it in worktrees causes `TweedleParser`/`TweedleParserBaseVisitor` compile failures; see `docs/build-baseline/submodule-working-guide.md`.
-- Recovered artifact-only lanes have been consolidated into `drinkme` rather than Alice source:
+- Recovered artifact-only tracks have been consolidated into `drinkme` rather than Alice source:
   - Crusty modernization review: `docs/artifacts/alice-audit/2026-05-03-crusty-modernization-review.md`.
   - Code-atlas bug-hunt artifacts: `docs/artifacts/alice-audit/code-atlas-alice-source-truth.md`, `docs/artifacts/alice-audit/code-atlas-alice-bughunt-findings.md`, `docs/artifacts/alice-audit/code-atlas-alice-hotspots.md`, `docs/artifacts/alice-audit/code-atlas-alice-staleness-map.md`, and the companion module graphs.
   - Formal save/load/export specification artifacts: `docs/artifacts/alice-audit/formal-spec/evaluation.md`, Gherkin scenarios, TLA+ recovery model/config, and usage/reference notes under `docs/artifacts/alice-audit/formal-spec/`.
-- This recovery wave is closed: the source/support-tool workstreams that passed review were integrated, and the artifact-only lanes were preserved in drinkme without merging inappropriate runtime code into Alice.
+- This recovery wave is closed: the source/support-tool workstreams that passed review were integrated, and the artifact-only tracks were preserved in drinkme without merging inappropriate runtime code into Alice.
+
+## Merged source PR status
+
+| Work item | Plain status |
+| --- | --- |
+| [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154) | Merged. Records that Alice put the Run panel into the Run window area. |
+| [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Merged. Records launcher steps and no-go messages, but does not prove rendering. |
+| [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Merged. Keeps old image recovery while safely rejecting unsupported old code. |
+| [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
 
 ## Known limits
 
@@ -189,10 +199,9 @@ Covered areas include:
 - XML project reads now avoid static resource instance reuse across archive reads while preserving AST resource-expression binding to decoded resources.
 - Default-backup copy now has direct seam coverage for populated, missing, and empty `.defaultbak` directories.
 - The generated-source export tests were split so both focused NetBeans export test classes are under 500 lines.
-- The desktop Run VM listener evidence is RabbitHole-only. The current proof
-  does not establish original Alice equivalence, visible rendering correctness,
-  world completion, desktop save-menu completion, grading, or full
-  teacher/student lesson completion.
+- The desktop Run evidence from PR #154 is RabbitHole-only and narrow. It proves
+  Alice put the Run panel into the Run window area. It does not prove pixels
+  were drawn, does not prove the lesson finished, and is not grading.
 
 ## Immediate next steps
 
@@ -211,13 +220,15 @@ Covered areas include:
     - open/load/save journey;
     - failure/recovery journey;
     - package/install smoke path.
-5. Build the next desktop Run proof seams before expanding completion claims:
-   - replace the coordinate toolbar click with a stable UI or accessibility
-     affordance;
-   - capture visible rendering evidence after VM statement execution;
-   - prove desktop save-menu completion;
-   - define an original-Alice proof strategy for behavior that cannot use
-     RabbitHole-only hooks.
+5. Keep desktop Run completion claims narrow after the source PRs merged:
+   - use PR #155 only as launcher-step and no-go-message evidence, not proof
+     that rendering happened;
+   - use PR #156 as old image recovery support plus safe rejection of
+     unsupported old code;
+   - use eatme PR #89 as instructor and student readiness reporting evidence, not
+     grading or proof of full lesson completion;
+   - add separate proof before claiming pixel drawing, lesson completion, or
+     grading.
 6. Use the recovered code-atlas bug-hunt artifacts on the next high-value seam:
     - NetBeans export path;
     - project IO/load-save path;
@@ -232,7 +243,7 @@ The safest modernization path remains incremental:
 1. characterize behavior;
 2. fix correctness bugs exposed by characterization;
 3. split oversized or tangled tests/classes where safe;
-4. refactor production code behind characterization gates;
+4. refactor production code behind characterization checks;
 5. only consider rewrite or non-Java components after enough evidence exists.
 
 Core Alice should remain Java for now. Rust or other languages may be useful later for optional tooling, static analysis, packaging helpers, graphing, or external AI-assisted tools, but moving core runtime behavior out of Java would be premature without much stronger test coverage.

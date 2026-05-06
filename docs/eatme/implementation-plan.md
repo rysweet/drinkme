@@ -18,10 +18,21 @@ Second-pass review tightened the plan:
 - Gadugi initially treats `eatme` as a CLI/system harness and asserts against `manifest.json`.
 - Pass/fail initially comes from deterministic evidence, not agentic judgment.
 - Alice.org curriculum scenarios begin after the launch smoke.
-- Desktop Run execution evidence is currently RabbitHole-only: the harness can
-  verify a geometry-checked toolbar Run-frame proof and a VM listener artifact,
-  but this does not yet prove original Alice equivalence, visible rendering,
-  desktop save-menu completion, grading, or full lesson automation.
+- [eatme PR #89](https://github.com/rysweet/eatme/pull/89)
+  merged. It improves instructor and student readiness reports, but does not grade
+  work or prove full lesson completion.
+- eatme depends on the merged RabbitHole source PRs:
+  [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154)
+  merged. It records that Alice put the Run panel into the Run window area.
+  [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155)
+  merged. It records launcher steps and no-go messages, but does not prove
+  rendering.
+  [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156)
+  merged. It keeps old image recovery while safely rejecting unsupported old
+  code.
+- The proof boundary remains a narrow Run window attachment signal: Alice put
+  the Run panel into the Run window area. This evidence does not prove pixels
+  were drawn, does not prove the lesson finished, and is not grading.
 
 ## Milestone 0
 
@@ -69,14 +80,18 @@ Export/player, collision/proximity games, and broader creative scenarios come la
 
 ## Desktop Run proof path
 
-The next desktop Run feature should preserve the current strict boundary:
+The next desktop Run work should preserve the current strict boundary:
 
-1. Replace the coordinate toolbar click with a stable UI or accessibility
-   affordance.
-2. Capture visible rendering evidence after VM statement execution.
-3. Prove desktop save-menu completion before counting the save step as complete.
-4. Define how original Alice can be fairly proven when RabbitHole-only hooks
-   cannot exist.
+1. Treat merged RabbitHole PR #154 as limited to the Run window attachment
+   signal.
+2. Treat merged RabbitHole PR #155 as recorded launcher steps and no-go
+   messages, not proof that rendering happened.
+3. Treat merged RabbitHole PR #156 as old image recovery support plus safe
+   rejection of unsupported old code.
+4. Treat merged eatme PR #89 as improved instructor and student readiness reports,
+   not grading and not proof of full lesson completion.
+5. Add separate proof before eatme claims pixels were drawn, the lesson
+   finished, or grading happened.
 
 ## Governance boundaries
 
