@@ -46,6 +46,8 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0086 - eatme PR #92 RabbitHole evidence readiness](journal/0086-eatme-pr92-rabbithole-evidence-readiness.md)
+  records the eatme PR #92 documentation update and its limits.
 - [0085 - Desktop Run execution evidence](journal/0085-desktop-run-execution-evidence.md)
   records the RabbitHole PR #154 Run window attachment signal and its limits.
 - [0084 - Run-window toolbar proof](journal/0084-run-window-toolbar-proof.md)

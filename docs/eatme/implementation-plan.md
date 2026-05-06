@@ -21,6 +21,11 @@ Second-pass review tightened the plan:
 - [eatme PR #89](https://github.com/rysweet/eatme/pull/89)
   merged. It improves instructor and student readiness reports, but does not grade
   work or prove full lesson completion.
+- [eatme PR #92](https://github.com/rysweet/eatme/pull/92)
+  merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. It documents the
+  RabbitHole evidence needed before first-lesson readiness can be marked ready:
+  launch evidence, Run-window evidence, desktop execution evidence,
+  screenshot/log/window artifacts, and `ui-action-contract.json`.
 - eatme depends on the merged RabbitHole source PRs:
   [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154)
   merged. It records that Alice put the Run panel into the Run window area.
@@ -33,6 +38,10 @@ Second-pass review tightened the plan:
 - The proof boundary remains a narrow Run window attachment signal: Alice put
   the Run panel into the Run window area. This evidence does not prove pixels
   were drawn, does not prove the lesson finished, and is not grading.
+- The PR #92 evidence list does not prove full Alice UI automation, creative
+  assessment, learner-world grading, visible rendering correctness, or
+  first-lesson completion. It describes what RabbitHole evidence must exist and
+  be documented before readiness can be marked ready.
 
 ## Milestone 0
 
@@ -90,7 +99,9 @@ The next desktop Run work should preserve the current strict boundary:
    rejection of unsupported old code.
 4. Treat merged eatme PR #89 as improved instructor and student readiness reports,
    not grading and not proof of full lesson completion.
-5. Add separate proof before eatme claims pixels were drawn, the lesson
+5. Treat merged eatme PR #92 as the documentation of required RabbitHole
+   evidence categories, not proof that those categories have passed in drinkme.
+6. Add separate proof before eatme claims pixels were drawn, the lesson
    finished, or grading happened.
 
 ## Governance boundaries

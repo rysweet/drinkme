@@ -28,7 +28,12 @@ and the eatme comparison-harness plan is in
 
 The latest desktop Run evidence is recorded in
 [atlas journal entry 0085](docs/atlas/journal/0085-desktop-run-execution-evidence.md).
-All referenced source PRs have merged:
+[atlas journal entry 0086](docs/atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md)
+records the eatme PR #92 status update. eatme now documents the RabbitHole
+evidence needed before first-lesson readiness can be marked ready:
+launch evidence, Run-window evidence, desktop execution evidence,
+screenshot/log/window artifacts, and `ui-action-contract.json`.
+All referenced source and status PRs have merged:
 
 | Work item | Plain status |
 | --- | --- |
@@ -36,10 +41,15 @@ All referenced source PRs have merged:
 | [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Merged. Records launcher steps and no-go messages, but does not prove rendering. |
 | [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Merged. Keeps old image recovery while safely rejecting unsupported old code. |
 | [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
+| [eatme PR #92](https://github.com/rysweet/eatme/pull/92) | Merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
 drawn, does not prove the lesson finished, and is not grading.
+
+The eatme PR #92 documentation does not prove full Alice UI automation, creative
+assessment, learner-world grading, visible rendering correctness, or
+first-lesson completion.
 
 ## Plain-English terms
 

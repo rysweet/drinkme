@@ -13,6 +13,13 @@
   records a narrow Run window attachment signal. It proves Alice put the Run
   panel into the Run window area. It does not prove pixels were drawn, does not
   prove the lesson finished, and is not grading.
+- Latest eatme readiness documentation is tracked in
+  `docs/atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md`.
+  [eatme PR #92](https://github.com/rysweet/eatme/pull/92) merged at
+  `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. eatme now documents the
+  RabbitHole evidence needed before first-lesson readiness can be marked ready:
+  launch evidence, Run-window evidence, desktop execution evidence,
+  screenshot/log/window artifacts, and `ui-action-contract.json`.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
@@ -177,6 +184,7 @@ Covered areas include:
 | [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Merged. Records launcher steps and no-go messages, but does not prove rendering. |
 | [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Merged. Keeps old image recovery while safely rejecting unsupported old code. |
 | [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
+| [eatme PR #92](https://github.com/rysweet/eatme/pull/92) | Merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready. |
 
 ## Known limits
 
@@ -202,6 +210,10 @@ Covered areas include:
 - The desktop Run evidence from PR #154 is RabbitHole-only and narrow. It proves
   Alice put the Run panel into the Run window area. It does not prove pixels
   were drawn, does not prove the lesson finished, and is not grading.
+- The eatme PR #92 documentation names the RabbitHole evidence required before
+  first-lesson readiness can be marked ready, but does not prove full Alice UI
+  automation, creative assessment, learner-world grading, visible rendering
+  correctness, or first-lesson completion.
 
 ## Immediate next steps
 
@@ -227,6 +239,8 @@ Covered areas include:
      unsupported old code;
    - use eatme PR #89 as instructor and student readiness reporting evidence, not
      grading or proof of full lesson completion;
+   - use eatme PR #92 as documentation of the RabbitHole evidence needed before
+     first-lesson readiness can be marked ready, not as runtime proof;
    - add separate proof before claiming pixel drawing, lesson completion, or
      grading.
 6. Use the recovered code-atlas bug-hunt artifacts on the next high-value seam:
