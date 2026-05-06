@@ -26,6 +26,12 @@ The latest broad status is in
 and the eatme comparison-harness plan is in
 [eatme implementation plan](docs/eatme/implementation-plan.md).
 
+The latest desktop Run evidence is recorded in
+[atlas journal entry 0085](docs/atlas/journal/0085-desktop-run-execution-evidence.md):
+RabbitHole now proves VM statement execution after the toolbar Run-frame proof,
+while original Alice, visible rendering, save-menu completion, grading, and full
+lesson completion remain outside the proven boundary.
+
 ## Plain-English terms
 
 | Term | Meaning in this project |

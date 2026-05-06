@@ -9,6 +9,13 @@
 - [drinkme PR #35](https://github.com/rysweet/drinkme/pull/35) added the strict
   Done / Partial / Not proven ledger that this entry updates.
 
+## Traceability
+
+This evidence updates the top-level [drinkme status](../../../README.md), the
+[root investigation plan](../../plan.md), the
+[current modernization plan](../../modernization/current-state-and-next-steps.md),
+and the [eatme implementation plan](../../eatme/implementation-plan.md).
+
 ## Evidence recorded
 
 The real run `desktop-run-execution-20260506182000` passed with
