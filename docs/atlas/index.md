@@ -46,6 +46,7 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0072 - Edit action contract boundary](journal/0072-edit-action-contract-boundary.md)
 - [0071 - Window fallback first-lesson readiness](journal/0071-window-fallback-first-lesson-readiness.md)
 - [0070 - Object-placement progress evidence](journal/0070-object-placement-progress-evidence.md)
 - [0069 - Object-placement hook implementation](journal/0069-object-placement-hook-implementation.md)
