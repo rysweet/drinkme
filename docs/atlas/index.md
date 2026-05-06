@@ -46,6 +46,7 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0075 - Run-world contract boundary](journal/0075-run-world-contract-boundary.md)
 - [0074 - Edit proof readiness run](journal/0074-edit-proof-readiness-run.md)
 - [0073 - Edit proof consumption](journal/0073-edit-proof-consumption.md)
 - [0072 - Edit action contract boundary](journal/0072-edit-action-contract-boundary.md)
