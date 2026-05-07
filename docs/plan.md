@@ -61,6 +61,15 @@ network. Do not open issues or pull requests against
   pixel when possible, or a blocker code and component state when not; it does
   not prove visible rendering, desktop save-menu completion, grading, creative
   assessment, or first-lesson completion.
+- [RabbitHole PR #168](https://github.com/rysweet/RabbitHole/pull/168) merged at
+  `da0fb851fd974721a630811873f0d583a853eb5e`. It adds a generated archive test
+  for a sibling Tweedle type with an unresolved parent; it does not add full
+  Tweedle decode support.
+- [RabbitHole PR #169](https://github.com/rysweet/RabbitHole/pull/169) merged at
+  `0a0d182c139aeaf5bc7c2c45213a0392cf8f245c`. It adds machine-readable blocker
+  details to `desktop-run-pixel-observation.json`; it does not prove visible
+  rendering, desktop save-menu completion, grading, creative assessment, or
+  first-lesson completion.
 - eatme PR #93 merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. It makes
   readiness reports list concrete RabbitHole readiness evidence categories; it
   does not create new runtime proof or prove first-lesson completion.
@@ -77,6 +86,11 @@ network. Do not open issues or pull requests against
   `11c8c58a33b2c6c7ec93e1b4a057c375e0dbb70f`. It shows the first-lesson
   readiness progress summary and every required evidence item in plain text
   output. It does not add new runtime proof.
+- [eatme PR #99](https://github.com/rysweet/eatme/pull/99) merged at
+  `5e8ba4b8c970d04b410060e90c22a613430e202b`. It reports
+  `desktop-run-pixel-observation.json` beside readiness progress, including
+  observed screenshot/sample data or blocked component state and blocker codes.
+  It does not add new runtime proof.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

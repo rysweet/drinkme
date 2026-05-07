@@ -46,6 +46,10 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0091 - RabbitHole PR #168/#169 and eatme PR #99 merge status](journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md)
+  records the unresolved-parent archive rejection test, pixel-observation blocker
+  details, and eatme pixel-observation reporting, while keeping rendering,
+  grading, and first-lesson completion unproven.
 - [0090 - RabbitHole PR #166/#167 and eatme PR #98 merge status](journal/0090-rabbithole-pr166-pr167-eatme-pr98-merge-status.md)
   records the complex-initializer archive rejection test, the desktop pixel
   observation evidence file, and plain first-lesson readiness output, while
