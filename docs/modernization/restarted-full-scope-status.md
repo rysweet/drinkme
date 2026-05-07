@@ -71,6 +71,10 @@ Last updated: 2026-05-08
 | [RabbitHole PR #254](https://github.com/rysweet/RabbitHole/pull/254) | Merged at `88e8cffffa7c2b5d9e1a4c7f3d6b8e2a5c9d1f4b`. Adds a first-run license QA bypass: a focused License Agreement dialog probe and explicit test-only Java Preferences acceptance using isolated `java.util.prefs.userRoot` state; Xvfb launch evidence records license acceptance and dialog artifacts and blocks pixel claims while license dialogs are visible. |
 | [RabbitHole PR #255](https://github.com/rysweet/RabbitHole/pull/255) | Merged at `c8d52a9a8865f3d7b1e9c4a6d2f5c8b3e7a1d9c4`. Adds a `SaveOperationFlow` Xvfb-safe proof that goes through `FileDialogUtilities` selected-path automation and writes a real `.a3p` project file, recording `saved_file_exists` and `saved_file_size_bytes`; does not prove live Save dialog display or desktop save-menu completion. |
 | [RabbitHole PR #259](https://github.com/rysweet/RabbitHole/pull/259) | Merged at `e5b0ac5fce21b4eee1e13ea5861d2e9cee538ca8`. Decodes Tweedle method returns of `this.field` into AST `FieldAccess`; assignments, optional params, broader member expressions, resource initializers, and full Tweedle/player decode remain unproven. |
+| [RabbitHole PR #260](https://github.com/rysweet/RabbitHole/pull/260) | Merged at `b553677c1225d704d1d951a59653fb0f66096139`. A Swing `JFileChooser` dialog was observed under Xvfb and approved through the chooser's controls; native `java.awt.FileDialog` peer control and the full StageIDE Save-menu-to-real-chooser journey remain unproven. |
+| [RabbitHole PR #261](https://github.com/rysweet/RabbitHole/pull/261) | Merged at `97c1ae707544bd0ca89e711df92e7e45e6d377ac`. The Select Project Java window was observed under Xvfb with title, class, process, and geometry; selecting or opening a project, world execution, and installer success remain unproven. |
+| [RabbitHole PR #262](https://github.com/rysweet/RabbitHole/pull/262) | Merged at `9ef09e05402b2e0af9c07803eee92aa5db29b325`. Primitive literal field assignments in Tweedle method bodies now decode, with clear unsupported-form failures; full Tweedle/player decode remains unproven. |
+| [eatme PR #122](https://github.com/rysweet/eatme/pull/122) | Merged at `41142db`. Adds the `lost-robot-debug-museum` instructor/student scenario for the reflective-debugger/debug-coach use case; grading, creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -130,16 +134,22 @@ decodes method return identifiers that refer to declared Tweedle fields as AST
 PR #254 adds a first-run license QA bypass using a focused License Agreement
 dialog probe and isolated `java.util.prefs.userRoot` state. PR #255 adds a
 `SaveOperationFlow` Xvfb-safe proof that writes a real `.a3p` project file to a
-controlled selected path, recording `saved_file_exists` and `saved_file_size_bytes`. PR #259 decodes
-Tweedle method returns of `this.field` into AST `FieldAccess`. These changes do
+controlled selected path, recording `saved_file_exists` and `saved_file_size_bytes`. dialog. PR #259 decodes
+Tweedle method returns of `this.field` into AST `FieldAccess`. PR #260 proves a
+Swing `JFileChooser` dialog appears under Xvfb and responds to chooser controls;
+native `java.awt.FileDialog` peer control and the full StageIDE
+Save-menu-to-real-chooser journey remain unproven. PR #261 proves the Select
+Project Java window appears under Xvfb with title, class, process, and geometry;
+selecting or opening a project, world execution, and installer success remain
+unproven. PR #262 decodes primitive literal field assignments in Tweedle method
+bodies, with clear unsupported-form failures; full Tweedle/player decode remains
+unproven. eatme PR #122 adds the `lost-robot-debug-museum` instructor/student
+scenario; grading, creative assessment, real Alice UI automation, and full
+lesson delivery remain unproven. These changes do
 not prove full Alice UI automation, visible rendering correctness, desktop
-save-menu completion, grading, creative assessment, learner-world grading,
-first-lesson completion, procedure UI invocation, live Save dialog display or
-control, real Alice desktop pixels, or full Tweedle/player decode support. PR
-#255 proves Save-flow file write through the selected-path seam, not a real
-dialog. Active source agents for Select Project interaction, Save chooser UI,
-and a decoder next slice after PR #259 are still running; this entry does not
-claim their outcomes.
+save-menu completion, native FileDialog peer control, project selection or
+opening, grading, creative assessment, learner-world grading,
+first-lesson completion, or complete Tweedle/player decode support.
 
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop

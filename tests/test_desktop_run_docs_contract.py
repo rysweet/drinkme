@@ -23,6 +23,7 @@ ENTRY_0097 = ROOT / "docs/atlas/journal/0097-rabbithole-pr212-eatme-pr118-save-d
 ENTRY_0098 = ROOT / "docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md"
 ENTRY_0099 = ROOT / "docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md"
 ENTRY_0100 = ROOT / "docs/atlas/journal/0100-rabbithole-pr235-through-pr259-status.md"
+ENTRY_0101 = ROOT / "docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -64,6 +65,7 @@ DOCS = {
     "atlas entry 0098": ENTRY_0098,
     "atlas entry 0099": ENTRY_0099,
     "atlas entry 0100": ENTRY_0100,
+    "atlas entry 0101": ENTRY_0101,
 }
 
 README_PLAN_LINKS = [
@@ -87,6 +89,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0098](docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md)",
     "[atlas journal entry 0099](docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md)",
     "[atlas journal entry 0100](docs/atlas/journal/0100-rabbithole-pr235-through-pr259-status.md)",
+    "[atlas journal entry 0101](docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -227,6 +230,13 @@ RABBITHOLE_NEW_SOURCE_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/259",
 ]
 
+RABBITHOLE_LATEST_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/260",
+    "https://github.com/rysweet/RabbitHole/pull/261",
+    "https://github.com/rysweet/RabbitHole/pull/262",
+    "https://github.com/rysweet/eatme/pull/122",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -242,6 +252,7 @@ CURRENT_MERGED_PR_LINKS = (
     + LATEST_PROOF_REPORTING_WAVE_PR_LINKS
     + RABBITHOLE_COMPLETED_SOURCE_WAVE_PR_LINKS
     + RABBITHOLE_NEW_SOURCE_WAVE_PR_LINKS
+    + RABBITHOLE_LATEST_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -801,6 +812,43 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "AST `FieldAccess`",
         "full Tweedle/player decode",
     ],
+    "RabbitHole PR #260": [
+        "RabbitHole PR #260",
+        "Merged",
+        "b553677c1225d704d1d951a59653fb0f66096139",
+        "JFileChooser",
+        "Xvfb",
+        "java.awt.FileDialog",
+        "StageIDE Save-menu-to-real-chooser",
+    ],
+    "RabbitHole PR #261": [
+        "RabbitHole PR #261",
+        "Merged",
+        "97c1ae707544bd0ca89e711df92e7e45e6d377ac",
+        "Select Project",
+        "title",
+        "class",
+        "geometry",
+        "selecting or opening a project",
+    ],
+    "RabbitHole PR #262": [
+        "RabbitHole PR #262",
+        "Merged",
+        "9ef09e05402b2e0af9c07803eee92aa5db29b325",
+        "primitive literal field assignments",
+        "Tweedle method bodies",
+        "unsupported-form",
+        "full Tweedle/player decode",
+    ],
+    "eatme PR #122": [
+        "eatme PR #122",
+        "Merged",
+        "41142db",
+        "lost-robot-debug-museum",
+        "reflective-debugger",
+        "grading",
+        "creative assessment",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1111,6 +1159,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0098_link = "journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md"
         entry_0099_link = "journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md"
         entry_0100_link = "journal/0100-rabbithole-pr235-through-pr259-status.md"
+        entry_0101_link = "journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -1160,6 +1209,11 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("Save menu item dispatch proof", text)
         self.assertIn("Alice launch classpath fix", text)
         self.assertIn("completed Save-flow file write", text)
+        self.assertEqual(1, text.count(entry_0101_link))
+        self.assertIn("RabbitHole PR #260", text)
+        self.assertIn("JFileChooser", text)
+        self.assertIn("Select Project", text)
+        self.assertIn("lost-robot-debug-museum", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -1507,7 +1561,34 @@ class DesktopRunDocsContractTest(unittest.TestCase):
             with self.subTest(document=name):
                 self.assert_contains_all(plain(self.docs[name]), PROOF_BOUNDARY_TERMS, name)
 
-    def test_status_docs_list_merged_source_prs_plainly(self):
+    def test_0101_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0101"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #260",
+                "RabbitHole PR #261",
+                "RabbitHole PR #262",
+                "eatme PR #122",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_LATEST_WAVE_PR_LINKS, "atlas entry 0101")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0101")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0101", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0101")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0101")
+        self.assertIn("JFileChooser", text)
+        self.assertIn("java.awt.FileDialog", text)
+        self.assertIn("Select Project", text)
+        self.assertIn("b553677c1225d704d1d951a59653fb0f66096139", text)
+        self.assertIn("97c1ae707544bd0ca89e711df92e7e45e6d377ac", text)
+        self.assertIn("9ef09e05402b2e0af9c07803eee92aa5db29b325", text)
+        self.assertIn("lost-robot-debug-museum", text)
+        self.assertIn("Primitive literal field assignments", text)
+        self.assertIn("Full Tweedle/player decode", text)
+
+
         status_docs = [
             "README",
             "root plan",

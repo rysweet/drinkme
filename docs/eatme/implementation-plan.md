@@ -221,6 +221,19 @@ Second-pass review tightened the plan:
   `this.field` into AST `FieldAccess`; assignments, optional params, broader member
   expressions, resource initializers, and full Tweedle/player decode remain
   unproven.
+  [RabbitHole PR #260](https://github.com/rysweet/RabbitHole/pull/260) merged at
+  `b553677c1225d704d1d951a59653fb0f66096139`. A Swing `JFileChooser` dialog was
+  observed under Xvfb and approved through the chooser's controls; native
+  `java.awt.FileDialog` peer control and the full StageIDE Save-menu-to-real-chooser
+  journey remain unproven.
+  [RabbitHole PR #261](https://github.com/rysweet/RabbitHole/pull/261) merged at
+  `97c1ae707544bd0ca89e711df92e7e45e6d377ac`. The Select Project Java window was
+  observed under Xvfb with title, class, process, and geometry; selecting or
+  opening a project, world execution, and installer success remain unproven.
+  [RabbitHole PR #262](https://github.com/rysweet/RabbitHole/pull/262) merged at
+  `9ef09e05402b2e0af9c07803eee92aa5db29b325`. Primitive literal field assignments
+  in Tweedle method bodies now decode, with clear unsupported-form failures; full
+  Tweedle/player decode remains unproven.
 - [eatme PR #95](https://github.com/rysweet/eatme/pull/95) merged at
   `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. It reports
   `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it
@@ -261,10 +274,15 @@ Second-pass review tightened the plan:
   reporting/status, but actual real desktop proof/manual Alice smoke, procedure
   edit/run/save UI automation, project save, and full first-lesson completion
   remain incomplete.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, and #259
-  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, and #121 have merged, but they do
+- [eatme PR #122](https://github.com/rysweet/eatme/pull/122) merged at `41142db`.
+  Adds the `lost-robot-debug-museum` instructor/student scenario for the
+  reflective-debugger/debug-coach use case; grading, creative assessment, real
+  Alice UI automation, and full lesson delivery remain unproven.
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, and #262
+  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, and #122 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
-  completion, grading, creative assessment, learner-world grading, first-lesson
+  completion, native FileDialog peer control, project selection or opening,
+  grading, creative assessment, learner-world grading, first-lesson
   completion, real desktop proof, project save, deployed installer success, full
   world execution, procedure UI invocation, or complete player/full Tweedle decode support.
 - The proof boundary remains a narrow Run window attachment signal: Alice put

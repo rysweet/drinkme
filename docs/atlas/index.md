@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0101 - RabbitHole PR #260/#261/#262 and eatme PR #122 status](journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md)
+  records Swing `JFileChooser` dialog observation under Xvfb, Select Project
+  window observation, primitive literal field assignment decode in Tweedle
+  method bodies, and the `lost-robot-debug-museum` eatme scenario, while keeping
+  native FileDialog peer control, project selection, full Tweedle/player decode,
+  grading, and first-lesson completion unproven.
 - [0100 - RabbitHole PR #235 through PR #259 status](journal/0100-rabbithole-pr235-through-pr259-status.md)
   records Save menu item dispatch proof, Alice launch classpath fix, parameter
   and field return identifier decode, X window inventory capture, selected-path
