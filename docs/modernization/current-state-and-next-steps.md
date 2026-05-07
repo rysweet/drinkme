@@ -331,6 +331,12 @@
   `2ca7aa1062ee94b4e10eb8a13cdad8a4f4cfabc6`. Primitive literal local variable
   reassignment in Tweedle method and constructor bodies now decodes; full
   Tweedle/player decode remains unproven.
+  [eatme PR #125](https://github.com/rysweet/eatme/pull/125) merged at
+  `847c09d20be16435595e1368f8f96c495fc6e4f5`. Adds the
+  `ecosystem-balance-loop-simulation` instructor/student scenario; scenario
+  assets grew from 75 to 77 with all 38 Gadugi adapters fresh. Grading,
+  automated creative assessment, real Alice UI automation, and full lesson
+  delivery remain unproven.
 - Latest RabbitHole source update is tracked in
   `docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md`.
   eatme PR #123 is tracked in
@@ -339,6 +345,8 @@
   `docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status.md`.
   RabbitHole PR #265, PR #266, and PR #267 are tracked in
   `docs/atlas/journal/0104-rabbithole-pr265-pr266-pr267-status.md`.
+  eatme PR #125 is tracked in
+  `docs/atlas/journal/0105-eatme-pr125-ecosystem-balance-loop-status.md`.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
