@@ -46,6 +46,10 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0087 - RabbitHole PR #159/#160 and eatme PR #93 merge status](journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md)
+  records the missing Tweedle source-entry test, the pixel-proof boundary file,
+  and the readiness evidence list, while keeping product behavior unproven until
+  separate evidence exists.
 - [0086 - eatme PR #92 RabbitHole evidence readiness](journal/0086-eatme-pr92-rabbithole-evidence-readiness.md)
   records the eatme PR #92 documentation update and its limits.
 - [0085 - Desktop Run execution evidence](journal/0085-desktop-run-execution-evidence.md)

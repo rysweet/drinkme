@@ -33,6 +33,17 @@ network. Do not open issues or pull requests against
   RabbitHole evidence needed before first-lesson readiness can be marked ready:
   launch evidence, Run-window evidence, desktop execution evidence,
   screenshot/log/window artifacts, and `ui-action-contract.json`.
+- RabbitHole PR #159 merged at
+  `9dbf0266ad7d61439f5dd74121e744dbbd365462`. It adds a generated archive test
+  where a missing manifest-declared Tweedle source entry fails clearly; it does
+  not add broad Tweedle decode support.
+- RabbitHole PR #160 merged at
+  `18c533efdacc7bdefa971c82ac655d5127bc743e`. It adds
+  `desktop-run-pixel-boundary.json` with `status: "not_observed"`; it does not
+  prove pixels, screenshots, visible rendering, or grading.
+- eatme PR #93 merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. It makes
+  readiness reports list concrete RabbitHole readiness evidence categories; it
+  does not create new runtime proof or prove first-lesson completion.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -106,8 +117,11 @@ Merged source PR status:
 | [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154) | Merged. Records that Alice put the Run panel into the Run window area. |
 | [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Merged. Records launcher steps and no-go messages, but does not prove rendering. |
 | [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Merged. Keeps old image recovery while safely rejecting unsupported old code. |
+| [RabbitHole PR #159](https://github.com/rysweet/RabbitHole/pull/159) | Merged. This repo records only that the PR landed. |
+| [RabbitHole PR #160](https://github.com/rysweet/RabbitHole/pull/160) | Merged. This repo records only that the PR landed. |
 | [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
 | [eatme PR #92](https://github.com/rysweet/eatme/pull/92) | Merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready; does not prove full Alice UI automation. |
+| [eatme PR #93](https://github.com/rysweet/eatme/pull/93) | Merged. This repo records only that the PR landed. |
 - The highest-risk uncharacterized areas are project load/save, model/resource handling, IDE journeys, NetBeans Java-transition workflows, and rendering-adjacent scenegraph behavior.
 - Keep the core application Java for now; consider Rust first for optional external tooling, not core runtime.
 
@@ -130,6 +144,10 @@ Merged source PR status:
     first-lesson readiness can be marked ready, not as proof of full Alice UI
     automation, creative assessment, learner-world grading, visible rendering
     correctness, or first-lesson completion.
+12. Treat merged RabbitHole PRs #159 and #160 and merged eatme PR #93 as proof
+    only that those PRs landed. Do not treat them as proof of full Alice UI
+    automation, visible rendering, desktop save-menu completion, grading,
+    creative assessment, or first-lesson completion.
 
 ## Success criteria
 

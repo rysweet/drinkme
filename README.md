@@ -33,6 +33,14 @@ records the eatme PR #92 status update. eatme now documents the RabbitHole
 evidence needed before first-lesson readiness can be marked ready:
 launch evidence, Run-window evidence, desktop execution evidence,
 screenshot/log/window artifacts, and `ui-action-contract.json`.
+[atlas journal entry 0087](docs/atlas/journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md)
+records the current merge update. RabbitHole PR #159 adds a generated archive
+test for a missing Tweedle source entry. RabbitHole PR #160 writes a
+`desktop-run-pixel-boundary.json` file that says pixel and screenshot proof were
+not observed. eatme PR #93 makes the readiness report list the concrete
+RabbitHole evidence it needs. None of those changes proves full Alice UI
+automation, visible rendering, desktop save-menu completion, grading, creative
+assessment, or first-lesson completion.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -40,16 +48,19 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154) | Merged. Records that Alice put the Run panel into the Run window area. |
 | [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Merged. Records launcher steps and no-go messages, but does not prove rendering. |
 | [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Merged. Keeps old image recovery while safely rejecting unsupported old code. |
+| [RabbitHole PR #159](https://github.com/rysweet/RabbitHole/pull/159) | Merged at `9dbf0266ad7d61439f5dd74121e744dbbd365462`. Adds a generated archive test where a missing Tweedle source entry fails clearly; it does not add new Tweedle decode support. |
+| [RabbitHole PR #160](https://github.com/rysweet/RabbitHole/pull/160) | Merged at `18c533efdacc7bdefa971c82ac655d5127bc743e`. Adds `desktop-run-pixel-boundary.json` with `status: "not_observed"`; it does not prove pixels, screenshots, visible rendering, or grading. |
 | [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
 | [eatme PR #92](https://github.com/rysweet/eatme/pull/92) | Merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready. |
+| [eatme PR #93](https://github.com/rysweet/eatme/pull/93) | Merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. Lists the concrete readiness evidence categories in the report; it does not create new runtime proof. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
 drawn, does not prove the lesson finished, and is not grading.
 
-The eatme PR #92 documentation does not prove full Alice UI automation, creative
-assessment, learner-world grading, visible rendering correctness, or
-first-lesson completion.
+The eatme PR #92 documentation and the newer PR #159, PR #160, and PR #93 merge
+update do not prove full Alice UI automation, visible rendering, desktop
+save-menu completion, grading, creative assessment, or first-lesson completion.
 
 ## Plain-English terms
 
@@ -92,14 +103,14 @@ named gap. **Not proven** means there is no accepted proof yet.
 | Top-level plan goals in this section | 7 | 0 | 7 | 0 | Every major goal has useful evidence, but every one still has an open gap. |
 | RabbitHole code areas below | 9 | 0 | 9 | 0 | Each area has tests or guarded changes; none is broad enough to call complete. |
 | eatme user-task areas below | 7 | 1 | 6 | 0 | Startup comparison is the only complete user-task slice; lesson automation remains partial. |
-| First-lesson action chain | 15 | 2 | 8 | 5 | Only launch and window focus are fully done. RabbitHole can partially prove several backend steps and the narrow Run window attachment signal from PR #154; pixel drawing, save-menu completion, grading, and full lesson completion are still open. |
+| First-lesson action chain | 15 | 2 | 7 | 6 | Only launch and window focus are fully done. RabbitHole can partially prove several backend steps and the narrow Run window attachment signal from PR #154; pixel drawing, save-menu completion, grading, and full lesson completion are still open. |
 
 ```mermaid
 xychart-beta
   title "Strict completion counts"
   x-axis ["Top goals done", "RabbitHole done", "eatme done", "First-lesson done", "First-lesson partial", "First-lesson not proven"]
   y-axis "Items" 0 --> 15
-  bar [0, 0, 1, 2, 8, 5]
+  bar [0, 0, 1, 2, 7, 6]
 ```
 
 ### First-lesson action chain
@@ -125,8 +136,8 @@ vision is executable today.
 | 14 | Grade or assess a learner world | Not proven | Not proven | Not proven |
 | 15 | Complete an end-to-end teacher/student lesson | Not proven | Not proven | Not proven |
 
-Short version: **2 of 15 first-lesson steps are fully done**, **8 are partial**,
-and **5 remain unproven**. That is enough to compare meaningful RabbitHole
+Short version: **2 of 15 first-lesson steps are fully done**, **7 are partial**,
+and **6 remain unproven**. That is enough to compare meaningful RabbitHole
 progress against original Alice, but it is not full lesson automation.
 
 | Goal from the plan | What exists now | Plain-language verdict |
