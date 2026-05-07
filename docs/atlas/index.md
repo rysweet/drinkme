@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0102 - eatme PR #123 status](journal/0102-eatme-pr123-weather-wizard-status.md)
+  records the `weather-wizard-conditional-theater` scenario addition, the next
+  `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73,
+  all 36 Gadugi adapters fresh, 57 eatme-assets tests pass. Grading, automated
+  creative assessment, real Alice UI automation, and full lesson delivery remain
+  unproven.
 - [0101 - RabbitHole PR #260/#261/#262 and eatme PR #122 status](journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md)
   records Swing `JFileChooser` dialog observation under Xvfb, Select Project
   window observation, primitive literal field assignment decode in Tweedle

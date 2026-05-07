@@ -214,6 +214,12 @@ remain unproven. This does not prove full Alice UI automation, visible rendering
 correctness, desktop save-menu completion, native FileDialog peer control,
 project selection or opening, grading, creative assessment, learner-world
 grading, first-lesson completion, or complete Tweedle/player decode support.
+[atlas journal entry 0102](docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.md)
+records the follow-up eatme update. eatme PR #123 adds the
+`weather-wizard-conditional-theater` instructor/student scenario, the next
+`creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73.
+This does not prove grading, automated creative assessment, learner-world
+grading, real Alice UI automation, or full lesson delivery.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -307,6 +313,7 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #261](https://github.com/rysweet/RabbitHole/pull/261) | Merged at `97c1ae707544bd0ca89e711df92e7e45e6d377ac`. The Select Project Java window was observed under Xvfb with title, class, process, and geometry; selecting or opening a project, world execution, and installer success remain unproven. |
 | [RabbitHole PR #262](https://github.com/rysweet/RabbitHole/pull/262) | Merged at `9ef09e05402b2e0af9c07803eee92aa5db29b325`. Primitive literal field assignments in Tweedle method bodies now decode, with clear unsupported-form failures; full Tweedle/player decode remains unproven. |
 | [eatme PR #122](https://github.com/rysweet/eatme/pull/122) | Merged at `41142db`. Adds the `lost-robot-debug-museum` instructor/student scenario for the reflective-debugger/debug-coach use case; grading, creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
+| [eatme PR #123](https://github.com/rysweet/eatme/pull/123) | Merged at `773fb3df7a6ec234c5f317eefdfea82916ecd7bc`. Adds the `weather-wizard-conditional-theater` instructor/student scenario, the next `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73, all 36 Gadugi adapters fresh, 57 eatme-assets tests pass. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were

@@ -24,6 +24,7 @@ ENTRY_0098 = ROOT / "docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-
 ENTRY_0099 = ROOT / "docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md"
 ENTRY_0100 = ROOT / "docs/atlas/journal/0100-rabbithole-pr235-through-pr259-status.md"
 ENTRY_0101 = ROOT / "docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md"
+ENTRY_0102 = ROOT / "docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -66,6 +67,7 @@ DOCS = {
     "atlas entry 0099": ENTRY_0099,
     "atlas entry 0100": ENTRY_0100,
     "atlas entry 0101": ENTRY_0101,
+    "atlas entry 0102": ENTRY_0102,
 }
 
 README_PLAN_LINKS = [
@@ -90,6 +92,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0099](docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md)",
     "[atlas journal entry 0100](docs/atlas/journal/0100-rabbithole-pr235-through-pr259-status.md)",
     "[atlas journal entry 0101](docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md)",
+    "[atlas journal entry 0102](docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -237,6 +240,10 @@ RABBITHOLE_LATEST_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/122",
 ]
 
+EATME_PR123_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/eatme/pull/123",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -253,6 +260,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_COMPLETED_SOURCE_WAVE_PR_LINKS
     + RABBITHOLE_NEW_SOURCE_WAVE_PR_LINKS
     + RABBITHOLE_LATEST_WAVE_PR_LINKS
+    + EATME_PR123_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -846,6 +854,15 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "41142db",
         "lost-robot-debug-museum",
         "reflective-debugger",
+        "grading",
+        "creative assessment",
+    ],
+    "eatme PR #123": [
+        "eatme PR #123",
+        "Merged",
+        "773fb3df7a6ec234c5f317eefdfea82916ecd7bc",
+        "weather-wizard-conditional-theater",
+        "creative_new",
         "grading",
         "creative assessment",
     ],
@@ -1603,6 +1620,25 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                 self.assert_contains_all(self.docs[name], REQUIRED_PR_LINKS, name)
                 self.assert_merged_source_status_is_plain(self.docs[name], name)
                 self.assert_no_stale_status_near_source_prs(self.docs[name], name)
+
+    def test_0102_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0102"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "eatme PR #123",
+            ]
+        }
+        self.assert_contains_all(text, EATME_PR123_WAVE_PR_LINKS, "atlas entry 0102")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0102")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0102", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0102")
+        self.assertIn("weather-wizard-conditional-theater", text)
+        self.assertIn("773fb3df7a6ec234c5f317eefdfea82916ecd7bc", text)
+        self.assertIn("creative_new", text)
+        self.assertIn("grading", text)
+        self.assertIn("creative assessment", text)
 
     def test_current_status_docs_list_new_merged_prs_plainly(self):
         for name in CURRENT_MERGE_STATUS_DOCS:

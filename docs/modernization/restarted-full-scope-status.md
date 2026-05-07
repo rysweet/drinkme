@@ -150,6 +150,12 @@ not prove full Alice UI automation, visible rendering correctness, desktop
 save-menu completion, native FileDialog peer control, project selection or
 opening, grading, creative assessment, learner-world grading,
 first-lesson completion, or complete Tweedle/player decode support.
+[eatme PR #123](https://github.com/rysweet/eatme/pull/123) merged at
+`773fb3df7a6ec234c5f317eefdfea82916ecd7bc` adds the
+`weather-wizard-conditional-theater` instructor/student scenario, the next
+`creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73.
+Grading, automated creative assessment, real Alice UI automation, and full
+lesson delivery remain unproven.
 
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
