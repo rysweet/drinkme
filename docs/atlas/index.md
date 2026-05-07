@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0110 - RabbitHole PR #272, PR #273, and eatme PR #131 status](journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md)
+  records that AT-SPI reaches the Alice Java process via `exec:exec` and top-level Swing
+  widgets are observable (PR #272); that `SaveProjectOperation.fire()` reaches a live
+  `JFileChooser`, a background probe approves it, and a non-empty `.a3p` is written (PR #273);
+  and that eatme PR #131 adds the `neighborhood-data-story` scenario (assets 83→85). Tab
+  labels, project opening, visible rendering, grading, and full lesson delivery remain unproven.
 - [0109 - RabbitHole PR #271 and eatme PR #129 status](journal/0109-rabbithole-pr271-eatme-pr129-status.md)
   records that local variable declarations in Tweedle method and constructor bodies now
   decode `IdentifierReference` initializers to `LocalAccess`, `ParameterAccess`, or

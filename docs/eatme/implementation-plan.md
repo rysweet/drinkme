@@ -349,8 +349,23 @@ Second-pass review tightened the plan:
   `creature-choreography-loop-lab` instructor/student scenario; scenario assets
   grew from 81 to 83 with all Gadugi adapters fresh. This does not prove grading,
   automated creative assessment, real Alice UI automation, or full lesson delivery.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, #267, #269, #270, and #271
-  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, #124, #125, #126, #127, and #129 have merged, but they do
+- [RabbitHole PR #272](https://github.com/rysweet/RabbitHole/pull/272) merged at
+  `458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9`. Proves AT-SPI reaches the Alice
+  Java process via `exec:exec` and `NO_AT_BRIDGE=1`; top-level Swing widgets are
+  observable. Tab labels are not visible or enumerable. Project selection and
+  opening are not proven.
+- [RabbitHole PR #273](https://github.com/rysweet/RabbitHole/pull/273) merged at
+  `c86e8c4747b73921e8c432709c8cf7a741848855`. Proves `SaveProjectOperation.fire()`
+  reaches a live `JFileChooser`, a background probe approves it, and a non-empty
+  `.a3p` is written. Visible rendering, grading, desktop save-menu completion, and
+  a full Save menu item `doClick`-to-written-file journey remain unproven.
+- [eatme PR #131](https://github.com/rysweet/eatme/pull/131) merged at
+  `973b65f`. Adds the `neighborhood-data-story` instructor/student scenario;
+  scenario assets grew from 83 to 85 with all Gadugi adapters fresh. This does
+  not prove grading, automated creative assessment, real Alice UI automation, or
+  full lesson delivery.
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, #267, #269, #270, #271, #272, and #273
+  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, #124, #125, #126, #127, #129, and #131 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
   completion, native FileDialog peer control, project selection or opening,
   grading, creative assessment, learner-world grading, first-lesson

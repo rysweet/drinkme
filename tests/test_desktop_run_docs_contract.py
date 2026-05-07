@@ -32,6 +32,7 @@ ENTRY_0106 = ROOT / "docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status
 ENTRY_0107 = ROOT / "docs/atlas/journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md"
 ENTRY_0108 = ROOT / "docs/atlas/journal/0108-rabbithole-pr270-identifier-rhs-status.md"
 ENTRY_0109 = ROOT / "docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md"
+ENTRY_0110 = ROOT / "docs/atlas/journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -82,6 +83,7 @@ DOCS = {
     "atlas entry 0107": ENTRY_0107,
     "atlas entry 0108": ENTRY_0108,
     "atlas entry 0109": ENTRY_0109,
+    "atlas entry 0110": ENTRY_0110,
 }
 
 README_PLAN_LINKS = [
@@ -114,6 +116,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0107](docs/atlas/journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md)",
     "[atlas journal entry 0108](docs/atlas/journal/0108-rabbithole-pr270-identifier-rhs-status.md)",
     "[atlas journal entry 0109](docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md)",
+    "[atlas journal entry 0110](docs/atlas/journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -298,6 +301,12 @@ RABBITHOLE_PR271_EATME_PR129_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/129",
 ]
 
+RABBITHOLE_PR272_PR273_EATME_PR131_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/272",
+    "https://github.com/rysweet/RabbitHole/pull/273",
+    "https://github.com/rysweet/eatme/pull/131",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -322,6 +331,7 @@ CURRENT_MERGED_PR_LINKS = (
     + EATME_PR127_WAVE_PR_LINKS
     + RABBITHOLE_PR270_WAVE_PR_LINKS
     + RABBITHOLE_PR271_EATME_PR129_WAVE_PR_LINKS
+    + RABBITHOLE_PR272_PR273_EATME_PR131_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -1033,6 +1043,31 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "grading",
         "creative assessment",
     ],
+    "RabbitHole PR #272": [
+        "RabbitHole PR #272",
+        "Merged",
+        "458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9",
+        "AT-SPI",
+        "exec:exec",
+        "tab labels",
+    ],
+    "RabbitHole PR #273": [
+        "RabbitHole PR #273",
+        "Merged",
+        "c86e8c4747b73921e8c432709c8cf7a741848855",
+        "SaveProjectOperation",
+        "JFileChooser",
+        ".a3p",
+    ],
+    "eatme PR #131": [
+        "eatme PR #131",
+        "Merged",
+        "973b65f",
+        "neighborhood-data-story",
+        "83 to 85",
+        "grading",
+        "creative assessment",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1200,6 +1235,12 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?267",
     r"PR\s*#?125[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?125",
+    r"PR\s*#?272[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?272",
+    r"PR\s*#?273[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?273",
+    r"PR\s*#?131[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?131",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -1445,6 +1486,9 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0109_link = "journal/0109-rabbithole-pr271-eatme-pr129-status.md"
         self.assertEqual(1, text.count(entry_0109_link))
         self.assertIn("creature-choreography-loop-lab", text)
+        entry_0110_link = "journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md"
+        self.assertEqual(1, text.count(entry_0110_link))
+        self.assertIn("neighborhood-data-story", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -1998,7 +2042,31 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("creature-choreography-loop-lab", text)
         self.assertIn("81 to 83", text)
 
-    def test_current_status_docs_list_new_merged_prs_plainly(self):
+    def test_0110_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0110"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #272",
+                "RabbitHole PR #273",
+                "eatme PR #131",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR272_PR273_EATME_PR131_WAVE_PR_LINKS, "atlas entry 0110")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0110")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0110", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0110")
+        self.assertIn("458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9", text)
+        self.assertIn("c86e8c4747b73921e8c432709c8cf7a741848855", text)
+        self.assertIn("973b65f", text)
+        self.assertIn("AT-SPI", text)
+        self.assertIn("SaveProjectOperation", text)
+        self.assertIn("neighborhood-data-story", text)
+        self.assertIn("83 to 85", text)
+        self.assertIn("tab labels", text)
+
+
         for name in CURRENT_MERGE_STATUS_DOCS:
             with self.subTest(document=name):
                 text = self.docs[name]
