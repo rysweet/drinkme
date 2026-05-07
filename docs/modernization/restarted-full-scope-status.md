@@ -222,6 +222,18 @@ parameter RHS. Non-`this` member assignment targets, non-literal/non-identifier
 RHS, loops/calls/conditionals, resource initializers, and full Tweedle/player
 decode remain unproven.
 
+[RabbitHole PR #271](https://github.com/rysweet/RabbitHole/pull/271) merged at
+`b49b898ddfd2c19a27ce88d265f2c723499b1454`. Local variable declarations in
+Tweedle method and constructor bodies now decode an `IdentifierReference`
+initializer to `LocalAccess`, `ParameterAccess`, or `FieldAccess`. Full
+Tweedle/player decode remains unproven.
+
+[eatme PR #129](https://github.com/rysweet/eatme/pull/129) merged at
+`b72afe499c9b7a3826012b7d10c69b5ae6b6c0a1`. Adds the
+`creature-choreography-loop-lab` instructor/student scenario; scenario assets
+grew from 81 to 83 with all Gadugi adapters fresh. Grading, automated creative
+assessment, real Alice UI automation, and full lesson delivery remain unproven.
+
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and

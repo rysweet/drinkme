@@ -279,6 +279,18 @@ parameter RHS. Four new decoder tests and two updated error-message assertions
 pass. Non-`this` member assignment targets, non-literal/non-identifier RHS,
 loops/calls/conditionals, resource initializers, and full Tweedle/player decode
 remain unproven.
+[atlas journal entry 0109](docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md)
+records the latest RabbitHole decoder and eatme scenario update. RabbitHole PR
+#271 extends local variable declarations in Tweedle method and constructor bodies
+to accept an `IdentifierReference` initializer, resolving it to `LocalAccess`,
+`ParameterAccess`, or `FieldAccess` using the same scoping rules introduced in PR
+#270. eatme PR #129 adds the `creature-choreography-loop-lab` instructor/student
+scenario; scenario assets grew from 81 to 83 and all generated Gadugi adapters
+are fresh. Remaining missing scenario files are: neighborhood-data-story,
+accessibility-rescue-camera-captions, design-process-story-or-game,
+audio-camera-and-export-sharecase, and setup-preflight-ready-to-create. These
+changes do not prove full Tweedle/player decode, grading, real Alice UI
+automation, or full lesson delivery.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -383,6 +395,8 @@ All referenced source and status PRs have merged:
 | [eatme PR #126](https://github.com/rysweet/eatme/pull/126) | Merged at `72731e2e7dd092292f982408faad5a2e98d7e74a`. Adds the `time-travel-recipe-sequencing` instructor/student scenario; scenario assets grew from 77 to 79, all adapters fresh. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [eatme PR #127](https://github.com/rysweet/eatme/pull/127) | Merged at `e0c090f265f0dfb2f0b662616aac8b6cb078dae6`. Adds the `mars-rover-proximity-mission` instructor/student scenario; scenario assets grew from 79 to 81, all 40 generated gadugi adapters fresh, all seven CI checks passed. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) | Merged at `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle method and constructor bodies now decode identifier-reference RHS values to `ParameterAccess`, `LocalAccess`, or `FieldAccess`. Constructor bodies now receive `UserParameter[]` so constructor setter patterns resolve parameter RHS. Non-`this` member targets, non-literal/non-identifier RHS, loops/calls/conditionals, resource initializers, and full Tweedle/player decode remain unproven. |
+| [RabbitHole PR #271](https://github.com/rysweet/RabbitHole/pull/271) | Merged at `b49b898ddfd2c19a27ce88d265f2c723499b1454`. Local variable declarations in Tweedle method and constructor bodies now decode an `IdentifierReference` initializer to `LocalAccess`, `ParameterAccess`, or `FieldAccess` using the same scoping rules as PR #270. Non-literal/non-identifier initializers, loops, calls, conditionals, resource initializers, and full Tweedle/player decode remain unproven. |
+| [eatme PR #129](https://github.com/rysweet/eatme/pull/129) | Merged at `b72afe499c9b7a3826012b7d10c69b5ae6b6c0a1`. Adds the `creature-choreography-loop-lab` instructor/student scenario; scenario assets grew from 81 to 83, all Gadugi adapters fresh. Remaining missing scenario files: neighborhood-data-story, accessibility-rescue-camera-captions, design-process-story-or-game, audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -393,7 +407,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, PR #270, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, PR #126, and PR #127
+PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, PR #270, PR #271, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, PR #126, PR #127, and PR #129
 merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full
@@ -460,7 +474,7 @@ xychart-beta
 | Student/instructor persona links | 33 of 33 scenarios | These links do not prove learner-world behavior. |
 | Docs navigation | 18 of 18 pages | Published sharing and full classroom workflow proof remain unproven. |
 
-Counts updated after eatme PR #127 (scenario assets 81, Gadugi adapters 40).
+Counts updated after eatme PR #129 (scenario assets 83, Gadugi adapters fresh).
 Plainly: eatme local instructor/student persona coverage, student docs, Gadugi
 adapters, and plain readiness output are complete for now. The remaining blockers
 depend on RabbitHole first-lesson evidence and broader behavior proof.
@@ -636,6 +650,7 @@ Hard rules:
 | [eatme PR #126 and RabbitHole PR #269 status](docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md) | eatme PR #126 adds the `time-travel-recipe-sequencing` scenario (assets 77→79). RabbitHole PR #269 makes Tweedle optional parameters decode; default values remain unrepresented. |
 | [eatme PR #127 status](docs/atlas/journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md) | eatme PR #127 adds the `mars-rover-proximity-mission` scenario (assets 79→81, 40 generated gadugi adapters fresh). Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [RabbitHole PR #270 status](docs/atlas/journal/0108-rabbithole-pr270-identifier-rhs-status.md) | RabbitHole PR #270 decodes identifier-reference RHS in Tweedle assignment statements to `ParameterAccess`, `LocalAccess`, or `FieldAccess`; constructor bodies now receive `UserParameter[]`. Full Tweedle/player decode remains unproven. |
+| [RabbitHole PR #271 and eatme PR #129 status](docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md) | RabbitHole PR #271 decodes identifier-reference initializers in Tweedle local variable declarations to `LocalAccess`, `ParameterAccess`, or `FieldAccess`. eatme PR #129 adds `creature-choreography-loop-lab` (assets 81→83). Full Tweedle/player decode, grading, and full lesson delivery remain unproven. |
 
 ## Tool and repository map
 

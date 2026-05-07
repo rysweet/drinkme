@@ -383,6 +383,16 @@ network. Do not open issues or pull requests against
   `ParameterAccess`, `LocalAccess`, or `FieldAccess`. Constructor assignment
   bodies now receive `UserParameter[]` so constructor setter patterns resolve
   parameter RHS. Full Tweedle/player decode remains unproven.
+- [RabbitHole PR #271](https://github.com/rysweet/RabbitHole/pull/271) merged at
+  `b49b898ddfd2c19a27ce88d265f2c723499b1454`. Local variable declarations in
+  Tweedle method and constructor bodies now decode an `IdentifierReference`
+  initializer to `LocalAccess`, `ParameterAccess`, or `FieldAccess`. Full
+  Tweedle/player decode remains unproven.
+- [eatme PR #129](https://github.com/rysweet/eatme/pull/129) merged at
+  `b72afe499c9b7a3826012b7d10c69b5ae6b6c0a1`. Adds the
+  `creature-choreography-loop-lab` instructor/student scenario; scenario assets
+  grew from 81 to 83 with all Gadugi adapters fresh. Grading, automated creative
+  assessment, real Alice UI automation, and full lesson delivery remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
