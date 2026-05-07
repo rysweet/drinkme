@@ -22,6 +22,7 @@ ENTRY_0096 = ROOT / "docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source
 ENTRY_0097 = ROOT / "docs/atlas/journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md"
 ENTRY_0098 = ROOT / "docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md"
 ENTRY_0099 = ROOT / "docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md"
+ENTRY_0100 = ROOT / "docs/atlas/journal/0100-rabbithole-pr235-through-pr259-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -62,6 +63,7 @@ DOCS = {
     "atlas entry 0097": ENTRY_0097,
     "atlas entry 0098": ENTRY_0098,
     "atlas entry 0099": ENTRY_0099,
+    "atlas entry 0100": ENTRY_0100,
 }
 
 README_PLAN_LINKS = [
@@ -84,6 +86,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0097](docs/atlas/journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md)",
     "[atlas journal entry 0098](docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md)",
     "[atlas journal entry 0099](docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md)",
+    "[atlas journal entry 0100](docs/atlas/journal/0100-rabbithole-pr235-through-pr259-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -208,6 +211,22 @@ RABBITHOLE_COMPLETED_SOURCE_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/234",
 ]
 
+RABBITHOLE_NEW_SOURCE_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/235",
+    "https://github.com/rysweet/RabbitHole/pull/237",
+    "https://github.com/rysweet/RabbitHole/pull/238",
+    "https://github.com/rysweet/RabbitHole/pull/240",
+    "https://github.com/rysweet/RabbitHole/pull/241",
+    "https://github.com/rysweet/RabbitHole/pull/245",
+    "https://github.com/rysweet/RabbitHole/pull/246",
+    "https://github.com/rysweet/RabbitHole/pull/247",
+    "https://github.com/rysweet/RabbitHole/pull/250",
+    "https://github.com/rysweet/RabbitHole/pull/253",
+    "https://github.com/rysweet/RabbitHole/pull/254",
+    "https://github.com/rysweet/RabbitHole/pull/255",
+    "https://github.com/rysweet/RabbitHole/pull/259",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -222,6 +241,7 @@ CURRENT_MERGED_PR_LINKS = (
     + SAVE_DIAGNOSTICS_WAVE_PR_LINKS
     + LATEST_PROOF_REPORTING_WAVE_PR_LINKS
     + RABBITHOLE_COMPLETED_SOURCE_WAVE_PR_LINKS
+    + RABBITHOLE_NEW_SOURCE_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -665,6 +685,122 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "full method decode",
         "full Tweedle/player decode support remains unproven",
     ],
+    "RabbitHole PR #235": [
+        "RabbitHole PR #235",
+        "Merged",
+        "a6ebc43a0e09",
+        "Save menu item dispatch",
+        "Save action path",
+        "Save dialog display",
+        "Save dialog control",
+    ],
+    "RabbitHole PR #237": [
+        "RabbitHole PR #237",
+        "Merged",
+        "70deb2e15967",
+        "alice-ide",
+        "org.alice.stageide.EntryPoint",
+        "Maven exec classpath",
+        "visible rendering",
+    ],
+    "RabbitHole PR #238": [
+        "RabbitHole PR #238",
+        "Merged",
+        "f9c832b8a86e",
+        "required method parameter identifier",
+        "ParameterAccess",
+        "full method body",
+        "complete Tweedle decode support",
+    ],
+    "RabbitHole PR #240": [
+        "RabbitHole PR #240",
+        "Merged",
+        "ae3d8de57aec",
+        "x-window-inventory.json",
+        "alice-window-not-found",
+        "classpath",
+    ],
+    "RabbitHole PR #241": [
+        "RabbitHole PR #241",
+        "Merged",
+        "d2ab990dffa8",
+        "FileDialogUtilities.showSaveFileDialog",
+        "selected-path automation",
+        "symlink",
+        "Save dialog display",
+    ],
+    "RabbitHole PR #245": [
+        "RabbitHole PR #245",
+        "Merged",
+        "9cc5893d8b67",
+        "application-root-error.json",
+        "Application Root Error",
+        "org.alice.ide.rootDirectory",
+    ],
+    "RabbitHole PR #246": [
+        "RabbitHole PR #246",
+        "Merged",
+        "2fe47f4ebaea",
+        "ProjectDocumentFrame.showSaveFileDialog",
+        "FileDialogUtilities",
+        "displayable",
+        "JFrame",
+        "Save dialog display",
+    ],
+    "RabbitHole PR #247": [
+        "RabbitHole PR #247",
+        "Merged",
+        "0a75eb7a21f5",
+        "constructor",
+        "primitive-literal local variable declarations",
+        "LocalDeclaration",
+        "full Tweedle constructor",
+    ],
+    "RabbitHole PR #250": [
+        "RabbitHole PR #250",
+        "Merged",
+        "c640c3fbd9ef",
+        "rootDirectory",
+        "org.alice.ide.rootDirectory",
+        "core/resources/target/distribution",
+        "Application Root Error",
+    ],
+    "RabbitHole PR #253": [
+        "RabbitHole PR #253",
+        "Merged",
+        "39635ffd1010",
+        "declared Tweedle fields",
+        "FieldAccess",
+        "field return",
+        "player decode",
+    ],
+    "RabbitHole PR #254": [
+        "RabbitHole PR #254",
+        "Merged",
+        "88e8cffffa7c",
+        "License Agreement",
+        "java.util.prefs",
+        "license",
+        "pixel",
+    ],
+    "RabbitHole PR #255": [
+        "RabbitHole PR #255",
+        "Merged",
+        "c8d52a9a8865",
+        "SaveOperationFlow",
+        "saved_file_exists",
+        "saved_file_size_bytes",
+        "Save dialog",
+        "desktop save-menu completion",
+    ],
+    "RabbitHole PR #259": [
+        "RabbitHole PR #259",
+        "Merged",
+        "e5b0ac5fce21b4eee1e13ea5861d2e9cee538ca8",
+        "this.field",
+        "AST `FieldAccess`",
+        "full Tweedle/player decode",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -790,6 +926,32 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?230",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?231",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?234",
+    r"PR\s*#?235[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?237[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?238[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?240[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?241[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?245[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?246[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?247[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?250[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?253[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?254[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?255[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?259[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?235",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?237",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?238",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?240",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?241",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?245",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?246",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?247",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?250",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?253",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?254",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?255",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?259",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -948,6 +1110,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0097_link = "journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md"
         entry_0098_link = "journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md"
         entry_0099_link = "journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md"
+        entry_0100_link = "journal/0100-rabbithole-pr235-through-pr259-status.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -992,6 +1155,11 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("empty no-argument constructor decode", text)
         self.assertIn("Xvfb Save action proof", text)
         self.assertIn("real Alice desktop classpath blocker", text)
+        self.assertEqual(1, text.count(entry_0100_link))
+        self.assertIn("RabbitHole PR #235 through PR #259 status", text)
+        self.assertIn("Save menu item dispatch proof", text)
+        self.assertIn("Alice launch classpath fix", text)
+        self.assertIn("completed Save-flow file write", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -1294,7 +1462,47 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("ClassNotFoundException", text)
         self.assertIn("AST `ReturnStatement`", text)
 
-    def test_all_controlling_docs_share_the_same_proof_boundary(self):
+    def test_0100_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0100"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #235",
+                "RabbitHole PR #237",
+                "RabbitHole PR #238",
+                "RabbitHole PR #240",
+                "RabbitHole PR #241",
+                "RabbitHole PR #245",
+                "RabbitHole PR #246",
+                "RabbitHole PR #247",
+                "RabbitHole PR #250",
+                "RabbitHole PR #253",
+                "RabbitHole PR #254",
+                "RabbitHole PR #255",
+                "RabbitHole PR #259",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_NEW_SOURCE_WAVE_PR_LINKS, "atlas entry 0100")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0100")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0100", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0100")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0100")
+        self.assertIn("Save menu item dispatch", text)
+        self.assertIn("org.alice.stageide.EntryPoint", text)
+        self.assertIn("ParameterAccess", text)
+        self.assertIn("x-window-inventory.json", text)
+        self.assertIn("FileDialogUtilities.showSaveFileDialog", text)
+        self.assertIn("application-root-error.json", text)
+        self.assertIn("ProjectDocumentFrame.showSaveFileDialog", text)
+        self.assertIn("LocalDeclaration", text)
+        self.assertIn("org.alice.ide.rootDirectory", text)
+        self.assertIn("AST `FieldAccess`", text)
+        self.assertIn("saved_file_exists", text)
+        self.assertIn("this.field", text)
+        self.assertIn("e5b0ac5fce21b4eee1e13ea5861d2e9cee538ca8", text)
+
+
         for name in CONTROL_DOCS:
             with self.subTest(document=name):
                 self.assert_contains_all(plain(self.docs[name]), PROOF_BOUNDARY_TERMS, name)
