@@ -354,6 +354,12 @@ network. Do not open issues or pull requests against
   `2ca7aa1062ee94b4e10eb8a13cdad8a4f4cfabc6`. Primitive literal local variable
   reassignment in Tweedle method and constructor bodies now decodes; full
   Tweedle/player decode remains unproven.
+- [eatme PR #125](https://github.com/rysweet/eatme/pull/125) merged at
+  `847c09d20be16435595e1368f8f96c495fc6e4f5`. Adds the
+  `ecosystem-balance-loop-simulation` instructor/student scenario; scenario
+  assets grew from 75 to 77 with all 38 Gadugi adapters fresh. Grading,
+  automated creative assessment, real Alice UI automation, and full lesson
+  delivery remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

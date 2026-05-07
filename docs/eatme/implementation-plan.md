@@ -309,8 +309,14 @@ Second-pass review tightened the plan:
   `2ca7aa1062ee94b4e10eb8a13cdad8a4f4cfabc6`. Primitive literal local variable
   reassignment in Tweedle method and constructor bodies now decodes; full
   Tweedle/player decode remains unproven.
+- [eatme PR #125](https://github.com/rysweet/eatme/pull/125) merged at
+  `847c09d20be16435595e1368f8f96c495fc6e4f5`. Adds the
+  `ecosystem-balance-loop-simulation` instructor/student scenario; scenario
+  assets grew from 75 to 77 with all 38 Gadugi adapters fresh. Grading,
+  automated creative assessment, real Alice UI automation, and full lesson
+  delivery remain unproven.
 - RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, and #267
-  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, and #124 have merged, but they do
+  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, #124, and #125 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
   completion, native FileDialog peer control, project selection or opening,
   grading, creative assessment, learner-world grading, first-lesson
