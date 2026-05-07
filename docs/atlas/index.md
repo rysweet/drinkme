@@ -46,6 +46,11 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0107 - eatme PR #127 status](journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md)
+  records the `mars-rover-proximity-mission` scenario addition; scenario assets
+  grew from 79 to 81, all 40 generated gadugi adapters fresh, all seven CI checks
+  passed. Grading, automated creative assessment, real Alice UI automation, and
+  full lesson delivery remain unproven.
 - [0106 - eatme PR #126 and RabbitHole PR #269 status](journal/0106-eatme-pr126-rabbithole-pr269-status.md)
   records Tweedle optional method and constructor parameters now decoding as Alice
   `UserParameter` entries (default values are not represented; Alice AST has no

@@ -371,6 +371,12 @@ network. Do not open issues or pull requests against
   `time-travel-recipe-sequencing` instructor/student scenario; scenario assets
   grew from 77 to 79 with all adapters fresh. Grading, automated creative
   assessment, real Alice UI automation, and full lesson delivery remain unproven.
+- [eatme PR #127](https://github.com/rysweet/eatme/pull/127) merged at
+  `e0c090f265f0dfb2f0b662616aac8b6cb078dae6`. Adds the
+  `mars-rover-proximity-mission` instructor/student scenario; scenario assets
+  grew from 79 to 81 with all 40 generated gadugi adapters fresh. Grading,
+  automated creative assessment, real Alice UI automation, and full lesson
+  delivery remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
