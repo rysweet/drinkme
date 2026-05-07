@@ -15,6 +15,7 @@ ENTRY_0089 = ROOT / "docs/atlas/journal/0089-rabbithole-pr164-eatme-pr96-merge-s
 ENTRY_0090 = ROOT / "docs/atlas/journal/0090-rabbithole-pr166-pr167-eatme-pr98-merge-status.md"
 ENTRY_0091 = ROOT / "docs/atlas/journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md"
 ENTRY_0092 = ROOT / "docs/atlas/journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md"
+ENTRY_0093 = ROOT / "docs/atlas/journal/0093-source-eatme-ci-wave-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -48,6 +49,7 @@ DOCS = {
     "atlas entry 0090": ENTRY_0090,
     "atlas entry 0091": ENTRY_0091,
     "atlas entry 0092": ENTRY_0092,
+    "atlas entry 0093": ENTRY_0093,
 }
 
 README_PLAN_LINKS = [
@@ -63,6 +65,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0090](docs/atlas/journal/0090-rabbithole-pr166-pr167-eatme-pr98-merge-status.md)",
     "[atlas journal entry 0091](docs/atlas/journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md)",
     "[atlas journal entry 0092](docs/atlas/journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md)",
+    "[atlas journal entry 0093](docs/atlas/journal/0093-source-eatme-ci-wave-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -108,6 +111,33 @@ OBSERVATION_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/99",
 ]
 
+
+SOURCE_EATME_CI_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/173",
+    "https://github.com/rysweet/RabbitHole/pull/174",
+    "https://github.com/rysweet/RabbitHole/pull/175",
+    "https://github.com/rysweet/RabbitHole/pull/176",
+    "https://github.com/rysweet/RabbitHole/pull/177",
+    "https://github.com/rysweet/RabbitHole/pull/178",
+    "https://github.com/rysweet/RabbitHole/pull/179",
+    "https://github.com/rysweet/RabbitHole/pull/180",
+    "https://github.com/rysweet/RabbitHole/pull/181",
+    "https://github.com/rysweet/RabbitHole/pull/182",
+    "https://github.com/rysweet/RabbitHole/pull/183",
+    "https://github.com/rysweet/RabbitHole/pull/184",
+    "https://github.com/rysweet/eatme/pull/105",
+    "https://github.com/rysweet/eatme/pull/106",
+    "https://github.com/rysweet/eatme/pull/108",
+    "https://github.com/rysweet/eatme/pull/109",
+    "https://github.com/rysweet/eatme/pull/110",
+    "https://github.com/rysweet/eatme/pull/111",
+    "https://github.com/rysweet/eatme/pull/112",
+    "https://github.com/rysweet/eatme/pull/113",
+    "https://github.com/rysweet/eatme/pull/114",
+    "https://github.com/rysweet/eatme/pull/115",
+    "https://github.com/rysweet/eatme/pull/116",
+]
+
 NEXT_ACTION_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/170",
     "https://github.com/rysweet/RabbitHole/pull/171",
@@ -123,6 +153,7 @@ CURRENT_MERGED_PR_LINKS = (
     + CURRENT_WAVE_PR_LINKS
     + OBSERVATION_WAVE_PR_LINKS
     + NEXT_ACTION_WAVE_PR_LINKS
+    + SOURCE_EATME_CI_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -300,6 +331,30 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "media-audio-creator",
         "grade student work",
     ],
+
+    "RabbitHole PR #173": ["RabbitHole PR #173", "Merged", "procedure UI action", "no desktop UI invocation is proven"],
+    "RabbitHole PR #174": ["RabbitHole PR #174", "Merged", "Save-menu action target", "save-menu completion remains unproven"],
+    "RabbitHole PR #175": ["RabbitHole PR #175", "Merged", "desktop Run status summary", "visible rendering correctness"],
+    "RabbitHole PR #176": ["RabbitHole PR #176", "Merged", "missing sibling Tweedle entry", "fail clearly"],
+    "RabbitHole PR #177": ["RabbitHole PR #177", "Merged", "desktop Run evidence status summary"],
+    "RabbitHole PR #178": ["RabbitHole PR #178", "Merged", "unnamed unsupported manifest Tweedle sibling types", "archive path"],
+    "RabbitHole PR #179": ["RabbitHole PR #179", "Merged", "Checkstyle 0:53", "coverage 11:54"],
+    "RabbitHole PR #180": ["RabbitHole PR #180", "Merged", "first-lesson desktop evidence reporting"],
+    "RabbitHole PR #181": ["RabbitHole PR #181", "Merged", "resource-typed field initializer", "no behavior change"],
+    "RabbitHole PR #182": ["RabbitHole PR #182", "Merged", "desktop-run-status-summary.json", "SaveProjectOperation"],
+    "RabbitHole PR #183": ["RabbitHole PR #183", "Merged", "typed-null Tweedle field initializer", "archive entry path"],
+    "RabbitHole PR #184": ["RabbitHole PR #184", "Merged", "project-IO", "larger decode gaps"],
+    "eatme PR #105": ["eatme PR #105", "Merged", "student artifact sharing"],
+    "eatme PR #106": ["eatme PR #106", "Merged", "next-action evidence", "readiness reporting"],
+    "eatme PR #108": ["eatme PR #108", "Merged", "classroom gallery walk"],
+    "eatme PR #109": ["eatme PR #109", "Merged", "teacher community sharing"],
+    "eatme PR #110": ["eatme PR #110", "Merged", "not proof of full UI automation"],
+    "eatme PR #111": ["eatme PR #111", "Merged", "stale PR-only runs", "CI"],
+    "eatme PR #112": ["eatme PR #112", "Merged", "curriculum-sequence-remix-pack", "Gadugi adapter"],
+    "eatme PR #113": ["eatme PR #113", "Merged", "persona asset docs inventory"],
+    "eatme PR #114": ["eatme PR #114", "Merged", "instructor mission inventory", "34 canonical scenarios"],
+    "eatme PR #115": ["eatme PR #115", "Merged", "student mission inventory", "33 scenarios"],
+    "eatme PR #116": ["eatme PR #116", "Merged", "docs/docs-site-only CI", "Rust checks"],
 }
 
 STALE_STATUS_TERMS = [
@@ -349,6 +404,52 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?172",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?101",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?102",
+    r"PR\s*#?173[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?174[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?175[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?176[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?177[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?178[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?179[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?180[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?181[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?182[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?183[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?184[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?105[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?106[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?108[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?109[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?110[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?111[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?112[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?113[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?114[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?115[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?116[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?173",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?174",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?175",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?176",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?177",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?178",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?179",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?180",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?181",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?182",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?183",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?184",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?105",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?106",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?108",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?109",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?110",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?111",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?112",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?113",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?114",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?115",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?116",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -500,6 +601,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0090_link = "journal/0090-rabbithole-pr166-pr167-eatme-pr98-merge-status.md"
         entry_0091_link = "journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md"
         entry_0092_link = "journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md"
+        entry_0093_link = "journal/0093-source-eatme-ci-wave-status.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -518,6 +620,8 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("RabbitHole PR #168/#169 and eatme PR #99 merge status", text)
         self.assertEqual(1, text.count(entry_0092_link))
         self.assertIn("RabbitHole PR #170/#171/#172 and eatme PR #101/#102 merge status", text)
+        self.assertEqual(1, text.count(entry_0093_link))
+        self.assertIn("Source, eatme, and CI status wave", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -634,6 +738,48 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("resource-typed Tweedle field initializer", text)
         self.assertIn("desktop-first-lesson-next-action.json", text)
         self.assertIn("media-audio-cue-storyboard", text)
+
+
+    def test_0093_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0093"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #173",
+                "RabbitHole PR #174",
+                "RabbitHole PR #175",
+                "RabbitHole PR #176",
+                "RabbitHole PR #177",
+                "RabbitHole PR #178",
+                "RabbitHole PR #179",
+                "RabbitHole PR #180",
+                "RabbitHole PR #181",
+                "RabbitHole PR #182",
+                "RabbitHole PR #183",
+                "RabbitHole PR #184",
+                "eatme PR #105",
+                "eatme PR #106",
+                "eatme PR #108",
+                "eatme PR #109",
+                "eatme PR #110",
+                "eatme PR #111",
+                "eatme PR #112",
+                "eatme PR #113",
+                "eatme PR #114",
+                "eatme PR #115",
+                "eatme PR #116",
+            ]
+        }
+        self.assert_contains_all(text, SOURCE_EATME_CI_WAVE_PR_LINKS, "atlas entry 0093")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0093", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0093")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0093")
+        self.assertIn("34 canonical scenarios", text)
+        self.assertIn("35 Gadugi scenarios", text)
+        self.assertIn("coverage 11:54", text)
+        self.assertIn("deployed sharing platform remains unproven", text)
+        self.assertIn("full Tweedle decode support remains unproven", text)
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:

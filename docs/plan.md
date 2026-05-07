@@ -114,6 +114,27 @@ network. Do not open issues or pull requests against
   `media-audio-cue-storyboard` student scenario for `media-audio-creator` and
   its generated adapter. It does not grade student work or prove lesson
   completion.
+
+- Latest source/eatme/CI wave status is tracked in
+  `docs/atlas/journal/0093-source-eatme-ci-wave-status.md`.
+  RabbitHole PRs #173 through #184 merged: procedure UI and Save-menu missing
+  action records are clearer, desktop Run status summary reporting is clearer,
+  several Tweedle/archive edge cases fail with better paths, and RabbitHole CI
+  timing notes record Checkstyle 0:53, GitGuardian 0:01, NetBeans 6:01, tests
+  7:13, and coverage 11:54 with coverage longest. eatme PRs #105, #106, and
+  #108 through #116 merged: student artifact sharing, classroom gallery walk,
+  teacher community sharing, curriculum sequence remix, persona inventory,
+  instructor/student mission inventory, plain readiness wording, and docs-only CI
+  handling are now recorded. The eatme audit at
+  `b79ff7b96961bfdf9082a1609c8f86194f7429eb` found 34 canonical scenarios, 35
+  Gadugi scenarios, 69 total scenario YAML files, 24 personas, 33 scenarios with
+  both instructor and student personas, baseline-only `real-alice-launch-smoke`,
+  and 18 docs pages in MkDocs navigation. This completes eatme local
+  instructor/student persona coverage, student docs, Gadugi adapters, and plain
+  readiness output for now, but it does not prove full Alice UI automation,
+  visible rendering correctness, desktop save-menu completion, grading, creative
+  assessment, learner-world grading, first-lesson completion, a deployed sharing
+  platform, or full Tweedle decode support.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -226,3 +247,58 @@ Merged source PR status:
 - Refactor proposals are tied to measured pain points and protected by tests.
 - License-sensitive assets and no-Sims workflows stay explicit.
 - Any Rust or non-Java work is isolated, optional, and justified by clear tooling or performance value.
+
+
+### Latest merged source/eatme wave links
+
+- https://github.com/rysweet/RabbitHole/pull/173
+- https://github.com/rysweet/RabbitHole/pull/174
+- https://github.com/rysweet/RabbitHole/pull/175
+- https://github.com/rysweet/RabbitHole/pull/176
+- https://github.com/rysweet/RabbitHole/pull/177
+- https://github.com/rysweet/RabbitHole/pull/178
+- https://github.com/rysweet/RabbitHole/pull/179
+- https://github.com/rysweet/RabbitHole/pull/180
+- https://github.com/rysweet/RabbitHole/pull/181
+- https://github.com/rysweet/RabbitHole/pull/182
+- https://github.com/rysweet/RabbitHole/pull/183
+- https://github.com/rysweet/RabbitHole/pull/184
+- https://github.com/rysweet/eatme/pull/105
+- https://github.com/rysweet/eatme/pull/106
+- https://github.com/rysweet/eatme/pull/108
+- https://github.com/rysweet/eatme/pull/109
+- https://github.com/rysweet/eatme/pull/110
+- https://github.com/rysweet/eatme/pull/111
+- https://github.com/rysweet/eatme/pull/112
+- https://github.com/rysweet/eatme/pull/113
+- https://github.com/rysweet/eatme/pull/114
+- https://github.com/rysweet/eatme/pull/115
+- https://github.com/rysweet/eatme/pull/116
+
+## Latest merged source/eatme wave details
+
+| Work item | Plain status |
+| --- | --- |
+| [RabbitHole PR #173](https://github.com/rysweet/RabbitHole/pull/173) | Merged at `e20d4eb411c8afb3c326ee585807afd1b3ab29e9`. Records a procedure UI action no-go artifact and names the missing desktop code/procedure UI target; no desktop UI invocation is proven. |
+| [RabbitHole PR #174](https://github.com/rysweet/RabbitHole/pull/174) | Merged at `fc0d941fa22686c216e973ea535db6869bc48835`. Records Save-menu action target no-go evidence; save-menu completion remains unproven. |
+| [RabbitHole PR #175](https://github.com/rysweet/RabbitHole/pull/175) | Merged at `2642e9139fb73cfd6d00585d285d03e671c2bbf7`. Adds desktop Run status summary evidence; visible rendering correctness and full UI automation remain unproven. |
+| [RabbitHole PR #176](https://github.com/rysweet/RabbitHole/pull/176) | Merged at `c0c2ef5d6a30237d5a8a7e3c0a23a42f16c480f8`. Makes a missing sibling Tweedle entry fail clearly. |
+| [RabbitHole PR #177](https://github.com/rysweet/RabbitHole/pull/177) | Merged at `54d021e3457e6f9250547ec8693f7e491e4b8507`. Clarifies desktop Run evidence status summary wording. |
+| [RabbitHole PR #178](https://github.com/rysweet/RabbitHole/pull/178) | Merged at `5123f03640d7166e30b6160c107e92c78c0f9728`. Makes unnamed unsupported manifest Tweedle sibling types fail clearly using the archive path. |
+| [RabbitHole PR #179](https://github.com/rysweet/RabbitHole/pull/179) | Merged at `0a25c2f17849f944cf5e14f10c26d3be48524d1a`. Documents RabbitHole CI timing notes only: Checkstyle 0:53, GitGuardian 0:01, NetBeans 6:01, tests 7:13, coverage 11:54; coverage was longest. |
+| [RabbitHole PR #180](https://github.com/rysweet/RabbitHole/pull/180) | Merged at `17c0c593baea0046d502c97f20f0f6a19fef2c09`. Clarifies first-lesson desktop evidence reporting. |
+| [RabbitHole PR #181](https://github.com/rysweet/RabbitHole/pull/181) | Merged at `2dbd3881c096291c529f491173610e5567f1883a`. Characterizes a JSON archive with a resource-typed field initializer on the manifest program type; no behavior change. |
+| [RabbitHole PR #182](https://github.com/rysweet/RabbitHole/pull/182) | Merged at `d436b7a9cd2084b3409017cff8cc3605f43ee2d0`. `desktop-run-status-summary.json` lists the pixel boundary artifact and machine-readable missing procedure UI and `SaveProjectOperation` evidence. |
+| [RabbitHole PR #183](https://github.com/rysweet/RabbitHole/pull/183) | Merged at `82527ca0ed04315dd40808a80ca7946a2cd029b4`. Characterizes typed-null Tweedle field initializers; malformed Tweedle and JSON `.a3c` failures include the archive entry path. |
+| [RabbitHole PR #184](https://github.com/rysweet/RabbitHole/pull/184) | Merged at `4eb21803bd76bb13bdc75ce53c6f590e3d3597a7`. Documents project-IO and Tweedle covered boundaries and the larger decode gaps that remain. |
+| [eatme PR #105](https://github.com/rysweet/eatme/pull/105) | Merged at `b88afdf60c2dd81a2849878706903f76ab8c2344`. Adds the student artifact sharing mission doc entry. |
+| [eatme PR #106](https://github.com/rysweet/eatme/pull/106) | Merged at `320f3c56cd65ec949e9cea0137f72a3dd0200f09`. Consumes RabbitHole desktop-first-lesson next-action evidence in readiness reporting. |
+| [eatme PR #108](https://github.com/rysweet/eatme/pull/108) | Merged at `5640df08832cb5a74c8051ec19ff769d6484710b`. Adds the classroom gallery walk QA scenario. |
+| [eatme PR #109](https://github.com/rysweet/eatme/pull/109) | Merged at `2c56018f378221748a457b3414a96374d7675185`. Maps teacher community sharing. |
+| [eatme PR #110](https://github.com/rysweet/eatme/pull/110) | Merged at `3a6fdf35c69f8e96e4a58ea452446a4e40ca4958`. Makes the readiness heading say evidence files are not proof of full UI automation. |
+| [eatme PR #111](https://github.com/rysweet/eatme/pull/111) | Merged at `13458167399bc60ca763fe82d3407ded4418b6e1`. Cancels stale PR-only runs in CI. |
+| [eatme PR #112](https://github.com/rysweet/eatme/pull/112) | Merged at `1f137014d7fd2d5fff1706a861cedb0a6d94d323`. Adds the `curriculum-sequence-remix-pack` scenario and generated Gadugi adapter. |
+| [eatme PR #113](https://github.com/rysweet/eatme/pull/113) | Merged at `a0dd075d7e5c8e21394836de0e5aa01a15643e41`. Aligns the persona asset docs inventory. |
+| [eatme PR #114](https://github.com/rysweet/eatme/pull/114) | Merged at `5f74845722c284eb60bece43e0880a7de23cd888`. Completes the instructor mission inventory: 34 canonical scenarios, 35 Gadugi adapters, 24 personas, and 18 docs pages. |
+| [eatme PR #115](https://github.com/rysweet/eatme/pull/115) | Merged at `b79ff7b96961bfdf9082a1609c8f86194f7429eb`. Completes the student mission inventory; docs reference all 33 scenarios with student personas. |
+| [eatme PR #116](https://github.com/rysweet/eatme/pull/116) | Merged at `0aa0155d63ee4aa16edba72459e9f3cac47bee27`. Docs/docs-site-only CI skips Rust checks safely; exact time saved awaits a future docs-only PR. |
