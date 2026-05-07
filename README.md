@@ -220,6 +220,14 @@ records the follow-up eatme update. eatme PR #123 adds the
 `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73.
 This does not prove grading, automated creative assessment, learner-world
 grading, real Alice UI automation, or full lesson delivery.
+[atlas journal entry 0103](docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status.md)
+records the newest source and eatme update. RabbitHole PR #264 decodes primitive
+literal field assignments in Tweedle constructor bodies, with clear failures for
+unsupported constructor assignment forms; full Tweedle/player decode remains
+unproven. eatme PR #124 adds the `alien-linguist-parameter-dialogue`
+instructor/student scenario; scenario assets grew from 73 to 75. This does not
+prove grading, creative assessment, real Alice UI automation, full
+Tweedle/player decode, or first-lesson completion.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -314,6 +322,8 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #262](https://github.com/rysweet/RabbitHole/pull/262) | Merged at `9ef09e05402b2e0af9c07803eee92aa5db29b325`. Primitive literal field assignments in Tweedle method bodies now decode, with clear unsupported-form failures; full Tweedle/player decode remains unproven. |
 | [eatme PR #122](https://github.com/rysweet/eatme/pull/122) | Merged at `41142db`. Adds the `lost-robot-debug-museum` instructor/student scenario for the reflective-debugger/debug-coach use case; grading, creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [eatme PR #123](https://github.com/rysweet/eatme/pull/123) | Merged at `773fb3df7a6ec234c5f317eefdfea82916ecd7bc`. Adds the `weather-wizard-conditional-theater` instructor/student scenario, the next `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73, all 36 Gadugi adapters fresh, 57 eatme-assets tests pass. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
+| [RabbitHole PR #264](https://github.com/rysweet/RabbitHole/pull/264) | Merged at `a4386130d66b97feecdbcb5ab1b6bc765392deb3`. Primitive literal field assignments in Tweedle constructor bodies now decode, with clear failures for unsupported constructor assignment forms; full Tweedle/player decode remains unproven. |
+| [eatme PR #124](https://github.com/rysweet/eatme/pull/124) | Merged at `d3bb687145b6c9e38601703c691aa7f6bcbb4862`. Adds the `alien-linguist-parameter-dialogue` instructor/student scenario; scenario assets grew from 73 to 75, all adapters fresh. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -324,7 +334,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, and eatme PR #118, PR #120, PR #121, and PR #122
+PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, and PR #124
 merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full

@@ -329,6 +329,16 @@ network. Do not open issues or pull requests against
   `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73.
   Grading, automated creative assessment, real Alice UI automation, and full
   lesson delivery remain unproven.
+- [RabbitHole PR #264](https://github.com/rysweet/RabbitHole/pull/264) merged at
+  `a4386130d66b97feecdbcb5ab1b6bc765392deb3`. Primitive literal field assignments
+  in Tweedle constructor bodies now decode, with clear failures for unsupported
+  constructor assignment forms; full Tweedle/player decode remains unproven.
+- [eatme PR #124](https://github.com/rysweet/eatme/pull/124) merged at
+  `d3bb687145b6c9e38601703c691aa7f6bcbb4862`. Adds the
+  `alien-linguist-parameter-dialogue` instructor/student scenario; scenario
+  assets grew from 73 to 75 with all adapters fresh. Grading, automated
+  creative assessment, real Alice UI automation, and full lesson delivery remain
+  unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

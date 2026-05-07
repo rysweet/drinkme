@@ -75,6 +75,8 @@ Last updated: 2026-05-08
 | [RabbitHole PR #261](https://github.com/rysweet/RabbitHole/pull/261) | Merged at `97c1ae707544bd0ca89e711df92e7e45e6d377ac`. The Select Project Java window was observed under Xvfb with title, class, process, and geometry; selecting or opening a project, world execution, and installer success remain unproven. |
 | [RabbitHole PR #262](https://github.com/rysweet/RabbitHole/pull/262) | Merged at `9ef09e05402b2e0af9c07803eee92aa5db29b325`. Primitive literal field assignments in Tweedle method bodies now decode, with clear unsupported-form failures; full Tweedle/player decode remains unproven. |
 | [eatme PR #122](https://github.com/rysweet/eatme/pull/122) | Merged at `41142db`. Adds the `lost-robot-debug-museum` instructor/student scenario for the reflective-debugger/debug-coach use case; grading, creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
+| [RabbitHole PR #264](https://github.com/rysweet/RabbitHole/pull/264) | Merged at `a4386130d66b97feecdbcb5ab1b6bc765392deb3`. Primitive literal field assignments in Tweedle constructor bodies now decode, with clear failures for unsupported constructor assignment forms; full Tweedle/player decode remains unproven. |
+| [eatme PR #124](https://github.com/rysweet/eatme/pull/124) | Merged at `d3bb687145b6c9e38601703c691aa7f6bcbb4862`. Adds the `alien-linguist-parameter-dialogue` instructor/student scenario; scenario assets grew from 73 to 75, all adapters fresh. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -145,7 +147,11 @@ unproven. PR #262 decodes primitive literal field assignments in Tweedle method
 bodies, with clear unsupported-form failures; full Tweedle/player decode remains
 unproven. eatme PR #122 adds the `lost-robot-debug-museum` instructor/student
 scenario; grading, creative assessment, real Alice UI automation, and full
-lesson delivery remain unproven. These changes do
+lesson delivery remain unproven. PR #264 decodes primitive literal field
+assignments in Tweedle constructor bodies, with clear failures for unsupported
+constructor assignment forms; full Tweedle/player decode remains unproven.
+eatme PR #124 adds the `alien-linguist-parameter-dialogue` instructor/student
+scenario; scenario assets grew from 73 to 75. These changes do
 not prove full Alice UI automation, visible rendering correctness, desktop
 save-menu completion, native FileDialog peer control, project selection or
 opening, grading, creative assessment, learner-world grading,
@@ -156,6 +162,15 @@ first-lesson completion, or complete Tweedle/player decode support.
 `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73.
 Grading, automated creative assessment, real Alice UI automation, and full
 lesson delivery remain unproven.
+[RabbitHole PR #264](https://github.com/rysweet/RabbitHole/pull/264) merged at
+`a4386130d66b97feecdbcb5ab1b6bc765392deb3`. Primitive literal field assignments
+in Tweedle constructor bodies now decode, with clear failures for unsupported
+constructor assignment forms; full Tweedle/player decode remains unproven.
+[eatme PR #124](https://github.com/rysweet/eatme/pull/124) merged at
+`d3bb687145b6c9e38601703c691aa7f6bcbb4862`. Adds the
+`alien-linguist-parameter-dialogue` instructor/student scenario; scenario
+assets grew from 73 to 75 with all adapters fresh. Grading, automated creative
+assessment, real Alice UI automation, and full lesson delivery remain unproven.
 
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
