@@ -368,6 +368,16 @@
   `docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md`.
   eatme PR #127 is tracked in
   `docs/atlas/journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md`.
+  RabbitHole PR #270 is tracked in
+  `docs/atlas/journal/0108-rabbithole-pr270-identifier-rhs-status.md`.
+  [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
+  `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
+  method and constructor bodies can now decode an `IdentifierReference` RHS to
+  `ParameterAccess`, `LocalAccess`, or `FieldAccess`. Constructor assignment
+  bodies now receive `UserParameter[]` so constructor setter patterns resolve
+  parameter RHS. Non-`this` member assignment targets, non-literal/non-identifier
+  RHS, loops/calls/conditionals, resource initializers, and full Tweedle/player
+  decode remain unproven.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.

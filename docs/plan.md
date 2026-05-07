@@ -377,6 +377,12 @@ network. Do not open issues or pull requests against
   grew from 79 to 81 with all 40 generated gadugi adapters fresh. Grading,
   automated creative assessment, real Alice UI automation, and full lesson
   delivery remain unproven.
+- [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
+  `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
+  method and constructor bodies now decode an `IdentifierReference` RHS to
+  `ParameterAccess`, `LocalAccess`, or `FieldAccess`. Constructor assignment
+  bodies now receive `UserParameter[]` so constructor setter patterns resolve
+  parameter RHS. Full Tweedle/player decode remains unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

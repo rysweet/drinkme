@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0108 - RabbitHole PR #270 status](journal/0108-rabbithole-pr270-identifier-rhs-status.md)
+  records that assignment statements in Tweedle method and constructor bodies now
+  decode `IdentifierReference` RHS values to `ParameterAccess`, `LocalAccess`, or
+  `FieldAccess`; constructor bodies now receive `UserParameter[]`. Non-`this`
+  member targets, non-literal/non-identifier RHS, loops/calls/conditionals,
+  resource initializers, and full Tweedle/player decode remain unproven.
 - [0107 - eatme PR #127 status](journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md)
   records the `mars-rover-proximity-mission` scenario addition; scenario assets
   grew from 79 to 81, all 40 generated gadugi adapters fresh, all seven CI checks

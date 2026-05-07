@@ -213,6 +213,15 @@ grew from 79 to 81 with all 40 generated gadugi adapters fresh. Grading,
 automated creative assessment, real Alice UI automation, and full lesson
 delivery remain unproven.
 
+[RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
+`b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
+method and constructor bodies can now decode an `IdentifierReference` RHS to
+`ParameterAccess`, `LocalAccess`, or `FieldAccess`. Constructor assignment
+bodies now receive `UserParameter[]` so constructor setter patterns resolve
+parameter RHS. Non-`this` member assignment targets, non-literal/non-identifier
+RHS, loops/calls/conditionals, resource initializers, and full Tweedle/player
+decode remain unproven.
+
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and
