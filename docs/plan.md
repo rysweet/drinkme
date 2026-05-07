@@ -135,21 +135,28 @@ network. Do not open issues or pull requests against
   visible rendering correctness, desktop save-menu completion, grading, creative
   assessment, learner-world grading, first-lesson completion, a deployed sharing
   platform, or full Tweedle decode support.
-- Latest RabbitHole source/CI wave status is tracked in
+- Previous RabbitHole source/CI wave status is tracked in
   `docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md`.
   RabbitHole PR #185 merged model resource array grouping, skip behavior, and
   duplicate index rejection tests. PR #187 merged narrow `TextString label <- null`
-  parsing and decoding to `NullLiteral`, while `WholeNumber <- null` still fails.
-  PR #188 merged `ProcedureTabSelection`, tests, and a reference doc as a design
-  and test boundary, not live procedure invocation. PR #190 merged
-  `IssueReportWorker` non-retryable failure tests. PR #191 restored the Maven
-  cache fallback, fixed the stuck coverage path, and left coverage run
-  `25492250204` plus develop checks after PR #190 successful. PR #187, PR #188,
-  and PR #190 were delayed by stuck coverage behavior and transient `jogamp.org`
-  network failures. The 70 percent aggregate coverage target, live procedure
-  invocation, desktop edit command, Save-menu completion, dialogs, grading,
-  rendering, first-lesson completion, deployed sharing, and full Tweedle decode
-  support remain unproven.
+  parsing and decoding to `NullLiteral`. PR #188 merged `ProcedureTabSelection`,
+  tests, and a reference doc as a design and test boundary, not live procedure
+  invocation. PR #190 merged `IssueReportWorker` non-retryable failure tests.
+  PR #191 restored the Maven cache fallback, fixed the stuck coverage path, and
+  left coverage run `25492250204` plus develop checks after PR #190 successful.
+  PR #187, PR #188, and PR #190 were delayed by stuck coverage behavior and
+  transient `jogamp.org` network failures.
+- Latest RabbitHole source evidence is tracked in
+  `docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md`.
+  RabbitHole PR #207 merged Numeric and Boolean Tweedle `null` field initializer
+  decoding to AST `NullLiteral` while still rejecting primitive statement
+  contexts such as `if(null)` and `while(null)`. RabbitHole PR #208 records Save
+  operation completion evidence; its head before merge was
+  `153f4e4ce77415d42e6f1047abcc2074671ae4c8`, all GitHub checks passed, and it
+  merged at `8799854787655ca61b6fad9378377b19d41aa7b1`. The 70 percent aggregate
+  coverage target, live procedure invocation, desktop edit command, full desktop
+  Save menu completion, dialogs, grading, rendering, first-lesson completion,
+  deployed sharing, and full Tweedle/player decode support remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -298,7 +305,19 @@ Merged source PR status:
 - https://github.com/rysweet/RabbitHole/pull/190
 - https://github.com/rysweet/RabbitHole/pull/191
 
-## Latest RabbitHole source/CI wave details
+### Latest RabbitHole PR #207/#208 links
+
+- https://github.com/rysweet/RabbitHole/pull/207
+- https://github.com/rysweet/RabbitHole/pull/208
+
+## Latest RabbitHole PR #207/#208 details
+
+| Work item | Plain status |
+| --- | --- |
+| [RabbitHole PR #207](https://github.com/rysweet/RabbitHole/pull/207) | Merged at `6d744747a831824378c053713fef4e8a136c25c5`. Adds Numeric and Boolean Tweedle `null` field initializer decoding to AST `NullLiteral`; primitive statement contexts such as `if(null)` and `while(null)` still fail. Full Tweedle/player decode support remains unproven. |
+| [RabbitHole PR #208](https://github.com/rysweet/RabbitHole/pull/208) | Merged at `8799854787655ca61b6fad9378377b19d41aa7b1` from head `153f4e4ce77415d42e6f1047abcc2074671ae4c8` after all GitHub checks passed. Records Save operation completion evidence; desktop save-menu completion remains unproven. |
+
+## Previous RabbitHole source/CI wave details
 
 | Work item | Plain status |
 | --- | --- |

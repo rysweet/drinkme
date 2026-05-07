@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0095 - RabbitHole PR #207/#208 source evidence update](journal/0095-rabbithole-pr207-pr208-source-evidence.md)
+  records Numeric and Boolean Tweedle `null` field initializer decoding to AST
+  `NullLiteral`, Save operation completion evidence, the all-passing PR #208
+  checks, and the limits that remain for UI automation, rendering, full desktop
+  Save menu completion, grading, first-lesson completion, procedure UI invocation,
+  and full Tweedle/player decode support.
 - [0094 - RabbitHole source and CI status wave](journal/0094-rabbithole-source-ci-wave-status.md)
   records RabbitHole PR #185, #187, #188, #190, and #191: model resource array
   tests, narrow `TextString` null support, `ProcedureTabSelection`,
