@@ -135,6 +135,21 @@ network. Do not open issues or pull requests against
   visible rendering correctness, desktop save-menu completion, grading, creative
   assessment, learner-world grading, first-lesson completion, a deployed sharing
   platform, or full Tweedle decode support.
+- Latest RabbitHole source/CI wave status is tracked in
+  `docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md`.
+  RabbitHole PR #185 merged model resource array grouping, skip behavior, and
+  duplicate index rejection tests. PR #187 merged narrow `TextString label <- null`
+  parsing and decoding to `NullLiteral`, while `WholeNumber <- null` still fails.
+  PR #188 merged `ProcedureTabSelection`, tests, and a reference doc as a design
+  and test boundary, not live procedure invocation. PR #190 merged
+  `IssueReportWorker` non-retryable failure tests. PR #191 restored the Maven
+  cache fallback, fixed the stuck coverage path, and left coverage run
+  `25492250204` plus develop checks after PR #190 successful. PR #187, PR #188,
+  and PR #190 were delayed by stuck coverage behavior and transient `jogamp.org`
+  network failures. The 70 percent aggregate coverage target, live procedure
+  invocation, desktop edit command, Save-menu completion, dialogs, grading,
+  rendering, first-lesson completion, deployed sharing, and full Tweedle decode
+  support remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -274,6 +289,24 @@ Merged source PR status:
 - https://github.com/rysweet/eatme/pull/114
 - https://github.com/rysweet/eatme/pull/115
 - https://github.com/rysweet/eatme/pull/116
+
+### Latest RabbitHole source/CI wave links
+
+- https://github.com/rysweet/RabbitHole/pull/185
+- https://github.com/rysweet/RabbitHole/pull/187
+- https://github.com/rysweet/RabbitHole/pull/188
+- https://github.com/rysweet/RabbitHole/pull/190
+- https://github.com/rysweet/RabbitHole/pull/191
+
+## Latest RabbitHole source/CI wave details
+
+| Work item | Plain status |
+| --- | --- |
+| [RabbitHole PR #185](https://github.com/rysweet/RabbitHole/pull/185) | Merged at `713758374d0b6e937ec3f1471a78d7c95f69a35a`. Adds model resource array grouping, skip behavior, and duplicate index rejection tests; 70 percent aggregate coverage and the oversized-file goal remain open. |
+| [RabbitHole PR #187](https://github.com/rysweet/RabbitHole/pull/187) | Merged at `7bc8f2991ddc45708203682bd5edeb7a2d990c40`. Adds narrow `TextString label <- null` support to `NullLiteral`; `WholeNumber <- null` still fails, and broader null/player/Tweedle decode work remains open. |
+| [RabbitHole PR #188](https://github.com/rysweet/RabbitHole/pull/188) | Merged at `39085aaed5cb042ad5260adfcc6d4c4e1dcda9d7`. Adds `ProcedureTabSelection`, tests, and a reference doc; live procedure invocation and desktop edit flow remain open. |
+| [RabbitHole PR #190](https://github.com/rysweet/RabbitHole/pull/190) | Merged at `fd71bfb96fe9c82aa4cdd3de8f967f7c410af629`. Adds `IssueReportWorker` non-retryable failure tests; transient `jogamp.org` failures delayed CI until rerun, and 52 Java files over 500 lines were reported by the latest hotspot count. |
+| [RabbitHole PR #191](https://github.com/rysweet/RabbitHole/pull/191) | Merged at `aac8fa55b96c32cd797c98c016c0ae4e598ffc3a`. Restores the Maven cache fallback and fixes the stuck coverage path; coverage run `25492250204` and develop checks after PR #190 completed successfully. |
 
 ## Latest merged source/eatme wave details
 

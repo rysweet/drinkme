@@ -111,7 +111,7 @@ Second-pass review tightened the plan:
   `3e183407e247944831a6f7ff44870c71169302f4`. It adds the
   `media-audio-cue-storyboard` student scenario for `media-audio-creator` and
   generated adapter; it does not grade student work or prove lesson completion.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, and #172
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, and #191
   and eatme PRs #93, #95, #96, #98, #99, #101, and #102 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
   completion, grading, creative assessment, or first-lesson completion.
@@ -144,6 +144,22 @@ Second-pass review tightened the plan:
   visible rendering correctness, desktop save-menu completion, grading, creative
   assessment, learner-world grading, first-lesson completion, a deployed sharing
   platform, or full Tweedle decode support.
+
+- Latest RabbitHole source/CI wave status is tracked in
+  `docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md`.
+  [RabbitHole PR #185](https://github.com/rysweet/RabbitHole/pull/185) merged model resource array grouping, skip behavior, and
+  duplicate index rejection tests. [RabbitHole PR #187](https://github.com/rysweet/RabbitHole/pull/187) merged narrow `TextString label <- null`
+  parsing and decoding to `NullLiteral`, while `WholeNumber <- null` still fails.
+  [RabbitHole PR #188](https://github.com/rysweet/RabbitHole/pull/188) merged `ProcedureTabSelection`, tests, and a reference doc as a design
+  and test boundary, not live procedure invocation. [RabbitHole PR #190](https://github.com/rysweet/RabbitHole/pull/190) merged
+  `IssueReportWorker` non-retryable failure tests, with 52 Java files over 500 lines reported by the latest hotspot count. [RabbitHole PR #191](https://github.com/rysweet/RabbitHole/pull/191) restored the Maven
+  cache fallback, fixed the stuck coverage path, and left coverage run
+  `25492250204` plus develop checks after PR #190 successful. PR #187, PR #188,
+  and PR #190 were delayed by stuck coverage behavior and transient `jogamp.org`
+  network failures. The 70 percent aggregate coverage target, live procedure
+  invocation, desktop edit command, Save-menu completion, dialogs, grading,
+  rendering, first-lesson completion, deployed sharing, and full Tweedle decode
+  support remain unproven.
 
 ### Latest eatme local audit
 
