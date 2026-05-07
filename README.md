@@ -247,6 +247,18 @@ loop that runs for a chosen round count. Scenario assets grew from 75 to 77
 with all 38 Gadugi adapters fresh. Validation, fmt, clippy, and all seven CI
 checks passed. This does not prove grading, automated creative assessment,
 learner-world grading, real Alice UI automation, or full lesson delivery.
+[atlas journal entry 0106](docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md)
+records the latest updates. RabbitHole PR #269 makes Tweedle optional method
+and constructor parameters decode as Alice `UserParameter` entries; default
+values are not represented because the Alice AST has no optional-parameter
+concept and `TweedleOptionalParameter` exposes no default accessor. Full
+Tweedle/player decode remains unproven. eatme PR #126 adds the
+`time-travel-recipe-sequencing` instructor/student scenario, a sequencing
+context where students write at least three named procedure calls in order,
+predict scene state after each step, swap two steps, and explain why the order
+change affected the result. Scenario assets grew from 77 to 79 with all
+adapters fresh. This does not prove grading, automated creative assessment,
+real Alice UI automation, or full lesson delivery.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -347,6 +359,8 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #266](https://github.com/rysweet/RabbitHole/pull/266) | Merged at `2fe0ba4ef5d94e5516e9975f00fea9c23ff79ac9`. AT-SPI bus is reachable and Alice's Java process registers via `libatk-wrapper.so`; Swing components are not accessible in the `exec:java` context; machine-readable blocker and remediation path documented. Select Project widget enumeration and project opening remain unproven. |
 | [RabbitHole PR #267](https://github.com/rysweet/RabbitHole/pull/267) | Merged at `2ca7aa1062ee94b4e10eb8a13cdad8a4f4cfabc6`. Primitive literal local variable reassignment in Tweedle method and constructor bodies now decodes, with clear type-mismatch and unknown-target failures; full Tweedle/player decode remains unproven. |
 | [eatme PR #125](https://github.com/rysweet/eatme/pull/125) | Merged at `847c09d20be16435595e1368f8f96c495fc6e4f5`. Adds the `ecosystem-balance-loop-simulation` instructor/student scenario; scenario assets grew from 75 to 77, all 38 Gadugi adapters fresh, all seven CI checks passed. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
+| [RabbitHole PR #269](https://github.com/rysweet/RabbitHole/pull/269) | Merged at `ce31df5c04401f7ddb759c9d6640ca2881f82c4f`. Tweedle optional method and constructor parameters now decode as Alice `UserParameter` entries. Default values are not represented (Alice AST has no optional-parameter concept; `TweedleOptionalParameter` exposes no default accessor). Full Tweedle/player decode remains unproven. |
+| [eatme PR #126](https://github.com/rysweet/eatme/pull/126) | Merged at `72731e2e7dd092292f982408faad5a2e98d7e74a`. Adds the `time-travel-recipe-sequencing` instructor/student scenario; scenario assets grew from 77 to 79, all adapters fresh. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -357,7 +371,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, and PR #125
+PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, and PR #126
 merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full
@@ -424,7 +438,7 @@ xychart-beta
 | Student/instructor persona links | 33 of 33 scenarios | These links do not prove learner-world behavior. |
 | Docs navigation | 18 of 18 pages | Published sharing and full classroom workflow proof remain unproven. |
 
-Counts updated after eatme PR #125 (scenario assets 77, Gadugi adapters 38).
+Counts updated after eatme PR #126 (scenario assets 79, Gadugi adapters 39).
 Plainly: eatme local instructor/student persona coverage, student docs, Gadugi
 adapters, and plain readiness output are complete for now. The remaining blockers
 depend on RabbitHole first-lesson evidence and broader behavior proof.
@@ -597,6 +611,7 @@ Hard rules:
 | [Run shortcut focus delivery](docs/atlas/journal/0083-run-shortcut-focus-delivery.md) | Notes for eatme's bare-Xvfb-safe focus step before Ctrl+F5 and the real run still showing no observed Run window. |
 | [Run-window toolbar proof](docs/atlas/journal/0084-run-window-toolbar-proof.md) | Historical notes for the older Run-window proof file and toolbar-click check. |
 | [Desktop Run execution evidence](docs/atlas/journal/0085-desktop-run-execution-evidence.md) | Notes for the PR #154 Run window attachment signal and the limits around pixels drawn, lesson completion, and grading. |
+| [eatme PR #126 and RabbitHole PR #269 status](docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md) | eatme PR #126 adds the `time-travel-recipe-sequencing` scenario (assets 77→79). RabbitHole PR #269 makes Tweedle optional parameters decode; default values remain unrepresented. |
 
 ## Tool and repository map
 

@@ -46,6 +46,13 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0106 - eatme PR #126 and RabbitHole PR #269 status](journal/0106-eatme-pr126-rabbithole-pr269-status.md)
+  records Tweedle optional method and constructor parameters now decoding as Alice
+  `UserParameter` entries (default values are not represented; Alice AST has no
+  optional-parameter concept), and the `time-travel-recipe-sequencing` scenario
+  addition; scenario assets grew from 77 to 79. Grading, automated creative
+  assessment, real Alice UI automation, full Tweedle/player decode, and full lesson
+  delivery remain unproven.
 - [0105 - eatme PR #125 status](journal/0105-eatme-pr125-ecosystem-balance-loop-status.md)
   records the `ecosystem-balance-loop-simulation` scenario addition; scenario
   assets grew from 75 to 77, all 38 Gadugi adapters fresh, all seven CI checks

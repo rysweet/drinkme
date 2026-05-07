@@ -193,6 +193,19 @@ assets grew from 75 to 77 with all 38 Gadugi adapters fresh. Grading,
 automated creative assessment, real Alice UI automation, and full lesson
 delivery remain unproven.
 
+[RabbitHole PR #269](https://github.com/rysweet/RabbitHole/pull/269) merged at
+`ce31df5c04401f7ddb759c9d6640ca2881f82c4f`. Tweedle optional method and
+constructor parameters now decode as Alice `UserParameter` entries. Default
+values are not represented because the Alice AST has no optional-parameter
+concept and `TweedleOptionalParameter` exposes no default accessor. Full
+Tweedle/player decode remains unproven.
+
+[eatme PR #126](https://github.com/rysweet/eatme/pull/126) merged at
+`72731e2e7dd092292f982408faad5a2e98d7e74a`. Adds the
+`time-travel-recipe-sequencing` instructor/student scenario; scenario assets
+grew from 77 to 79 with all adapters fresh. Grading, automated creative
+assessment, real Alice UI automation, and full lesson delivery remain unproven.
+
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and

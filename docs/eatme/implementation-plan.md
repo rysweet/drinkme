@@ -315,8 +315,20 @@ Second-pass review tightened the plan:
   assets grew from 75 to 77 with all 38 Gadugi adapters fresh. Grading,
   automated creative assessment, real Alice UI automation, and full lesson
   delivery remain unproven.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, and #267
-  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, #124, and #125 have merged, but they do
+- [RabbitHole PR #269](https://github.com/rysweet/RabbitHole/pull/269) merged at
+  `ce31df5c04401f7ddb759c9d6640ca2881f82c4f`. Tweedle optional method and
+  constructor parameters now decode as Alice `UserParameter` entries. Default
+  values are not represented because the Alice AST has no optional-parameter
+  concept and `TweedleOptionalParameter` exposes no default accessor. Full
+  Tweedle/player decode remains unproven.
+- [eatme PR #126](https://github.com/rysweet/eatme/pull/126) merged at
+  `72731e2e7dd092292f982408faad5a2e98d7e74a`. Adds the
+  `time-travel-recipe-sequencing` instructor/student scenario; scenario assets
+  grew from 77 to 79 with all adapters fresh. This does not prove grading,
+  automated creative assessment, real Alice UI automation, or full lesson
+  delivery.
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, #267, and #269
+  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, #124, #125, and #126 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
   completion, native FileDialog peer control, project selection or opening,
   grading, creative assessment, learner-world grading, first-lesson
