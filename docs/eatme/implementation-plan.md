@@ -44,13 +44,21 @@ Second-pass review tightened the plan:
   at `9dbf0266ad7d61439f5dd74121e744dbbd365462`. It adds a generated archive
   test where a missing Tweedle source entry fails clearly; it does not add broad
   Tweedle decode support.
-  [RabbitHole PR #160](https://github.com/rysweet/RabbitHole/pull/160) merged
-  at `18c533efdacc7bdefa971c82ac655d5127bc743e`. It adds
-  `desktop-run-pixel-boundary.json` with `status: "not_observed"`; it does not
-  prove pixels, screenshots, visible rendering, or grading.
-- RabbitHole PRs #159 and #160 and eatme PR #93 have merged, but they do not
-  prove full Alice UI automation, visible rendering, desktop save-menu
-  completion, grading, creative assessment, or first-lesson completion.
+   [RabbitHole PR #160](https://github.com/rysweet/RabbitHole/pull/160) merged
+   at `18c533efdacc7bdefa971c82ac655d5127bc743e`. It adds
+   `desktop-run-pixel-boundary.json` with `status: "not_observed"`; it does not
+   prove pixels, screenshots, visible rendering, or grading.
+  [RabbitHole PR #163](https://github.com/rysweet/RabbitHole/pull/163) merged
+  at `4f225f2795c79f84c367874cd7995dc6dcded22f`. It rejects unsupported
+  manifest-declared Tweedle type names with a clear error instead of silently
+  dropping a type; it does not add full Tweedle decode support.
+- [eatme PR #95](https://github.com/rysweet/eatme/pull/95) merged at
+  `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. It reports
+  `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it
+  does not prove pixels, visible rendering, grading, or first-lesson completion.
+- RabbitHole PRs #159, #160, and #163 and eatme PRs #93 and #95 have merged, but
+  they do not prove full Alice UI automation, visible rendering, desktop
+  save-menu completion, grading, creative assessment, or first-lesson completion.
 - The proof boundary remains a narrow Run window attachment signal: Alice put
   the Run panel into the Run window area. This evidence does not prove pixels
   were drawn, does not prove the lesson finished, and is not grading.
@@ -124,7 +132,11 @@ The next desktop Run work should preserve the current strict boundary:
    Tweedle decode support.
 8. Treat merged RabbitHole PR #160 as a pixel-proof boundary record, not proof
    of pixels, screenshots, visible rendering, or desktop save-menu completion.
-9. Add separate proof before eatme claims pixels were drawn, the lesson
+9. Treat merged RabbitHole PR #163 as a clear rejection for unsupported
+   manifest-declared Tweedle type names, not full Tweedle decode support.
+10. Treat merged eatme PR #95 as explicit pixel-boundary status reporting, not
+   proof of pixels, visible rendering, grading, or first-lesson completion.
+11. Add separate proof before eatme claims pixels were drawn, the lesson
    finished, or grading happened.
 
 ## Governance boundaries

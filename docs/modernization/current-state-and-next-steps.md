@@ -21,17 +21,26 @@
   launch evidence, Run-window evidence, desktop execution evidence,
   screenshot/log/window artifacts, and `ui-action-contract.json`.
 - Latest merge-state update is tracked in
-  `docs/atlas/journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md`.
+   `docs/atlas/journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md`.
   RabbitHole PR #159 adds a generated archive test for a missing Tweedle source
   entry that fails clearly; it does not add broad Tweedle decode support.
   RabbitHole PR #160 adds `desktop-run-pixel-boundary.json` with
   `status: "not_observed"` and records that pixel and screenshot proof were not
   observed by the Run-window attachment signal; it does not prove pixels,
   screenshots, visible rendering, or grading. eatme PR #93 makes readiness
-  reports list the concrete RabbitHole readiness evidence categories they need;
-  it does not create new runtime proof. These changes do not prove full Alice UI
-  automation, visible rendering, desktop save-menu completion, grading, creative
-  assessment, or first-lesson completion.
+   reports list the concrete RabbitHole readiness evidence categories they need;
+   it does not create new runtime proof. These changes do not prove full Alice UI
+   automation, visible rendering, desktop save-menu completion, grading, creative
+   assessment, or first-lesson completion.
+- Newest merge-state update is tracked in
+  `docs/atlas/journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md`.
+  [RabbitHole PR #163](https://github.com/rysweet/RabbitHole/pull/163) rejects
+  unsupported manifest-declared Tweedle type names with a clear error instead of
+  silently dropping a type. [eatme PR #95](https://github.com/rysweet/eatme/pull/95)
+  reports `desktop-run-pixel-boundary.json` as missing, invalid, or
+  `not_observed`. These changes make failure states clearer; they do not prove
+  full Alice UI automation, visible rendering, desktop save-menu completion,
+  grading, creative assessment, or first-lesson completion.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
