@@ -86,6 +86,22 @@ Second-pass review tightened the plan:
   `desktop-first-lesson-next-action.json`, naming missing deterministic
   Save-menu and code/procedure action targets; it does not complete those
   actions.
+  [RabbitHole PR #209](https://github.com/rysweet/RabbitHole/pull/209) merged
+  at `02e50a00078e8ff348aa33b8c8635483f9b817bf`. It supports literal sized
+  Tweedle array field initializers such as `new WholeNumber[2]`; non-literal
+  sizes still fail clearly, and broader array expressions, method and constructor
+  bodies, non-literal initializers, non-null resource initializers, complete
+  player decode, and full Tweedle decode remain unproven.
+  [RabbitHole PR #210](https://github.com/rysweet/RabbitHole/pull/210) merged
+  at `d2cba4ba3e349c704765129511de5a062210ec08`. It adds launcher/runtime proof
+  beyond the earlier `Program.main` null-Stage guard; visible rendering, deployed
+  installer success, and full world execution remain unproven.
+  [RabbitHole PR #211](https://github.com/rysweet/RabbitHole/pull/211) merged
+  at `9b509aa3e60e6cf60b5e870a3ee03a0a80363f89`. It adds story-api keyboard event
+  characterization tests; `core/story-api` coverage was reported from 4.55% to
+  6.21%, adding 260 covered lines. The 70 percent aggregate coverage target,
+  manual QA gaps, and smoke checks that still need manual approval remain
+  unproven.
 - [eatme PR #95](https://github.com/rysweet/eatme/pull/95) merged at
   `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. It reports
   `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it
@@ -111,7 +127,7 @@ Second-pass review tightened the plan:
   `3e183407e247944831a6f7ff44870c71169302f4`. It adds the
   `media-audio-cue-storyboard` student scenario for `media-audio-creator` and
   generated adapter; it does not grade student work or prove lesson completion.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, and #191
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, and #211
   and eatme PRs #93, #95, #96, #98, #99, #101, and #102 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
   completion, grading, creative assessment, or first-lesson completion.
@@ -326,12 +342,26 @@ The next desktop Run work should preserve the current strict boundary:
 - https://github.com/rysweet/eatme/pull/115
 - https://github.com/rysweet/eatme/pull/116
 
-### Latest RabbitHole PR #207/#208 links
+### Latest RabbitHole PR #209/#210/#211 links
+
+- https://github.com/rysweet/RabbitHole/pull/209
+- https://github.com/rysweet/RabbitHole/pull/210
+- https://github.com/rysweet/RabbitHole/pull/211
+
+### Previous RabbitHole PR #207/#208 links
 
 - https://github.com/rysweet/RabbitHole/pull/207
 - https://github.com/rysweet/RabbitHole/pull/208
 
-## Latest RabbitHole PR #207/#208 details
+## Latest RabbitHole PR #209/#210/#211 details
+
+| Work item | Plain status |
+| --- | --- |
+| [RabbitHole PR #209](https://github.com/rysweet/RabbitHole/pull/209) | Merged at `02e50a00078e8ff348aa33b8c8635483f9b817bf`. Supports literal sized Tweedle array field initializers such as `new WholeNumber[2]`; non-literal sizes still fail clearly, and broader array expressions, method and constructor bodies, non-literal initializers, non-null resource initializers, complete player decode, and full Tweedle decode remain unproven. |
+| [RabbitHole PR #210](https://github.com/rysweet/RabbitHole/pull/210) | Merged at `d2cba4ba3e349c704765129511de5a062210ec08`. Adds launcher/runtime proof beyond the earlier `Program.main` null-Stage guard; visible rendering, deployed installer success, and full world execution remain unproven. |
+| [RabbitHole PR #211](https://github.com/rysweet/RabbitHole/pull/211) | Merged at `9b509aa3e60e6cf60b5e870a3ee03a0a80363f89`. Adds story-api keyboard event characterization tests; `core/story-api` coverage was reported from 4.55% to 6.21%, adding 260 covered lines. The 70 percent aggregate coverage target, manual QA gaps, and smoke checks that still need manual approval remain unproven. |
+
+## Previous RabbitHole PR #207/#208 details
 
 | Work item | Plain status |
 | --- | --- |

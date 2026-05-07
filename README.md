@@ -110,7 +110,7 @@ fallback; coverage run `25492250204` completed successfully afterward. PR #187,
 PR #188, and PR #190 were delayed by stuck coverage behavior and transient
 `jogamp.org` network failures.
 [atlas journal entry 0095](docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md)
-records the latest RabbitHole source evidence. RabbitHole PR #207 adds Numeric
+records the previous RabbitHole source evidence. RabbitHole PR #207 adds Numeric
 and Boolean Tweedle `null` field initializer decoding to AST `NullLiteral` while
 still rejecting primitive statement contexts such as `if(null)` and
 `while(null)`. RabbitHole PR #208 records Save operation completion evidence;
@@ -120,6 +120,19 @@ This does not prove 70 percent aggregate coverage, full Alice UI automation,
 visible rendering correctness, desktop save-menu completion, grading,
 learner-world grading, first-lesson completion, deployed sharing, procedure UI
 invocation, or full Tweedle/player decode support.
+[atlas journal entry 0096](docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md)
+records the latest RabbitHole source wave. RabbitHole PR #209 supports literal
+sized Tweedle array field initializers such as `new WholeNumber[2]`, while
+non-literal sizes still fail clearly. RabbitHole PR #210 adds a launcher/runtime
+proof beyond the earlier `Program.main` null-Stage guard. RabbitHole PR #211 adds
+focused story-api keyboard event characterization tests; reported `core/story-api`
+coverage moved from 4.55% to 6.21%, adding 260 covered lines. This does not
+prove 70 percent aggregate coverage, full Alice UI automation, visible rendering
+correctness, desktop save-menu completion, grading, creative assessment,
+learner-world grading, first-lesson completion, procedure UI invocation,
+deployed installer success, full world execution, broader array expressions,
+method or constructor bodies, non-literal initializers, non-null resource
+initializers, or complete player/full Tweedle decode support.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -166,6 +179,9 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #191](https://github.com/rysweet/RabbitHole/pull/191) | Merged at `aac8fa55b96c32cd797c98c016c0ae4e598ffc3a`. Restores the Maven cache fallback, fixes the stuck coverage path, and leaves post-merge coverage run `25492250204` plus develop checks after PR #190 successful. |
 | [RabbitHole PR #207](https://github.com/rysweet/RabbitHole/pull/207) | Merged at `6d744747a831824378c053713fef4e8a136c25c5`. Adds Numeric and Boolean Tweedle `null` field initializer decoding to AST `NullLiteral`; primitive statement contexts such as `if(null)` and `while(null)` still fail. Full Tweedle/player decode support remains unproven. |
 | [RabbitHole PR #208](https://github.com/rysweet/RabbitHole/pull/208) | Merged at `8799854787655ca61b6fad9378377b19d41aa7b1` from head `153f4e4ce77415d42e6f1047abcc2074671ae4c8` after all GitHub checks passed. Records Save operation completion evidence; desktop save-menu completion remains unproven. |
+| [RabbitHole PR #209](https://github.com/rysweet/RabbitHole/pull/209) | Merged at `02e50a00078e8ff348aa33b8c8635483f9b817bf`. Supports literal sized Tweedle array field initializers such as `new WholeNumber[2]`; non-literal sizes still fail clearly, and broader array expressions, method and constructor bodies, non-literal initializers, non-null resource initializers, complete player decode, and full Tweedle decode remain unproven. |
+| [RabbitHole PR #210](https://github.com/rysweet/RabbitHole/pull/210) | Merged at `d2cba4ba3e349c704765129511de5a062210ec08`. Adds launcher/runtime proof beyond the earlier `Program.main` null-Stage guard; visible rendering, deployed installer success, and full world execution remain unproven. |
+| [RabbitHole PR #211](https://github.com/rysweet/RabbitHole/pull/211) | Merged at `9b509aa3e60e6cf60b5e870a3ee03a0a80363f89`. Adds story-api keyboard event characterization tests; `core/story-api` coverage was reported from 4.55% to 6.21%, adding 260 covered lines. The 70 percent aggregate coverage target, manual QA gaps, and smoke checks that still need manual approval remain unproven. |
 | [eatme PR #105](https://github.com/rysweet/eatme/pull/105) | Merged at `b88afdf60c2dd81a2849878706903f76ab8c2344`. Adds the student artifact sharing mission doc entry. |
 | [eatme PR #106](https://github.com/rysweet/eatme/pull/106) | Merged at `320f3c56cd65ec949e9cea0137f72a3dd0200f09`. Consumes RabbitHole desktop-first-lesson next-action evidence in readiness reporting. |
 | [eatme PR #108](https://github.com/rysweet/eatme/pull/108) | Merged at `5640df08832cb5a74c8051ec19ff769d6484710b`. Adds the classroom gallery walk QA scenario. |
@@ -187,7 +203,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, and PR #208 merge updates do not prove full Alice UI automation,
+PR #207, PR #208, PR #209, PR #210, and PR #211 merge updates do not prove full Alice UI automation,
 visible rendering, desktop save-menu completion, grading, creative
 assessment, or first-lesson completion.
 
