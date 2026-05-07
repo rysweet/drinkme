@@ -46,6 +46,10 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0088 - RabbitHole PR #163 and eatme PR #95 merge status](journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md)
+  records the clear unsupported-Tweedle-type rejection and the eatme
+  pixel-boundary status reporting update, while keeping pixels, rendering,
+  grading, and first-lesson completion unproven.
 - [0087 - RabbitHole PR #159/#160 and eatme PR #93 merge status](journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md)
   records the missing Tweedle source-entry test, the pixel-proof boundary file,
   and the readiness evidence list, while keeping product behavior unproven until

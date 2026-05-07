@@ -41,9 +41,18 @@ network. Do not open issues or pull requests against
   `18c533efdacc7bdefa971c82ac655d5127bc743e`. It adds
   `desktop-run-pixel-boundary.json` with `status: "not_observed"`; it does not
   prove pixels, screenshots, visible rendering, or grading.
+- [RabbitHole PR #163](https://github.com/rysweet/RabbitHole/pull/163) merged at
+  `4f225f2795c79f84c367874cd7995dc6dcded22f`. It rejects unsupported
+  manifest-declared Tweedle type names with a clear error instead of silently
+  dropping a type; it does not add full Tweedle method, constructor,
+  complex-value, or missing-parent decode support.
 - eatme PR #93 merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. It makes
   readiness reports list concrete RabbitHole readiness evidence categories; it
   does not create new runtime proof or prove first-lesson completion.
+- [eatme PR #95](https://github.com/rysweet/eatme/pull/95) merged at
+  `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. It reports
+  `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it
+  does not prove pixels, visible rendering, grading, or first-lesson completion.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

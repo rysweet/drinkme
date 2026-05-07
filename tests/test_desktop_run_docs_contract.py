@@ -10,6 +10,7 @@ ATLAS_INDEX = ROOT / "docs/atlas/index.md"
 ENTRY_0085 = ROOT / "docs/atlas/journal/0085-desktop-run-execution-evidence.md"
 ENTRY_0086 = ROOT / "docs/atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md"
 ENTRY_0087 = ROOT / "docs/atlas/journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md"
+ENTRY_0088 = ROOT / "docs/atlas/journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -31,13 +32,14 @@ CURRENT_MERGE_STATUS_DOCS = {
     "current modernization plan": CURRENT_STATE,
     "restarted full-scope status": RESTARTED_STATUS,
     "eatme implementation plan": EATME_PLAN,
-    "atlas entry 0087": ENTRY_0087,
 }
 
 DOCS = {
     **CONTROL_DOCS,
     **CURRENT_MERGE_STATUS_DOCS,
     "atlas index": ATLAS_INDEX,
+    "atlas entry 0087": ENTRY_0087,
+    "atlas entry 0088": ENTRY_0088,
 }
 
 README_PLAN_LINKS = [
@@ -48,6 +50,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0085](docs/atlas/journal/0085-desktop-run-execution-evidence.md)",
     "[atlas journal entry 0086](docs/atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md)",
     "[atlas journal entry 0087](docs/atlas/journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md)",
+    "[atlas journal entry 0088](docs/atlas/journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -65,11 +68,18 @@ REQUIRED_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/92",
 ]
 
-CURRENT_MERGED_PR_LINKS = [
+PREVIOUS_MERGED_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/159",
     "https://github.com/rysweet/RabbitHole/pull/160",
     "https://github.com/rysweet/eatme/pull/93",
 ]
+
+LATEST_MERGED_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/163",
+    "https://github.com/rysweet/eatme/pull/95",
+]
+
+CURRENT_MERGED_PR_LINKS = PREVIOUS_MERGED_PR_LINKS + LATEST_MERGED_PR_LINKS
 
 PROOF_BOUNDARY_TERMS = [
     "narrow Run window attachment signal",
@@ -133,11 +143,26 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         'status: "not_observed"',
         "pixel",
     ],
+    "RabbitHole PR #163": [
+        "RabbitHole PR #163",
+        "Merged",
+        "unsupported manifest-declared Tweedle type",
+        "clear error",
+        "silently dropping",
+    ],
     "eatme PR #93": [
         "eatme PR #93",
         "Merged",
         "readiness evidence categories",
         "runtime",
+    ],
+    "eatme PR #95": [
+        "eatme PR #95",
+        "Merged",
+        "desktop-run-pixel-boundary.json",
+        "missing",
+        "invalid",
+        "not_observed",
     ],
 }
 
@@ -155,9 +180,13 @@ STALE_CURRENT_PR_PATTERNS = [
     r"PR\s*#?159[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"PR\s*#?160[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"PR\s*#?93[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?163[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?95[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?159",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?160",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?93",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?163",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?95",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -226,10 +255,12 @@ class DesktopRunDocsContractTest(unittest.TestCase):
 
         self.assertEqual({}, missing, f"{source} is missing merged source PR status")
 
-    def assert_current_merge_status_is_plain(self, text, source):
+    def assert_current_merge_status_is_plain(self, text, source, requirements=None):
+        if requirements is None:
+            requirements = MERGED_CURRENT_PR_REQUIREMENTS
         normalized = plain(text).lower()
         missing = {}
-        for work_item, terms in MERGED_CURRENT_PR_REQUIREMENTS.items():
+        for work_item, terms in requirements.items():
             missing_terms = [term for term in terms if term.lower() not in normalized]
             if missing_terms:
                 missing[work_item] = missing_terms
@@ -302,6 +333,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_link = "journal/0085-desktop-run-execution-evidence.md"
         entry_0086_link = "journal/0086-eatme-pr92-rabbithole-evidence-readiness.md"
         entry_0087_link = "journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md"
+        entry_0088_link = "journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -310,6 +342,8 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("eatme PR #92 documentation update", text)
         self.assertEqual(1, text.count(entry_0087_link))
         self.assertIn("RabbitHole PR #159/#160 and eatme PR #93 merge status", text)
+        self.assertEqual(1, text.count(entry_0088_link))
+        self.assertIn("RabbitHole PR #163 and eatme PR #95 merge status", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -333,13 +367,32 @@ class DesktopRunDocsContractTest(unittest.TestCase):
     def test_0087_current_merge_status_and_boundaries_are_explicit(self):
         text = self.docs["atlas entry 0087"]
 
-        self.assert_contains_all(text, CURRENT_MERGED_PR_LINKS, "atlas entry 0087")
-        self.assert_current_merge_status_is_plain(text, "atlas entry 0087")
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in ["RabbitHole PR #159", "RabbitHole PR #160", "eatme PR #93"]
+        }
+        self.assert_contains_all(text, PREVIOUS_MERGED_PR_LINKS, "atlas entry 0087")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0087", requirements)
         self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0087")
         self.assert_no_stale_status_for_current_prs(text, "atlas entry 0087")
         self.assertIn("Older atlas entries remain historical evidence", text)
         self.assertIn("pixel and screenshot proof were not observed", text)
         self.assertIn("broad Tweedle decode support", text)
+
+    def test_0088_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0088"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in ["RabbitHole PR #163", "eatme PR #95"]
+        }
+        self.assert_contains_all(text, LATEST_MERGED_PR_LINKS, "atlas entry 0088")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0088", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0088")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0088")
+        self.assertIn("silently dropping that type", text)
+        self.assertIn("missing, invalid, or `not_observed`", text)
+        self.assertIn("does not add full Tweedle", text)
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:
