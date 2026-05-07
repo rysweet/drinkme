@@ -12,6 +12,7 @@ ENTRY_0086 = ROOT / "docs/atlas/journal/0086-eatme-pr92-rabbithole-evidence-read
 ENTRY_0087 = ROOT / "docs/atlas/journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md"
 ENTRY_0088 = ROOT / "docs/atlas/journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md"
 ENTRY_0089 = ROOT / "docs/atlas/journal/0089-rabbithole-pr164-eatme-pr96-merge-status.md"
+ENTRY_0090 = ROOT / "docs/atlas/journal/0090-rabbithole-pr166-pr167-eatme-pr98-merge-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -42,6 +43,7 @@ DOCS = {
     "atlas entry 0087": ENTRY_0087,
     "atlas entry 0088": ENTRY_0088,
     "atlas entry 0089": ENTRY_0089,
+    "atlas entry 0090": ENTRY_0090,
 }
 
 README_PLAN_LINKS = [
@@ -54,6 +56,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0087](docs/atlas/journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md)",
     "[atlas journal entry 0088](docs/atlas/journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md)",
     "[atlas journal entry 0089](docs/atlas/journal/0089-rabbithole-pr164-eatme-pr96-merge-status.md)",
+    "[atlas journal entry 0090](docs/atlas/journal/0090-rabbithole-pr166-pr167-eatme-pr98-merge-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -87,7 +90,18 @@ NEWEST_MERGED_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/96",
 ]
 
-CURRENT_MERGED_PR_LINKS = PREVIOUS_MERGED_PR_LINKS + LATEST_MERGED_PR_LINKS + NEWEST_MERGED_PR_LINKS
+CURRENT_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/166",
+    "https://github.com/rysweet/RabbitHole/pull/167",
+    "https://github.com/rysweet/eatme/pull/98",
+]
+
+CURRENT_MERGED_PR_LINKS = (
+    PREVIOUS_MERGED_PR_LINKS
+    + LATEST_MERGED_PR_LINKS
+    + NEWEST_MERGED_PR_LINKS
+    + CURRENT_WAVE_PR_LINKS
+)
 
 PROOF_BOUNDARY_TERMS = [
     "narrow Run window attachment signal",
@@ -187,6 +201,27 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "missing",
         "blocked",
     ],
+    "RabbitHole PR #166": [
+        "RabbitHole PR #166",
+        "Merged",
+        "complex field initializer",
+        "full Tweedle decode support",
+    ],
+    "RabbitHole PR #167": [
+        "RabbitHole PR #167",
+        "Merged",
+        "desktop-run-pixel-observation.json",
+        "screenshot",
+        "center pixel",
+        "blocker code",
+    ],
+    "eatme PR #98": [
+        "eatme PR #98",
+        "Merged",
+        "first-lesson readiness progress",
+        "plain text output",
+        "runtime proof",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -207,6 +242,9 @@ STALE_CURRENT_PR_PATTERNS = [
     r"PR\s*#?95[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"PR\s*#?164[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"PR\s*#?96[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?166[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?167[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?98[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?159",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?160",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?93",
@@ -214,6 +252,9 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?95",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?164",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?96",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?166",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?167",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?98",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -362,6 +403,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0087_link = "journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md"
         entry_0088_link = "journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md"
         entry_0089_link = "journal/0089-rabbithole-pr164-eatme-pr96-merge-status.md"
+        entry_0090_link = "journal/0090-rabbithole-pr166-pr167-eatme-pr98-merge-status.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -374,6 +416,8 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("RabbitHole PR #163 and eatme PR #95 merge status", text)
         self.assertEqual(1, text.count(entry_0089_link))
         self.assertIn("RabbitHole PR #164 and eatme PR #96 merge status", text)
+        self.assertEqual(1, text.count(entry_0090_link))
+        self.assertIn("RabbitHole PR #166/#167 and eatme PR #98 merge status", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -438,6 +482,21 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("constructor-bearing sibling Tweedle type", text)
         self.assertIn("evidence_progress", text)
         self.assertIn("summarizes existing evidence only", text)
+
+    def test_0090_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0090"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in ["RabbitHole PR #166", "RabbitHole PR #167", "eatme PR #98"]
+        }
+        self.assert_contains_all(text, CURRENT_WAVE_PR_LINKS, "atlas entry 0090")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0090", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0090")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0090")
+        self.assertIn("complex field initializer", text)
+        self.assertIn("desktop-run-pixel-observation.json", text)
+        self.assertIn("plain text output", text)
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:

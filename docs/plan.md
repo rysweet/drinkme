@@ -50,6 +50,17 @@ network. Do not open issues or pull requests against
   `fb3e419b81c55b0e055711c9b57d3143f4f69f10`. It adds the matching generated
   archive test for a constructor-bearing sibling Tweedle type so that case also
   fails clearly; it does not add full Tweedle decode support.
+- [RabbitHole PR #166](https://github.com/rysweet/RabbitHole/pull/166) merged at
+  `bb617171524fa11d59b71b77a0d29d1b645e2507`. It adds a generated archive test
+  for a sibling Tweedle type with an unsupported complex field initializer; it
+  does not add full Tweedle method, constructor, complex-value,
+  resource-expression, or missing-parent decode support.
+- [RabbitHole PR #167](https://github.com/rysweet/RabbitHole/pull/167) merged at
+  `4c5e2f21b2674f07176df40f90ded35e5738bde3`. It adds
+  `desktop-run-pixel-observation.json` so a run records a screenshot and center
+  pixel when possible, or a blocker code and component state when not; it does
+  not prove visible rendering, desktop save-menu completion, grading, creative
+  assessment, or first-lesson completion.
 - eatme PR #93 merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. It makes
   readiness reports list concrete RabbitHole readiness evidence categories; it
   does not create new runtime proof or prove first-lesson completion.
@@ -62,6 +73,10 @@ network. Do not open issues or pull requests against
   `evidence_progress` summary that counts required first-lesson evidence as
   present, missing, invalid, not observed, or blocked. It summarizes existing
   evidence only.
+- [eatme PR #98](https://github.com/rysweet/eatme/pull/98) merged at
+  `11c8c58a33b2c6c7ec93e1b4a057c375e0dbb70f`. It shows the first-lesson
+  readiness progress summary and every required evidence item in plain text
+  output. It does not add new runtime proof.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
