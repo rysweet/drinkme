@@ -376,6 +376,13 @@
   `docs/atlas/journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md`.
   RabbitHole PR #274 is tracked in
   `docs/atlas/journal/0111-rabbithole-pr274-arithmetic-binary-status.md`.
+  RabbitHole PR #276 is tracked in
+  `docs/atlas/journal/0112-rabbithole-pr276-save-menu-doclick-status.md`.
+  RabbitHole PR #277 is tracked in
+  `docs/atlas/journal/0113-rabbithole-pr277-tweedle-string-concat-status.md`.
+  RabbitHole PR #278 and eatme PR #132 are tracked in
+  `docs/atlas/journal/0114-rabbithole-pr278-select-project-atapi-status.md` and
+  `docs/atlas/journal/0115-eatme-pr132-accessibility-rescue-camera-captions-status.md`.
   [RabbitHole PR #272](https://github.com/rysweet/RabbitHole/pull/272) merged at
   `458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9`. Proves AT-SPI reaches the Alice
   Java process via `exec:exec` and `NO_AT_BRIDGE=1`; top-level Swing widgets are
@@ -396,6 +403,33 @@
   comparison expressions, method calls, non-`this` member assignment targets,
   loops, conditionals, resource field initializers, and full Tweedle/player
   decode remain unproven.
+  [RabbitHole PR #276](https://github.com/rysweet/RabbitHole/pull/276) merged at
+  `66b38f87090f633f44a403737778c3c01a01c52b`. A programmatically-created real
+  Save menu item has `doClick()` called on it; this dispatches through Croquet,
+  reaches a live `JFileChooser`, the dialog is approved by a background probe,
+  and a non-empty `.a3p` file is written. Real rendered desktop menu bar
+  navigation, native FileDialog, visible rendering, grading, and full lesson
+  completion remain unproven.
+  [RabbitHole PR #277](https://github.com/rysweet/RabbitHole/pull/277) merged at
+  `8c1a3fd32c2c1d19aac7ea265909f0d19276273e`. Tweedle string concatenation (`..`)
+  now decodes in assignment right-hand-side values, local variable initializers,
+  and method return expressions. Logical and comparison expressions, method calls,
+  non-`this` member assignment targets, loops, conditionals, resource field
+  initializers, and full Tweedle/player decode remain unproven.
+  [RabbitHole PR #278](https://github.com/rysweet/RabbitHole/pull/278) merged at
+  `e130dac3a6f6431895f72f71733a042f1bb92cb3`. Select Project tab labels are
+  accessible as AT-SPI toggle buttons at depth 11; all five tabs can be clicked
+  programmatically; Starters -> Africa Full -> OK causes `projectOpenObserved: true`
+  and the Select Project frame disappears. Real rendered desktop menu bar
+  navigation, native FileDialog, visible rendering, grading, and full lesson
+  completion remain unproven.
+  [eatme PR #132](https://github.com/rysweet/eatme/pull/132) merged at
+  `ebaf93e85a502f4778aaa194f4cd61ae8ae4cdda`. Adds the
+  `accessibility-rescue-camera-captions` instructor/student scenario and Gadugi
+  adapter; scenario asset count grew to 87. Remaining missing scenario files:
+  design-process-story-or-game, audio-camera-and-export-sharecase,
+  setup-preflight-ready-to-create. Grading, automated creative assessment, real
+  Alice UI automation, and full lesson delivery remain unproven.
   [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
   `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
   method and constructor bodies can now decode an `IdentifierReference` RHS to

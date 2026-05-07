@@ -46,6 +46,28 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0115 - eatme PR #132 accessibility-rescue-camera-captions scenario status](journal/0115-eatme-pr132-accessibility-rescue-camera-captions-status.md)
+  records that eatme PR #132 adds the `accessibility-rescue-camera-captions` scenario and
+  Gadugi adapter; scenario asset count grew to 87. Remaining missing scenario files:
+  `design-process-story-or-game`, `audio-camera-and-export-sharecase`,
+  `setup-preflight-ready-to-create`. Grading, automated creative assessment, real Alice UI
+  automation, and full lesson delivery remain unproven.
+- [0114 - RabbitHole PR #278 Select Project AT-SPI proof status](journal/0114-rabbithole-pr278-select-project-atapi-status.md)
+  records that Select Project tab labels are accessible as AT-SPI toggle buttons at depth 11;
+  all five tabs can be clicked; Starters -> Africa Full -> OK causes `projectOpenObserved: true`
+  and the Select Project frame disappears. Real rendered desktop menu bar navigation, native
+  FileDialog, visible rendering, grading, and full lesson completion remain unproven.
+- [0113 - RabbitHole PR #277 Tweedle string concatenation decode status](journal/0113-rabbithole-pr277-tweedle-string-concat-status.md)
+  records that Tweedle string concatenation (`..`) now decodes in assignment right-hand-side
+  values, local variable initializers, and method return expressions. Logical/comparison
+  expressions, method calls, non-`this` member assignment targets, loops, conditionals,
+  resource initializers, and full Tweedle/player decode remain unproven.
+- [0112 - RabbitHole PR #276 Save menu item doClick proof status](journal/0112-rabbithole-pr276-save-menu-doclick-status.md)
+  records that a programmatically-created real Save menu item has `doClick()` called on it,
+  dispatches through Croquet, reaches a live `JFileChooser`, the dialog is approved, and a
+  non-empty `.a3p` file is written. Real rendered desktop menu bar navigation, native
+  FileDialog, visible rendering, grading, and full lesson completion remain unproven.
+  RabbitHole PR #281 (proof-flag false-negative race) has not merged.
 - [0111 - RabbitHole PR #274 arithmetic binary expression status](journal/0111-rabbithole-pr274-arithmetic-binary-status.md)
   records that arithmetic binary expressions (`+`, `-`, `*`, `/`) now decode as Tweedle
   assignment right-hand-side values and local variable initializer values (PR #274). String

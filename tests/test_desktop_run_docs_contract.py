@@ -34,6 +34,10 @@ ENTRY_0108 = ROOT / "docs/atlas/journal/0108-rabbithole-pr270-identifier-rhs-sta
 ENTRY_0109 = ROOT / "docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md"
 ENTRY_0110 = ROOT / "docs/atlas/journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md"
 ENTRY_0111 = ROOT / "docs/atlas/journal/0111-rabbithole-pr274-arithmetic-binary-status.md"
+ENTRY_0112 = ROOT / "docs/atlas/journal/0112-rabbithole-pr276-save-menu-doclick-status.md"
+ENTRY_0113 = ROOT / "docs/atlas/journal/0113-rabbithole-pr277-tweedle-string-concat-status.md"
+ENTRY_0114 = ROOT / "docs/atlas/journal/0114-rabbithole-pr278-select-project-atapi-status.md"
+ENTRY_0115 = ROOT / "docs/atlas/journal/0115-eatme-pr132-accessibility-rescue-camera-captions-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -86,6 +90,10 @@ DOCS = {
     "atlas entry 0109": ENTRY_0109,
     "atlas entry 0110": ENTRY_0110,
     "atlas entry 0111": ENTRY_0111,
+    "atlas entry 0112": ENTRY_0112,
+    "atlas entry 0113": ENTRY_0113,
+    "atlas entry 0114": ENTRY_0114,
+    "atlas entry 0115": ENTRY_0115,
 }
 
 README_PLAN_LINKS = [
@@ -120,6 +128,10 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0109](docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md)",
     "[atlas journal entry 0110](docs/atlas/journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md)",
     "[atlas journal entry 0111](docs/atlas/journal/0111-rabbithole-pr274-arithmetic-binary-status.md)",
+    "[atlas journal entry 0112](docs/atlas/journal/0112-rabbithole-pr276-save-menu-doclick-status.md)",
+    "[atlas journal entry 0113](docs/atlas/journal/0113-rabbithole-pr277-tweedle-string-concat-status.md)",
+    "[atlas journal entry 0114](docs/atlas/journal/0114-rabbithole-pr278-select-project-atapi-status.md)",
+    "[atlas journal entry 0115](docs/atlas/journal/0115-eatme-pr132-accessibility-rescue-camera-captions-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -314,6 +326,26 @@ RABBITHOLE_PR274_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/274",
 ]
 
+RABBITHOLE_PR276_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/276",
+]
+
+RABBITHOLE_PR277_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/277",
+]
+
+RABBITHOLE_PR278_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/278",
+]
+
+EATME_PR132_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/eatme/pull/132",
+]
+
+RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS = (
+    RABBITHOLE_PR278_WAVE_PR_LINKS + EATME_PR132_WAVE_PR_LINKS
+)
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -340,6 +372,9 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_PR271_EATME_PR129_WAVE_PR_LINKS
     + RABBITHOLE_PR272_PR273_EATME_PR131_WAVE_PR_LINKS
     + RABBITHOLE_PR274_WAVE_PR_LINKS
+    + RABBITHOLE_PR276_WAVE_PR_LINKS
+    + RABBITHOLE_PR277_WAVE_PR_LINKS
+    + RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -1083,6 +1118,36 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "arithmetic",
         "binary",
     ],
+    "RabbitHole PR #276": [
+        "RabbitHole PR #276",
+        "Merged",
+        "66b38f87090f633f44a403737778c3c01a01c52b",
+        "doClick",
+        "JFileChooser",
+        ".a3p",
+    ],
+    "RabbitHole PR #277": [
+        "RabbitHole PR #277",
+        "Merged",
+        "8c1a3fd32c2c1d19aac7ea265909f0d19276273e",
+        "string concatenation",
+        "..",
+    ],
+    "RabbitHole PR #278": [
+        "RabbitHole PR #278",
+        "Merged",
+        "e130dac3a6f6431895f72f71733a042f1bb92cb3",
+        "AT-SPI",
+        "toggle button",
+        "projectOpenObserved",
+    ],
+    "eatme PR #132": [
+        "eatme PR #132",
+        "Merged",
+        "ebaf93e85a502f4778aaa194f4cd61ae8ae4cdda",
+        "accessibility-rescue-camera-captions",
+        "87",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1507,6 +1572,18 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0111_link = "journal/0111-rabbithole-pr274-arithmetic-binary-status.md"
         self.assertEqual(1, text.count(entry_0111_link))
         self.assertIn("arithmetic", text)
+        entry_0112_link = "journal/0112-rabbithole-pr276-save-menu-doclick-status.md"
+        self.assertEqual(1, text.count(entry_0112_link))
+        self.assertIn("doClick", text)
+        entry_0113_link = "journal/0113-rabbithole-pr277-tweedle-string-concat-status.md"
+        self.assertEqual(1, text.count(entry_0113_link))
+        self.assertIn("string concatenation", text)
+        entry_0114_link = "journal/0114-rabbithole-pr278-select-project-atapi-status.md"
+        self.assertEqual(1, text.count(entry_0114_link))
+        self.assertIn("projectOpenObserved", text)
+        entry_0115_link = "journal/0115-eatme-pr132-accessibility-rescue-camera-captions-status.md"
+        self.assertEqual(1, text.count(entry_0115_link))
+        self.assertIn("accessibility-rescue-camera-captions", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -2110,7 +2187,74 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("arithmetic", text)
         self.assertIn("binary", text)
 
-    def test_controlling_docs_avoid_unexplained_project_jargon(self):
+    def test_0112_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0112"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #276",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR276_WAVE_PR_LINKS, "atlas entry 0112")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0112")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0112", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0112")
+        self.assertIn("66b38f87090f633f44a403737778c3c01a01c52b", text)
+        self.assertIn("doClick", text)
+        self.assertIn("JFileChooser", text)
+        self.assertIn(".a3p", text)
+
+    def test_0113_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0113"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #277",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR277_WAVE_PR_LINKS, "atlas entry 0113")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0113")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0113", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0113")
+        self.assertIn("8c1a3fd32c2c1d19aac7ea265909f0d19276273e", text)
+        self.assertIn("string concatenation", text)
+        self.assertIn("..", text)
+
+    def test_0114_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0114"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #278",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR278_WAVE_PR_LINKS, "atlas entry 0114")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0114")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0114", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0114")
+        self.assertIn("e130dac3a6f6431895f72f71733a042f1bb92cb3", text)
+        self.assertIn("AT-SPI", text)
+        self.assertIn("projectOpenObserved", text)
+
+    def test_0115_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0115"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "eatme PR #132",
+            ]
+        }
+        self.assert_contains_all(text, EATME_PR132_WAVE_PR_LINKS, "atlas entry 0115")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0115")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0115", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0115")
+        self.assertIn("ebaf93e85a502f4778aaa194f4cd61ae8ae4cdda", text)
+        self.assertIn("accessibility-rescue-camera-captions", text)
+        self.assertIn("87", text)
         for name, text in self.docs.items():
             with self.subTest(document=name):
                 prose = without_markdown_link_targets(text)
