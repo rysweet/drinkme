@@ -348,6 +348,12 @@
   `time-travel-recipe-sequencing` instructor/student scenario; scenario assets
   grew from 77 to 79 with all adapters fresh. Grading, automated creative
   assessment, real Alice UI automation, and full lesson delivery remain unproven.
+  [eatme PR #127](https://github.com/rysweet/eatme/pull/127) merged at
+  `e0c090f265f0dfb2f0b662616aac8b6cb078dae6`. Adds the
+  `mars-rover-proximity-mission` instructor/student scenario; scenario assets
+  grew from 79 to 81 with all 40 generated gadugi adapters fresh. Grading,
+  automated creative assessment, real Alice UI automation, and full lesson
+  delivery remain unproven.
 - Latest RabbitHole source update is tracked in
   `docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md`.
   eatme PR #123 is tracked in
@@ -360,6 +366,8 @@
   `docs/atlas/journal/0105-eatme-pr125-ecosystem-balance-loop-status.md`.
   RabbitHole PR #269 and eatme PR #126 are tracked in
   `docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md`.
+  eatme PR #127 is tracked in
+  `docs/atlas/journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md`.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.

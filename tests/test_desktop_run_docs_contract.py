@@ -29,6 +29,7 @@ ENTRY_0103 = ROOT / "docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status
 ENTRY_0104 = ROOT / "docs/atlas/journal/0104-rabbithole-pr265-pr266-pr267-status.md"
 ENTRY_0105 = ROOT / "docs/atlas/journal/0105-eatme-pr125-ecosystem-balance-loop-status.md"
 ENTRY_0106 = ROOT / "docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md"
+ENTRY_0107 = ROOT / "docs/atlas/journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -76,6 +77,7 @@ DOCS = {
     "atlas entry 0104": ENTRY_0104,
     "atlas entry 0105": ENTRY_0105,
     "atlas entry 0106": ENTRY_0106,
+    "atlas entry 0107": ENTRY_0107,
 }
 
 README_PLAN_LINKS = [
@@ -105,6 +107,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0104](docs/atlas/journal/0104-rabbithole-pr265-pr266-pr267-status.md)",
     "[atlas journal entry 0105](docs/atlas/journal/0105-eatme-pr125-ecosystem-balance-loop-status.md)",
     "[atlas journal entry 0106](docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md)",
+    "[atlas journal entry 0107](docs/atlas/journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -276,6 +279,10 @@ RABBITHOLE_PR269_EATME_PR126_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/126",
 ]
 
+EATME_PR127_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/eatme/pull/127",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -297,6 +304,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_PR265_PR266_PR267_WAVE_PR_LINKS
     + EATME_PR125_WAVE_PR_LINKS
     + RABBITHOLE_PR269_EATME_PR126_WAVE_PR_LINKS
+    + EATME_PR127_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -973,6 +981,15 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "grading",
         "creative assessment",
     ],
+    "eatme PR #127": [
+        "eatme PR #127",
+        "Merged",
+        "e0c090f265f0dfb2f0b662616aac8b6cb078dae6",
+        "mars-rover-proximity-mission",
+        "79 to 81",
+        "grading",
+        "creative assessment",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1374,6 +1391,10 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertEqual(1, text.count(entry_0106_link))
         self.assertIn("time-travel-recipe-sequencing", text)
         self.assertIn("77 to 79", text)
+        entry_0107_link = "journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md"
+        self.assertEqual(1, text.count(entry_0107_link))
+        self.assertIn("mars-rover-proximity-mission", text)
+        self.assertIn("79 to 81", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -1867,6 +1888,25 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("time-travel-recipe-sequencing", text)
         self.assertIn("77 to 79", text)
         self.assertIn("UserParameter", text)
+        self.assertIn("grading", text)
+        self.assertIn("creative assessment", text)
+
+    def test_0107_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0107"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "eatme PR #127",
+            ]
+        }
+        self.assert_contains_all(text, EATME_PR127_WAVE_PR_LINKS, "atlas entry 0107")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0107")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0107", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0107")
+        self.assertIn("e0c090f265f0dfb2f0b662616aac8b6cb078dae6", text)
+        self.assertIn("mars-rover-proximity-mission", text)
+        self.assertIn("79 to 81", text)
         self.assertIn("grading", text)
         self.assertIn("creative assessment", text)
 

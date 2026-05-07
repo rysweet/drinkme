@@ -206,6 +206,13 @@ Tweedle/player decode remains unproven.
 grew from 77 to 79 with all adapters fresh. Grading, automated creative
 assessment, real Alice UI automation, and full lesson delivery remain unproven.
 
+[eatme PR #127](https://github.com/rysweet/eatme/pull/127) merged at
+`e0c090f265f0dfb2f0b662616aac8b6cb078dae6`. Adds the
+`mars-rover-proximity-mission` instructor/student scenario; scenario assets
+grew from 79 to 81 with all 40 generated gadugi adapters fresh. Grading,
+automated creative assessment, real Alice UI automation, and full lesson
+delivery remain unproven.
+
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and
