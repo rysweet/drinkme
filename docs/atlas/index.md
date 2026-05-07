@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0093 - Source, eatme, and CI status wave](journal/0093-source-eatme-ci-wave-status.md)
+  records RabbitHole PRs #173 through #184, eatme PRs #105/#106/#108 through
+  #116, the eatme local audit counts, and RabbitHole CI timing notes, while
+  keeping UI automation, visible rendering correctness, save-menu completion,
+  grading, first-lesson completion, deployed sharing, and full Tweedle decode
+  support unproven.
 - [0092 - RabbitHole PR #170/#171/#172 and eatme PR #101/#102 merge status](journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md)
   records the Run-panel pixel-observation fallback, resource-initializer archive
   rejection, next-action no-go file, explicit next-action output, and
