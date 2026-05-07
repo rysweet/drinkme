@@ -123,7 +123,7 @@
   `25492250204` plus develop checks after PR #190 successful. PR #187, PR #188,
   and PR #190 were delayed by stuck coverage behavior and transient `jogamp.org`
   network failures.
-- Latest RabbitHole source evidence is tracked in
+- Previous RabbitHole source evidence is tracked in
   `docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md`.
   [RabbitHole PR #207](https://github.com/rysweet/RabbitHole/pull/207) merged Numeric and Boolean Tweedle `null` field initializer
   decoding to AST `NullLiteral` while still rejecting primitive statement
@@ -134,6 +134,19 @@
   coverage target, live procedure invocation, desktop edit command, full desktop
   Save menu completion, dialogs, grading, rendering, first-lesson completion,
   deployed sharing, and full Tweedle/player decode support remain unproven.
+- Latest RabbitHole source wave status is tracked in
+  `docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md`.
+  RabbitHole PR #209 merged literal sized Tweedle array field initializer support
+  such as `new WholeNumber[2]`; non-literal sizes still fail clearly, and broader
+  array expressions, method and constructor bodies, non-literal initializers,
+  non-null resource initializers, complete player decode, and full Tweedle decode
+  remain unproven. RabbitHole PR #210 adds a launcher/runtime proof beyond the
+  earlier `Program.main` null-Stage guard; visible rendering, deployed installer
+  success, and full world execution remain unproven. RabbitHole PR #211 adds
+  focused story-api keyboard event characterization tests; reported
+  `core/story-api` coverage moved from 4.55% to 6.21%, adding 260 covered lines.
+  The 70 percent aggregate coverage target, manual QA gaps, and smoke checks that
+  still need manual approval remain unproven.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
@@ -203,12 +216,13 @@ Covered areas include:
 - JSON/player model/generated type manifest-reference boundaries;
 - JSON `.a3c` resource-only type archive reads;
 - Tweedle `TextString`, Numeric, and Boolean `null` field initializer decoding to AST `NullLiteral`, while primitive statement contexts such as `if(null)` and `while(null)` still fail;
+- literal sized Tweedle array field initializer support such as `new WholeNumber[2]`, while non-literal sizes still fail clearly;
 - duplicate-safe and path-safe JSON/player resource zip entries;
 - headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
 - AST-referenced image resource editor save-copy and reopen fidelity;
 - project save/export snapshot source selection and default auto-backup migration;
 - project save target planning for new/default-backup/backup saves;
-- NetBeans generated launcher shape and launcher argument handoff;
+- NetBeans generated launcher shape, launcher argument handoff, and launcher/runtime proof beyond the earlier `Program.main` null-Stage guard;
 - NetBeans project-template archive and generated metadata;
 - exported build-property contract;
 - `Alice3Library` registration and packaging source;
@@ -233,7 +247,8 @@ Covered areas include:
   - foreach item access;
   - named foreach item access;
   - iterable foreach loop;
-- story API call on `SProgram`.
+- story API call on `SProgram`;
+- story-api keyboard event characterization tests, with reported `core/story-api` coverage moving from 4.55% to 6.21% and 260 more covered lines.
 - generated foreach loops with stale cached `COUNT__` item names, now repaired to readable generated item names while preserving explicit item names;
 - committed starter `.a3p` archive XML fallback readability for representative fixtures;
 - headless Croquet tool-palette layout invariants;
@@ -416,12 +431,26 @@ Core Alice should remain Java for now. Rust or other languages may be useful lat
 - https://github.com/rysweet/eatme/pull/115
 - https://github.com/rysweet/eatme/pull/116
 
-### Latest RabbitHole PR #207/#208 links
+### Latest RabbitHole PR #209/#210/#211 links
+
+- https://github.com/rysweet/RabbitHole/pull/209
+- https://github.com/rysweet/RabbitHole/pull/210
+- https://github.com/rysweet/RabbitHole/pull/211
+
+### Previous RabbitHole PR #207/#208 links
 
 - https://github.com/rysweet/RabbitHole/pull/207
 - https://github.com/rysweet/RabbitHole/pull/208
 
-## Latest RabbitHole PR #207/#208 details
+## Latest RabbitHole PR #209/#210/#211 details
+
+| Work item | Plain status |
+| --- | --- |
+| [RabbitHole PR #209](https://github.com/rysweet/RabbitHole/pull/209) | Merged at `02e50a00078e8ff348aa33b8c8635483f9b817bf`. Supports literal sized Tweedle array field initializers such as `new WholeNumber[2]`; non-literal sizes still fail clearly, and broader array expressions, method and constructor bodies, non-literal initializers, non-null resource initializers, complete player decode, and full Tweedle decode remain unproven. |
+| [RabbitHole PR #210](https://github.com/rysweet/RabbitHole/pull/210) | Merged at `d2cba4ba3e349c704765129511de5a062210ec08`. Adds launcher/runtime proof beyond the earlier `Program.main` null-Stage guard; visible rendering, deployed installer success, and full world execution remain unproven. |
+| [RabbitHole PR #211](https://github.com/rysweet/RabbitHole/pull/211) | Merged at `9b509aa3e60e6cf60b5e870a3ee03a0a80363f89`. Adds story-api keyboard event characterization tests; `core/story-api` coverage was reported from 4.55% to 6.21%, adding 260 covered lines. The 70 percent aggregate coverage target, manual QA gaps, and smoke checks that still need manual approval remain unproven. |
+
+## Previous RabbitHole PR #207/#208 details
 
 | Work item | Plain status |
 | --- | --- |

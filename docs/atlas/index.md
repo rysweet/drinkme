@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0096 - RabbitHole PR #209/#210/#211 source wave status](journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md)
+  records literal sized Tweedle array initializer support, launcher/runtime proof,
+  story-api keyboard event characterization tests, reported `core/story-api`
+  coverage movement from 4.55% to 6.21% with 260 more covered lines, and the
+  decode, rendering, installer, full-world, manual QA, smoke-check, and 70 percent
+  coverage limits that remain.
 - [0095 - RabbitHole PR #207/#208 source evidence update](journal/0095-rabbithole-pr207-pr208-source-evidence.md)
   records Numeric and Boolean Tweedle `null` field initializer decoding to AST
   `NullLiteral`, Save operation completion evidence, the all-passing PR #208
