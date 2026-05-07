@@ -158,6 +158,31 @@
   Alice window action diagnostics. CI passed, and the manual real Alice smoke
   check was skipped. A real desktop environment still needs proving, and
   later procedure edit, run, and save automation remains incomplete.
+- Latest RabbitHole and eatme source wave status is tracked in
+  `docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md`.
+  [RabbitHole PR #214](https://github.com/rysweet/RabbitHole/pull/214) merged at
+  `2155904f38e55323b00d732b7f64e957db4406f5` and proves launcher drawing
+  surface readiness through `Stage.show()` and `isShowing()` and adds a `render-target-unavailable` no-go
+  path; visible pixels, deployed installer success, and full world execution
+  remain unproven. [RabbitHole PR #215](https://github.com/rysweet/RabbitHole/pull/215) merged at
+  `c727d97c3d71a0f045925a691a080a42d36fbe9d` and decodes empty `void` Tweedle
+  methods to AST `UserMethod`; parameters, method bodies, non-void methods, and constructors
+  still fail clearly. [RabbitHole PR #216](https://github.com/rysweet/RabbitHole/pull/216) merged at
+  `c84bdf826723284e84b4872ce2e6c791dee0c8a6` and adds Save dialog discovery
+  target evidence;
+  live Save menu click, actual dialog display/control, selected path automation,
+  full lesson completion, rendering, and grading remain unproven. [RabbitHole PR #218](https://github.com/rysweet/RabbitHole/pull/218) merged at
+  `a568bae3c3960c60792351cfa423450fea51b067` and adds launcher render
+  observation proof, but visible pixels remain unobserved.
+  [eatme PR #120](https://github.com/rysweet/eatme/pull/120) merged at
+  `f526544014ee8d368a623359f6bf97cce6588f7d` and adds the next first-lesson
+  action reporting/proof slice, while real
+  desktop proof, procedure edit/run/save UI automation, and manual real Alice
+  smoke remain incomplete. [eatme PR #121](https://github.com/rysweet/eatme/pull/121) merged at
+  `4ade2a5d6def4d7ad7be7691b9349a3f5c9ff61e` and improves real desktop proof
+  reporting/status,
+  but actual real desktop proof/manual Alice smoke, procedure edit/run/save UI
+  automation, project save, and full first-lesson completion remain incomplete.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.

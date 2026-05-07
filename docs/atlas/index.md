@@ -46,6 +46,13 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0098 - RabbitHole PR #214/#215/#216/#218 and eatme PR #120/#121 status](journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md)
+  records launcher drawing surface readiness through `Stage.show()` and
+  `isShowing()`, empty `void` Tweedle method decoding, Save dialog discovery
+  target evidence, launcher render observation proof with visible pixels still
+  unobserved, next first-lesson action reporting/proof, real desktop proof
+  reporting/status, and the desktop, rendering, Save, grading, first-lesson,
+  procedure, installer, world-execution, and Tweedle/player limits that remain.
 - [0097 - RabbitHole PR #212 and eatme PR #118 Save diagnostics status](journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md)
   records Save dialog/control target evidence, focused Save tests and review,
   passing RabbitHole checks, eatme Alice window action diagnostics, skipped

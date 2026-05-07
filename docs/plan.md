@@ -181,6 +181,34 @@ network. Do not open issues or pull requests against
   Alice window action diagnostics. CI passed, and the manual real Alice smoke
   check was skipped. A real desktop environment still needs proving, and
   later procedure edit, run, and save automation remains incomplete.
+- [RabbitHole PR #214](https://github.com/rysweet/RabbitHole/pull/214) merged at
+  `2155904f38e55323b00d732b7f64e957db4406f5`. It proves launcher drawing
+  surface readiness through `Stage.show()` and `isShowing()` and adds a
+  `render-target-unavailable` no-go path. It does not prove visible pixels,
+  deployed installer success, or full world execution.
+- [RabbitHole PR #215](https://github.com/rysweet/RabbitHole/pull/215) merged at
+  `c727d97c3d71a0f045925a691a080a42d36fbe9d`. It decodes empty `void` Tweedle
+  methods to AST `UserMethod`. Parameters, method bodies, non-void methods, and
+  constructors still fail clearly.
+- [RabbitHole PR #216](https://github.com/rysweet/RabbitHole/pull/216) merged at
+  `c84bdf826723284e84b4872ce2e6c791dee0c8a6`. It adds Save dialog discovery
+  target evidence. Live Save menu click, actual dialog display/control, selected
+  path automation, full lesson completion, rendering, and grading remain
+  unproven.
+- [RabbitHole PR #218](https://github.com/rysweet/RabbitHole/pull/218) merged at
+  `a568bae3c3960c60792351cfa423450fea51b067`. It adds launcher render
+  observation proof, but visible pixels remain unobserved. Deployed installer
+  success and full world execution remain unproven.
+- [eatme PR #120](https://github.com/rysweet/eatme/pull/120) merged at
+  `f526544014ee8d368a623359f6bf97cce6588f7d`. It adds the next first-lesson
+  action reporting/proof slice. Real desktop proof is still needed; procedure
+  edit/run/save UI automation is incomplete; the manual real Alice smoke check
+  was skipped.
+- [eatme PR #121](https://github.com/rysweet/eatme/pull/121) merged at
+  `4ade2a5d6def4d7ad7be7691b9349a3f5c9ff61e`. It improves real desktop proof
+  reporting/status, but actual real desktop proof/manual Alice smoke, procedure
+  edit/run/save UI automation, project save, and full first-lesson completion
+  remain incomplete.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
