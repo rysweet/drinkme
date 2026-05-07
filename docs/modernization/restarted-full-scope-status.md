@@ -171,6 +171,21 @@ constructor assignment forms; full Tweedle/player decode remains unproven.
 `alien-linguist-parameter-dialogue` instructor/student scenario; scenario
 assets grew from 73 to 75 with all adapters fresh. Grading, automated creative
 assessment, real Alice UI automation, and full lesson delivery remain unproven.
+[RabbitHole PR #265](https://github.com/rysweet/RabbitHole/pull/265) merged at
+`ead3a465a6c794f552edc32699f011242fc303d7`. `DocumentFrame.showSaveFileDialog`
+reaches a live `JFileChooser` under Xvfb via a running StageIDE instance;
+`FileDialogUtilities.createFileDialog()` returns `SwingFileDialog` on Linux so
+native `java.awt.FileDialog` is not used. Full Save-menu-to-written-project
+journey remains unproven.
+[RabbitHole PR #266](https://github.com/rysweet/RabbitHole/pull/266) merged at
+`2fe0ba4ef5d94e5516e9975f00fea9c23ff79ac9`. AT-SPI bus is reachable and
+Alice's Java process registers via `libatk-wrapper.so`; Swing components are
+not accessible in the `exec:java` context; exact remediation path documented.
+Select Project widget enumeration and project opening remain unproven.
+[RabbitHole PR #267](https://github.com/rysweet/RabbitHole/pull/267) merged at
+`2ca7aa1062ee94b4e10eb8a13cdad8a4f4cfabc6`. Primitive literal local variable
+reassignment in Tweedle method and constructor bodies now decodes; full
+Tweedle/player decode remains unproven.
 
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop

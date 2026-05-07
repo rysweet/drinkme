@@ -26,6 +26,7 @@ ENTRY_0100 = ROOT / "docs/atlas/journal/0100-rabbithole-pr235-through-pr259-stat
 ENTRY_0101 = ROOT / "docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md"
 ENTRY_0102 = ROOT / "docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.md"
 ENTRY_0103 = ROOT / "docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status.md"
+ENTRY_0104 = ROOT / "docs/atlas/journal/0104-rabbithole-pr265-pr266-pr267-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -70,6 +71,7 @@ DOCS = {
     "atlas entry 0101": ENTRY_0101,
     "atlas entry 0102": ENTRY_0102,
     "atlas entry 0103": ENTRY_0103,
+    "atlas entry 0104": ENTRY_0104,
 }
 
 README_PLAN_LINKS = [
@@ -96,6 +98,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0101](docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md)",
     "[atlas journal entry 0102](docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.md)",
     "[atlas journal entry 0103](docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status.md)",
+    "[atlas journal entry 0104](docs/atlas/journal/0104-rabbithole-pr265-pr266-pr267-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -252,6 +255,12 @@ RABBITHOLE_PR264_EATME_PR124_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/124",
 ]
 
+RABBITHOLE_PR265_PR266_PR267_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/265",
+    "https://github.com/rysweet/RabbitHole/pull/266",
+    "https://github.com/rysweet/RabbitHole/pull/267",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -270,6 +279,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_LATEST_WAVE_PR_LINKS
     + EATME_PR123_WAVE_PR_LINKS
     + RABBITHOLE_PR264_EATME_PR124_WAVE_PR_LINKS
+    + RABBITHOLE_PR265_PR266_PR267_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -893,6 +903,33 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "grading",
         "creative assessment",
     ],
+    "RabbitHole PR #265": [
+        "RabbitHole PR #265",
+        "Merged",
+        "ead3a465a6c794f552edc32699f011242fc303d7",
+        "DocumentFrame.showSaveFileDialog",
+        "JFileChooser",
+        "SwingFileDialog",
+        "Save-menu-to-written-project",
+    ],
+    "RabbitHole PR #266": [
+        "RabbitHole PR #266",
+        "Merged",
+        "2fe0ba4ef5d9",
+        "AT-SPI",
+        "libatk-wrapper",
+        "exec:java",
+        "Select Project",
+    ],
+    "RabbitHole PR #267": [
+        "RabbitHole PR #267",
+        "Merged",
+        "2ca7aa1062ee",
+        "local variable reassignment",
+        "Tweedle method",
+        "constructor bodies",
+        "Tweedle/player decode support",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1052,6 +1089,12 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?261",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?262",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?264",
+    r"PR\s*#?265[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?266[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?267[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?265",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?266",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?267",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -1273,6 +1316,11 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertEqual(1, text.count(entry_0103_link))
         self.assertIn("alien-linguist-parameter-dialogue", text)
         self.assertIn("Tweedle constructor bodies", text)
+        entry_0104_link = "journal/0104-rabbithole-pr265-pr266-pr267-status.md"
+        self.assertEqual(1, text.count(entry_0104_link))
+        self.assertIn("DocumentFrame.showSaveFileDialog", text)
+        self.assertIn("AT-SPI", text)
+        self.assertIn("local variable reassignment", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -1703,6 +1751,30 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("73 to 75", text)
         self.assertIn("grading", text)
         self.assertIn("creative assessment", text)
+
+    def test_0104_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0104"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #265",
+                "RabbitHole PR #266",
+                "RabbitHole PR #267",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR265_PR266_PR267_WAVE_PR_LINKS, "atlas entry 0104")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0104")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0104", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0104")
+        self.assertIn("ead3a465a6c794f552edc32699f011242fc303d7", text)
+        self.assertIn("DocumentFrame.showSaveFileDialog", text)
+        self.assertIn("JFileChooser", text)
+        self.assertIn("SwingFileDialog", text)
+        self.assertIn("AT-SPI", text)
+        self.assertIn("local variable reassignment", text)
+        self.assertIn("Tweedle/player decode support", text)
+        self.assertIn("first-lesson completion", text)
 
     def test_current_status_docs_list_new_merged_prs_plainly(self):
         for name in CURRENT_MERGE_STATUS_DOCS:
