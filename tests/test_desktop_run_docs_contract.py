@@ -16,6 +16,7 @@ ENTRY_0090 = ROOT / "docs/atlas/journal/0090-rabbithole-pr166-pr167-eatme-pr98-m
 ENTRY_0091 = ROOT / "docs/atlas/journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md"
 ENTRY_0092 = ROOT / "docs/atlas/journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md"
 ENTRY_0093 = ROOT / "docs/atlas/journal/0093-source-eatme-ci-wave-status.md"
+ENTRY_0094 = ROOT / "docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -50,6 +51,7 @@ DOCS = {
     "atlas entry 0091": ENTRY_0091,
     "atlas entry 0092": ENTRY_0092,
     "atlas entry 0093": ENTRY_0093,
+    "atlas entry 0094": ENTRY_0094,
 }
 
 README_PLAN_LINKS = [
@@ -66,6 +68,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0091](docs/atlas/journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md)",
     "[atlas journal entry 0092](docs/atlas/journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md)",
     "[atlas journal entry 0093](docs/atlas/journal/0093-source-eatme-ci-wave-status.md)",
+    "[atlas journal entry 0094](docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -146,6 +149,14 @@ NEXT_ACTION_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/102",
 ]
 
+SOURCE_CI_FIX_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/185",
+    "https://github.com/rysweet/RabbitHole/pull/187",
+    "https://github.com/rysweet/RabbitHole/pull/188",
+    "https://github.com/rysweet/RabbitHole/pull/190",
+    "https://github.com/rysweet/RabbitHole/pull/191",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -154,6 +165,7 @@ CURRENT_MERGED_PR_LINKS = (
     + OBSERVATION_WAVE_PR_LINKS
     + NEXT_ACTION_WAVE_PR_LINKS
     + SOURCE_EATME_CI_WAVE_PR_LINKS
+    + SOURCE_CI_FIX_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -355,6 +367,43 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
     "eatme PR #114": ["eatme PR #114", "Merged", "instructor mission inventory", "34 canonical scenarios"],
     "eatme PR #115": ["eatme PR #115", "Merged", "student mission inventory", "33 scenarios"],
     "eatme PR #116": ["eatme PR #116", "Merged", "docs/docs-site-only CI", "Rust checks"],
+
+    "RabbitHole PR #185": [
+        "RabbitHole PR #185",
+        "Merged",
+        "model resource array grouping",
+        "duplicate index rejection",
+        "70 percent aggregate coverage",
+    ],
+    "RabbitHole PR #187": [
+        "RabbitHole PR #187",
+        "Merged",
+        "TextString label <- null",
+        "NullLiteral",
+        "WholeNumber <- null",
+        "full Tweedle decode support",
+    ],
+    "RabbitHole PR #188": [
+        "RabbitHole PR #188",
+        "Merged",
+        "ProcedureTabSelection",
+        "not live procedure invocation",
+        "Save-menu completion",
+    ],
+    "RabbitHole PR #190": [
+        "RabbitHole PR #190",
+        "Merged",
+        "IssueReportWorker",
+        "jogamp.org",
+        "52 Java files over 500 lines",
+    ],
+    "RabbitHole PR #191": [
+        "RabbitHole PR #191",
+        "Merged",
+        "Maven cache fallback",
+        "stuck coverage path",
+        "25492250204",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -450,6 +499,16 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?114",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?115",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?116",
+    r"PR\s*#?185[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?187[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?188[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?190[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?191[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?185",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?187",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?188",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?190",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?191",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -602,6 +661,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0091_link = "journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md"
         entry_0092_link = "journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md"
         entry_0093_link = "journal/0093-source-eatme-ci-wave-status.md"
+        entry_0094_link = "journal/0094-rabbithole-source-ci-wave-status.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -622,6 +682,9 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("RabbitHole PR #170/#171/#172 and eatme PR #101/#102 merge status", text)
         self.assertEqual(1, text.count(entry_0093_link))
         self.assertIn("Source, eatme, and CI status wave", text)
+        self.assertEqual(1, text.count(entry_0094_link))
+        self.assertIn("RabbitHole source and CI status wave", text)
+        self.assertIn("Maven cache fallback", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -780,6 +843,31 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("coverage 11:54", text)
         self.assertIn("deployed sharing platform remains unproven", text)
         self.assertIn("full Tweedle decode support remains unproven", text)
+
+
+    def test_0094_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0094"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #185",
+                "RabbitHole PR #187",
+                "RabbitHole PR #188",
+                "RabbitHole PR #190",
+                "RabbitHole PR #191",
+            ]
+        }
+        self.assert_contains_all(text, SOURCE_CI_FIX_WAVE_PR_LINKS, "atlas entry 0094")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0094")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0094", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0094")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0094")
+        self.assertIn("TextString label <- null", text)
+        self.assertIn("WholeNumber <- null", text)
+        self.assertIn("25492250204", text)
+        self.assertIn("jogamp.org", text)
+        self.assertIn("52 Java files over 500 lines", text)
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:

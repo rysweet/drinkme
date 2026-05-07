@@ -46,6 +46,13 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0094 - RabbitHole source and CI status wave](journal/0094-rabbithole-source-ci-wave-status.md)
+  records RabbitHole PR #185, #187, #188, #190, and #191: model resource array
+  tests, narrow `TextString` null support, `ProcedureTabSelection`,
+  `IssueReportWorker` non-retryable failure tests, and the Maven cache fallback
+  fix that cleared stuck coverage behavior, while keeping coverage, oversized
+  files, live procedure invocation, rendering, grading, first-lesson completion,
+  and full Tweedle decode support unproven.
 - [0093 - Source, eatme, and CI status wave](journal/0093-source-eatme-ci-wave-status.md)
   records RabbitHole PRs #173 through #184, eatme PRs #105/#106/#108 through
   #116, the eatme local audit counts, and RabbitHole CI timing notes, while

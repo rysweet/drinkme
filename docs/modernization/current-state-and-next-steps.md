@@ -112,6 +112,21 @@
   visible rendering correctness, desktop save-menu completion, grading, creative
   assessment, learner-world grading, first-lesson completion, a deployed sharing
   platform, or full Tweedle decode support.
+- Latest RabbitHole source/CI wave status is tracked in
+  `docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md`.
+  [RabbitHole PR #185](https://github.com/rysweet/RabbitHole/pull/185) merged model resource array grouping, skip behavior, and
+  duplicate index rejection tests. [RabbitHole PR #187](https://github.com/rysweet/RabbitHole/pull/187) merged narrow `TextString label <- null`
+  parsing and decoding to `NullLiteral`, while `WholeNumber <- null` still fails.
+  [RabbitHole PR #188](https://github.com/rysweet/RabbitHole/pull/188) merged `ProcedureTabSelection`, tests, and a reference doc as a design
+  and test boundary, not live procedure invocation. [RabbitHole PR #190](https://github.com/rysweet/RabbitHole/pull/190) merged
+  `IssueReportWorker` non-retryable failure tests. [RabbitHole PR #191](https://github.com/rysweet/RabbitHole/pull/191) restored the Maven
+  cache fallback, fixed the stuck coverage path, and left coverage run
+  `25492250204` plus develop checks after PR #190 successful. PR #187, PR #188,
+  and PR #190 were delayed by stuck coverage behavior and transient `jogamp.org`
+  network failures. The 70 percent aggregate coverage target, live procedure
+  invocation, desktop edit command, Save-menu completion, dialogs, grading,
+  rendering, first-lesson completion, deployed sharing, and full Tweedle decode
+  support remain unproven.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
@@ -127,7 +142,7 @@
 
 ## Build and CI state
 
-The no-Sims local and CI path is healthy.
+The no-Sims local and CI path is healthy. RabbitHole PR #191 restored the Maven cache fallback, fixed the stuck coverage path, and coverage run `25492250204` completed successfully after merge. Develop checks after PR #190 also completed successfully at `fd71bfb96fe9c82aa4cdd3de8f967f7c410af629`.
 
 Current important checks:
 
@@ -168,7 +183,7 @@ Covered areas include:
 - backup recovery candidate skipping when a newer backup is known unloadable;
 - backup recovery IO path from corrupt files to valid backup load;
 - VR project-loader save-path behavior;
-- model resource XML metadata, manifest behavior, tag parsing, subresource lookup, and edge cases;
+- model resource XML metadata, manifest behavior, tag parsing, subresource lookup, array grouping, skip behavior, duplicate index rejection, and edge cases;
 - synthetic `.a3p` project IO round trips;
 - synthetic resource IO round trips;
 - headless player export archive shape through `ProjectFileUtilities`;
@@ -180,6 +195,7 @@ Covered areas include:
 - JSON/player image/audio resource identity isolation when separate archive reads reuse UUIDs;
 - JSON/player model/generated type manifest-reference boundaries;
 - JSON `.a3c` resource-only type archive reads;
+- narrow Tweedle `TextString label <- null` parsing and decoding to `NullLiteral`, while `WholeNumber <- null` still fails;
 - duplicate-safe and path-safe JSON/player resource zip entries;
 - headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
 - AST-referenced image resource editor save-copy and reopen fidelity;
@@ -216,12 +232,14 @@ Covered areas include:
 - headless Croquet tool-palette layout invariants;
 - scenegraph Mesh, WeightedMesh, SkeletonVisual, and Joint behavior, including Joint scale/bounds fixes;
 - public no-Sims package boundaries and authorized includeSims library overwrite behavior;
+- `ProcedureTabSelection` design and tests for future procedure UI work;
+- `IssueReportWorker` non-retryable failure behavior;
 
 ## Important findings
 
 - Characterization is still early relative to the size of Alice.
-- Current coverage is far below the 70% target.
-- Many production classes still exceed the desired 500-line target.
+- Current coverage is far below the 70% target; the latest coverage run completed successfully, but 70 percent aggregate coverage remains unproven.
+- Many production classes still exceed the desired 500-line target; the latest reported hotspot count found 52 Java files over 500 lines.
 - NetBeans Java export is a high-value seam because it is both compatibility-sensitive and teaching-facing.
 - Model resource export now has its first active no-Sims characterization, but only for XML serialization and generated resource Java compilation.
 - NetBeans export now has a standalone-style compile/launcher smoke, but not a full Ant/NetBeans run with a populated `Alice3Library`.
@@ -230,6 +248,7 @@ Covered areas include:
 - Generated source now includes one actual story API call smoke, `this.setSimulationSpeedFactor(1.5);`, in a new focused test class.
 - `ProjectFileUtilities.exportCopyOfProjectTo` now has a headless player artifact smoke for version, manifest, thumbnail, and program Tweedle entries.
 - Resource-bearing player export now proves referenced image bytes and manifest metadata are written. `IoUtilities.readProject(...)` now routes manifest-declared `.a3w` archives to `JsonProjectIo` and can restore manifest-listed image resources, but Tweedle program-type decoding is still not implemented.
+- Narrow `TextString` null decoding now exists, but broader null support, method and constructor body decode, complete player decode, and full Tweedle decode support remain open.
 - JSON/player export/readback now also covers AST-referenced `AudioResource` with synthetic bytes, preserving UUID, names, content type, byte payload, and normalized duration.
 - JSON/player archives now report future `version.txt` values through `JsonProjectIo.checkForFutureVersion()`, so loader warning behavior is no longer XML-only at that seam.
 - Corrupt `manifest.json` in IO dispatch now surfaces an `IOException` instead of being treated like an absent manifest and falling through to XML.
