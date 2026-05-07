@@ -306,10 +306,21 @@
   `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73.
   Grading, automated creative assessment, real Alice UI automation, and full
   lesson delivery remain unproven.
+  [RabbitHole PR #264](https://github.com/rysweet/RabbitHole/pull/264) merged at
+  `a4386130d66b97feecdbcb5ab1b6bc765392deb3`. Primitive literal field assignments
+  in Tweedle constructor bodies now decode, with clear failures for unsupported
+  constructor assignment forms; full Tweedle/player decode remains unproven.
+  [eatme PR #124](https://github.com/rysweet/eatme/pull/124) merged at
+  `d3bb687145b6c9e38601703c691aa7f6bcbb4862`. Adds the
+  `alien-linguist-parameter-dialogue` instructor/student scenario; scenario
+  assets grew from 73 to 75 with all adapters fresh. Grading, automated creative
+  assessment, real Alice UI automation, and full lesson delivery remain unproven.
 - Latest RabbitHole source update is tracked in
   `docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md`.
   eatme PR #123 is tracked in
   `docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.md`.
+  RabbitHole PR #264 and eatme PR #124 are tracked in
+  `docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status.md`.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.

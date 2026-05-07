@@ -25,6 +25,7 @@ ENTRY_0099 = ROOT / "docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-
 ENTRY_0100 = ROOT / "docs/atlas/journal/0100-rabbithole-pr235-through-pr259-status.md"
 ENTRY_0101 = ROOT / "docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md"
 ENTRY_0102 = ROOT / "docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.md"
+ENTRY_0103 = ROOT / "docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -68,6 +69,7 @@ DOCS = {
     "atlas entry 0100": ENTRY_0100,
     "atlas entry 0101": ENTRY_0101,
     "atlas entry 0102": ENTRY_0102,
+    "atlas entry 0103": ENTRY_0103,
 }
 
 README_PLAN_LINKS = [
@@ -93,6 +95,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0100](docs/atlas/journal/0100-rabbithole-pr235-through-pr259-status.md)",
     "[atlas journal entry 0101](docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md)",
     "[atlas journal entry 0102](docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.md)",
+    "[atlas journal entry 0103](docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -244,6 +247,11 @@ EATME_PR123_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/123",
 ]
 
+RABBITHOLE_PR264_EATME_PR124_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/264",
+    "https://github.com/rysweet/eatme/pull/124",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -261,6 +269,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_NEW_SOURCE_WAVE_PR_LINKS
     + RABBITHOLE_LATEST_WAVE_PR_LINKS
     + EATME_PR123_WAVE_PR_LINKS
+    + RABBITHOLE_PR264_EATME_PR124_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -866,6 +875,24 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "grading",
         "creative assessment",
     ],
+    "RabbitHole PR #264": [
+        "RabbitHole PR #264",
+        "Merged",
+        "a4386130d66b97feecdbcb5ab1b6bc765392deb3",
+        "primitive literal field assignments",
+        "Tweedle constructor bodies",
+        "unsupported constructor assignment forms",
+        "full Tweedle/player decode",
+    ],
+    "eatme PR #124": [
+        "eatme PR #124",
+        "Merged",
+        "d3bb687145b6c9e38601703c691aa7f6bcbb4862",
+        "alien-linguist-parameter-dialogue",
+        "73 to 75",
+        "grading",
+        "creative assessment",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1017,6 +1044,14 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?254",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?255",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?259",
+    r"PR\s*#?260[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?261[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?262[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?264[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?260",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?261",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?262",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?264",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -1231,6 +1266,13 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("JFileChooser", text)
         self.assertIn("Select Project", text)
         self.assertIn("lost-robot-debug-museum", text)
+        entry_0102_link = "journal/0102-eatme-pr123-weather-wizard-status.md"
+        entry_0103_link = "journal/0103-rabbithole-pr264-eatme-pr124-status.md"
+        self.assertEqual(1, text.count(entry_0102_link))
+        self.assertIn("weather-wizard-conditional-theater", text)
+        self.assertEqual(1, text.count(entry_0103_link))
+        self.assertIn("alien-linguist-parameter-dialogue", text)
+        self.assertIn("Tweedle constructor bodies", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -1637,6 +1679,28 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("weather-wizard-conditional-theater", text)
         self.assertIn("773fb3df7a6ec234c5f317eefdfea82916ecd7bc", text)
         self.assertIn("creative_new", text)
+        self.assertIn("grading", text)
+        self.assertIn("creative assessment", text)
+
+    def test_0103_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0103"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #264",
+                "eatme PR #124",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR264_EATME_PR124_WAVE_PR_LINKS, "atlas entry 0103")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0103")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0103", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0103")
+        self.assertIn("a4386130d66b97feecdbcb5ab1b6bc765392deb3", text)
+        self.assertIn("d3bb687145b6c9e38601703c691aa7f6bcbb4862", text)
+        self.assertIn("Tweedle constructor bodies", text)
+        self.assertIn("alien-linguist-parameter-dialogue", text)
+        self.assertIn("73 to 75", text)
         self.assertIn("grading", text)
         self.assertIn("creative assessment", text)
 

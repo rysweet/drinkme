@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0103 - RabbitHole PR #264 and eatme PR #124 status](journal/0103-rabbithole-pr264-eatme-pr124-status.md)
+  records primitive literal field assignments in Tweedle constructor bodies now
+  decoding with clear failures for unsupported constructor assignment forms, and
+  the `alien-linguist-parameter-dialogue` eatme scenario addition; scenario
+  assets grew from 73 to 75. Full Tweedle/player decode, grading, and
+  first-lesson completion remain unproven.
 - [0102 - eatme PR #123 status](journal/0102-eatme-pr123-weather-wizard-status.md)
   records the `weather-wizard-conditional-theater` scenario addition, the next
   `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73,

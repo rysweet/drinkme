@@ -284,8 +284,18 @@ Second-pass review tightened the plan:
   `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73.
   Grading, automated creative assessment, real Alice UI automation, and full
   lesson delivery remain unproven.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, and #262
-  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, and #123 have merged, but they do
+- [eatme PR #124](https://github.com/rysweet/eatme/pull/124) merged at
+  `d3bb687145b6c9e38601703c691aa7f6bcbb4862`. Adds the
+  `alien-linguist-parameter-dialogue` instructor/student scenario; scenario
+  assets grew from 73 to 75 with all adapters fresh. Grading, automated
+  creative assessment, real Alice UI automation, and full lesson delivery remain
+  unproven.
+- [RabbitHole PR #264](https://github.com/rysweet/RabbitHole/pull/264) merged at
+  `a4386130d66b97feecdbcb5ab1b6bc765392deb3`. Primitive literal field assignments
+  in Tweedle constructor bodies now decode, with clear failures for unsupported
+  constructor assignment forms; full Tweedle/player decode remains unproven.
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, and #264
+  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, and #124 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
   completion, native FileDialog peer control, project selection or opening,
   grading, creative assessment, learner-world grading, first-lesson
