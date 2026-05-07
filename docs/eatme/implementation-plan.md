@@ -294,7 +294,22 @@ Second-pass review tightened the plan:
   `a4386130d66b97feecdbcb5ab1b6bc765392deb3`. Primitive literal field assignments
   in Tweedle constructor bodies now decode, with clear failures for unsupported
   constructor assignment forms; full Tweedle/player decode remains unproven.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, and #264
+- [RabbitHole PR #265](https://github.com/rysweet/RabbitHole/pull/265) merged at
+  `ead3a465a6c794f552edc32699f011242fc303d7`. `DocumentFrame.showSaveFileDialog`
+  reaches a live `JFileChooser` under Xvfb via a running StageIDE instance;
+  `FileDialogUtilities.createFileDialog()` returns `SwingFileDialog` on Linux so
+  native `java.awt.FileDialog` is not used. Full Save-menu-to-written-project
+  journey remains unproven.
+- [RabbitHole PR #266](https://github.com/rysweet/RabbitHole/pull/266) merged at
+  `2fe0ba4ef5d94e5516e9975f00fea9c23ff79ac9`. AT-SPI bus is reachable and
+  Alice's Java process registers via `libatk-wrapper.so`; Swing components are
+  not accessible in the `exec:java` context; exact remediation path documented.
+  Select Project widget enumeration and project opening remain unproven.
+- [RabbitHole PR #267](https://github.com/rysweet/RabbitHole/pull/267) merged at
+  `2ca7aa1062ee94b4e10eb8a13cdad8a4f4cfabc6`. Primitive literal local variable
+  reassignment in Tweedle method and constructor bodies now decodes; full
+  Tweedle/player decode remains unproven.
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, and #267
   and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, and #124 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
   completion, native FileDialog peer control, project selection or opening,

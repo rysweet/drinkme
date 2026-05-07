@@ -46,6 +46,14 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0104 - RabbitHole PR #265/#266/#267 status](journal/0104-rabbithole-pr265-pr266-pr267-status.md)
+  records `DocumentFrame.showSaveFileDialog` reaching a live `JFileChooser` under
+  Xvfb via running StageIDE, and that native `java.awt.FileDialog` is not used on
+  Linux. Also records AT-SPI bus reachability and the `exec:java` classloader
+  blocker for Swing widget introspection, and local variable reassignment decode
+  in Tweedle method and constructor bodies. Full Save-menu-to-written-project
+  journey, project opening, full Tweedle/player decode, grading, and
+  first-lesson completion remain unproven.
 - [0103 - RabbitHole PR #264 and eatme PR #124 status](journal/0103-rabbithole-pr264-eatme-pr124-status.md)
   records primitive literal field assignments in Tweedle constructor bodies now
   decoding with clear failures for unsupported constructor assignment forms, and
