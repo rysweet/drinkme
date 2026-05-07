@@ -30,10 +30,12 @@ Last updated: 2026-05-06
 | [RabbitHole PR #159](https://github.com/rysweet/RabbitHole/pull/159) | Merged at `9dbf0266ad7d61439f5dd74121e744dbbd365462`. Adds a generated archive test where a missing Tweedle source entry fails clearly; it does not add broad Tweedle decode support. |
 | [RabbitHole PR #160](https://github.com/rysweet/RabbitHole/pull/160) | Merged at `18c533efdacc7bdefa971c82ac655d5127bc743e`. Adds `desktop-run-pixel-boundary.json` with `status: "not_observed"`; it does not prove pixels, screenshots, visible rendering, or grading. |
 | [RabbitHole PR #163](https://github.com/rysweet/RabbitHole/pull/163) | Merged at `4f225f2795c79f84c367874cd7995dc6dcded22f`. Rejects unsupported manifest-declared Tweedle type names with a clear error instead of silently dropping a type; it does not add full Tweedle decode support. |
+| [RabbitHole PR #164](https://github.com/rysweet/RabbitHole/pull/164) | Merged at `fb3e419b81c55b0e055711c9b57d3143f4f69f10`. Adds a generated archive test for constructor-bearing sibling Tweedle type rejection; it does not add full Tweedle decode support. |
 | [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
 | [eatme PR #92](https://github.com/rysweet/eatme/pull/92) | Merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready. |
 | [eatme PR #93](https://github.com/rysweet/eatme/pull/93) | Merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. Lists the concrete readiness evidence categories in the report; it does not create new runtime proof. |
 | [eatme PR #95](https://github.com/rysweet/eatme/pull/95) | Merged at `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. Reports `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it does not prove pixels, visible rendering, grading, or first-lesson completion. |
+| [eatme PR #96](https://github.com/rysweet/eatme/pull/96) | Merged at `9d765fec2d8f9f3a029b5222d48b3de23b461d5b`. Adds an `evidence_progress` summary that counts required first-lesson evidence as present, missing, invalid, not observed, or blocked; it summarizes existing evidence only. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -57,6 +59,12 @@ RabbitHole PR #163 rejects unsupported manifest-declared Tweedle type names with
 a clear error instead of silently dropping a type. eatme PR #95 reports
 `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`. These
 changes do not prove full Alice UI automation, visible rendering, desktop
+save-menu completion, grading, creative assessment, or first-lesson completion.
+
+RabbitHole PR #164 adds the matching generated archive test for a
+constructor-bearing sibling Tweedle type. eatme PR #96 adds a compact
+first-lesson progress summary. These changes make remaining work easier to see;
+they do not prove full Alice UI automation, visible rendering, desktop
 save-menu completion, grading, creative assessment, or first-lesson completion.
 
 ## Latest integrated evidence
@@ -88,6 +96,10 @@ save-menu completion, grading, creative assessment, or first-lesson completion.
   error for unsupported manifest-declared Tweedle type names.
 - The merged eatme PR #95 reports the pixel-boundary file state explicitly as
   missing, invalid, or `not_observed`; it does not add pixel proof.
+- The merged RabbitHole PR #164 adds constructor-bearing sibling archive coverage
+  for the same clear-failure behavior.
+- The merged eatme PR #96 makes readiness progress countable without adding new
+  runtime proof.
 
 ## No-premature-completion rule
 
