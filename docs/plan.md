@@ -323,6 +323,12 @@ network. Do not open issues or pull requests against
   Adds the `lost-robot-debug-museum` instructor/student scenario for the
   reflective-debugger/debug-coach use case; grading, creative assessment, real
   Alice UI automation, and full lesson delivery remain unproven.
+- [eatme PR #123](https://github.com/rysweet/eatme/pull/123) merged at
+  `773fb3df7a6ec234c5f317eefdfea82916ecd7bc`. Adds the
+  `weather-wizard-conditional-theater` instructor/student scenario, the next
+  `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73.
+  Grading, automated creative assessment, real Alice UI automation, and full
+  lesson delivery remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

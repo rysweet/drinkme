@@ -300,8 +300,16 @@
   Adds the `lost-robot-debug-museum` instructor/student scenario for the
   reflective-debugger/debug-coach use case; grading, creative
   assessment, real Alice UI automation, and full lesson delivery remain unproven.
+  [eatme PR #123](https://github.com/rysweet/eatme/pull/123) merged at
+  `773fb3df7a6ec234c5f317eefdfea82916ecd7bc`. Adds the
+  `weather-wizard-conditional-theater` instructor/student scenario, the next
+  `creative_new` teaching/learning gap fill; scenario assets grew from 71 to 73.
+  Grading, automated creative assessment, real Alice UI automation, and full
+  lesson delivery remain unproven.
 - Latest RabbitHole source update is tracked in
   `docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md`.
+  eatme PR #123 is tracked in
+  `docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.md`.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
