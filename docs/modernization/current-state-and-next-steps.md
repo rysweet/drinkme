@@ -283,6 +283,25 @@
   `this.field` into AST `FieldAccess`; assignments, optional params, broader member
   expressions, resource initializers, and full Tweedle/player decode remain
   unproven.
+  [RabbitHole PR #260](https://github.com/rysweet/RabbitHole/pull/260) merged at
+  `b553677c1225d704d1d951a59653fb0f66096139`. A Swing `JFileChooser` dialog was
+  observed under Xvfb and approved through the chooser's controls; native
+  `java.awt.FileDialog` peer control and the full StageIDE Save-menu-to-real-chooser
+  journey remain unproven.
+  [RabbitHole PR #261](https://github.com/rysweet/RabbitHole/pull/261) merged at
+  `97c1ae707544bd0ca89e711df92e7e45e6d377ac`. The Select Project Java window was
+  observed under Xvfb with title, class, process, and geometry; selecting or
+  opening a project, world execution, and installer success remain unproven.
+  [RabbitHole PR #262](https://github.com/rysweet/RabbitHole/pull/262) merged at
+  `9ef09e05402b2e0af9c07803eee92aa5db29b325`. Primitive literal field assignments
+  in Tweedle method bodies now decode, with clear unsupported-form failures; full
+  Tweedle/player decode remains unproven.
+  [eatme PR #122](https://github.com/rysweet/eatme/pull/122) merged at `41142db`.
+  Adds the `lost-robot-debug-museum` instructor/student scenario for the
+  reflective-debugger/debug-coach use case; grading, creative
+  assessment, real Alice UI automation, and full lesson delivery remain unproven.
+- Latest RabbitHole source update is tracked in
+  `docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md`.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.

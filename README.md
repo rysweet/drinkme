@@ -197,8 +197,23 @@ save-menu completion, grading, creative assessment, learner-world grading,
 first-lesson completion, procedure UI invocation, live Save dialog display or
 control, real Alice desktop pixels, or full Tweedle/player decode support. PR
 #255 proves Save-flow file write through the selected-path seam, not a real
-dialog. Active source agents for Select Project interaction, Save chooser UI,
-and a decoder next slice after PR #259 are still running.
+dialog. RabbitHole PR #260, PR #261, PR #262, and eatme PR #122 have since
+merged; see journal entry 0101 below.
+[atlas journal entry 0101](docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md)
+records the newest source update. PR #260 proves a Swing `JFileChooser` dialog
+appears under Xvfb and responds to chooser controls; native
+`java.awt.FileDialog` peer control and the full StageIDE Save-menu-to-real-chooser
+journey remain unproven. PR #261 proves the Select Project Java window appears
+under Xvfb with title, class, process, and geometry recorded; selecting or
+opening a project, world execution, and installer success remain unproven. PR
+#262 decodes primitive literal field assignments in Tweedle method bodies, with
+clear unsupported-form failures; full Tweedle/player decode remains unproven.
+eatme PR #122 adds the `lost-robot-debug-museum` instructor/student scenario;
+grading, creative assessment, real Alice UI automation, and full lesson delivery
+remain unproven. This does not prove full Alice UI automation, visible rendering
+correctness, desktop save-menu completion, native FileDialog peer control,
+project selection or opening, grading, creative assessment, learner-world
+grading, first-lesson completion, or complete Tweedle/player decode support.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -288,6 +303,10 @@ All referenced source and status PRs have merged:
 | [eatme PR #118](https://github.com/rysweet/eatme/pull/118) | Merged at `2c760511eeff8c554b17ee550e779e7c51444591` from head `b70048d78f0b5f8669dc7e725cdac6b1ff3566f5`. Improves Alice window action diagnostics. CI passed, and the manual real Alice smoke check was skipped. A real desktop environment still needs proving, and later procedure edit, run, and save automation remains incomplete. |
 | [eatme PR #120](https://github.com/rysweet/eatme/pull/120) | Merged at `f526544014ee8d368a623359f6bf97cce6588f7d`. Adds the next first-lesson action reporting/proof slice. Real desktop proof is still needed; procedure edit/run/save UI automation is incomplete; manual real Alice smoke was skipped. |
 | [eatme PR #121](https://github.com/rysweet/eatme/pull/121) | Merged at `4ade2a5d6def4d7ad7be7691b9349a3f5c9ff61e`. Improves real desktop proof reporting/status, but actual real desktop proof/manual Alice smoke, procedure edit/run/save UI automation, project save, and full first-lesson completion remain incomplete. |
+| [RabbitHole PR #260](https://github.com/rysweet/RabbitHole/pull/260) | Merged at `b553677c1225d704d1d951a59653fb0f66096139`. A Swing `JFileChooser` dialog was observed under Xvfb and approved through the chooser's controls; native `java.awt.FileDialog` peer control and the full StageIDE Save-menu-to-real-chooser journey remain unproven. |
+| [RabbitHole PR #261](https://github.com/rysweet/RabbitHole/pull/261) | Merged at `97c1ae707544bd0ca89e711df92e7e45e6d377ac`. The Select Project Java window was observed under Xvfb with title, class, process, and geometry; selecting or opening a project, world execution, and installer success remain unproven. |
+| [RabbitHole PR #262](https://github.com/rysweet/RabbitHole/pull/262) | Merged at `9ef09e05402b2e0af9c07803eee92aa5db29b325`. Primitive literal field assignments in Tweedle method bodies now decode, with clear unsupported-form failures; full Tweedle/player decode remains unproven. |
+| [eatme PR #122](https://github.com/rysweet/eatme/pull/122) | Merged at `41142db`. Adds the `lost-robot-debug-museum` instructor/student scenario for the reflective-debugger/debug-coach use case; grading, creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -298,7 +317,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, and eatme PR #118, PR #120, and PR #121
+PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, and eatme PR #118, PR #120, PR #121, and PR #122
 merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full
