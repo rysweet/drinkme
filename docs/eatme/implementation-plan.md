@@ -108,6 +108,24 @@ Second-pass review tightened the plan:
   GitHub build, coverage, test, package-netbeans, and GitGuardian checks
   passed. Live desktop Save menu invocation and actual Save dialog
   discovery/control remain unproven.
+  [RabbitHole PR #214](https://github.com/rysweet/RabbitHole/pull/214) merged at
+  `2155904f38e55323b00d732b7f64e957db4406f5`. It proves launcher drawing
+  surface readiness through `Stage.show()` and `isShowing()` and adds a
+  `render-target-unavailable` no-go path; visible pixels, deployed installer
+  success, and full world execution remain unproven.
+  [RabbitHole PR #215](https://github.com/rysweet/RabbitHole/pull/215) merged at
+  `c727d97c3d71a0f045925a691a080a42d36fbe9d`. It decodes empty `void` Tweedle
+  methods to AST `UserMethod`; parameters, method bodies, non-void methods, and
+  constructors still fail clearly.
+  [RabbitHole PR #216](https://github.com/rysweet/RabbitHole/pull/216) merged at
+  `c84bdf826723284e84b4872ce2e6c791dee0c8a6`. It adds Save dialog discovery
+  target evidence; live Save menu click, actual dialog display/control, selected
+  path automation, full lesson completion, rendering, and grading remain
+  unproven.
+  [RabbitHole PR #218](https://github.com/rysweet/RabbitHole/pull/218) merged at
+  `a568bae3c3960c60792351cfa423450fea51b067`. It adds launcher render
+  observation proof, but visible pixels remain unobserved. Deployed installer
+  success and full world execution remain unproven.
 - [eatme PR #95](https://github.com/rysweet/eatme/pull/95) merged at
   `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. It reports
   `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it
@@ -138,10 +156,22 @@ Second-pass review tightened the plan:
   Alice window action diagnostics. CI passed, and the manual real Alice smoke
   check was skipped. A real desktop environment still needs proving, and
   later procedure edit, run, and save automation remains incomplete.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, and #212
-  and eatme PRs #93, #95, #96, #98, #99, #101, #102, and #118 have merged, but they do
+- [eatme PR #120](https://github.com/rysweet/eatme/pull/120) merged at
+  `f526544014ee8d368a623359f6bf97cce6588f7d`. It adds the next first-lesson
+  action reporting/proof slice. Real desktop proof is still needed; procedure
+  edit/run/save UI automation is incomplete; the manual real Alice smoke check
+  was skipped.
+- [eatme PR #121](https://github.com/rysweet/eatme/pull/121) merged at
+  `4ade2a5d6def4d7ad7be7691b9349a3f5c9ff61e`. It improves real desktop proof
+  reporting/status, but actual real desktop proof/manual Alice smoke, procedure
+  edit/run/save UI automation, project save, and full first-lesson completion
+  remain incomplete.
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, and #218
+  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, and #121 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
-  completion, grading, creative assessment, or first-lesson completion.
+  completion, grading, creative assessment, learner-world grading, first-lesson
+  completion, real desktop proof, project save, deployed installer success, full
+  world execution, procedure UI invocation, or complete player/full Tweedle decode support.
 - The proof boundary remains a narrow Run window attachment signal: Alice put
   the Run panel into the Run window area. This evidence does not prove pixels
   were drawn, does not prove the lesson finished, and is not grading.

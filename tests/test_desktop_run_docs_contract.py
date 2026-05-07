@@ -20,6 +20,7 @@ ENTRY_0094 = ROOT / "docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md
 ENTRY_0095 = ROOT / "docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md"
 ENTRY_0096 = ROOT / "docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md"
 ENTRY_0097 = ROOT / "docs/atlas/journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md"
+ENTRY_0098 = ROOT / "docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -58,6 +59,7 @@ DOCS = {
     "atlas entry 0095": ENTRY_0095,
     "atlas entry 0096": ENTRY_0096,
     "atlas entry 0097": ENTRY_0097,
+    "atlas entry 0098": ENTRY_0098,
 }
 
 README_PLAN_LINKS = [
@@ -78,6 +80,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0095](docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md)",
     "[atlas journal entry 0096](docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md)",
     "[atlas journal entry 0097](docs/atlas/journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md)",
+    "[atlas journal entry 0098](docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -182,6 +185,15 @@ SAVE_DIAGNOSTICS_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/118",
 ]
 
+LATEST_PROOF_REPORTING_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/214",
+    "https://github.com/rysweet/RabbitHole/pull/215",
+    "https://github.com/rysweet/RabbitHole/pull/216",
+    "https://github.com/rysweet/RabbitHole/pull/218",
+    "https://github.com/rysweet/eatme/pull/120",
+    "https://github.com/rysweet/eatme/pull/121",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -194,6 +206,7 @@ CURRENT_MERGED_PR_LINKS = (
     + SOURCE_EVIDENCE_WAVE_PR_LINKS
     + LATEST_SOURCE_WAVE_PR_LINKS
     + SAVE_DIAGNOSTICS_WAVE_PR_LINKS
+    + LATEST_PROOF_REPORTING_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -509,6 +522,66 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "real desktop environment still needs proving",
         "later procedure edit, run, and save automation remains incomplete",
     ],
+
+    "RabbitHole PR #214": [
+        "RabbitHole PR #214",
+        "Merged",
+        "2155904f38e55323b00d732b7f64e957db4406f5",
+        "launcher drawing surface readiness",
+        "Stage.show()",
+        "isShowing()",
+        "render-target-unavailable",
+        "visible pixels",
+        "deployed installer success",
+        "full world execution",
+    ],
+    "RabbitHole PR #215": [
+        "RabbitHole PR #215",
+        "Merged",
+        "c727d97c3d71a0f045925a691a080a42d36fbe9d",
+        "empty `void` Tweedle methods",
+        "AST `UserMethod`",
+        "parameters",
+        "method bodies",
+        "non-void methods",
+        "constructors still fail clearly",
+    ],
+    "RabbitHole PR #216": [
+        "RabbitHole PR #216",
+        "Merged",
+        "c84bdf826723284e84b4872ce2e6c791dee0c8a6",
+        "Save dialog discovery target evidence",
+        "live Save menu click",
+        "actual dialog display/control",
+        "selected path automation",
+    ],
+    "RabbitHole PR #218": [
+        "RabbitHole PR #218",
+        "Merged",
+        "a568bae3c3960c60792351cfa423450fea51b067",
+        "launcher render observation proof",
+        "visible pixels remain unobserved",
+        "deployed installer success",
+        "full world execution",
+    ],
+    "eatme PR #120": [
+        "eatme PR #120",
+        "Merged",
+        "f526544014ee8d368a623359f6bf97cce6588f7d",
+        "next first-lesson action reporting/proof slice",
+        "real desktop proof",
+        "procedure edit/run/save UI automation",
+        "manual real Alice smoke",
+    ],
+    "eatme PR #121": [
+        "eatme PR #121",
+        "Merged",
+        "4ade2a5d6def4d7ad7be7691b9349a3f5c9ff61e",
+        "real desktop proof reporting/status",
+        "actual real desktop proof/manual Alice smoke",
+        "project save",
+        "full first-lesson completion",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -774,6 +847,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0095_link = "journal/0095-rabbithole-pr207-pr208-source-evidence.md"
         entry_0096_link = "journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md"
         entry_0097_link = "journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md"
+        entry_0098_link = "journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -808,6 +882,11 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("RabbitHole PR #212 and eatme PR #118 Save diagnostics status", text)
         self.assertIn("Save dialog/control target evidence", text)
         self.assertIn("skipped manual real Alice smoke", plain(text))
+        self.assertEqual(1, text.count(entry_0098_link))
+        self.assertIn("RabbitHole PR #214/#215/#216/#218 and eatme PR #120/#121 status", text)
+        self.assertIn("launcher drawing surface readiness", text)
+        self.assertIn("empty `void` Tweedle method decoding", text)
+        self.assertIn("visible pixels still", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -1050,6 +1129,35 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("focused review", text)
         self.assertIn("manual real Alice smoke check was skipped", text)
         self.assertIn("Actual Save dialog discovery/control remains unproven", text)
+
+
+    def test_0098_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0098"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #214",
+                "RabbitHole PR #215",
+                "RabbitHole PR #216",
+                "RabbitHole PR #218",
+                "eatme PR #120",
+                "eatme PR #121",
+            ]
+        }
+        self.assert_contains_all(text, LATEST_PROOF_REPORTING_WAVE_PR_LINKS, "atlas entry 0098")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0098")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0098", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0098")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0098")
+        self.assertIn("Stage.show()", text)
+        self.assertIn("isShowing()", text)
+        self.assertIn("render-target-unavailable", text)
+        self.assertIn("AST `UserMethod`", text)
+        self.assertIn("Save dialog discovery target evidence", text)
+        self.assertIn("visible pixels remain unobserved", text)
+        self.assertIn("manual real Alice smoke check was skipped", text)
+        self.assertIn("project save", text)
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:
