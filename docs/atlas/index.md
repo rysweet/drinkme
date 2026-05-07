@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0111 - RabbitHole PR #274 arithmetic binary expression status](journal/0111-rabbithole-pr274-arithmetic-binary-status.md)
+  records that arithmetic binary expressions (`+`, `-`, `*`, `/`) now decode as Tweedle
+  assignment right-hand-side values and local variable initializer values (PR #274). String
+  concatenation, logical/comparison expressions, method calls, non-`this` member assignment
+  targets, loops, conditionals, resource field initializers, and full Tweedle/player decode
+  remain unproven.
 - [0110 - RabbitHole PR #272, PR #273, and eatme PR #131 status](journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md)
   records that AT-SPI reaches the Alice Java process via `exec:exec` and top-level Swing
   widgets are observable (PR #272); that `SaveProjectOperation.fire()` reaches a live

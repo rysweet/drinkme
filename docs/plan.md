@@ -410,6 +410,13 @@ network. Do not open issues or pull requests against
   design-process-story-or-game, audio-camera-and-export-sharecase,
   setup-preflight-ready-to-create. Grading, automated creative assessment, real
   Alice UI automation, and full lesson delivery remain unproven.
+- [RabbitHole PR #274](https://github.com/rysweet/RabbitHole/pull/274) merged at
+  `5571894e5152482c9fb26ba31fc3d633d372e88e`. Arithmetic binary expressions
+  (`+`, `-`, `*`, `/`) now decode as Tweedle assignment right-hand-side values
+  and as local variable initializer values. String concatenation, logical and
+  comparison expressions, method calls, non-`this` member assignment targets,
+  loops, conditionals, resource field initializers, and full Tweedle/player
+  decode remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
