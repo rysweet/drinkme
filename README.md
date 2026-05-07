@@ -67,6 +67,15 @@ eatme PR #98 adds plain first-lesson readiness output that lists the progress
 summary and every required evidence item. These changes make evidence easier to
 inspect; they do not prove visible rendering, desktop save-menu completion,
 grading, creative assessment, or first-lesson completion.
+[atlas journal entry 0091](docs/atlas/journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md)
+records the latest merge update. RabbitHole PR #168 adds a generated archive
+test for a sibling type with an unresolved parent, so that case fails clearly
+instead of returning a partial project. RabbitHole PR #169 adds machine-readable
+blocker details to `desktop-run-pixel-observation.json`. eatme PR #99 reads that
+pixel observation file and reports observed screenshot/sample data or blocked
+component state and blocker codes. These changes make the next blocker easier to
+see; they do not prove full Alice UI automation, visible rendering, desktop
+save-menu completion, grading, creative assessment, or first-lesson completion.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -80,21 +89,24 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #164](https://github.com/rysweet/RabbitHole/pull/164) | Merged at `fb3e419b81c55b0e055711c9b57d3143f4f69f10`. Adds a generated archive test proving a constructor-bearing sibling Tweedle type also fails clearly instead of being silently dropped; it does not add full Tweedle decode support. |
 | [RabbitHole PR #166](https://github.com/rysweet/RabbitHole/pull/166) | Merged at `bb617171524fa11d59b71b77a0d29d1b645e2507`. Adds a generated archive test for a sibling Tweedle type with an unsupported complex field initializer; it does not add full Tweedle method, constructor, complex-value, resource-expression, or missing-parent decode support. |
 | [RabbitHole PR #167](https://github.com/rysweet/RabbitHole/pull/167) | Merged at `4c5e2f21b2674f07176df40f90ded35e5738bde3`. Adds `desktop-run-pixel-observation.json` so a run records a screenshot and center pixel when possible, or records a blocker code and component state when not; it does not prove visible rendering, desktop save-menu completion, grading, creative assessment, or first-lesson completion. |
+| [RabbitHole PR #168](https://github.com/rysweet/RabbitHole/pull/168) | Merged at `da0fb851fd974721a630811873f0d583a853eb5e`. Adds a generated archive test for a sibling Tweedle type with an unresolved parent; it does not add full Tweedle decode support. |
+| [RabbitHole PR #169](https://github.com/rysweet/RabbitHole/pull/169) | Merged at `0a0d182c139aeaf5bc7c2c45213a0392cf8f245c`. Adds machine-readable blocker details to `desktop-run-pixel-observation.json`; it does not prove visible rendering, desktop save-menu completion, grading, creative assessment, or first-lesson completion. |
 | [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
 | [eatme PR #92](https://github.com/rysweet/eatme/pull/92) | Merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready. |
 | [eatme PR #93](https://github.com/rysweet/eatme/pull/93) | Merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. Lists the concrete readiness evidence categories in the report; it does not create new runtime proof. |
 | [eatme PR #95](https://github.com/rysweet/eatme/pull/95) | Merged at `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. Reports `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it does not prove pixels, visible rendering, grading, or first-lesson completion. |
 | [eatme PR #96](https://github.com/rysweet/eatme/pull/96) | Merged at `9d765fec2d8f9f3a029b5222d48b3de23b461d5b`. Adds an `evidence_progress` summary that counts required first-lesson evidence as present, missing, invalid, not observed, or blocked; it summarizes existing evidence only. |
 | [eatme PR #98](https://github.com/rysweet/eatme/pull/98) | Merged at `11c8c58a33b2c6c7ec93e1b4a057c375e0dbb70f`. Shows the first-lesson readiness progress summary and each required evidence item in plain text output; it does not create new runtime proof or prove first-lesson completion. |
+| [eatme PR #99](https://github.com/rysweet/eatme/pull/99) | Merged at `5e8ba4b8c970d04b410060e90c22a613430e202b`. Reports `desktop-run-pixel-observation.json` beside readiness progress, including observed screenshot/sample data or blocked component state and blocker codes; it does not prove visible rendering or first-lesson completion. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
 drawn, does not prove the lesson finished, and is not grading.
 
 The eatme PR #92 documentation and the newer PR #159, PR #160, PR #163, PR #164,
-PR #166, PR #167, PR #93, PR #95, PR #96, and PR #98 merge updates do not prove
-full Alice UI automation, visible rendering, desktop save-menu completion,
-grading, creative assessment, or first-lesson completion.
+PR #166, PR #167, PR #168, PR #169, PR #93, PR #95, PR #96, PR #98, and PR #99
+merge updates do not prove full Alice UI automation, visible rendering, desktop
+save-menu completion, grading, creative assessment, or first-lesson completion.
 
 ## Plain-English terms
 

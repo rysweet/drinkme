@@ -64,6 +64,19 @@
   These changes do not prove full Alice UI automation, visible rendering,
   desktop save-menu completion, grading, creative assessment, or first-lesson
   completion.
+- Latest evidence-status update is tracked in
+  `docs/atlas/journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md`.
+  [RabbitHole PR #168](https://github.com/rysweet/RabbitHole/pull/168) adds a
+  generated archive test for a sibling Tweedle type with an unresolved parent; it
+  does not add full Tweedle decode support.
+  [RabbitHole PR #169](https://github.com/rysweet/RabbitHole/pull/169) adds
+  machine-readable blocker details to `desktop-run-pixel-observation.json`.
+  [eatme PR #99](https://github.com/rysweet/eatme/pull/99) reports
+  `desktop-run-pixel-observation.json` beside readiness progress, including
+  observed screenshot/sample data or blocked component state and blocker codes.
+  These changes do not prove full Alice UI automation, visible rendering,
+  desktop save-menu completion, grading, creative assessment, or first-lesson
+  completion.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
