@@ -1,6 +1,6 @@
-# Docs CI lane
+# Docs CI checks
 
-The `drinkme` repository has a small GitHub Actions CI lane for documentation and status artifacts. It validates repository hygiene and documentation contracts only; it does not run application unit tests, build an application, publish docs, or install project dependencies.
+The `drinkme` repository has a small GitHub Actions CI check set for documentation and status artifacts. It validates repository hygiene and documentation contracts only; it does not run application unit tests, build an application, publish docs, or install project dependencies.
 
 The workflow lives at [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) and runs on every pull request plus every push to `main`.
 

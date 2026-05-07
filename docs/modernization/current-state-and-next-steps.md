@@ -112,21 +112,28 @@
   visible rendering correctness, desktop save-menu completion, grading, creative
   assessment, learner-world grading, first-lesson completion, a deployed sharing
   platform, or full Tweedle decode support.
-- Latest RabbitHole source/CI wave status is tracked in
+- Previous RabbitHole source/CI wave status is tracked in
   `docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md`.
   [RabbitHole PR #185](https://github.com/rysweet/RabbitHole/pull/185) merged model resource array grouping, skip behavior, and
   duplicate index rejection tests. [RabbitHole PR #187](https://github.com/rysweet/RabbitHole/pull/187) merged narrow `TextString label <- null`
-  parsing and decoding to `NullLiteral`, while `WholeNumber <- null` still fails.
-  [RabbitHole PR #188](https://github.com/rysweet/RabbitHole/pull/188) merged `ProcedureTabSelection`, tests, and a reference doc as a design
+  parsing and decoding to `NullLiteral`. [RabbitHole PR #188](https://github.com/rysweet/RabbitHole/pull/188) merged `ProcedureTabSelection`, tests, and a reference doc as a design
   and test boundary, not live procedure invocation. [RabbitHole PR #190](https://github.com/rysweet/RabbitHole/pull/190) merged
   `IssueReportWorker` non-retryable failure tests. [RabbitHole PR #191](https://github.com/rysweet/RabbitHole/pull/191) restored the Maven
   cache fallback, fixed the stuck coverage path, and left coverage run
   `25492250204` plus develop checks after PR #190 successful. PR #187, PR #188,
   and PR #190 were delayed by stuck coverage behavior and transient `jogamp.org`
-  network failures. The 70 percent aggregate coverage target, live procedure
-  invocation, desktop edit command, Save-menu completion, dialogs, grading,
-  rendering, first-lesson completion, deployed sharing, and full Tweedle decode
-  support remain unproven.
+  network failures.
+- Latest RabbitHole source evidence is tracked in
+  `docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md`.
+  [RabbitHole PR #207](https://github.com/rysweet/RabbitHole/pull/207) merged Numeric and Boolean Tweedle `null` field initializer
+  decoding to AST `NullLiteral` while still rejecting primitive statement
+  contexts such as `if(null)` and `while(null)`. [RabbitHole PR #208](https://github.com/rysweet/RabbitHole/pull/208) records Save
+  operation completion evidence; its head before merge was
+  `153f4e4ce77415d42e6f1047abcc2074671ae4c8`, all GitHub checks passed, and it
+  merged at `8799854787655ca61b6fad9378377b19d41aa7b1`. The 70 percent aggregate
+  coverage target, live procedure invocation, desktop edit command, full desktop
+  Save menu completion, dialogs, grading, rendering, first-lesson completion,
+  deployed sharing, and full Tweedle/player decode support remain unproven.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
@@ -195,7 +202,7 @@ Covered areas include:
 - JSON/player image/audio resource identity isolation when separate archive reads reuse UUIDs;
 - JSON/player model/generated type manifest-reference boundaries;
 - JSON `.a3c` resource-only type archive reads;
-- narrow Tweedle `TextString label <- null` parsing and decoding to `NullLiteral`, while `WholeNumber <- null` still fails;
+- Tweedle `TextString`, Numeric, and Boolean `null` field initializer decoding to AST `NullLiteral`, while primitive statement contexts such as `if(null)` and `while(null)` still fail;
 - duplicate-safe and path-safe JSON/player resource zip entries;
 - headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
 - AST-referenced image resource editor save-copy and reopen fidelity;
@@ -408,6 +415,18 @@ Core Alice should remain Java for now. Rust or other languages may be useful lat
 - https://github.com/rysweet/eatme/pull/114
 - https://github.com/rysweet/eatme/pull/115
 - https://github.com/rysweet/eatme/pull/116
+
+### Latest RabbitHole PR #207/#208 links
+
+- https://github.com/rysweet/RabbitHole/pull/207
+- https://github.com/rysweet/RabbitHole/pull/208
+
+## Latest RabbitHole PR #207/#208 details
+
+| Work item | Plain status |
+| --- | --- |
+| [RabbitHole PR #207](https://github.com/rysweet/RabbitHole/pull/207) | Merged at `6d744747a831824378c053713fef4e8a136c25c5`. Adds Numeric and Boolean Tweedle `null` field initializer decoding to AST `NullLiteral`; primitive statement contexts such as `if(null)` and `while(null)` still fail. Full Tweedle/player decode support remains unproven. |
+| [RabbitHole PR #208](https://github.com/rysweet/RabbitHole/pull/208) | Merged at `8799854787655ca61b6fad9378377b19d41aa7b1` from head `153f4e4ce77415d42e6f1047abcc2074671ae4c8` after all GitHub checks passed. Records Save operation completion evidence; desktop save-menu completion remains unproven. |
 
 ## Latest merged source/eatme wave details
 

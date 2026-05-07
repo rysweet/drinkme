@@ -125,21 +125,28 @@ creative assessment, or first-lesson completion.
   visible rendering correctness, desktop save-menu completion, grading, creative
   assessment, learner-world grading, first-lesson completion, a deployed sharing
   platform, or full Tweedle decode support.
-- Latest RabbitHole source/CI wave status is tracked in
+- Previous RabbitHole source/CI wave status is tracked in
   `docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md`.
   RabbitHole PR #185 merged model resource array grouping, skip behavior, and
   duplicate index rejection tests. PR #187 merged narrow `TextString label <- null`
-  parsing and decoding to `NullLiteral`, while `WholeNumber <- null` still fails.
-  PR #188 merged `ProcedureTabSelection`, tests, and a reference doc as a design
-  and test boundary, not live procedure invocation. PR #190 merged
-  `IssueReportWorker` non-retryable failure tests. PR #191 restored the Maven
-  cache fallback, fixed the stuck coverage path, and left coverage run
-  `25492250204` plus develop checks after PR #190 successful. PR #187, PR #188,
-  and PR #190 were delayed by stuck coverage behavior and transient `jogamp.org`
-  network failures. The 70 percent aggregate coverage target, live procedure
-  invocation, desktop edit command, Save-menu completion, dialogs, grading,
-  rendering, first-lesson completion, deployed sharing, and full Tweedle decode
-  support remain unproven.
+  parsing and decoding to `NullLiteral`. PR #188 merged `ProcedureTabSelection`,
+  tests, and a reference doc as a design and test boundary, not live procedure
+  invocation. PR #190 merged `IssueReportWorker` non-retryable failure tests.
+  PR #191 restored the Maven cache fallback, fixed the stuck coverage path, and
+  left coverage run `25492250204` plus develop checks after PR #190 successful.
+  PR #187, PR #188, and PR #190 were delayed by stuck coverage behavior and
+  transient `jogamp.org` network failures.
+- Latest RabbitHole source evidence is tracked in
+  `docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md`.
+  RabbitHole PR #207 merged Numeric and Boolean Tweedle `null` field initializer
+  decoding to AST `NullLiteral` while still rejecting primitive statement
+  contexts such as `if(null)` and `while(null)`. RabbitHole PR #208 records Save
+  operation completion evidence; its head before merge was
+  `153f4e4ce77415d42e6f1047abcc2074671ae4c8`, all GitHub checks passed, and it
+  merged at `8799854787655ca61b6fad9378377b19d41aa7b1`. The 70 percent aggregate
+  coverage target, live procedure invocation, desktop edit command, desktop
+  save-menu completion, dialogs, grading, rendering, first-lesson completion,
+  deployed sharing, and full Tweedle/player decode support remain unproven.
 
 ## Latest integrated evidence
 
@@ -258,7 +265,7 @@ Closure requires evidence, not a recovered artifact count or a single successful
 | Work item | Plain status |
 | --- | --- |
 | [RabbitHole PR #185](https://github.com/rysweet/RabbitHole/pull/185) | Merged at `713758374d0b6e937ec3f1471a78d7c95f69a35a`. Adds model resource array grouping, skip behavior, and duplicate index rejection tests; 70 percent aggregate coverage and the oversized-file goal remain open. |
-| [RabbitHole PR #187](https://github.com/rysweet/RabbitHole/pull/187) | Merged at `7bc8f2991ddc45708203682bd5edeb7a2d990c40`. Adds narrow `TextString label <- null` support to `NullLiteral`; `WholeNumber <- null` still fails, and broader null/player/Tweedle decode work remains open. |
+| [RabbitHole PR #187](https://github.com/rysweet/RabbitHole/pull/187) | Merged at `7bc8f2991ddc45708203682bd5edeb7a2d990c40`. Adds narrow `TextString label <- null` support to `NullLiteral`; broader null/player/Tweedle decode work remains open. |
 | [RabbitHole PR #188](https://github.com/rysweet/RabbitHole/pull/188) | Merged at `39085aaed5cb042ad5260adfcc6d4c4e1dcda9d7`. Adds `ProcedureTabSelection`, tests, and a reference doc; live procedure invocation and desktop edit flow remain open. |
 | [RabbitHole PR #190](https://github.com/rysweet/RabbitHole/pull/190) | Merged at `fd71bfb96fe9c82aa4cdd3de8f967f7c410af629`. Adds `IssueReportWorker` non-retryable failure tests; transient `jogamp.org` failures delayed CI until rerun, and 52 Java files over 500 lines were reported by the latest hotspot count. |
 | [RabbitHole PR #191](https://github.com/rysweet/RabbitHole/pull/191) | Merged at `aac8fa55b96c32cd797c98c016c0ae4e598ffc3a`. Restores the Maven cache fallback and fixes the stuck coverage path; coverage run `25492250204` and develop checks after PR #190 completed successfully. |
@@ -284,6 +291,8 @@ Closure requires evidence, not a recovered artifact count or a single successful
 | [RabbitHole PR #188](https://github.com/rysweet/RabbitHole/pull/188) | Merged at `39085aaed5cb042ad5260adfcc6d4c4e1dcda9d7`. Adds `ProcedureTabSelection`, tests, and a reference doc; this is not live procedure invocation, desktop edit command completion, Save-menu completion, dialogs, grading, rendering, or first-lesson completion. |
 | [RabbitHole PR #190](https://github.com/rysweet/RabbitHole/pull/190) | Merged at `fd71bfb96fe9c82aa4cdd3de8f967f7c410af629`. Adds `IssueReportWorker` non-retryable failure tests; transient `jogamp.org` network failures delayed CI until rerun, 70 percent aggregate coverage is still not claimable, and the latest reported hotspot count is 52 Java files over 500 lines. |
 | [RabbitHole PR #191](https://github.com/rysweet/RabbitHole/pull/191) | Merged at `aac8fa55b96c32cd797c98c016c0ae4e598ffc3a`. Restores the Maven cache fallback, fixes the stuck coverage path, and leaves post-merge coverage run `25492250204` plus develop checks after PR #190 successful. |
+| [RabbitHole PR #207](https://github.com/rysweet/RabbitHole/pull/207) | Merged at `6d744747a831824378c053713fef4e8a136c25c5`. Adds Numeric and Boolean Tweedle `null` field initializer decoding to AST `NullLiteral`; primitive statement contexts such as `if(null)` and `while(null)` still fail. Full Tweedle/player decode support remains unproven. |
+| [RabbitHole PR #208](https://github.com/rysweet/RabbitHole/pull/208) | Merged at `8799854787655ca61b6fad9378377b19d41aa7b1` from head `153f4e4ce77415d42e6f1047abcc2074671ae4c8` after all GitHub checks passed. Records Save operation completion evidence; desktop save-menu completion remains unproven. |
 | [eatme PR #105](https://github.com/rysweet/eatme/pull/105) | Merged at `b88afdf60c2dd81a2849878706903f76ab8c2344`. Adds the student artifact sharing mission doc entry. |
 | [eatme PR #106](https://github.com/rysweet/eatme/pull/106) | Merged at `320f3c56cd65ec949e9cea0137f72a3dd0200f09`. Consumes RabbitHole desktop-first-lesson next-action evidence in readiness reporting. |
 | [eatme PR #108](https://github.com/rysweet/eatme/pull/108) | Merged at `5640df08832cb5a74c8051ec19ff769d6484710b`. Adds the classroom gallery walk QA scenario. |

@@ -17,6 +17,7 @@ ENTRY_0091 = ROOT / "docs/atlas/journal/0091-rabbithole-pr168-pr169-eatme-pr99-m
 ENTRY_0092 = ROOT / "docs/atlas/journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md"
 ENTRY_0093 = ROOT / "docs/atlas/journal/0093-source-eatme-ci-wave-status.md"
 ENTRY_0094 = ROOT / "docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md"
+ENTRY_0095 = ROOT / "docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -52,6 +53,7 @@ DOCS = {
     "atlas entry 0092": ENTRY_0092,
     "atlas entry 0093": ENTRY_0093,
     "atlas entry 0094": ENTRY_0094,
+    "atlas entry 0095": ENTRY_0095,
 }
 
 README_PLAN_LINKS = [
@@ -69,6 +71,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0092](docs/atlas/journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md)",
     "[atlas journal entry 0093](docs/atlas/journal/0093-source-eatme-ci-wave-status.md)",
     "[atlas journal entry 0094](docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md)",
+    "[atlas journal entry 0095](docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -157,6 +160,11 @@ SOURCE_CI_FIX_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/191",
 ]
 
+SOURCE_EVIDENCE_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/207",
+    "https://github.com/rysweet/RabbitHole/pull/208",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -166,6 +174,7 @@ CURRENT_MERGED_PR_LINKS = (
     + NEXT_ACTION_WAVE_PR_LINKS
     + SOURCE_EATME_CI_WAVE_PR_LINKS
     + SOURCE_CI_FIX_WAVE_PR_LINKS
+    + SOURCE_EVIDENCE_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -380,7 +389,6 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "Merged",
         "TextString label <- null",
         "NullLiteral",
-        "WholeNumber <- null",
         "full Tweedle decode support",
     ],
     "RabbitHole PR #188": [
@@ -403,6 +411,25 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "Maven cache fallback",
         "stuck coverage path",
         "25492250204",
+    ],
+    "RabbitHole PR #207": [
+        "RabbitHole PR #207",
+        "Merged",
+        "Numeric and Boolean",
+        "null",
+        "AST `NullLiteral`",
+        "if(null)",
+        "while(null)",
+        "Full Tweedle/player decode support remains unproven",
+    ],
+    "RabbitHole PR #208": [
+        "RabbitHole PR #208",
+        "Merged",
+        "8799854787655ca61b6fad9378377b19d41aa7b1",
+        "153f4e4ce77415d42e6f1047abcc2074671ae4c8",
+        "all GitHub checks passed",
+        "Save operation completion evidence",
+        "desktop save-menu completion remains unproven",
     ],
 }
 
@@ -662,6 +689,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0092_link = "journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md"
         entry_0093_link = "journal/0093-source-eatme-ci-wave-status.md"
         entry_0094_link = "journal/0094-rabbithole-source-ci-wave-status.md"
+        entry_0095_link = "journal/0095-rabbithole-pr207-pr208-source-evidence.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -685,6 +713,9 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertEqual(1, text.count(entry_0094_link))
         self.assertIn("RabbitHole source and CI status wave", text)
         self.assertIn("Maven cache fallback", text)
+        self.assertEqual(1, text.count(entry_0095_link))
+        self.assertIn("RabbitHole PR #207/#208 source evidence update", text)
+        self.assertIn("Save operation completion evidence", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -868,6 +899,25 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("25492250204", text)
         self.assertIn("jogamp.org", text)
         self.assertIn("52 Java files over 500 lines", text)
+
+    def test_0095_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0095"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in ["RabbitHole PR #207", "RabbitHole PR #208"]
+        }
+        self.assert_contains_all(text, SOURCE_EVIDENCE_WAVE_PR_LINKS, "atlas entry 0095")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0095")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0095", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0095")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0095")
+        self.assertIn("Numeric and Boolean", text)
+        self.assertIn("AST `NullLiteral`", text)
+        self.assertIn("if(null)", text)
+        self.assertIn("while(null)", text)
+        self.assertIn("all GitHub checks passed", text)
+        self.assertIn("Save operation completion evidence", text)
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:

@@ -145,21 +145,28 @@ Second-pass review tightened the plan:
   assessment, learner-world grading, first-lesson completion, a deployed sharing
   platform, or full Tweedle decode support.
 
-- Latest RabbitHole source/CI wave status is tracked in
+- Previous RabbitHole source/CI wave status is tracked in
   `docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md`.
   [RabbitHole PR #185](https://github.com/rysweet/RabbitHole/pull/185) merged model resource array grouping, skip behavior, and
   duplicate index rejection tests. [RabbitHole PR #187](https://github.com/rysweet/RabbitHole/pull/187) merged narrow `TextString label <- null`
-  parsing and decoding to `NullLiteral`, while `WholeNumber <- null` still fails.
-  [RabbitHole PR #188](https://github.com/rysweet/RabbitHole/pull/188) merged `ProcedureTabSelection`, tests, and a reference doc as a design
+  parsing and decoding to `NullLiteral`. [RabbitHole PR #188](https://github.com/rysweet/RabbitHole/pull/188) merged `ProcedureTabSelection`, tests, and a reference doc as a design
   and test boundary, not live procedure invocation. [RabbitHole PR #190](https://github.com/rysweet/RabbitHole/pull/190) merged
   `IssueReportWorker` non-retryable failure tests, with 52 Java files over 500 lines reported by the latest hotspot count. [RabbitHole PR #191](https://github.com/rysweet/RabbitHole/pull/191) restored the Maven
   cache fallback, fixed the stuck coverage path, and left coverage run
   `25492250204` plus develop checks after PR #190 successful. PR #187, PR #188,
   and PR #190 were delayed by stuck coverage behavior and transient `jogamp.org`
-  network failures. The 70 percent aggregate coverage target, live procedure
-  invocation, desktop edit command, Save-menu completion, dialogs, grading,
-  rendering, first-lesson completion, deployed sharing, and full Tweedle decode
-  support remain unproven.
+  network failures.
+- Latest RabbitHole source evidence is tracked in
+  `docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md`.
+  [RabbitHole PR #207](https://github.com/rysweet/RabbitHole/pull/207) merged Numeric and Boolean Tweedle `null` field initializer
+  decoding to AST `NullLiteral` while still rejecting primitive statement
+  contexts such as `if(null)` and `while(null)`. [RabbitHole PR #208](https://github.com/rysweet/RabbitHole/pull/208) records Save
+  operation completion evidence; its head before merge was
+  `153f4e4ce77415d42e6f1047abcc2074671ae4c8`, all GitHub checks passed, and it
+  merged at `8799854787655ca61b6fad9378377b19d41aa7b1`. The 70 percent aggregate
+  coverage target, live procedure invocation, desktop edit command, desktop
+  save-menu completion, dialogs, grading, rendering, first-lesson completion,
+  deployed sharing, and full Tweedle/player decode support remain unproven.
 
 ### Latest eatme local audit
 
@@ -267,7 +274,11 @@ The next desktop Run work should preserve the current strict boundary:
 21. Treat merged eatme PR #101 as next-action reporting, not runtime proof.
 22. Treat merged eatme PR #102 as one student scenario increment, not grading or
     lesson completion.
-23. Add separate proof before eatme claims pixels were drawn, the lesson
+23. Treat merged RabbitHole PR #207 as Numeric and Boolean `null` field
+    initializer support only, not full Tweedle/player decode support.
+24. Treat merged RabbitHole PR #208 as Save operation completion evidence only,
+    not proof that the full desktop Save-menu path is complete.
+25. Add separate proof before eatme claims pixels were drawn, the lesson
     finished, or grading happened.
 
 ## Governance boundaries
@@ -314,6 +325,18 @@ The next desktop Run work should preserve the current strict boundary:
 - https://github.com/rysweet/eatme/pull/114
 - https://github.com/rysweet/eatme/pull/115
 - https://github.com/rysweet/eatme/pull/116
+
+### Latest RabbitHole PR #207/#208 links
+
+- https://github.com/rysweet/RabbitHole/pull/207
+- https://github.com/rysweet/RabbitHole/pull/208
+
+## Latest RabbitHole PR #207/#208 details
+
+| Work item | Plain status |
+| --- | --- |
+| [RabbitHole PR #207](https://github.com/rysweet/RabbitHole/pull/207) | Merged at `6d744747a831824378c053713fef4e8a136c25c5`. Adds Numeric and Boolean Tweedle `null` field initializer decoding to AST `NullLiteral`; primitive statement contexts such as `if(null)` and `while(null)` still fail. Full Tweedle/player decode support remains unproven. |
+| [RabbitHole PR #208](https://github.com/rysweet/RabbitHole/pull/208) | Merged at `8799854787655ca61b6fad9378377b19d41aa7b1` from head `153f4e4ce77415d42e6f1047abcc2074671ae4c8` after all GitHub checks passed. Records Save operation completion evidence; desktop save-menu completion remains unproven. |
 
 ## Latest merged source/eatme wave details
 
