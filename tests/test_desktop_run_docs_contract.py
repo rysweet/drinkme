@@ -28,6 +28,7 @@ ENTRY_0102 = ROOT / "docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.m
 ENTRY_0103 = ROOT / "docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status.md"
 ENTRY_0104 = ROOT / "docs/atlas/journal/0104-rabbithole-pr265-pr266-pr267-status.md"
 ENTRY_0105 = ROOT / "docs/atlas/journal/0105-eatme-pr125-ecosystem-balance-loop-status.md"
+ENTRY_0106 = ROOT / "docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -74,6 +75,7 @@ DOCS = {
     "atlas entry 0103": ENTRY_0103,
     "atlas entry 0104": ENTRY_0104,
     "atlas entry 0105": ENTRY_0105,
+    "atlas entry 0106": ENTRY_0106,
 }
 
 README_PLAN_LINKS = [
@@ -102,6 +104,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0103](docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status.md)",
     "[atlas journal entry 0104](docs/atlas/journal/0104-rabbithole-pr265-pr266-pr267-status.md)",
     "[atlas journal entry 0105](docs/atlas/journal/0105-eatme-pr125-ecosystem-balance-loop-status.md)",
+    "[atlas journal entry 0106](docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -268,6 +271,11 @@ EATME_PR125_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/125",
 ]
 
+RABBITHOLE_PR269_EATME_PR126_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/269",
+    "https://github.com/rysweet/eatme/pull/126",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -288,6 +296,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_PR264_EATME_PR124_WAVE_PR_LINKS
     + RABBITHOLE_PR265_PR266_PR267_WAVE_PR_LINKS
     + EATME_PR125_WAVE_PR_LINKS
+    + RABBITHOLE_PR269_EATME_PR126_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -947,6 +956,23 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "grading",
         "creative assessment",
     ],
+    "RabbitHole PR #269": [
+        "RabbitHole PR #269",
+        "Merged",
+        "ce31df5c04401f7ddb759c9d6640ca2881f82c4f",
+        "optional",
+        "UserParameter",
+        "full Tweedle",
+    ],
+    "eatme PR #126": [
+        "eatme PR #126",
+        "Merged",
+        "72731e2e7dd092292f982408faad5a2e98d7e74a",
+        "time-travel-recipe-sequencing",
+        "77 to 79",
+        "grading",
+        "creative assessment",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1344,6 +1370,10 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertEqual(1, text.count(entry_0105_link))
         self.assertIn("ecosystem-balance-loop-simulation", text)
         self.assertIn("75 to 77", text)
+        entry_0106_link = "journal/0106-eatme-pr126-rabbithole-pr269-status.md"
+        self.assertEqual(1, text.count(entry_0106_link))
+        self.assertIn("time-travel-recipe-sequencing", text)
+        self.assertIn("77 to 79", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -1815,6 +1845,28 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("847c09d20be16435595e1368f8f96c495fc6e4f5", text)
         self.assertIn("ecosystem-balance-loop-simulation", text)
         self.assertIn("75 to 77", text)
+        self.assertIn("grading", text)
+        self.assertIn("creative assessment", text)
+
+    def test_0106_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0106"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #269",
+                "eatme PR #126",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR269_EATME_PR126_WAVE_PR_LINKS, "atlas entry 0106")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0106")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0106", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0106")
+        self.assertIn("ce31df5c04401f7ddb759c9d6640ca2881f82c4f", text)
+        self.assertIn("72731e2e7dd092292f982408faad5a2e98d7e74a", text)
+        self.assertIn("time-travel-recipe-sequencing", text)
+        self.assertIn("77 to 79", text)
+        self.assertIn("UserParameter", text)
         self.assertIn("grading", text)
         self.assertIn("creative assessment", text)
 

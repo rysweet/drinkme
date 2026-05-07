@@ -337,6 +337,17 @@
   assets grew from 75 to 77 with all 38 Gadugi adapters fresh. Grading,
   automated creative assessment, real Alice UI automation, and full lesson
   delivery remain unproven.
+  [RabbitHole PR #269](https://github.com/rysweet/RabbitHole/pull/269) merged at
+  `ce31df5c04401f7ddb759c9d6640ca2881f82c4f`. Tweedle optional method and
+  constructor parameters now decode as Alice `UserParameter` entries. Default
+  values are not represented because the Alice AST has no optional-parameter
+  concept and `TweedleOptionalParameter` exposes no default accessor. Full
+  Tweedle/player decode remains unproven.
+  [eatme PR #126](https://github.com/rysweet/eatme/pull/126) merged at
+  `72731e2e7dd092292f982408faad5a2e98d7e74a`. Adds the
+  `time-travel-recipe-sequencing` instructor/student scenario; scenario assets
+  grew from 77 to 79 with all adapters fresh. Grading, automated creative
+  assessment, real Alice UI automation, and full lesson delivery remain unproven.
 - Latest RabbitHole source update is tracked in
   `docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md`.
   eatme PR #123 is tracked in
@@ -347,6 +358,8 @@
   `docs/atlas/journal/0104-rabbithole-pr265-pr266-pr267-status.md`.
   eatme PR #125 is tracked in
   `docs/atlas/journal/0105-eatme-pr125-ecosystem-balance-loop-status.md`.
+  RabbitHole PR #269 and eatme PR #126 are tracked in
+  `docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md`.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
