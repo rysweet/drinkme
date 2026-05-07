@@ -77,6 +77,20 @@
   These changes do not prove full Alice UI automation, visible rendering,
   desktop save-menu completion, grading, creative assessment, or first-lesson
   completion.
+- Latest next-action status update is tracked in
+  `docs/atlas/journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md`.
+  [RabbitHole PR #170](https://github.com/rysweet/RabbitHole/pull/170) falls
+  back from the raw Run display target to the attached Run panel for pixel
+  sampling while preserving exact blockers. [RabbitHole PR #171](https://github.com/rysweet/RabbitHole/pull/171)
+  rejects resource-typed Tweedle field initializers instead of accepting them as
+  plain strings; it does not add full Tweedle decode support. [RabbitHole PR #172](https://github.com/rysweet/RabbitHole/pull/172)
+  adds `desktop-first-lesson-next-action.json`, naming the missing deterministic
+  Save-menu and code/procedure action targets. [eatme PR #101](https://github.com/rysweet/eatme/pull/101)
+  shows explicit next-action evidence in first-lesson plain output. [eatme PR #102](https://github.com/rysweet/eatme/pull/102)
+  adds the `media-audio-cue-storyboard` student scenario for
+  `media-audio-creator`; it does not grade student work. These changes do not
+  prove full Alice UI automation, visible rendering, desktop save-menu
+  completion, grading, creative assessment, or first-lesson completion.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.

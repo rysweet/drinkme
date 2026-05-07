@@ -73,6 +73,19 @@ Second-pass review tightened the plan:
   at `0a0d182c139aeaf5bc7c2c45213a0392cf8f245c`. It adds machine-readable
   blocker details to `desktop-run-pixel-observation.json`; it does not prove
   visible rendering or first-lesson completion.
+  [RabbitHole PR #170](https://github.com/rysweet/RabbitHole/pull/170) merged
+  at `7e58f46b5b1d9624dd54bf1d2367243349ce8a28`. It improves pixel observation
+  fallback to the attached Run panel for pixel sampling; it does not prove
+  visible rendering correctness.
+  [RabbitHole PR #171](https://github.com/rysweet/RabbitHole/pull/171) merged
+  at `34a48d0b24ebf933925ad6237afaa4ca7518fd99`. It rejects resource-typed
+  Tweedle field initializers instead of accepting them as strings; it does not
+  add full Tweedle decode support.
+  [RabbitHole PR #172](https://github.com/rysweet/RabbitHole/pull/172) merged
+  at `e0c199ab88d10f635d4f3e9e5d67553fb1fd3f4f`. It adds
+  `desktop-first-lesson-next-action.json`, naming missing deterministic
+  Save-menu and code/procedure action targets; it does not complete those
+  actions.
 - [eatme PR #95](https://github.com/rysweet/eatme/pull/95) merged at
   `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. It reports
   `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it
@@ -91,10 +104,17 @@ Second-pass review tightened the plan:
   `desktop-run-pixel-observation.json` beside readiness progress, including
   observed screenshot/sample data or blocked component state and blocker codes.
   It does not add new runtime proof.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, and #169 and eatme
-  PRs #93, #95, #96, #98, and #99 have merged, but they do not prove full Alice
-  UI automation, visible rendering, desktop save-menu completion, grading,
-  creative assessment, or first-lesson completion.
+- [eatme PR #101](https://github.com/rysweet/eatme/pull/101) merged at
+  `546dfc7c2cdbc5ca6c4526fe3e90bb9f717999ed`. It shows explicit next-action
+  evidence in first-lesson plain output; it does not add new runtime proof.
+- [eatme PR #102](https://github.com/rysweet/eatme/pull/102) merged at
+  `3e183407e247944831a6f7ff44870c71169302f4`. It adds the
+  `media-audio-cue-storyboard` student scenario for `media-audio-creator` and
+  generated adapter; it does not grade student work or prove lesson completion.
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, and #172
+  and eatme PRs #93, #95, #96, #98, #99, #101, and #102 have merged, but they do
+  not prove full Alice UI automation, visible rendering, desktop save-menu
+  completion, grading, creative assessment, or first-lesson completion.
 - The proof boundary remains a narrow Run window attachment signal: Alice put
   the Run panel into the Run window area. This evidence does not prove pixels
   were drawn, does not prove the lesson finished, and is not grading.
@@ -188,7 +208,14 @@ The next desktop Run work should preserve the current strict boundary:
     file, not visible rendering proof.
 18. Treat merged eatme PR #99 as pixel observation reporting, not new runtime
     proof.
-19. Add separate proof before eatme claims pixels were drawn, the lesson
+19. Treat merged RabbitHole PR #170 as improved pixel observation fallback, not
+    visible rendering proof.
+20. Treat merged RabbitHole PR #172 as a next-action no-go file, not desktop
+    Save-menu or code/procedure automation completion.
+21. Treat merged eatme PR #101 as next-action reporting, not runtime proof.
+22. Treat merged eatme PR #102 as one student scenario increment, not grading or
+    lesson completion.
+23. Add separate proof before eatme claims pixels were drawn, the lesson
     finished, or grading happened.
 
 ## Governance boundaries

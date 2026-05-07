@@ -46,6 +46,11 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0092 - RabbitHole PR #170/#171/#172 and eatme PR #101/#102 merge status](journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md)
+  records the Run-panel pixel-observation fallback, resource-initializer archive
+  rejection, next-action no-go file, explicit next-action output, and
+  media/audio student scenario, while keeping rendering, grading, and
+  first-lesson completion unproven.
 - [0091 - RabbitHole PR #168/#169 and eatme PR #99 merge status](journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md)
   records the unresolved-parent archive rejection test, pixel-observation blocker
   details, and eatme pixel-observation reporting, while keeping rendering,
