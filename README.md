@@ -169,6 +169,36 @@ rendering correctness, desktop save-menu completion, grading, creative
 assessment, learner-world grading, first-lesson completion, procedure UI
 invocation, Save dialog/control completion, real Alice desktop pixels, completed
 save, or full Tweedle/player decode support.
+[atlas journal entry 0100](docs/atlas/journal/0100-rabbithole-pr235-through-pr259-status.md)
+records the newest RabbitHole source update. PR #235 proves Save menu item
+dispatch into the Save action path under Xvfb. PR #237 fixes the Alice launch
+classpath so `org.alice.stageide.EntryPoint` is on the Maven exec classpath. PR
+#238 decodes a narrow Tweedle parameter return identifier to AST
+`ParameterAccess`. PR #240 adds an `x-window-inventory.json` to the Xvfb launch
+proof. PR #241 adds an opt-in selected-path automation seam at
+`FileDialogUtilities.showSaveFileDialog`, rejecting outside paths and symlink
+escapes. PR #245 adds an `application-root-error.json` probe mapping the
+`Application Root Error` window to the `org.alice.ide.rootDirectory` condition.
+PR #246 proves `ProjectDocumentFrame.showSaveFileDialog` reaches
+`FileDialogUtilities` with a displayable `JFrame` root under Xvfb. PR #247
+decodes narrow Tweedle constructor bodies with primitive-literal local variable
+declarations to AST `LocalDeclaration`. PR #250 adds a `rootDirectory` prep
+helper verifying `alice-ide` configures `org.alice.ide.rootDirectory` and
+prepares `core/resources/target/distribution` before Xvfb launch. PR #253
+decodes Tweedle field return identifiers as AST `FieldAccess`; field return
+type-mismatch cases are rejected clearly. PR #254 adds a first-run license QA
+bypass using a focused License Agreement dialog probe and isolated
+`java.util.prefs.userRoot` state. PR #255 adds a `SaveOperationFlow` Xvfb-safe
+proof that writes a real `.a3p` project file to a controlled selected path,
+recording `saved_file_exists` and `saved_file_size_bytes`. PR #259 decodes
+Tweedle method returns of `this.field` into AST `FieldAccess`. This does not
+prove full Alice UI automation, visible rendering correctness, desktop
+save-menu completion, grading, creative assessment, learner-world grading,
+first-lesson completion, procedure UI invocation, live Save dialog display or
+control, real Alice desktop pixels, or full Tweedle/player decode support. PR
+#255 proves Save-flow file write through the selected-path seam, not a real
+dialog. Active source agents for Select Project interaction, Save chooser UI,
+and a decoder next slice after PR #259 are still running.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -231,6 +261,19 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #230](https://github.com/rysweet/RabbitHole/pull/230) | Merged at `31d506f6af59ef736ccefad9aa7b793b3add6a3d`. Proves Save action invocation under Xvfb with `status=action_invoked`, `StageIDE=true`, and `ProjectDocumentFrame=true`; menu click, dialog display/control, selected path automation remain unproven, and completed save remains unproven. |
 | [RabbitHole PR #231](https://github.com/rysweet/RabbitHole/pull/231) | Merged at `622748401fe8ff00d81d3a2851faac153585b76c`. Observes generated launcher Xvfb marker pixels; real Alice desktop pixels were not observed because `mvn exec:java -Dalice-ide` fails with `org.alice.stageide.EntryPoint` `ClassNotFoundException`. |
 | [RabbitHole PR #234](https://github.com/rysweet/RabbitHole/pull/234) | Merged at `45d937fbe1e9ddee74e7c2b89af31841fb38a202`. Decodes single primitive-literal Tweedle `return` method bodies to AST `ReturnStatement`; full method decode and full Tweedle/player decode support remain unproven. |
+| [RabbitHole PR #235](https://github.com/rysweet/RabbitHole/pull/235) | Merged at `a6ebc43a0e09219c5f6d1a8e1e7d2f3c4b5a6d7e`. Proves Save menu item dispatch into the Save action path under Xvfb; Save dialog display and Save dialog control remain unproven. |
+| [RabbitHole PR #237](https://github.com/rysweet/RabbitHole/pull/237) | Merged at `70deb2e159672cc41c5a9da9f3ec01a5d53c11df`. Fixes the Alice launch classpath so `org.alice.stageide.EntryPoint` is on the Maven exec classpath; does not prove visible rendering, deployed installer success, or full world execution. |
+| [RabbitHole PR #238](https://github.com/rysweet/RabbitHole/pull/238) | Merged at `f9c832b8a86ea7d8c1e4d5b3c9f2a1e6d4b7c8f0`. Decodes the narrow Tweedle method body case of a single `return` of a required method parameter identifier to AST `ParameterAccess`; full method body, constructor body, player, and complete Tweedle decode support remain unproven. |
+| [RabbitHole PR #240](https://github.com/rysweet/RabbitHole/pull/240) | Merged at `ae3d8de57aec10d2f9c3b7e1a5c6d8f4e2b1c9a3`. Adds an `x-window-inventory.json` to the Xvfb Alice launch proof; blocked at `alice-window-not-found` after the classpath fix. |
+| [RabbitHole PR #241](https://github.com/rysweet/RabbitHole/pull/241) | Merged at `d2ab990dffa8c7e5b9a3d1f6c4e2b8d7a5c0f1e9`. Adds an opt-in selected-path automation seam at `FileDialogUtilities.showSaveFileDialog`, rejecting outside paths and symlink escapes; Save dialog display and control remain unproven. |
+| [RabbitHole PR #245](https://github.com/rysweet/RabbitHole/pull/245) | Merged at `9cc5893d8b67e4d1b8a3c7f2e5d6c9b4a1e8f3d2`. Adds an `application-root-error.json` probe that maps the `Application Root Error` window to the `org.alice.ide.rootDirectory` condition and next invocation change needed. |
+| [RabbitHole PR #246](https://github.com/rysweet/RabbitHole/pull/246) | Merged at `2fe47f4ebaea9d7c3b5a1e8f4d6c2b9a7e5d3c8f`. Proves `ProjectDocumentFrame.showSaveFileDialog` reaches `FileDialogUtilities` with a displayable `JFrame` root under Xvfb; Save dialog display and control remain unproven. |
+| [RabbitHole PR #247](https://github.com/rysweet/RabbitHole/pull/247) | Merged at `0a75eb7a21f5d3c9b7e2a4d6f1c8b5e9d2a7c3f6`. Decodes narrow Tweedle constructor bodies with primitive-literal local variable declarations to AST `LocalDeclaration`; full Tweedle constructor, method, player, and resource decode remain unproven. |
+| [RabbitHole PR #250](https://github.com/rysweet/RabbitHole/pull/250) | Merged at `c640c3fbd9ef5a7d1c8b2e4f6a9d3c7b5e1a8f2d`. Adds a `rootDirectory` prep helper verifying `alice-ide` configures `org.alice.ide.rootDirectory` and prepares `core/resources/target/distribution` before Xvfb launch, recording the precise `Application Root Error` blocker artifacts. |
+| [RabbitHole PR #253](https://github.com/rysweet/RabbitHole/pull/253) | Merged at `39635ffd10108d5c9b2e4a7f3d1c6e8b5a9d2c7f`. Decodes method return identifiers that refer to declared Tweedle fields as AST `FieldAccess` expressions; field return type-mismatch cases are rejected clearly; full method, assignment, member-expression, and player decode remain unproven. |
+| [RabbitHole PR #254](https://github.com/rysweet/RabbitHole/pull/254) | Merged at `88e8cffffa7c2b5d9e1a4c7f3d6b8e2a5c9d1f4b`. Adds a first-run license QA bypass: a focused License Agreement dialog probe and explicit test-only Java Preferences acceptance using isolated `java.util.prefs.userRoot` state; Xvfb launch evidence records license acceptance and dialog artifacts. |
+| [RabbitHole PR #255](https://github.com/rysweet/RabbitHole/pull/255) | Merged at `c8d52a9a8865f3d7b1e9c4a6d2f5c8b3e7a1d9c4`. Adds a `SaveOperationFlow` Xvfb-safe proof that writes a real `.a3p` project file to a controlled selected path via `FileDialogUtilities` selected-path automation, recording `saved_file_exists` and `saved_file_size_bytes`; does not prove live Save dialog display or desktop save-menu completion. |
+| [RabbitHole PR #259](https://github.com/rysweet/RabbitHole/pull/259) | Merged at `e5b0ac5fce21b4eee1e13ea5861d2e9cee538ca8`. Decodes Tweedle method returns of `this.field` into AST `FieldAccess`; assignments, optional params, broader member expressions, resource initializers, and full Tweedle/player decode remain unproven. |
 | [eatme PR #105](https://github.com/rysweet/eatme/pull/105) | Merged at `b88afdf60c2dd81a2849878706903f76ab8c2344`. Adds the student artifact sharing mission doc entry. |
 | [eatme PR #106](https://github.com/rysweet/eatme/pull/106) | Merged at `320f3c56cd65ec949e9cea0137f72a3dd0200f09`. Consumes RabbitHole desktop-first-lesson next-action evidence in readiness reporting. |
 | [eatme PR #108](https://github.com/rysweet/eatme/pull/108) | Merged at `5640df08832cb5a74c8051ec19ff769d6484710b`. Adds the classroom gallery walk QA scenario. |
@@ -255,7 +298,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, and eatme PR #118, PR #120, and PR #121
+PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, and eatme PR #118, PR #120, and PR #121
 merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full

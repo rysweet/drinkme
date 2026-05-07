@@ -46,6 +46,14 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0100 - RabbitHole PR #235 through PR #259 status](journal/0100-rabbithole-pr235-through-pr259-status.md)
+  records Save menu item dispatch proof, Alice launch classpath fix, parameter
+  and field return identifier decode, X window inventory capture, selected-path
+  Save seam, rootDirectory launch blocker capture, displayable Save dialog root
+  proof, constructor local declaration decode, completed Save-flow file write,
+  first-run license QA bypass, and `this.field` return decode, while keeping
+  visible rendering, live dialog control, grading, first-lesson completion, and
+  full Tweedle/player decode unproven.
 - [0099 - RabbitHole PR #219/#222/#224/#225/#229/#230/#231/#234 status](journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md)
   records empty no-argument constructor decode, required constructor and method
   parameter decode, non-desktop and Xvfb Save action proof, local JavaFX

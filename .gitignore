@@ -1,1 +1,4 @@
 .claude/runtime/
+__pycache__/
+*.pyc
+worktrees/

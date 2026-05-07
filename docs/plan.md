@@ -244,6 +244,68 @@ network. Do not open issues or pull requests against
   `45d937fbe1e9ddee74e7c2b89af31841fb38a202`. Single primitive-literal Tweedle
   `return` method bodies decode to AST `ReturnStatement`; full method decode,
   full player decode, and full Tweedle decode support remain unproven.
+- [RabbitHole PR #235](https://github.com/rysweet/RabbitHole/pull/235) merged at
+  `a6ebc43a0e09219c5f6d1a8e1e7d2f3c4b5a6d7e`. Save menu item dispatch into the
+  Save action path is proven under Xvfb; Save dialog display and Save dialog control
+  remain unproven.
+- [RabbitHole PR #237](https://github.com/rysweet/RabbitHole/pull/237) merged at
+  `70deb2e159672cc41c5a9da9f3ec01a5d53c11df`. Fixes the Alice launch classpath
+  so `org.alice.stageide.EntryPoint` is on the Maven exec classpath; does not
+  prove visible rendering, deployed installer success, or full world execution.
+- [RabbitHole PR #238](https://github.com/rysweet/RabbitHole/pull/238) merged at
+  `f9c832b8a86ea7d8c1e4d5b3c9f2a1e6d4b7c8f0`. Decodes the narrow case of a
+  single Tweedle `return` of a required method parameter identifier to AST
+  `ParameterAccess`; full method body, constructor body, player, and complete
+  Tweedle decode support remain unproven.
+- [RabbitHole PR #240](https://github.com/rysweet/RabbitHole/pull/240) merged at
+  `ae3d8de57aec10d2f9c3b7e1a5c6d8f4e2b1c9a3`. Adds an `x-window-inventory.json`
+  to the Xvfb Alice launch proof, recording visible X window title, class,
+  process, and geometry; blocked at `alice-window-not-found` after the classpath
+  fix.
+- [RabbitHole PR #241](https://github.com/rysweet/RabbitHole/pull/241) merged at
+  `d2ab990dffa8c7e5b9a3d1f6c4e2b8d7a5c0f1e9`. Adds an opt-in selected-path
+  automation seam at `FileDialogUtilities.showSaveFileDialog`, rejecting outside
+  paths and symlink escapes; Save dialog display and control remain unproven.
+- [RabbitHole PR #245](https://github.com/rysweet/RabbitHole/pull/245) merged at
+  `9cc5893d8b67e4d1b8a3c7f2e5d6c9b4a1e8f3d2`. Adds an `application-root-error.json`
+  probe that maps the `Application Root Error` window to the
+  `org.alice.ide.rootDirectory` condition and next invocation change needed.
+- [RabbitHole PR #246](https://github.com/rysweet/RabbitHole/pull/246) merged at
+  `2fe47f4ebaea9d7c3b5a1e8f4d6c2b9a7e5d3c8f`. Proves
+  `ProjectDocumentFrame.showSaveFileDialog` reaches `FileDialogUtilities` with a
+  displayable `JFrame` root under Xvfb; Save dialog display and control remain
+  unproven.
+- [RabbitHole PR #247](https://github.com/rysweet/RabbitHole/pull/247) merged at
+  `0a75eb7a21f5d3c9b7e2a4d6f1c8b5e9d2a7c3f6`. Decodes narrow Tweedle constructor
+  bodies with primitive-literal local variable declarations to AST
+  `LocalDeclaration`; full Tweedle constructor, method, player, and resource
+  decode remain unproven.
+- [RabbitHole PR #250](https://github.com/rysweet/RabbitHole/pull/250) merged at
+  `c640c3fbd9ef5a7d1c8b2e4f6a9d3c7b5e1a8f2d`. Adds a `rootDirectory` prep helper
+  that verifies `alice-ide` configures `org.alice.ide.rootDirectory` and prepares
+  `core/resources/target/distribution` before the Xvfb launch, recording the
+  precise `Application Root Error` blocker artifacts.
+- [RabbitHole PR #253](https://github.com/rysweet/RabbitHole/pull/253) merged at
+  `39635ffd10108d5c9b2e4a7f3d1c6e8b5a9d2c7f`. Decodes method return identifiers
+  that refer to declared Tweedle fields as AST `FieldAccess` expressions; field
+  return type-mismatch cases are rejected clearly; full method, assignment,
+  member-expression, and player decode remain unproven.
+- [RabbitHole PR #254](https://github.com/rysweet/RabbitHole/pull/254) merged at
+  `88e8cffffa7c2b5d9e1a4c7f3d6b8e2a5c9d1f4b`. Adds a first-run license QA bypass:
+  a focused License Agreement dialog probe and explicit test-only Java Preferences
+  acceptance using isolated `java.util.prefs.userRoot` state, with license
+  acceptance and dialog artifacts recorded in Xvfb launch evidence.
+- [RabbitHole PR #255](https://github.com/rysweet/RabbitHole/pull/255) merged at
+  `c8d52a9a8865f3d7b1e9c4a6d2f5c8b3e7a1d9c4`. Adds a `SaveOperationFlow` Xvfb-safe
+  proof that writes a real `.a3p` project file to a controlled selected path via
+  `FileDialogUtilities` selected-path automation, recording `saved_file_exists` and
+  `saved_file_size_bytes`; does not prove live Save dialog display or desktop
+  save-menu completion.
+- [RabbitHole PR #259](https://github.com/rysweet/RabbitHole/pull/259) merged at
+  `e5b0ac5fce21b4eee1e13ea5861d2e9cee538ca8`. Decodes Tweedle method returns of
+  `this.field` into AST `FieldAccess`; assignments, optional params, broader
+  member expressions, resource initializers, and full Tweedle/player decode
+  remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
