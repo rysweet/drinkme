@@ -1,0 +1,9 @@
+Recipe: default-workflow
+Status: ✗ Failed
+
+Steps:
+  ✗ workflow-prep: failed
+    Error: Step 'workflow-prep' failed: Sub-recipe 'workflow-prep' failed.
+Failed steps:
+- step-01-prepare-workspace [error]: Step 'step-01-prepare-workspace' failed: bash step failed: Command failed (exit 1): ERROR: step-01-prepare-workspace requires a git repo at /home/azureuser/src/alice; either `git init` or rerun from a checkout
+Completed steps: step-00-workflow-preparation

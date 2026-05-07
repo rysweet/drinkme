@@ -393,6 +393,23 @@ network. Do not open issues or pull requests against
   `creature-choreography-loop-lab` instructor/student scenario; scenario assets
   grew from 81 to 83 with all Gadugi adapters fresh. Grading, automated creative
   assessment, real Alice UI automation, and full lesson delivery remain unproven.
+- [RabbitHole PR #272](https://github.com/rysweet/RabbitHole/pull/272) merged at
+  `458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9`. Proves AT-SPI reaches the Alice
+  Java process via `exec:exec` and `NO_AT_BRIDGE=1`; top-level Swing widgets are
+  observable. Tab labels are not visible or enumerable. Project selection and
+  opening are not proven.
+- [RabbitHole PR #273](https://github.com/rysweet/RabbitHole/pull/273) merged at
+  `c86e8c4747b73921e8c432709c8cf7a741848855`. Proves `SaveProjectOperation.fire()`
+  reaches a live `JFileChooser`, a background probe approves it, and a non-empty
+  `.a3p` is written. Visible rendering, grading, the native FileDialog path, and a
+  full Save menu item `doClick`-to-written-file journey in one path remain unproven.
+- [eatme PR #131](https://github.com/rysweet/eatme/pull/131) merged at
+  `973b65f`. Adds the `neighborhood-data-story` instructor/student scenario;
+  scenario assets grew from 83 to 85 with all Gadugi adapters fresh. Remaining
+  missing scenario files: accessibility-rescue-camera-captions,
+  design-process-story-or-game, audio-camera-and-export-sharecase,
+  setup-preflight-ready-to-create. Grading, automated creative assessment, real
+  Alice UI automation, and full lesson delivery remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
@@ -604,3 +621,6 @@ Merged source PR status:
 | [eatme PR #114](https://github.com/rysweet/eatme/pull/114) | Merged at `5f74845722c284eb60bece43e0880a7de23cd888`. Completes the instructor mission inventory: 34 canonical scenarios, 35 Gadugi adapters, 24 personas, and 18 docs pages. |
 | [eatme PR #115](https://github.com/rysweet/eatme/pull/115) | Merged at `b79ff7b96961bfdf9082a1609c8f86194f7429eb`. Completes the student mission inventory; docs reference all 33 scenarios with student personas. |
 | [eatme PR #116](https://github.com/rysweet/eatme/pull/116) | Merged at `0aa0155d63ee4aa16edba72459e9f3cac47bee27`. Docs/docs-site-only CI skips Rust checks safely; exact time saved awaits a future docs-only PR. |
+| [RabbitHole PR #272](https://github.com/rysweet/RabbitHole/pull/272) | Merged at `458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9`. Proves AT-SPI reaches the Alice Java process via `exec:exec` and `NO_AT_BRIDGE=1`; top-level Swing widgets are observable. Tab labels are still not visible or enumerable. Project selection and opening are not proven. |
+| [RabbitHole PR #273](https://github.com/rysweet/RabbitHole/pull/273) | Merged at `c86e8c4747b73921e8c432709c8cf7a741848855`. Proves `SaveProjectOperation.fire()` reaches a live `JFileChooser`, a background probe approves it, and a non-empty `.a3p` is written. Visible rendering, grading, the native FileDialog path, and a full Save menu item `doClick`-to-written-file journey remain unproven. |
+| [eatme PR #131](https://github.com/rysweet/eatme/pull/131) | Merged at `973b65f`. Adds the `neighborhood-data-story` instructor/student scenario; scenario assets grew from 83 to 85, all Gadugi adapters fresh. Remaining missing scenario files: accessibility-rescue-camera-captions, design-process-story-or-game, audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |

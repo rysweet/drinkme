@@ -372,6 +372,21 @@
   `docs/atlas/journal/0108-rabbithole-pr270-identifier-rhs-status.md`.
   RabbitHole PR #271 and eatme PR #129 are tracked in
   `docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md`.
+  RabbitHole PR #272, PR #273, and eatme PR #131 are tracked in
+  `docs/atlas/journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md`.
+  [RabbitHole PR #272](https://github.com/rysweet/RabbitHole/pull/272) merged at
+  `458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9`. Proves AT-SPI reaches the Alice
+  Java process via `exec:exec` and `NO_AT_BRIDGE=1`; top-level Swing widgets are
+  observable. Tab labels are not visible or enumerable. Project selection and
+  opening are not proven.
+  [RabbitHole PR #273](https://github.com/rysweet/RabbitHole/pull/273) merged at
+  `c86e8c4747b73921e8c432709c8cf7a741848855`. Proves `SaveProjectOperation.fire()`
+  reaches a live `JFileChooser`, a background probe approves it, and a non-empty
+  `.a3p` is written. Visible rendering, grading, the native FileDialog path, and a
+  full Save menu item `doClick`-to-written-file journey remain unproven.
+  [eatme PR #131](https://github.com/rysweet/eatme/pull/131) merged at
+  `973b65f`. Adds the `neighborhood-data-story` instructor/student scenario;
+  scenario assets grew from 83 to 85 with all Gadugi adapters fresh.
   [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
   `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
   method and constructor bodies can now decode an `IdentifierReference` RHS to
