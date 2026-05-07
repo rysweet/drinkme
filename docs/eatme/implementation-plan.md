@@ -102,6 +102,12 @@ Second-pass review tightened the plan:
   6.21%, adding 260 covered lines. The 70 percent aggregate coverage target,
   manual QA gaps, and smoke checks that still need manual approval remain
   unproven.
+  [RabbitHole PR #212](https://github.com/rysweet/RabbitHole/pull/212) merged at
+  `db72e0cfef8912cd0a92243f1889ae4cd2180535` from head `a84346582aef22c51d3afa33a05df26b62e370c7`. It adds Save
+  dialog/control target evidence. The focused Save tests, focused review, and
+  GitHub build, coverage, test, package-netbeans, and GitGuardian checks
+  passed. Live desktop Save menu invocation and actual Save dialog
+  discovery/control remain unproven.
 - [eatme PR #95](https://github.com/rysweet/eatme/pull/95) merged at
   `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. It reports
   `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it
@@ -127,8 +133,13 @@ Second-pass review tightened the plan:
   `3e183407e247944831a6f7ff44870c71169302f4`. It adds the
   `media-audio-cue-storyboard` student scenario for `media-audio-creator` and
   generated adapter; it does not grade student work or prove lesson completion.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, and #211
-  and eatme PRs #93, #95, #96, #98, #99, #101, and #102 have merged, but they do
+- [eatme PR #118](https://github.com/rysweet/eatme/pull/118) merged at
+  `2c760511eeff8c554b17ee550e779e7c51444591` from head `b70048d78f0b5f8669dc7e725cdac6b1ff3566f5`. It improves
+  Alice window action diagnostics. CI passed, and the manual real Alice smoke
+  check was skipped. A real desktop environment still needs proving, and
+  later procedure edit, run, and save automation remains incomplete.
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, and #212
+  and eatme PRs #93, #95, #96, #98, #99, #101, #102, and #118 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
   completion, grading, creative assessment, or first-lesson completion.
 - The proof boundary remains a narrow Run window attachment signal: Alice put
