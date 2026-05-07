@@ -46,6 +46,11 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0097 - RabbitHole PR #212 and eatme PR #118 Save diagnostics status](journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md)
+  records Save dialog/control target evidence, focused Save tests and review,
+  passing RabbitHole checks, eatme Alice window action diagnostics, skipped
+  manual real Alice smoke, and the Save, desktop, rendering, grading,
+  first-lesson, procedure, and Tweedle/player limits that remain.
 - [0096 - RabbitHole PR #209/#210/#211 source wave status](journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md)
   records literal sized Tweedle array initializer support, launcher/runtime proof,
   story-api keyboard event characterization tests, reported `core/story-api`

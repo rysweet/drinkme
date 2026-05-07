@@ -134,7 +134,7 @@
   coverage target, live procedure invocation, desktop edit command, full desktop
   Save menu completion, dialogs, grading, rendering, first-lesson completion,
   deployed sharing, and full Tweedle/player decode support remain unproven.
-- Latest RabbitHole source wave status is tracked in
+- Previous RabbitHole source wave status is tracked in
   `docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md`.
   RabbitHole PR #209 merged literal sized Tweedle array field initializer support
   such as `new WholeNumber[2]`; non-literal sizes still fail clearly, and broader
@@ -147,6 +147,17 @@
   `core/story-api` coverage moved from 4.55% to 6.21%, adding 260 covered lines.
   The 70 percent aggregate coverage target, manual QA gaps, and smoke checks that
   still need manual approval remain unproven.
+- [RabbitHole PR #212](https://github.com/rysweet/RabbitHole/pull/212) merged at
+  `db72e0cfef8912cd0a92243f1889ae4cd2180535` from head `a84346582aef22c51d3afa33a05df26b62e370c7`. It adds Save
+  dialog/control target evidence. The focused Save tests, focused review, and
+  GitHub build, coverage, test, package-netbeans, and GitGuardian checks
+  passed. Live desktop Save menu invocation and actual Save dialog
+  discovery/control remain unproven.
+- [eatme PR #118](https://github.com/rysweet/eatme/pull/118) merged at
+  `2c760511eeff8c554b17ee550e779e7c51444591` from head `b70048d78f0b5f8669dc7e725cdac6b1ff3566f5`. It improves
+  Alice window action diagnostics. CI passed, and the manual real Alice smoke
+  check was skipped. A real desktop environment still needs proving, and
+  later procedure edit, run, and save automation remains incomplete.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.

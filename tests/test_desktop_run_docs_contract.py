@@ -19,6 +19,7 @@ ENTRY_0093 = ROOT / "docs/atlas/journal/0093-source-eatme-ci-wave-status.md"
 ENTRY_0094 = ROOT / "docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md"
 ENTRY_0095 = ROOT / "docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md"
 ENTRY_0096 = ROOT / "docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md"
+ENTRY_0097 = ROOT / "docs/atlas/journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -56,6 +57,7 @@ DOCS = {
     "atlas entry 0094": ENTRY_0094,
     "atlas entry 0095": ENTRY_0095,
     "atlas entry 0096": ENTRY_0096,
+    "atlas entry 0097": ENTRY_0097,
 }
 
 README_PLAN_LINKS = [
@@ -75,6 +77,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0094](docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md)",
     "[atlas journal entry 0095](docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md)",
     "[atlas journal entry 0096](docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md)",
+    "[atlas journal entry 0097](docs/atlas/journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -174,6 +177,11 @@ LATEST_SOURCE_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/211",
 ]
 
+SAVE_DIAGNOSTICS_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/212",
+    "https://github.com/rysweet/eatme/pull/118",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -185,6 +193,7 @@ CURRENT_MERGED_PR_LINKS = (
     + SOURCE_CI_FIX_WAVE_PR_LINKS
     + SOURCE_EVIDENCE_WAVE_PR_LINKS
     + LATEST_SOURCE_WAVE_PR_LINKS
+    + SAVE_DIAGNOSTICS_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -475,6 +484,31 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "manual QA gaps",
         "smoke checks that still need manual approval",
     ],
+
+    "RabbitHole PR #212": [
+        "RabbitHole PR #212",
+        "Merged",
+        "db72e0cfef8912cd0a92243f1889ae4cd2180535",
+        "a84346582aef22c51d3afa33a05df26b62e370c7",
+        "Save dialog/control target evidence",
+        "focused Save tests",
+        "focused review",
+        "package-netbeans",
+        "GitGuardian",
+        "live desktop Save menu invocation",
+        "actual Save dialog discovery/control",
+    ],
+    "eatme PR #118": [
+        "eatme PR #118",
+        "Merged",
+        "2c760511eeff8c554b17ee550e779e7c51444591",
+        "b70048d78f0b5f8669dc7e725cdac6b1ff3566f5",
+        "Alice window action diagnostics",
+        "CI passed",
+        "manual real Alice smoke check was skipped",
+        "real desktop environment still needs proving",
+        "later procedure edit, run, and save automation remains incomplete",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -580,6 +614,10 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?188",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?190",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?191",
+    r"PR\s*#?212[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?212",
+    r"PR\s*#?118[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?118",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -735,6 +773,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0094_link = "journal/0094-rabbithole-source-ci-wave-status.md"
         entry_0095_link = "journal/0095-rabbithole-pr207-pr208-source-evidence.md"
         entry_0096_link = "journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md"
+        entry_0097_link = "journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -765,6 +804,10 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("RabbitHole PR #209/#210/#211 source wave status", text)
         self.assertIn("4.55% to 6.21%", text)
         self.assertIn("260 more covered lines", text)
+        self.assertEqual(1, text.count(entry_0097_link))
+        self.assertIn("RabbitHole PR #212 and eatme PR #118 Save diagnostics status", text)
+        self.assertIn("Save dialog/control target evidence", text)
+        self.assertIn("skipped manual real Alice smoke", plain(text))
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -989,6 +1032,24 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("4.55% to 6.21%", text)
         self.assertIn("260 covered lines", text)
         self.assertIn("smoke checks that still need manual approval", text)
+
+    def test_0097_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0097"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in ["RabbitHole PR #212", "eatme PR #118"]
+        }
+        self.assert_contains_all(text, SAVE_DIAGNOSTICS_WAVE_PR_LINKS, "atlas entry 0097")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0097")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0097", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0097")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0097")
+        self.assertIn("Save dialog/control target evidence", text)
+        self.assertIn("focused Save tests", text)
+        self.assertIn("focused review", text)
+        self.assertIn("manual real Alice smoke check was skipped", text)
+        self.assertIn("Actual Save dialog discovery/control remains unproven", text)
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:
