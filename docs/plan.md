@@ -417,6 +417,34 @@ network. Do not open issues or pull requests against
   comparison expressions, method calls, non-`this` member assignment targets,
   loops, conditionals, resource field initializers, and full Tweedle/player
   decode remain unproven.
+- [RabbitHole PR #276](https://github.com/rysweet/RabbitHole/pull/276) merged at
+  `66b38f87090f633f44a403737778c3c01a01c52b`. A programmatically-created real
+  Save menu item has `doClick()` called on it; this dispatches through Croquet,
+  reaches a live `JFileChooser`, the dialog is approved by a background probe,
+  and a non-empty `.a3p` file is written. Real rendered desktop menu bar
+  navigation, native FileDialog, visible rendering, grading, and full lesson
+  completion remain unproven. RabbitHole PR #281 (proof-flag false-negative race)
+  has not merged; do not count it as done.
+- [RabbitHole PR #277](https://github.com/rysweet/RabbitHole/pull/277) merged at
+  `8c1a3fd32c2c1d19aac7ea265909f0d19276273e`. Tweedle string concatenation (`..`)
+  now decodes in assignment right-hand-side values, local variable initializers,
+  and method return expressions. Logical and comparison expressions, method calls,
+  non-`this` member assignment targets, loops, conditionals, resource field
+  initializers, and full Tweedle/player decode remain unproven.
+- [RabbitHole PR #278](https://github.com/rysweet/RabbitHole/pull/278) merged at
+  `e130dac3a6f6431895f72f71733a042f1bb92cb3`. Select Project tab labels are
+  accessible as AT-SPI toggle buttons at depth 11; all five tabs can be clicked
+  programmatically; Starters -> Africa Full -> OK causes `projectOpenObserved: true`
+  and the Select Project frame disappears. Real rendered desktop menu bar
+  navigation, native FileDialog, visible rendering, grading, and full lesson
+  completion remain unproven.
+- [eatme PR #132](https://github.com/rysweet/eatme/pull/132) merged at
+  `ebaf93e85a502f4778aaa194f4cd61ae8ae4cdda`. Adds the
+  `accessibility-rescue-camera-captions` instructor/student scenario and Gadugi
+  adapter; scenario asset count grew to 87. Remaining missing scenario files:
+  design-process-story-or-game, audio-camera-and-export-sharecase,
+  setup-preflight-ready-to-create. Grading, automated creative assessment, real
+  Alice UI automation, and full lesson delivery remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
