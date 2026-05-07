@@ -70,6 +70,20 @@ network. Do not open issues or pull requests against
   details to `desktop-run-pixel-observation.json`; it does not prove visible
   rendering, desktop save-menu completion, grading, creative assessment, or
   first-lesson completion.
+- [RabbitHole PR #170](https://github.com/rysweet/RabbitHole/pull/170) merged at
+  `7e58f46b5b1d9624dd54bf1d2367243349ce8a28`. It falls back from the raw Run
+  display target to the attached Run panel for pixel sampling while preserving
+  exact blockers; it does not prove visible rendering correctness.
+- [RabbitHole PR #171](https://github.com/rysweet/RabbitHole/pull/171) merged at
+  `34a48d0b24ebf933925ad6237afaa4ca7518fd99`. It rejects resource-typed Tweedle
+  field initializers instead of accepting them as plain strings; it does not add
+  full Tweedle decode support.
+- [RabbitHole PR #172](https://github.com/rysweet/RabbitHole/pull/172) merged at
+  `e0c199ab88d10f635d4f3e9e5d67553fb1fd3f4f`. It adds
+  `desktop-first-lesson-next-action.json`, naming the missing deterministic
+  Save-menu and code/procedure action targets. It does not prove full Alice UI
+  automation, visible rendering correctness, desktop save-menu completion,
+  grading, creative assessment, or first-lesson completion.
 - eatme PR #93 merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. It makes
   readiness reports list concrete RabbitHole readiness evidence categories; it
   does not create new runtime proof or prove first-lesson completion.
@@ -91,6 +105,15 @@ network. Do not open issues or pull requests against
   `desktop-run-pixel-observation.json` beside readiness progress, including
   observed screenshot/sample data or blocked component state and blocker codes.
   It does not add new runtime proof.
+- [eatme PR #101](https://github.com/rysweet/eatme/pull/101) merged at
+  `546dfc7c2cdbc5ca6c4526fe3e90bb9f717999ed`. It shows explicit
+  `next_action` next-action evidence in first-lesson plain output as
+  `fix next: ...`. It does not add new runtime proof.
+- [eatme PR #102](https://github.com/rysweet/eatme/pull/102) merged at
+  `3e183407e247944831a6f7ff44870c71169302f4`. It adds the
+  `media-audio-cue-storyboard` student scenario for `media-audio-creator` and
+  its generated adapter. It does not grade student work or prove lesson
+  completion.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

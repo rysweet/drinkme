@@ -76,6 +76,17 @@ pixel observation file and reports observed screenshot/sample data or blocked
 component state and blocker codes. These changes make the next blocker easier to
 see; they do not prove full Alice UI automation, visible rendering, desktop
 save-menu completion, grading, creative assessment, or first-lesson completion.
+[atlas journal entry 0092](docs/atlas/journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md)
+records the latest merge update. RabbitHole PR #170 improves pixel observation by
+falling back from the raw Run display target to the attached Run panel.
+RabbitHole PR #171 rejects resource-typed Tweedle field initializers instead of
+accepting them as plain strings. RabbitHole PR #172 adds a conservative
+`desktop-first-lesson-next-action.json` file that names the missing Save-menu and
+code/procedure action targets. eatme PR #101 shows explicit next-action evidence
+in first-lesson output, and eatme PR #102 adds the `media-audio-cue-storyboard`
+student scenario. These changes make the next work clearer; they do not prove
+full Alice UI automation, visible rendering, desktop save-menu completion,
+grading, creative assessment, or first-lesson completion.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -91,6 +102,9 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #167](https://github.com/rysweet/RabbitHole/pull/167) | Merged at `4c5e2f21b2674f07176df40f90ded35e5738bde3`. Adds `desktop-run-pixel-observation.json` so a run records a screenshot and center pixel when possible, or records a blocker code and component state when not; it does not prove visible rendering, desktop save-menu completion, grading, creative assessment, or first-lesson completion. |
 | [RabbitHole PR #168](https://github.com/rysweet/RabbitHole/pull/168) | Merged at `da0fb851fd974721a630811873f0d583a853eb5e`. Adds a generated archive test for a sibling Tweedle type with an unresolved parent; it does not add full Tweedle decode support. |
 | [RabbitHole PR #169](https://github.com/rysweet/RabbitHole/pull/169) | Merged at `0a0d182c139aeaf5bc7c2c45213a0392cf8f245c`. Adds machine-readable blocker details to `desktop-run-pixel-observation.json`; it does not prove visible rendering, desktop save-menu completion, grading, creative assessment, or first-lesson completion. |
+| [RabbitHole PR #170](https://github.com/rysweet/RabbitHole/pull/170) | Merged at `7e58f46b5b1d9624dd54bf1d2367243349ce8a28`. Falls back from the raw Run display target to the attached Run panel for pixel sampling, while preserving exact blockers; it does not prove visible rendering correctness. |
+| [RabbitHole PR #171](https://github.com/rysweet/RabbitHole/pull/171) | Merged at `34a48d0b24ebf933925ad6237afaa4ca7518fd99`. Rejects resource-typed Tweedle field initializers instead of accepting them as plain strings; it does not add full Tweedle decode support. |
+| [RabbitHole PR #172](https://github.com/rysweet/RabbitHole/pull/172) | Merged at `e0c199ab88d10f635d4f3e9e5d67553fb1fd3f4f`. Adds `desktop-first-lesson-next-action.json` naming the missing Save-menu and code/procedure action targets; it does not prove full Alice UI automation, visible rendering correctness, desktop save-menu completion, grading, creative assessment, or first-lesson completion. |
 | [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
 | [eatme PR #92](https://github.com/rysweet/eatme/pull/92) | Merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready. |
 | [eatme PR #93](https://github.com/rysweet/eatme/pull/93) | Merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. Lists the concrete readiness evidence categories in the report; it does not create new runtime proof. |
@@ -98,15 +112,18 @@ All referenced source and status PRs have merged:
 | [eatme PR #96](https://github.com/rysweet/eatme/pull/96) | Merged at `9d765fec2d8f9f3a029b5222d48b3de23b461d5b`. Adds an `evidence_progress` summary that counts required first-lesson evidence as present, missing, invalid, not observed, or blocked; it summarizes existing evidence only. |
 | [eatme PR #98](https://github.com/rysweet/eatme/pull/98) | Merged at `11c8c58a33b2c6c7ec93e1b4a057c375e0dbb70f`. Shows the first-lesson readiness progress summary and each required evidence item in plain text output; it does not create new runtime proof or prove first-lesson completion. |
 | [eatme PR #99](https://github.com/rysweet/eatme/pull/99) | Merged at `5e8ba4b8c970d04b410060e90c22a613430e202b`. Reports `desktop-run-pixel-observation.json` beside readiness progress, including observed screenshot/sample data or blocked component state and blocker codes; it does not prove visible rendering or first-lesson completion. |
+| [eatme PR #101](https://github.com/rysweet/eatme/pull/101) | Merged at `546dfc7c2cdbc5ca6c4526fe3e90bb9f717999ed`. Shows explicit `next_action` evidence in first-lesson plain output as `fix next: ...`; it does not add new runtime proof. |
+| [eatme PR #102](https://github.com/rysweet/eatme/pull/102) | Merged at `3e183407e247944831a6f7ff44870c71169302f4`. Adds the `media-audio-cue-storyboard` student scenario for `media-audio-creator` and its generated adapter; it does not grade student work or prove lesson completion. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
 drawn, does not prove the lesson finished, and is not grading.
 
 The eatme PR #92 documentation and the newer PR #159, PR #160, PR #163, PR #164,
-PR #166, PR #167, PR #168, PR #169, PR #93, PR #95, PR #96, PR #98, and PR #99
-merge updates do not prove full Alice UI automation, visible rendering, desktop
-save-menu completion, grading, creative assessment, or first-lesson completion.
+PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
+PR #96, PR #98, PR #99, PR #101, and PR #102 merge updates do not prove full
+Alice UI automation, visible rendering, desktop save-menu completion, grading,
+creative assessment, or first-lesson completion.
 
 ## Plain-English terms
 
