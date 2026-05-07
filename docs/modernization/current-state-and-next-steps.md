@@ -183,6 +183,43 @@
   reporting/status,
   but actual real desktop proof/manual Alice smoke, procedure edit/run/save UI
   automation, project save, and full first-lesson completion remain incomplete.
+- Latest RabbitHole source update is tracked in
+  `docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md`.
+  [RabbitHole PR #219](https://github.com/rysweet/RabbitHole/pull/219) merged at
+  `144081e1067cd8795666e5ee8802f47fbfefe671` and decodes empty no-argument
+  Tweedle constructors to AST `NamedUserConstructor`; constructor parameters and
+  constructor bodies still failed clearly at that point.
+  [RabbitHole PR #222](https://github.com/rysweet/RabbitHole/pull/222) merged at
+  `f749ed7cc92f7df4678e96bbb29bcbd0b09913b8` and proves
+  `SaveProjectOperation.fire(UserActivity)` reaches
+  `AbstractSaveOperation.perform`, but the non-desktop proof lacks
+  `StageIDE.getActiveInstance()`.
+  [RabbitHole PR #224](https://github.com/rysweet/RabbitHole/pull/224) merged at
+  `1a3eae6937a7109f3608112a7fb40519e1a4f8d7` and proves JavaFX cannot open
+  `DISPLAY` locally; visible rendering correctness remains unproven.
+  [RabbitHole PR #225](https://github.com/rysweet/RabbitHole/pull/225) merged at
+  `db44c10bd017a5b7cc8eddc1cc82b1d1b90c8fb8` and decodes required Tweedle
+  constructor parameters to AST `UserParameter`; optional constructor parameters
+  still fail clearly.
+  [RabbitHole PR #229](https://github.com/rysweet/RabbitHole/pull/229) merged at
+  `7953c8348272298e9cb85f2319fba6520ba51a32` and decodes required parameters for
+  empty `void` Tweedle methods to AST `UserParameter`; optional method parameters
+  still fail clearly.
+  [RabbitHole PR #230](https://github.com/rysweet/RabbitHole/pull/230) merged at
+  `31d506f6af59ef736ccefad9aa7b793b3add6a3d` and proves Save action invocation
+  under Xvfb with `status=action_invoked`, `StageIDE=true`, and
+  `ProjectDocumentFrame=true`; menu click, dialog display/control, selected path
+  automation remain unproven, and completed save remains unproven.
+  [RabbitHole PR #231](https://github.com/rysweet/RabbitHole/pull/231) merged at
+  `622748401fe8ff00d81d3a2851faac153585b76c` and observes generated launcher
+  Xvfb marker pixels; real Alice desktop pixels were not observed because
+  `mvn exec:java -Dalice-ide` fails with `org.alice.stageide.EntryPoint`
+  `ClassNotFoundException`.
+  [RabbitHole PR #234](https://github.com/rysweet/RabbitHole/pull/234) merged at
+  `45d937fbe1e9ddee74e7c2b89af31841fb38a202` and decodes single
+  primitive-literal Tweedle `return` method bodies to AST `ReturnStatement`;
+  full method decode, full player decode, and full Tweedle decode support remain
+  unproven.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.

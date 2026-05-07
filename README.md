@@ -152,6 +152,23 @@ rendering correctness, desktop save-menu completion, grading, creative
 assessment, learner-world grading, first-lesson completion, procedure UI
 invocation, real desktop proof, project save, deployed installer success, full
 world execution, or complete player/full Tweedle decode support.
+[atlas journal entry 0099](docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md)
+records the latest RabbitHole source update. RabbitHole PR #219 decodes empty
+no-argument Tweedle constructors to AST `NamedUserConstructor`. PR #222 proves
+that non-desktop Save reaches `AbstractSaveOperation.perform`, but lacks
+`StageIDE.getActiveInstance()`. PR #224 proves JavaFX cannot open `DISPLAY`
+locally. PR #225 decodes required constructor parameters to AST `UserParameter`.
+PR #229 decodes required parameters for empty `void` Tweedle methods to AST
+`UserParameter`. PR #230 proves Save action invocation under Xvfb with
+`status=action_invoked`, `StageIDE=true`, and `ProjectDocumentFrame=true`. PR
+#231 observes generated launcher Xvfb marker pixels, while real Alice desktop
+pixels remain blocked by `org.alice.stageide.EntryPoint` `ClassNotFoundException`.
+PR #234 decodes single primitive-literal Tweedle `return` method bodies to AST
+`ReturnStatement`. This does not prove full Alice UI automation, visible
+rendering correctness, desktop save-menu completion, grading, creative
+assessment, learner-world grading, first-lesson completion, procedure UI
+invocation, Save dialog/control completion, real Alice desktop pixels, completed
+save, or full Tweedle/player decode support.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -206,6 +223,14 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #215](https://github.com/rysweet/RabbitHole/pull/215) | Merged at `c727d97c3d71a0f045925a691a080a42d36fbe9d`. Decodes empty `void` Tweedle methods to AST `UserMethod`; parameters, method bodies, non-void methods, and constructors still fail clearly. |
 | [RabbitHole PR #216](https://github.com/rysweet/RabbitHole/pull/216) | Merged at `c84bdf826723284e84b4872ce2e6c791dee0c8a6`. Adds Save dialog discovery target evidence; live Save menu click, actual dialog display/control, selected path automation, full lesson completion, rendering, and grading remain unproven. |
 | [RabbitHole PR #218](https://github.com/rysweet/RabbitHole/pull/218) | Merged at `a568bae3c3960c60792351cfa423450fea51b067`. Adds launcher render observation proof, but visible pixels remain unobserved; deployed installer success and full world execution remain unproven. |
+| [RabbitHole PR #219](https://github.com/rysweet/RabbitHole/pull/219) | Merged at `144081e1067cd8795666e5ee8802f47fbfefe671`. Decodes empty no-argument Tweedle constructors to AST `NamedUserConstructor`; constructor parameters and constructor bodies still failed clearly at that point. |
+| [RabbitHole PR #222](https://github.com/rysweet/RabbitHole/pull/222) | Merged at `f749ed7cc92f7df4678e96bbb29bcbd0b09913b8`. Proves `SaveProjectOperation.fire(UserActivity)` reaches `AbstractSaveOperation.perform`, but the non-desktop proof lacks `StageIDE.getActiveInstance()`. |
+| [RabbitHole PR #224](https://github.com/rysweet/RabbitHole/pull/224) | Merged at `1a3eae6937a7109f3608112a7fb40519e1a4f8d7`. Proves JavaFX cannot open `DISPLAY` locally; visible rendering correctness remains unproven. |
+| [RabbitHole PR #225](https://github.com/rysweet/RabbitHole/pull/225) | Merged at `db44c10bd017a5b7cc8eddc1cc82b1d1b90c8fb8`. Decodes required Tweedle constructor parameters to AST `UserParameter`; optional constructor parameters still fail clearly. |
+| [RabbitHole PR #229](https://github.com/rysweet/RabbitHole/pull/229) | Merged at `7953c8348272298e9cb85f2319fba6520ba51a32`. Decodes required parameters for empty `void` Tweedle methods to AST `UserParameter`; optional method parameters still fail clearly. |
+| [RabbitHole PR #230](https://github.com/rysweet/RabbitHole/pull/230) | Merged at `31d506f6af59ef736ccefad9aa7b793b3add6a3d`. Proves Save action invocation under Xvfb with `status=action_invoked`, `StageIDE=true`, and `ProjectDocumentFrame=true`; menu click, dialog display/control, selected path automation remain unproven, and completed save remains unproven. |
+| [RabbitHole PR #231](https://github.com/rysweet/RabbitHole/pull/231) | Merged at `622748401fe8ff00d81d3a2851faac153585b76c`. Observes generated launcher Xvfb marker pixels; real Alice desktop pixels were not observed because `mvn exec:java -Dalice-ide` fails with `org.alice.stageide.EntryPoint` `ClassNotFoundException`. |
+| [RabbitHole PR #234](https://github.com/rysweet/RabbitHole/pull/234) | Merged at `45d937fbe1e9ddee74e7c2b89af31841fb38a202`. Decodes single primitive-literal Tweedle `return` method bodies to AST `ReturnStatement`; full method decode and full Tweedle/player decode support remain unproven. |
 | [eatme PR #105](https://github.com/rysweet/eatme/pull/105) | Merged at `b88afdf60c2dd81a2849878706903f76ab8c2344`. Adds the student artifact sharing mission doc entry. |
 | [eatme PR #106](https://github.com/rysweet/eatme/pull/106) | Merged at `320f3c56cd65ec949e9cea0137f72a3dd0200f09`. Consumes RabbitHole desktop-first-lesson next-action evidence in readiness reporting. |
 | [eatme PR #108](https://github.com/rysweet/eatme/pull/108) | Merged at `5640df08832cb5a74c8051ec19ff769d6484710b`. Adds the classroom gallery walk QA scenario. |
@@ -230,7 +255,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, and eatme PR #118, PR #120, and PR #121
+PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, and eatme PR #118, PR #120, and PR #121
 merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full
