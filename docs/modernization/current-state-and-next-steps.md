@@ -41,6 +41,16 @@
   `not_observed`. These changes make failure states clearer; they do not prove
   full Alice UI automation, visible rendering, desktop save-menu completion,
   grading, creative assessment, or first-lesson completion.
+- Latest merge-state update is tracked in
+  `docs/atlas/journal/0089-rabbithole-pr164-eatme-pr96-merge-status.md`.
+  [RabbitHole PR #164](https://github.com/rysweet/RabbitHole/pull/164) adds a
+  constructor-bearing sibling archive test so that case also fails clearly
+  instead of being silently dropped; it does not add full Tweedle decode support.
+  [eatme PR #96](https://github.com/rysweet/eatme/pull/96) adds an
+  `evidence_progress` summary that counts first-lesson evidence as present,
+  missing, invalid, not observed, or blocked. These changes do not prove full
+  Alice UI automation, visible rendering, desktop save-menu completion, grading,
+  creative assessment, or first-lesson completion.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.

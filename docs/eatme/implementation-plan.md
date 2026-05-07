@@ -52,13 +52,23 @@ Second-pass review tightened the plan:
   at `4f225f2795c79f84c367874cd7995dc6dcded22f`. It rejects unsupported
   manifest-declared Tweedle type names with a clear error instead of silently
   dropping a type; it does not add full Tweedle decode support.
+  [RabbitHole PR #164](https://github.com/rysweet/RabbitHole/pull/164) merged
+  at `fb3e419b81c55b0e055711c9b57d3143f4f69f10`. It adds the matching generated
+  archive test for a constructor-bearing sibling Tweedle type; it does not add
+  full Tweedle decode support.
 - [eatme PR #95](https://github.com/rysweet/eatme/pull/95) merged at
   `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. It reports
   `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it
   does not prove pixels, visible rendering, grading, or first-lesson completion.
-- RabbitHole PRs #159, #160, and #163 and eatme PRs #93 and #95 have merged, but
-  they do not prove full Alice UI automation, visible rendering, desktop
-  save-menu completion, grading, creative assessment, or first-lesson completion.
+- [eatme PR #96](https://github.com/rysweet/eatme/pull/96) merged at
+  `9d765fec2d8f9f3a029b5222d48b3de23b461d5b`. It adds an
+  `evidence_progress` summary that counts required first-lesson evidence as
+  present, missing, invalid, not observed, or blocked. It summarizes existing
+  evidence only.
+- RabbitHole PRs #159, #160, #163, and #164 and eatme PRs #93, #95, and #96 have
+  merged, but they do not prove full Alice UI automation, visible rendering,
+  desktop save-menu completion, grading, creative assessment, or first-lesson
+  completion.
 - The proof boundary remains a narrow Run window attachment signal: Alice put
   the Run panel into the Run window area. This evidence does not prove pixels
   were drawn, does not prove the lesson finished, and is not grading.
@@ -134,9 +144,13 @@ The next desktop Run work should preserve the current strict boundary:
    of pixels, screenshots, visible rendering, or desktop save-menu completion.
 9. Treat merged RabbitHole PR #163 as a clear rejection for unsupported
    manifest-declared Tweedle type names, not full Tweedle decode support.
-10. Treat merged eatme PR #95 as explicit pixel-boundary status reporting, not
+10. Treat merged RabbitHole PR #164 as constructor-bearing sibling archive
+   coverage for the same clear-failure behavior, not full Tweedle decode support.
+11. Treat merged eatme PR #95 as explicit pixel-boundary status reporting, not
    proof of pixels, visible rendering, grading, or first-lesson completion.
-11. Add separate proof before eatme claims pixels were drawn, the lesson
+12. Treat merged eatme PR #96 as a countable progress summary, not new runtime
+   proof.
+13. Add separate proof before eatme claims pixels were drawn, the lesson
    finished, or grading happened.
 
 ## Governance boundaries

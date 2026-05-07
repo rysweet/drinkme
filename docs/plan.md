@@ -46,6 +46,10 @@ network. Do not open issues or pull requests against
   manifest-declared Tweedle type names with a clear error instead of silently
   dropping a type; it does not add full Tweedle method, constructor,
   complex-value, or missing-parent decode support.
+- [RabbitHole PR #164](https://github.com/rysweet/RabbitHole/pull/164) merged at
+  `fb3e419b81c55b0e055711c9b57d3143f4f69f10`. It adds the matching generated
+  archive test for a constructor-bearing sibling Tweedle type so that case also
+  fails clearly; it does not add full Tweedle decode support.
 - eatme PR #93 merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. It makes
   readiness reports list concrete RabbitHole readiness evidence categories; it
   does not create new runtime proof or prove first-lesson completion.
@@ -53,6 +57,11 @@ network. Do not open issues or pull requests against
   `d29e3d80112dbd6d2f820ceb8989c61c5e7de7b9`. It reports
   `desktop-run-pixel-boundary.json` as missing, invalid, or `not_observed`; it
   does not prove pixels, visible rendering, grading, or first-lesson completion.
+- [eatme PR #96](https://github.com/rysweet/eatme/pull/96) merged at
+  `9d765fec2d8f9f3a029b5222d48b3de23b461d5b`. It adds an
+  `evidence_progress` summary that counts required first-lesson evidence as
+  present, missing, invalid, not observed, or blocked. It summarizes existing
+  evidence only.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

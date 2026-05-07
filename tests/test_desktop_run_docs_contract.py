@@ -11,6 +11,7 @@ ENTRY_0085 = ROOT / "docs/atlas/journal/0085-desktop-run-execution-evidence.md"
 ENTRY_0086 = ROOT / "docs/atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md"
 ENTRY_0087 = ROOT / "docs/atlas/journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md"
 ENTRY_0088 = ROOT / "docs/atlas/journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md"
+ENTRY_0089 = ROOT / "docs/atlas/journal/0089-rabbithole-pr164-eatme-pr96-merge-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -40,6 +41,7 @@ DOCS = {
     "atlas index": ATLAS_INDEX,
     "atlas entry 0087": ENTRY_0087,
     "atlas entry 0088": ENTRY_0088,
+    "atlas entry 0089": ENTRY_0089,
 }
 
 README_PLAN_LINKS = [
@@ -51,6 +53,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0086](docs/atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md)",
     "[atlas journal entry 0087](docs/atlas/journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md)",
     "[atlas journal entry 0088](docs/atlas/journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md)",
+    "[atlas journal entry 0089](docs/atlas/journal/0089-rabbithole-pr164-eatme-pr96-merge-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -79,7 +82,12 @@ LATEST_MERGED_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/95",
 ]
 
-CURRENT_MERGED_PR_LINKS = PREVIOUS_MERGED_PR_LINKS + LATEST_MERGED_PR_LINKS
+NEWEST_MERGED_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/164",
+    "https://github.com/rysweet/eatme/pull/96",
+]
+
+CURRENT_MERGED_PR_LINKS = PREVIOUS_MERGED_PR_LINKS + LATEST_MERGED_PR_LINKS + NEWEST_MERGED_PR_LINKS
 
 PROOF_BOUNDARY_TERMS = [
     "narrow Run window attachment signal",
@@ -150,6 +158,13 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "clear error",
         "silently dropping",
     ],
+    "RabbitHole PR #164": [
+        "RabbitHole PR #164",
+        "Merged",
+        "constructor-bearing sibling",
+        "fails clearly",
+        "full Tweedle decode support",
+    ],
     "eatme PR #93": [
         "eatme PR #93",
         "Merged",
@@ -163,6 +178,14 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "missing",
         "invalid",
         "not_observed",
+    ],
+    "eatme PR #96": [
+        "eatme PR #96",
+        "Merged",
+        "evidence_progress",
+        "present",
+        "missing",
+        "blocked",
     ],
 }
 
@@ -182,11 +205,15 @@ STALE_CURRENT_PR_PATTERNS = [
     r"PR\s*#?93[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"PR\s*#?163[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"PR\s*#?95[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?164[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?96[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?159",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?160",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?93",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?163",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?95",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?164",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?96",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -334,6 +361,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0086_link = "journal/0086-eatme-pr92-rabbithole-evidence-readiness.md"
         entry_0087_link = "journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md"
         entry_0088_link = "journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md"
+        entry_0089_link = "journal/0089-rabbithole-pr164-eatme-pr96-merge-status.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -344,6 +372,8 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("RabbitHole PR #159/#160 and eatme PR #93 merge status", text)
         self.assertEqual(1, text.count(entry_0088_link))
         self.assertIn("RabbitHole PR #163 and eatme PR #95 merge status", text)
+        self.assertEqual(1, text.count(entry_0089_link))
+        self.assertIn("RabbitHole PR #164 and eatme PR #96 merge status", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -393,6 +423,21 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("silently dropping that type", text)
         self.assertIn("missing, invalid, or `not_observed`", text)
         self.assertIn("does not add full Tweedle", text)
+
+    def test_0089_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0089"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in ["RabbitHole PR #164", "eatme PR #96"]
+        }
+        self.assert_contains_all(text, NEWEST_MERGED_PR_LINKS, "atlas entry 0089")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0089", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0089")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0089")
+        self.assertIn("constructor-bearing sibling Tweedle type", text)
+        self.assertIn("evidence_progress", text)
+        self.assertIn("summarizes existing evidence only", text)
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:

@@ -46,6 +46,10 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0089 - RabbitHole PR #164 and eatme PR #96 merge status](journal/0089-rabbithole-pr164-eatme-pr96-merge-status.md)
+  records the constructor-bearing sibling archive test and the first-lesson
+  evidence progress summary, while keeping pixels, rendering, grading, and
+  first-lesson completion unproven.
 - [0088 - RabbitHole PR #163 and eatme PR #95 merge status](journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md)
   records the clear unsupported-Tweedle-type rejection and the eatme
   pixel-boundary status reporting update, while keeping pixels, rendering,
