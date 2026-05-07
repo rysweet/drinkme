@@ -374,6 +374,8 @@
   `docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md`.
   RabbitHole PR #272, PR #273, and eatme PR #131 are tracked in
   `docs/atlas/journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md`.
+  RabbitHole PR #274 is tracked in
+  `docs/atlas/journal/0111-rabbithole-pr274-arithmetic-binary-status.md`.
   [RabbitHole PR #272](https://github.com/rysweet/RabbitHole/pull/272) merged at
   `458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9`. Proves AT-SPI reaches the Alice
   Java process via `exec:exec` and `NO_AT_BRIDGE=1`; top-level Swing widgets are
@@ -387,6 +389,13 @@
   [eatme PR #131](https://github.com/rysweet/eatme/pull/131) merged at
   `973b65f`. Adds the `neighborhood-data-story` instructor/student scenario;
   scenario assets grew from 83 to 85 with all Gadugi adapters fresh.
+  [RabbitHole PR #274](https://github.com/rysweet/RabbitHole/pull/274) merged at
+  `5571894e5152482c9fb26ba31fc3d633d372e88e`. Arithmetic binary expressions
+  (`+`, `-`, `*`, `/`) now decode as Tweedle assignment right-hand-side values
+  and as local variable initializer values. String concatenation, logical and
+  comparison expressions, method calls, non-`this` member assignment targets,
+  loops, conditionals, resource field initializers, and full Tweedle/player
+  decode remain unproven.
   [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
   `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
   method and constructor bodies can now decode an `IdentifierReference` RHS to

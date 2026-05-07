@@ -253,6 +253,14 @@ scenario assets grew from 83 to 85 with all Gadugi adapters fresh. Grading,
 automated creative assessment, real Alice UI automation, and full lesson delivery
 remain unproven.
 
+[RabbitHole PR #274](https://github.com/rysweet/RabbitHole/pull/274) merged at
+`5571894e5152482c9fb26ba31fc3d633d372e88e`. Arithmetic binary expressions
+(`+`, `-`, `*`, `/`) now decode as Tweedle assignment right-hand-side values
+and as local variable initializer values. String concatenation, logical and
+comparison expressions, method calls, non-`this` member assignment targets,
+loops, conditionals, resource field initializers, and full Tweedle/player decode
+remain unproven.
+
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and
