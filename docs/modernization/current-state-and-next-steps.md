@@ -47,10 +47,23 @@
   constructor-bearing sibling archive test so that case also fails clearly
   instead of being silently dropped; it does not add full Tweedle decode support.
   [eatme PR #96](https://github.com/rysweet/eatme/pull/96) adds an
-  `evidence_progress` summary that counts first-lesson evidence as present,
-  missing, invalid, not observed, or blocked. These changes do not prove full
-  Alice UI automation, visible rendering, desktop save-menu completion, grading,
-  creative assessment, or first-lesson completion.
+   `evidence_progress` summary that counts first-lesson evidence as present,
+   missing, invalid, not observed, or blocked. These changes do not prove full
+   Alice UI automation, visible rendering, desktop save-menu completion, grading,
+   creative assessment, or first-lesson completion.
+- Latest source-status update is tracked in
+  `docs/atlas/journal/0090-rabbithole-pr166-pr167-eatme-pr98-merge-status.md`.
+  [RabbitHole PR #166](https://github.com/rysweet/RabbitHole/pull/166) adds a
+  generated archive test for a sibling Tweedle type with an unsupported complex
+  field initializer; it does not add full Tweedle decode support.
+  [RabbitHole PR #167](https://github.com/rysweet/RabbitHole/pull/167) adds
+  `desktop-run-pixel-observation.json` so a run records a screenshot and center
+  pixel when possible, or a blocker code and component state when not.
+  [eatme PR #98](https://github.com/rysweet/eatme/pull/98) adds plain text
+  output for first-lesson readiness progress and every required evidence item.
+  These changes do not prove full Alice UI automation, visible rendering,
+  desktop save-menu completion, grading, creative assessment, or first-lesson
+  completion.
 - Latest restarted-wave source work integrated into `develop` includes:
   - Alice PR #35: extracted model resource XML generation.
   - Alice PR #36: added reporting-only module coverage baseline tooling.
