@@ -46,6 +46,11 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0109 - RabbitHole PR #271 and eatme PR #129 status](journal/0109-rabbithole-pr271-eatme-pr129-status.md)
+  records that local variable declarations in Tweedle method and constructor bodies now
+  decode `IdentifierReference` initializers to `LocalAccess`, `ParameterAccess`, or
+  `FieldAccess`; and that eatme PR #129 adds the `creature-choreography-loop-lab` scenario
+  (assets 81→83). Full Tweedle/player decode, grading, and full lesson delivery remain unproven.
 - [0108 - RabbitHole PR #270 status](journal/0108-rabbithole-pr270-identifier-rhs-status.md)
   records that assignment statements in Tweedle method and constructor bodies now
   decode `IdentifierReference` RHS values to `ParameterAccess`, `LocalAccess`, or

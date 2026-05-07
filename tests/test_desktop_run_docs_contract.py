@@ -31,6 +31,7 @@ ENTRY_0105 = ROOT / "docs/atlas/journal/0105-eatme-pr125-ecosystem-balance-loop-
 ENTRY_0106 = ROOT / "docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md"
 ENTRY_0107 = ROOT / "docs/atlas/journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md"
 ENTRY_0108 = ROOT / "docs/atlas/journal/0108-rabbithole-pr270-identifier-rhs-status.md"
+ENTRY_0109 = ROOT / "docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -80,6 +81,7 @@ DOCS = {
     "atlas entry 0106": ENTRY_0106,
     "atlas entry 0107": ENTRY_0107,
     "atlas entry 0108": ENTRY_0108,
+    "atlas entry 0109": ENTRY_0109,
 }
 
 README_PLAN_LINKS = [
@@ -111,6 +113,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0106](docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md)",
     "[atlas journal entry 0107](docs/atlas/journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md)",
     "[atlas journal entry 0108](docs/atlas/journal/0108-rabbithole-pr270-identifier-rhs-status.md)",
+    "[atlas journal entry 0109](docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -290,6 +293,11 @@ RABBITHOLE_PR270_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/270",
 ]
 
+RABBITHOLE_PR271_EATME_PR129_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/271",
+    "https://github.com/rysweet/eatme/pull/129",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -313,6 +321,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_PR269_EATME_PR126_WAVE_PR_LINKS
     + EATME_PR127_WAVE_PR_LINKS
     + RABBITHOLE_PR270_WAVE_PR_LINKS
+    + RABBITHOLE_PR271_EATME_PR129_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -1006,6 +1015,24 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "ParameterAccess",
         "Full Tweedle",
     ],
+    "RabbitHole PR #271": [
+        "RabbitHole PR #271",
+        "Merged",
+        "b49b898ddfd2c19a27ce88d265f2c723499b1454",
+        "local variable declarations",
+        "IdentifierReference",
+        "LocalAccess",
+        "Full Tweedle",
+    ],
+    "eatme PR #129": [
+        "eatme PR #129",
+        "Merged",
+        "b72afe499c9b7a3826012b7d10c69b5ae6b6c0a1",
+        "creature-choreography-loop-lab",
+        "81 to 83",
+        "grading",
+        "creative assessment",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1415,6 +1442,9 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertEqual(1, text.count(entry_0108_link))
         self.assertIn("IdentifierReference", text)
         self.assertIn("ParameterAccess", text)
+        entry_0109_link = "journal/0109-rabbithole-pr271-eatme-pr129-status.md"
+        self.assertEqual(1, text.count(entry_0109_link))
+        self.assertIn("creature-choreography-loop-lab", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -1947,6 +1977,26 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("IdentifierReference", text)
         self.assertIn("ParameterAccess", text)
         self.assertIn("Full Tweedle", text)
+
+    def test_0109_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0109"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #271",
+                "eatme PR #129",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR271_EATME_PR129_WAVE_PR_LINKS, "atlas entry 0109")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0109")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0109", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0109")
+        self.assertIn("b49b898ddfd2c19a27ce88d265f2c723499b1454", text)
+        self.assertIn("b72afe499c9b7a3826012b7d10c69b5ae6b6c0a1", text)
+        self.assertIn("local variable declarations", text)
+        self.assertIn("creature-choreography-loop-lab", text)
+        self.assertIn("81 to 83", text)
 
     def test_current_status_docs_list_new_merged_prs_plainly(self):
         for name in CURRENT_MERGE_STATUS_DOCS:
