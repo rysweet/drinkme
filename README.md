@@ -74,8 +74,8 @@ instead of returning a partial project. RabbitHole PR #169 adds machine-readable
 blocker details to `desktop-run-pixel-observation.json`. eatme PR #99 reads that
 pixel observation file and reports observed screenshot/sample data or blocked
 component state and blocker codes. These changes make the next blocker easier to
-see; they do not prove visible rendering, desktop save-menu completion, grading,
-creative assessment, or first-lesson completion.
+see; they do not prove full Alice UI automation, visible rendering, desktop
+save-menu completion, grading, creative assessment, or first-lesson completion.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
