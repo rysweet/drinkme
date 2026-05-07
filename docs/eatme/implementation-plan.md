@@ -26,6 +26,11 @@ Second-pass review tightened the plan:
   RabbitHole evidence needed before first-lesson readiness can be marked ready:
   launch evidence, Run-window evidence, desktop execution evidence,
   screenshot/log/window artifacts, and `ui-action-contract.json`.
+- [eatme PR #93](https://github.com/rysweet/eatme/pull/93) merged at
+  `f5c08aea14c679124afc680fc9bc9e155da237dd`. It makes first-lesson readiness
+  reports list concrete RabbitHole readiness evidence categories; it does not
+  create new runtime proof or prove grading, creative assessment, or
+  first-lesson completion.
 - eatme depends on the merged RabbitHole source PRs:
   [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154)
   merged. It records that Alice put the Run panel into the Run window area.
@@ -35,6 +40,17 @@ Second-pass review tightened the plan:
   [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156)
   merged. It keeps old image recovery while safely rejecting unsupported old
   code.
+  [RabbitHole PR #159](https://github.com/rysweet/RabbitHole/pull/159) merged
+  at `9dbf0266ad7d61439f5dd74121e744dbbd365462`. It adds a generated archive
+  test where a missing Tweedle source entry fails clearly; it does not add broad
+  Tweedle decode support.
+  [RabbitHole PR #160](https://github.com/rysweet/RabbitHole/pull/160) merged
+  at `18c533efdacc7bdefa971c82ac655d5127bc743e`. It adds
+  `desktop-run-pixel-boundary.json` with `status: "not_observed"`; it does not
+  prove pixels, screenshots, visible rendering, or grading.
+- RabbitHole PRs #159 and #160 and eatme PR #93 have merged, but they do not
+  prove full Alice UI automation, visible rendering, desktop save-menu
+  completion, grading, creative assessment, or first-lesson completion.
 - The proof boundary remains a narrow Run window attachment signal: Alice put
   the Run panel into the Run window area. This evidence does not prove pixels
   were drawn, does not prove the lesson finished, and is not grading.
@@ -101,7 +117,14 @@ The next desktop Run work should preserve the current strict boundary:
    not grading and not proof of full lesson completion.
 5. Treat merged eatme PR #92 as the documentation of required RabbitHole
    evidence categories, not proof that those categories have passed in drinkme.
-6. Add separate proof before eatme claims pixels were drawn, the lesson
+6. Treat merged eatme PR #93 as a report-output improvement that lists required
+   readiness evidence, not grading, creative assessment, or first-lesson
+   completion.
+7. Treat merged RabbitHole PR #159 as one clear archive failure test, not broad
+   Tweedle decode support.
+8. Treat merged RabbitHole PR #160 as a pixel-proof boundary record, not proof
+   of pixels, screenshots, visible rendering, or desktop save-menu completion.
+9. Add separate proof before eatme claims pixels were drawn, the lesson
    finished, or grading happened.
 
 ## Governance boundaries

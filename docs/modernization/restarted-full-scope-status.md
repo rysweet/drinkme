@@ -27,8 +27,11 @@ Last updated: 2026-05-06
 | [RabbitHole PR #154](https://github.com/rysweet/RabbitHole/pull/154) | Merged. Records that Alice put the Run panel into the Run window area. |
 | [RabbitHole PR #155](https://github.com/rysweet/RabbitHole/pull/155) | Merged. Records launcher steps and no-go messages, but does not prove rendering. |
 | [RabbitHole PR #156](https://github.com/rysweet/RabbitHole/pull/156) | Merged. Keeps old image recovery while safely rejecting unsupported old code. |
+| [RabbitHole PR #159](https://github.com/rysweet/RabbitHole/pull/159) | Merged at `9dbf0266ad7d61439f5dd74121e744dbbd365462`. Adds a generated archive test where a missing Tweedle source entry fails clearly; it does not add broad Tweedle decode support. |
+| [RabbitHole PR #160](https://github.com/rysweet/RabbitHole/pull/160) | Merged at `18c533efdacc7bdefa971c82ac655d5127bc743e`. Adds `desktop-run-pixel-boundary.json` with `status: "not_observed"`; it does not prove pixels, screenshots, visible rendering, or grading. |
 | [eatme PR #89](https://github.com/rysweet/eatme/pull/89) | Merged. Improves instructor and student readiness reports, but does not grade work or prove full lesson completion. |
 | [eatme PR #92](https://github.com/rysweet/eatme/pull/92) | Merged at `cfe1f9e364d0015a3f97e237a9de5af670ae3bd6`. Documents the RabbitHole evidence needed before first-lesson readiness can be marked ready. |
+| [eatme PR #93](https://github.com/rysweet/eatme/pull/93) | Merged at `f5c08aea14c679124afc680fc9bc9e155da237dd`. Lists the concrete readiness evidence categories in the report; it does not create new runtime proof. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -39,6 +42,13 @@ readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and
 `ui-action-contract.json`. This does not prove full Alice UI automation,
 creative assessment, learner-world grading, visible rendering correctness, or
+first-lesson completion.
+
+RabbitHole PR #159 adds a generated archive failure test for a missing Tweedle
+source entry. RabbitHole PR #160 records a pixel-proof boundary with
+`status: "not_observed"`. eatme PR #93 lists the readiness evidence categories
+in the output. These changes do not prove full Alice UI automation, visible
+rendering, desktop save-menu completion, grading, creative assessment, or
 first-lesson completion.
 
 ## Latest integrated evidence
@@ -60,6 +70,12 @@ first-lesson completion.
 - The merged eatme PR #92 records the evidence categories RabbitHole must supply
   before first-lesson readiness can be marked ready. It documents the
   requirement; it is not the runtime proof.
+- The merged RabbitHole PR #159 records one clear archive failure boundary, not
+  broad Tweedle decode support.
+- The merged RabbitHole PR #160 records that pixel and screenshot proof were not
+  observed by the Run-window attachment signal.
+- The merged eatme PR #93 makes required readiness evidence visible in output;
+  it does not create new runtime evidence.
 
 ## No-premature-completion rule
 
