@@ -21,6 +21,7 @@ ENTRY_0095 = ROOT / "docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evide
 ENTRY_0096 = ROOT / "docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md"
 ENTRY_0097 = ROOT / "docs/atlas/journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md"
 ENTRY_0098 = ROOT / "docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md"
+ENTRY_0099 = ROOT / "docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -60,6 +61,7 @@ DOCS = {
     "atlas entry 0096": ENTRY_0096,
     "atlas entry 0097": ENTRY_0097,
     "atlas entry 0098": ENTRY_0098,
+    "atlas entry 0099": ENTRY_0099,
 }
 
 README_PLAN_LINKS = [
@@ -81,6 +83,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0096](docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md)",
     "[atlas journal entry 0097](docs/atlas/journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md)",
     "[atlas journal entry 0098](docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md)",
+    "[atlas journal entry 0099](docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -194,6 +197,17 @@ LATEST_PROOF_REPORTING_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/121",
 ]
 
+RABBITHOLE_COMPLETED_SOURCE_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/219",
+    "https://github.com/rysweet/RabbitHole/pull/222",
+    "https://github.com/rysweet/RabbitHole/pull/224",
+    "https://github.com/rysweet/RabbitHole/pull/225",
+    "https://github.com/rysweet/RabbitHole/pull/229",
+    "https://github.com/rysweet/RabbitHole/pull/230",
+    "https://github.com/rysweet/RabbitHole/pull/231",
+    "https://github.com/rysweet/RabbitHole/pull/234",
+]
+
 CURRENT_MERGED_PR_LINKS = (
     PREVIOUS_MERGED_PR_LINKS
     + LATEST_MERGED_PR_LINKS
@@ -207,6 +221,7 @@ CURRENT_MERGED_PR_LINKS = (
     + LATEST_SOURCE_WAVE_PR_LINKS
     + SAVE_DIAGNOSTICS_WAVE_PR_LINKS
     + LATEST_PROOF_REPORTING_WAVE_PR_LINKS
+    + RABBITHOLE_COMPLETED_SOURCE_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -582,6 +597,74 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "project save",
         "full first-lesson completion",
     ],
+    "RabbitHole PR #219": [
+        "RabbitHole PR #219",
+        "Merged",
+        "144081e1067cd8795666e5ee8802f47fbfefe671",
+        "empty no-argument Tweedle constructors",
+        "AST `NamedUserConstructor`",
+        "constructor parameters",
+        "constructor bodies still failed clearly",
+    ],
+    "RabbitHole PR #222": [
+        "RabbitHole PR #222",
+        "Merged",
+        "f749ed7cc92f7df4678e96bbb29bcbd0b09913b8",
+        "SaveProjectOperation.fire(UserActivity)",
+        "AbstractSaveOperation.perform",
+        "StageIDE.getActiveInstance()",
+    ],
+    "RabbitHole PR #224": [
+        "RabbitHole PR #224",
+        "Merged",
+        "1a3eae6937a7109f3608112a7fb40519e1a4f8d7",
+        "JavaFX cannot open `DISPLAY` locally",
+        "visible rendering correctness remains unproven",
+    ],
+    "RabbitHole PR #225": [
+        "RabbitHole PR #225",
+        "Merged",
+        "db44c10bd017a5b7cc8eddc1cc82b1d1b90c8fb8",
+        "required Tweedle constructor parameters",
+        "AST `UserParameter`",
+        "optional constructor parameters still fail clearly",
+    ],
+    "RabbitHole PR #229": [
+        "RabbitHole PR #229",
+        "Merged",
+        "7953c8348272298e9cb85f2319fba6520ba51a32",
+        "required parameters for empty `void` Tweedle methods",
+        "AST `UserParameter`",
+        "optional method parameters still fail clearly",
+    ],
+    "RabbitHole PR #230": [
+        "RabbitHole PR #230",
+        "Merged",
+        "31d506f6af59ef736ccefad9aa7b793b3add6a3d",
+        "status=action_invoked",
+        "StageIDE=true",
+        "ProjectDocumentFrame=true",
+        "menu click",
+        "completed save remains unproven",
+    ],
+    "RabbitHole PR #231": [
+        "RabbitHole PR #231",
+        "Merged",
+        "622748401fe8ff00d81d3a2851faac153585b76c",
+        "generated launcher Xvfb marker pixels",
+        "real Alice desktop pixels were not observed",
+        "org.alice.stageide.EntryPoint",
+        "ClassNotFoundException",
+    ],
+    "RabbitHole PR #234": [
+        "RabbitHole PR #234",
+        "Merged",
+        "45d937fbe1e9ddee74e7c2b89af31841fb38a202",
+        "single primitive-literal Tweedle `return` method bodies",
+        "AST `ReturnStatement`",
+        "full method decode",
+        "full Tweedle/player decode support remains unproven",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -691,6 +774,22 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?212",
     r"PR\s*#?118[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?118",
+    r"PR\s*#?219[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?222[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?224[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?225[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?229[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?230[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?231[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"PR\s*#?234[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?219",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?222",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?224",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?225",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?229",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?230",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?231",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?234",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -848,6 +947,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0096_link = "journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md"
         entry_0097_link = "journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md"
         entry_0098_link = "journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md"
+        entry_0099_link = "journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md"
 
         self.assertEqual(1, text.count(entry_link))
         self.assertIn("RabbitHole PR #154 Run window attachment signal", text)
@@ -887,6 +987,11 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("launcher drawing surface readiness", text)
         self.assertIn("empty `void` Tweedle method decoding", text)
         self.assertIn("visible pixels still", text)
+        self.assertEqual(1, text.count(entry_0099_link))
+        self.assertIn("RabbitHole PR #219/#222/#224/#225/#229/#230/#231/#234 status", text)
+        self.assertIn("empty no-argument constructor decode", text)
+        self.assertIn("Xvfb Save action proof", text)
+        self.assertIn("real Alice desktop classpath blocker", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -1158,6 +1263,36 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("visible pixels remain unobserved", text)
         self.assertIn("manual real Alice smoke check was skipped", text)
         self.assertIn("project save", text)
+
+    def test_0099_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0099"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #219",
+                "RabbitHole PR #222",
+                "RabbitHole PR #224",
+                "RabbitHole PR #225",
+                "RabbitHole PR #229",
+                "RabbitHole PR #230",
+                "RabbitHole PR #231",
+                "RabbitHole PR #234",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_COMPLETED_SOURCE_WAVE_PR_LINKS, "atlas entry 0099")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0099")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0099", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0099")
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0099")
+        self.assertIn("NamedUserConstructor", text)
+        self.assertIn("SaveProjectOperation.fire(UserActivity)", text)
+        self.assertIn("StageIDE.getActiveInstance()", text)
+        self.assertIn("JavaFX cannot open `DISPLAY` locally", text)
+        self.assertIn("status=action_invoked", text)
+        self.assertIn("ProjectDocumentFrame=true", text)
+        self.assertIn("ClassNotFoundException", text)
+        self.assertIn("AST `ReturnStatement`", text)
 
     def test_all_controlling_docs_share_the_same_proof_boundary(self):
         for name in CONTROL_DOCS:

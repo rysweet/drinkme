@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0099 - RabbitHole PR #219/#222/#224/#225/#229/#230/#231/#234 status](journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md)
+  records empty no-argument constructor decode, required constructor and method
+  parameter decode, non-desktop and Xvfb Save action proof, local JavaFX
+  `DISPLAY` failure, generated launcher marker pixels, real Alice desktop classpath blocker,
+  simple `return` method body decode, and the Save, rendering,
+  grading, first-lesson, procedure, and Tweedle/player limits that remain.
 - [0098 - RabbitHole PR #214/#215/#216/#218 and eatme PR #120/#121 status](journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md)
   records launcher drawing surface readiness through `Stage.show()` and
   `isShowing()`, empty `void` Tweedle method decoding, Save dialog discovery

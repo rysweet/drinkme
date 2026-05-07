@@ -50,6 +50,14 @@ Last updated: 2026-05-07
 | [eatme PR #118](https://github.com/rysweet/eatme/pull/118) | Merged at `2c760511eeff8c554b17ee550e779e7c51444591` from head `b70048d78f0b5f8669dc7e725cdac6b1ff3566f5`. Improves Alice window action diagnostics. CI passed, and the manual real Alice smoke check was skipped. A real desktop environment still needs proving, and later procedure edit, run, and save automation remains incomplete. |
 | [eatme PR #120](https://github.com/rysweet/eatme/pull/120) | Merged at `f526544014ee8d368a623359f6bf97cce6588f7d`. Adds the next first-lesson action reporting/proof slice. Real desktop proof is still needed; procedure edit/run/save UI automation is incomplete; manual real Alice smoke was skipped. |
 | [eatme PR #121](https://github.com/rysweet/eatme/pull/121) | Merged at `4ade2a5d6def4d7ad7be7691b9349a3f5c9ff61e`. Improves real desktop proof reporting/status, but actual real desktop proof/manual Alice smoke, procedure edit/run/save UI automation, project save, and full first-lesson completion remain incomplete. |
+| [RabbitHole PR #219](https://github.com/rysweet/RabbitHole/pull/219) | Merged at `144081e1067cd8795666e5ee8802f47fbfefe671`. Decodes empty no-argument Tweedle constructors to AST `NamedUserConstructor`; constructor parameters and constructor bodies still failed clearly at that point. |
+| [RabbitHole PR #222](https://github.com/rysweet/RabbitHole/pull/222) | Merged at `f749ed7cc92f7df4678e96bbb29bcbd0b09913b8`. Proves `SaveProjectOperation.fire(UserActivity)` reaches `AbstractSaveOperation.perform`, but the non-desktop proof lacks `StageIDE.getActiveInstance()`. |
+| [RabbitHole PR #224](https://github.com/rysweet/RabbitHole/pull/224) | Merged at `1a3eae6937a7109f3608112a7fb40519e1a4f8d7`. Proves JavaFX cannot open `DISPLAY` locally; visible rendering correctness remains unproven. |
+| [RabbitHole PR #225](https://github.com/rysweet/RabbitHole/pull/225) | Merged at `db44c10bd017a5b7cc8eddc1cc82b1d1b90c8fb8`. Decodes required Tweedle constructor parameters to AST `UserParameter`; optional constructor parameters still fail clearly. |
+| [RabbitHole PR #229](https://github.com/rysweet/RabbitHole/pull/229) | Merged at `7953c8348272298e9cb85f2319fba6520ba51a32`. Decodes required parameters for empty `void` Tweedle methods to AST `UserParameter`; optional method parameters still fail clearly. |
+| [RabbitHole PR #230](https://github.com/rysweet/RabbitHole/pull/230) | Merged at `31d506f6af59ef736ccefad9aa7b793b3add6a3d`. Proves Save action invocation under Xvfb with `status=action_invoked`, `StageIDE=true`, and `ProjectDocumentFrame=true`; menu click, dialog display/control, selected path automation remain unproven, and completed save remains unproven. |
+| [RabbitHole PR #231](https://github.com/rysweet/RabbitHole/pull/231) | Merged at `622748401fe8ff00d81d3a2851faac153585b76c`. Observes generated launcher Xvfb marker pixels; real Alice desktop pixels were not observed because `mvn exec:java -Dalice-ide` fails with `org.alice.stageide.EntryPoint` `ClassNotFoundException`. |
+| [RabbitHole PR #234](https://github.com/rysweet/RabbitHole/pull/234) | Merged at `45d937fbe1e9ddee74e7c2b89af31841fb38a202`. Decodes single primitive-literal Tweedle `return` method bodies to AST `ReturnStatement`; full method decode and full Tweedle/player decode support remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -73,6 +81,22 @@ first-lesson completion, procedure UI invocation, real desktop proof, project
 save, deployed installer success, full world execution, or complete player/full
 Tweedle decode support. A real desktop environment still needs proving for eatme,
 and procedure edit, run, and save automation remains incomplete.
+
+RabbitHole PR #219 decodes empty no-argument Tweedle constructors to AST
+`NamedUserConstructor`. PR #222 proves `SaveProjectOperation.fire(UserActivity)`
+reaches `AbstractSaveOperation.perform`, but lacks `StageIDE.getActiveInstance()`.
+PR #224 proves JavaFX cannot open `DISPLAY` locally. PR #225 decodes required
+constructor parameters to AST `UserParameter`. PR #229 decodes required
+parameters for empty `void` Tweedle methods to AST `UserParameter`. PR #230
+proves Save action invocation under Xvfb with `status=action_invoked`,
+`StageIDE=true`, and `ProjectDocumentFrame=true`. PR #231 observes generated
+launcher Xvfb marker pixels, while real Alice desktop pixels are blocked by
+`org.alice.stageide.EntryPoint` `ClassNotFoundException`. PR #234 decodes single
+primitive-literal Tweedle `return` method bodies to AST `ReturnStatement`. These
+changes do not prove full Alice UI automation, visible rendering correctness,
+desktop save-menu completion, grading, creative assessment, learner-world
+grading, first-lesson completion, procedure UI invocation, completed save, real
+Alice desktop pixels, or full Tweedle/player decode support.
 
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
