@@ -46,6 +46,17 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0128 - RabbitHole PR #293 WhileLoop decode status](journal/0128-rabbithole-pr293-while-loop-decode-status.md)
+  records that RabbitHole PR #293 decodes Tweedle `while (condition) { ... }` to
+  Alice `WhileLoop` in void method bodies. Supported conditions: Boolean literal,
+  parameter access, relational infix, and logical infix/not. Supported body:
+  assignment-only statements; empty body accepted. 6 new tests; 109 total; 0
+  failures; all five RabbitHole CI checks passed; focused review returned CLEAN.
+  Non-void method while loops, non-Boolean conditions, non-assignment body
+  statements, method calls, for-each/count-up loops, constructor body while
+  loops, resource field initializers, full player decode, and full Tweedle decode
+  remain unproven. Visible rendering, grading, and first-lesson completion remain
+  unproven.
 - [0127 - RabbitHole PR #292 File menu save navigation proof status](journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)
   records that RabbitHole PR #292 adds `FileMenuSaveNavigationProofTest`. The test
   starts `StageIDE`, finds `FileMenuModel` inside the real `AliceMenuBar`, calls

@@ -50,6 +50,7 @@ ENTRY_0124 = ROOT / "docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-sta
 ENTRY_0125 = ROOT / "docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md"
 ENTRY_0126 = ROOT / "docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md"
 ENTRY_0127 = ROOT / "docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md"
+ENTRY_0128 = ROOT / "docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -118,6 +119,7 @@ DOCS = {
     "atlas entry 0125": ENTRY_0125,
     "atlas entry 0126": ENTRY_0126,
     "atlas entry 0127": ENTRY_0127,
+    "atlas entry 0128": ENTRY_0128,
 }
 
 README_PLAN_LINKS = [
@@ -168,6 +170,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0125](docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md)",
     "[atlas journal entry 0126](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)",
     "[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)",
+    "[atlas journal entry 0128](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -427,6 +430,10 @@ RABBITHOLE_PR292_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/292",
 ]
 
+RABBITHOLE_PR293_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/293",
+]
+
 RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS = (
     RABBITHOLE_PR278_WAVE_PR_LINKS + EATME_PR132_WAVE_PR_LINKS
 )
@@ -472,6 +479,7 @@ CURRENT_MERGED_PR_LINKS = (
     + EATME_PR136_WAVE_PR_LINKS
     + RABBITHOLE_PR291_WAVE_PR_LINKS
     + RABBITHOLE_PR292_WAVE_PR_LINKS
+    + RABBITHOLE_PR293_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -1347,6 +1355,13 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "menu_item_dispatched",
         "ActionEventTrigger",
     ],
+    "RabbitHole PR #293": [
+        "RabbitHole PR #293",
+        "Merged",
+        "3696670873c6a409046ac6e648e828d95956aa8b",
+        "WhileLoop",
+        "void method bodies",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1834,6 +1849,9 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("FileMenuSaveNavigationProofTest", text)
         self.assertIn("FileMenuModel", text)
         self.assertIn("menu_item_dispatched", text)
+        entry_0128_link = "journal/0128-rabbithole-pr293-while-loop-decode-status.md"
+        self.assertEqual(1, text.count(entry_0128_link))
+        self.assertIn("WhileLoop", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -2732,6 +2750,26 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("SaveProjectOperation", text)
         self.assertIn("menu_item_dispatched", text)
         self.assertIn("ActionEventTrigger", text)
+
+    def test_0128_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0128"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #293",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR293_WAVE_PR_LINKS, "atlas entry 0128")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0128")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0128", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0128")
+        self.assertIn("3696670873c6a409046ac6e648e828d95956aa8b", text)
+        self.assertIn("WhileLoop", text)
+        self.assertIn("void method bodies", text)
+        self.assertIn("BlockStatement", text)
+        self.assertIn("UnsupportedTweedleDecodeException", text)
+        self.assertIn("109", text)
 
 
         forbidden_terms = [
