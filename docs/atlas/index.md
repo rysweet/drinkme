@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0122 - eatme PR #135 audio-camera-and-export-sharecase scenario status](journal/0122-eatme-pr135-audio-camera-and-export-sharecase-status.md)
+  records that eatme PR #135 adds the `audio-camera-and-export-sharecase` scenario and
+  Gadugi adapter; scenario asset count grew from 91 to 93. No remaining scenario gaps
+  from the list in `docs/persona-assets.md` and `assets/personas/alice-user-crew.yaml`.
+  Grading, automated creative assessment, real Alice UI automation, and full lesson
+  delivery remain unproven.
 - [0121 - eatme PR #134 setup-preflight-ready-to-create scenario status](journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md)
   records that eatme PR #134 adds the `setup-preflight-ready-to-create` scenario and
   Gadugi adapter; scenario asset count grew from 89 to 91. Remaining missing scenario

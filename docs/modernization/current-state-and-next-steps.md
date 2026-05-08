@@ -395,6 +395,8 @@
   `docs/atlas/journal/0120-rabbithole-pr285-atapi-main-window-post-project-open-status.md`.
   eatme PR #134 is tracked in
   `docs/atlas/journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md`.
+  eatme PR #135 is tracked in
+  `docs/atlas/journal/0122-eatme-pr135-audio-camera-and-export-sharecase-status.md`.
   [RabbitHole PR #272](https://github.com/rysweet/RabbitHole/pull/272) merged at
   `458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9`. Proves AT-SPI reaches the Alice
   Java process via `exec:exec` and `NO_AT_BRIDGE=1`; top-level Swing widgets are
@@ -479,6 +481,13 @@
   `setup-preflight-ready-to-create` instructor/student scenario and Gadugi
   adapter; scenario asset count grew from 89 to 91. Remaining missing scenario
   file: audio-camera-and-export-sharecase. Grading, automated creative
+  assessment, real Alice UI automation, and full lesson delivery remain unproven.
+  [eatme PR #135](https://github.com/rysweet/eatme/pull/135) merged at
+  `8f82d682aef4d22c3ca4e7bdc4344cae660b13bd`. Adds the
+  `audio-camera-and-export-sharecase` instructor/student scenario and Gadugi
+  adapter; scenario asset count grew from 91 to 93. No remaining scenario gaps
+  from the list in `docs/persona-assets.md` and
+  `assets/personas/alice-user-crew.yaml`. Grading, automated creative
   assessment, real Alice UI automation, and full lesson delivery remain unproven.
   [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
   `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
