@@ -444,48 +444,14 @@ FOUR_PR_MERGED_METADATA_LINKS = [
     "https://github.com/rysweet/amplihack-rs/pull/571",
 ]
 
-FOUR_PR_MERGED_METADATA_TABLE = [
-    {
-        "repository": "`rysweet/RabbitHole`",
-        "pr": "[#297](https://github.com/rysweet/RabbitHole/pull/297)",
-        "status": "`MERGED`",
-        "merged_at": "`2026-05-08T04:39:11Z`",
-        "merged_by": "`rysweet`",
-        "merge_commit": "`527011aa8337222cddd05d23766edcac908a699b`",
-        "head_sha": "`59272ae077e3e614f3ef30a4b6b37140c8eb80f8`",
-    },
-    {
-        "repository": "`rysweet/RabbitHole`",
-        "pr": "[#298](https://github.com/rysweet/RabbitHole/pull/298)",
-        "status": "`MERGED`",
-        "merged_at": "`2026-05-08T02:32:51Z`",
-        "merged_by": "`rysweet`",
-        "merge_commit": "`fb9da28c2dcaf426b87699ffceebaba7093d994a`",
-        "head_sha": "`6bd52537504d0f88cd0fe6c1919e5a4134eca2a8`",
-    },
-    {
-        "repository": "`rysweet/eatme`",
-        "pr": "[#138](https://github.com/rysweet/eatme/pull/138)",
-        "status": "`MERGED`",
-        "merged_at": "`2026-05-08T02:13:51Z`",
-        "merged_by": "`rysweet`",
-        "merge_commit": "`b412458d6abf4d235dc03f4efb3debabd54e79d1`",
-        "head_sha": "`8cacd14cc51fc09cae20ee421f4bc4a8e285b751`",
-    },
-    {
-        "repository": "`rysweet/amplihack-rs`",
-        "pr": "[#571](https://github.com/rysweet/amplihack-rs/pull/571)",
-        "status": "`MERGED`",
-        "merged_at": "`2026-05-08T04:55:47Z`",
-        "merged_by": "`rysweet`",
-        "merge_commit": "`0af6f12824778fbff94627dae5da92b57beb6fc9`",
-        "head_sha": "`33582d27e8cac3f00cbd7e702a5304c34768d41a`",
-    },
+FOUR_PR_MERGED_METADATA_TABLE_LINES = [
+    "| Repository | PR | Status | Merged at | Merged by | Merge commit SHA | Head SHA |",
+    "| --- | --- | --- | --- | --- | --- | --- |",
+    "| `rysweet/RabbitHole` | [#297](https://github.com/rysweet/RabbitHole/pull/297) | `MERGED` | `2026-05-08T04:39:11Z` | `rysweet` | `527011aa8337222cddd05d23766edcac908a699b` | `59272ae077e3e614f3ef30a4b6b37140c8eb80f8` |",
+    "| `rysweet/RabbitHole` | [#298](https://github.com/rysweet/RabbitHole/pull/298) | `MERGED` | `2026-05-08T02:32:51Z` | `rysweet` | `fb9da28c2dcaf426b87699ffceebaba7093d994a` | `6bd52537504d0f88cd0fe6c1919e5a4134eca2a8` |",
+    "| `rysweet/eatme` | [#138](https://github.com/rysweet/eatme/pull/138) | `MERGED` | `2026-05-08T02:13:51Z` | `rysweet` | `b412458d6abf4d235dc03f4efb3debabd54e79d1` | `8cacd14cc51fc09cae20ee421f4bc4a8e285b751` |",
+    "| `rysweet/amplihack-rs` | [#571](https://github.com/rysweet/amplihack-rs/pull/571) | `MERGED` | `2026-05-08T04:55:47Z` | `rysweet` | `0af6f12824778fbff94627dae5da92b57beb6fc9` | `33582d27e8cac3f00cbd7e702a5304c34768d41a` |",
 ]
-
-FOUR_PR_METADATA_TABLE_HEADER = (
-    "| Repository | PR | Status | Merged at | Merged by | Merge commit SHA | Head SHA |"
-)
 
 RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS = (
     RABBITHOLE_PR278_WAVE_PR_LINKS + EATME_PR132_WAVE_PR_LINKS
@@ -1450,6 +1416,13 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
     ],
 }
 
+FOUR_PR_MERGED_METADATA_REQUIREMENTS = {
+    "RabbitHole PR #297": MERGED_CURRENT_PR_REQUIREMENTS["RabbitHole PR #297"],
+    "RabbitHole PR #298": MERGED_CURRENT_PR_REQUIREMENTS["RabbitHole PR #298"],
+    "eatme PR #138": MERGED_CURRENT_PR_REQUIREMENTS["eatme PR #138"],
+    "amplihack-rs PR #571": MERGED_CURRENT_PR_REQUIREMENTS["amplihack-rs PR #571"],
+}
+
 STALE_STATUS_TERMS = [
     "review is still running",
     "waiting on coverage",
@@ -1686,15 +1659,6 @@ def section(text, heading):
     if not match:
         raise AssertionError(f"Missing section: {heading}")
     return match.group("body")
-
-
-def four_pr_metadata_table_rows():
-    return [
-        "| {repository} | {pr} | {status} | {merged_at} | {merged_by} | {merge_commit} | {head_sha} |".format(
-            **row
-        )
-        for row in FOUR_PR_MERGED_METADATA_TABLE
-    ]
 
 
 class DesktopRunDocsContractTest(unittest.TestCase):
@@ -2913,18 +2877,13 @@ class DesktopRunDocsContractTest(unittest.TestCase):
     def test_0129_current_merge_metadata_is_explicit(self):
         text = self.docs["atlas entry 0129"]
 
-        requirements = {
-            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
-            for key in [
-                "RabbitHole PR #297",
-                "RabbitHole PR #298",
-                "eatme PR #138",
-                "amplihack-rs PR #571",
-            ]
-        }
         self.assert_contains_all(text, FOUR_PR_MERGED_METADATA_LINKS, "atlas entry 0129")
         self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0129")
-        self.assert_current_merge_status_is_plain(text, "atlas entry 0129", requirements)
+        self.assert_current_merge_status_is_plain(
+            text,
+            "atlas entry 0129",
+            FOUR_PR_MERGED_METADATA_REQUIREMENTS,
+        )
         self.assert_no_stale_status_for_current_prs(text, "atlas entry 0129")
         self.assertIn("Repository", text)
         self.assertIn("PR number", text)
@@ -2932,13 +2891,14 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("merged-by user", text)
         self.assertIn("Repository values come from the fixed GitHub", text)
         self.assertIn("repository inputs and returned PR URLs", text)
-        self.assertIn("merged-by user = `mergedBy.login`", text)
+        self.assertIn("`number`", text)
+        self.assertIn("`state`", text)
+        self.assertIn("`mergedAt`", text)
+        self.assertIn("`mergedBy.login`", text)
         self.assertIn("merge commit SHA", text)
-        self.assertIn("merge commit SHA = `mergeCommit.oid`", text)
+        self.assertIn("`mergeCommit.oid`", text)
         self.assertIn("head SHA", text)
-        self.assertIn("head SHA = `headRefOid`", text)
-        for expected_row in four_pr_metadata_table_rows():
-            self.assertIn(expected_row, text)
+        self.assertIn("`headRefOid`", text)
         self.assertIn("does not describe implementation impact", text)
         self.assertIn("runtime behavior", text)
 
@@ -2952,11 +2912,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         ]
 
         self.assertEqual(
-            [
-                FOUR_PR_METADATA_TABLE_HEADER,
-                "| --- | --- | --- | --- | --- | --- | --- |",
-                *four_pr_metadata_table_rows(),
-            ],
+            FOUR_PR_MERGED_METADATA_TABLE_LINES,
             table_lines,
         )
 

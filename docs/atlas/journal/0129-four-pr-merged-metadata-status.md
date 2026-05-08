@@ -12,14 +12,9 @@ does not copy RabbitHole, eatme, amplihack-rs, or Alice source.
 
 Fields recorded: repository, PR number, status, merged timestamp, merged-by user,
 merge commit SHA, and head SHA. Repository values come from the fixed GitHub
-repository inputs and returned PR URLs. The other metadata values come from the
-GitHub CLI JSON fields listed below.
-
-GitHub field mapping:
-
-- merged-by user = `mergedBy.login`
-- merge commit SHA = `mergeCommit.oid`
-- head SHA = `headRefOid`
+repository inputs and returned PR URLs. PR number, status, timestamp, user, and
+SHA values come from GitHub CLI JSON fields `number`, `state`, `mergedAt`,
+`mergedBy.login`, `mergeCommit.oid`, and `headRefOid`.
 
 | Repository | PR | Status | Merged at | Merged by | Merge commit SHA | Head SHA |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -34,7 +29,7 @@ The table does not describe implementation impact, rollout, business value,
 downstream effects, or runtime behavior.
 
 No value is listed for any field outside the fixed repository inputs, returned
-PR URLs, or returned non-null metadata fields.
+PR URLs, or returned populated metadata fields.
 
 ## Traceability
 
