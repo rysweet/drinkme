@@ -92,7 +92,7 @@ flowchart TD
 
 ## What is partly working
 
-- Browser-side and desktop-side lesson checks provide useful signals, but they are not full Alice UI automation.
+- Lesson automation scenarios provide useful signals, but they are not full Alice UI automation.
 - Save-path work has selected-path, menu-dispatch, chooser, and component-level file-write evidence, but desktop Save menu-to-written-project completion is still missing.
 - Rendering work has surface, window, and blocker records, but not visible rendering correctness.
 - Scenario reports organize classroom-style coverage, but grading and creative assessment are not automated.
