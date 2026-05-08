@@ -2,13 +2,12 @@
 
 ## Summary
 
-This entry records a conservative status note for exactly four pull requests:
-RabbitHole PR #297, RabbitHole PR #298, eatme PR #138, and amplihack-rs PR #571.
+This entry records exactly four pull requests for cross-repository follow-up
+references: RabbitHole PR #297, RabbitHole PR #298, eatme PR #138, and
+amplihack-rs PR #571.
 
-This is a traceability entry for cross-repository follow-up references, not a
-claim that a feature has already been built. The status below is limited to what
-this drinkme entry confirms. Missing metadata is treated as unknown, not as
-evidence of success or failure.
+The status below is limited to what this drinkme entry confirms. Missing
+metadata is unknown, not evidence of success or failure.
 
 ## Status
 
@@ -24,8 +23,8 @@ The #138 row is for eatme only. This entry does not record RabbitHole PR #138.
 ## Non-confirmed items
 
 This entry does not state that any listed PR is merged, approved, complete,
-deployable, production-impacting, or ready. Those outcomes remain unknown unless
-a later update cites verified metadata.
+deployable, production-impacting, or ready. Outcomes remain unknown unless a
+later update cites verified metadata.
 
 ## Traceability
 

@@ -403,9 +403,7 @@ non-assignment body statements, method calls, for-each/count-up loops, construct
 while loops, resource field initializers, full player decode, and full Tweedle decode
 remain unproven. Visible rendering, grading, and first-lesson completion remain unproven.
 [atlas journal entry 0129 four-PR status](docs/atlas/journal/0129-four-pr-status-rabbithole-eatme-amplihack-rs.md)
-records conservative, unverified traceability for cross-repository follow-up
-references involving RabbitHole PR #297, RabbitHole PR #298, eatme PR #138, and
-amplihack-rs PR #571.
+records unverified status for RabbitHole PR #297, RabbitHole PR #298, eatme PR #138, and amplihack-rs PR #571.
 [atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)
 records that RabbitHole PR #292 adds `FileMenuSaveNavigationProofTest`. The test starts
 `StageIDE`, finds `FileMenuModel` inside the real `AliceMenuBar`, calls
