@@ -46,6 +46,11 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0129 - Four-PR merged metadata status](journal/0129-four-pr-merged-metadata-status.md)
+  records GitHub-verified merged metadata for RabbitHole PR #297, RabbitHole PR #298,
+  eatme PR #138, and amplihack-rs PR #571. Each row includes
+  repository, PR number, status `MERGED`, merged timestamp, merged-by user,
+  merge commit SHA, and head SHA.
 - [0128 - RabbitHole PR #293 WhileLoop decode status](journal/0128-rabbithole-pr293-while-loop-decode-status.md)
   records that RabbitHole PR #293 decodes Tweedle `while (condition) { ... }` to
   Alice `WhileLoop` in void method bodies. Supported conditions: Boolean literal,

@@ -51,6 +51,7 @@ ENTRY_0125 = ROOT / "docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-
 ENTRY_0126 = ROOT / "docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md"
 ENTRY_0127 = ROOT / "docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md"
 ENTRY_0128 = ROOT / "docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md"
+ENTRY_0129 = ROOT / "docs/atlas/journal/0129-four-pr-merged-metadata-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -120,6 +121,7 @@ DOCS = {
     "atlas entry 0126": ENTRY_0126,
     "atlas entry 0127": ENTRY_0127,
     "atlas entry 0128": ENTRY_0128,
+    "atlas entry 0129": ENTRY_0129,
 }
 
 README_PLAN_LINKS = [
@@ -171,6 +173,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0126](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)",
     "[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)",
     "[atlas journal entry 0128](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md)",
+    "[atlas journal entry 0129](docs/atlas/journal/0129-four-pr-merged-metadata-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -434,6 +437,56 @@ RABBITHOLE_PR293_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/293",
 ]
 
+FOUR_PR_MERGED_METADATA_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/297",
+    "https://github.com/rysweet/RabbitHole/pull/298",
+    "https://github.com/rysweet/eatme/pull/138",
+    "https://github.com/rysweet/amplihack-rs/pull/571",
+]
+
+FOUR_PR_MERGED_METADATA_TABLE = [
+    {
+        "repository": "`rysweet/RabbitHole`",
+        "pr": "[#297](https://github.com/rysweet/RabbitHole/pull/297)",
+        "status": "`MERGED`",
+        "merged_at": "`2026-05-08T04:39:11Z`",
+        "merged_by": "`rysweet`",
+        "merge_commit": "`527011aa8337222cddd05d23766edcac908a699b`",
+        "head_sha": "`59272ae077e3e614f3ef30a4b6b37140c8eb80f8`",
+    },
+    {
+        "repository": "`rysweet/RabbitHole`",
+        "pr": "[#298](https://github.com/rysweet/RabbitHole/pull/298)",
+        "status": "`MERGED`",
+        "merged_at": "`2026-05-08T02:32:51Z`",
+        "merged_by": "`rysweet`",
+        "merge_commit": "`fb9da28c2dcaf426b87699ffceebaba7093d994a`",
+        "head_sha": "`6bd52537504d0f88cd0fe6c1919e5a4134eca2a8`",
+    },
+    {
+        "repository": "`rysweet/eatme`",
+        "pr": "[#138](https://github.com/rysweet/eatme/pull/138)",
+        "status": "`MERGED`",
+        "merged_at": "`2026-05-08T02:13:51Z`",
+        "merged_by": "`rysweet`",
+        "merge_commit": "`b412458d6abf4d235dc03f4efb3debabd54e79d1`",
+        "head_sha": "`8cacd14cc51fc09cae20ee421f4bc4a8e285b751`",
+    },
+    {
+        "repository": "`rysweet/amplihack-rs`",
+        "pr": "[#571](https://github.com/rysweet/amplihack-rs/pull/571)",
+        "status": "`MERGED`",
+        "merged_at": "`2026-05-08T04:55:47Z`",
+        "merged_by": "`rysweet`",
+        "merge_commit": "`0af6f12824778fbff94627dae5da92b57beb6fc9`",
+        "head_sha": "`33582d27e8cac3f00cbd7e702a5304c34768d41a`",
+    },
+]
+
+FOUR_PR_METADATA_TABLE_HEADER = (
+    "| Repository | PR | Status | Merged at | Merged by | Merge commit SHA | Head SHA |"
+)
+
 RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS = (
     RABBITHOLE_PR278_WAVE_PR_LINKS + EATME_PR132_WAVE_PR_LINKS
 )
@@ -480,6 +533,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_PR291_WAVE_PR_LINKS
     + RABBITHOLE_PR292_WAVE_PR_LINKS
     + RABBITHOLE_PR293_WAVE_PR_LINKS
+    + FOUR_PR_MERGED_METADATA_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -1362,6 +1416,38 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "WhileLoop",
         "void method bodies",
     ],
+    "RabbitHole PR #297": [
+        "RabbitHole PR #297",
+        "rysweet/RabbitHole",
+        "MERGED",
+        "2026-05-08T04:39:11Z",
+        "527011aa8337222cddd05d23766edcac908a699b",
+        "59272ae077e3e614f3ef30a4b6b37140c8eb80f8",
+    ],
+    "RabbitHole PR #298": [
+        "RabbitHole PR #298",
+        "rysweet/RabbitHole",
+        "MERGED",
+        "2026-05-08T02:32:51Z",
+        "fb9da28c2dcaf426b87699ffceebaba7093d994a",
+        "6bd52537504d0f88cd0fe6c1919e5a4134eca2a8",
+    ],
+    "eatme PR #138": [
+        "eatme PR #138",
+        "rysweet/eatme",
+        "MERGED",
+        "2026-05-08T02:13:51Z",
+        "b412458d6abf4d235dc03f4efb3debabd54e79d1",
+        "8cacd14cc51fc09cae20ee421f4bc4a8e285b751",
+    ],
+    "amplihack-rs PR #571": [
+        "amplihack-rs PR #571",
+        "rysweet/amplihack-rs",
+        "MERGED",
+        "2026-05-08T04:55:47Z",
+        "0af6f12824778fbff94627dae5da92b57beb6fc9",
+        "33582d27e8cac3f00cbd7e702a5304c34768d41a",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1545,6 +1631,14 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?136",
     r"PR\s*#?291[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?291",
+    r"PR\s*#?297[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?297",
+    r"PR\s*#?298[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?298",
+    r"PR\s*#?138[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?138",
+    r"PR\s*#?571[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?571",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -1592,6 +1686,15 @@ def section(text, heading):
     if not match:
         raise AssertionError(f"Missing section: {heading}")
     return match.group("body")
+
+
+def four_pr_metadata_table_rows():
+    return [
+        "| {repository} | {pr} | {status} | {merged_at} | {merged_by} | {merge_commit} | {head_sha} |".format(
+            **row
+        )
+        for row in FOUR_PR_MERGED_METADATA_TABLE
+    ]
 
 
 class DesktopRunDocsContractTest(unittest.TestCase):
@@ -1685,6 +1788,16 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_merged_source_status_is_plain(plan_summary, "README plan summary")
         self.assert_no_stale_status_near_source_prs(plan_summary, "README plan summary")
         self.assert_no_stale_readme_table_status(self.docs["README"])
+        ordered_latest_entries = [
+            "[atlas journal entry 0124](docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-status.md)",
+            "[atlas journal entry 0125](docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md)",
+            "[atlas journal entry 0126](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)",
+            "[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)",
+            "[atlas journal entry 0128](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md)",
+            "[atlas journal entry 0129](docs/atlas/journal/0129-four-pr-merged-metadata-status.md)",
+        ]
+        ordered_positions = [plan_summary.index(entry) for entry in ordered_latest_entries]
+        self.assertEqual(sorted(ordered_positions), ordered_positions)
 
     def test_atlas_index_lists_recent_entries_once_with_bounded_summaries(self):
         text = self.docs["atlas index"]
@@ -1852,6 +1965,14 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0128_link = "journal/0128-rabbithole-pr293-while-loop-decode-status.md"
         self.assertEqual(1, text.count(entry_0128_link))
         self.assertIn("WhileLoop", text)
+        entry_0129_link = "journal/0129-four-pr-merged-metadata-status.md"
+        self.assertEqual(1, text.count(entry_0129_link))
+        self.assertIn("Four-PR merged metadata status", text)
+        self.assertIn("RabbitHole PR #297", text)
+        self.assertIn("RabbitHole PR #298", text)
+        self.assertIn("eatme PR #138", text)
+        self.assertIn("amplihack-rs PR #571", text)
+        self.assertIn("merge commit SHA", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -2788,6 +2909,92 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                 text = self.docs[name]
                 for term in forbidden_terms:
                     self.assertNotIn(term, text)
+
+    def test_0129_current_merge_metadata_is_explicit(self):
+        text = self.docs["atlas entry 0129"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #297",
+                "RabbitHole PR #298",
+                "eatme PR #138",
+                "amplihack-rs PR #571",
+            ]
+        }
+        self.assert_contains_all(text, FOUR_PR_MERGED_METADATA_LINKS, "atlas entry 0129")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0129")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0129", requirements)
+        self.assert_no_stale_status_for_current_prs(text, "atlas entry 0129")
+        self.assertIn("Repository", text)
+        self.assertIn("PR number", text)
+        self.assertIn("merged timestamp", text)
+        self.assertIn("merged-by user", text)
+        self.assertIn("Repository values come from the fixed GitHub", text)
+        self.assertIn("repository inputs and returned PR URLs", text)
+        self.assertIn("merged-by user = `mergedBy.login`", text)
+        self.assertIn("merge commit SHA", text)
+        self.assertIn("merge commit SHA = `mergeCommit.oid`", text)
+        self.assertIn("head SHA", text)
+        self.assertIn("head SHA = `headRefOid`", text)
+        for expected_row in four_pr_metadata_table_rows():
+            self.assertIn(expected_row, text)
+        self.assertIn("does not describe implementation impact", text)
+        self.assertIn("runtime behavior", text)
+
+    def test_0129_metadata_table_has_only_verified_columns_and_rows(self):
+        text = self.docs["atlas entry 0129"]
+        metadata_section = section(text, "Verified merged metadata")
+        table_lines = [
+            line
+            for line in metadata_section.splitlines()
+            if line.startswith("|") and line.endswith("|")
+        ]
+
+        self.assertEqual(
+            [
+                FOUR_PR_METADATA_TABLE_HEADER,
+                "| --- | --- | --- | --- | --- | --- | --- |",
+                *four_pr_metadata_table_rows(),
+            ],
+            table_lines,
+        )
+
+    def test_0129_metadata_table_omits_unverified_placeholder_values(self):
+        text = self.docs["atlas entry 0129"]
+        metadata_section = section(text, "Verified merged metadata")
+        table_lines = [
+            line
+            for line in metadata_section.splitlines()
+            if line.startswith("|") and line.endswith("|")
+        ][2:]
+
+        for row in table_lines:
+            with self.subTest(row=row):
+                cells = [cell.strip().strip("`").lower() for cell in row.strip("|").split("|")]
+                self.assertNotIn("", cells)
+                self.assertTrue(all(cell not in {"null", "none", "unknown", "tbd", "n/a"} for cell in cells))
+
+    def test_0129_status_entry_avoids_four_pr_overclaims(self):
+        text = plain(self.docs["atlas entry 0129"]).lower()
+        forbidden_claims = [
+            "implementation impact is",
+            "implementation impact:",
+            "rollout is",
+            "rollout:",
+            "business value is",
+            "business value:",
+            "downstream effects are",
+            "downstream effects:",
+            "runtime behavior is",
+            "runtime behavior:",
+            "proves runtime",
+            "proven runtime",
+        ]
+
+        for claim in forbidden_claims:
+            with self.subTest(claim=claim):
+                self.assertNotIn(claim, text)
 
 
 if __name__ == "__main__":

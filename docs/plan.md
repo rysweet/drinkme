@@ -546,6 +546,26 @@ network. Do not open issues or pull requests against
   loops, constructor body while loops, resource field initializers, full player
   decode, and full Tweedle decode remain unproven. Visible rendering, grading,
   and first-lesson completion remain unproven.
+- [RabbitHole PR #297](https://github.com/rysweet/RabbitHole/pull/297):
+  repository `rysweet/RabbitHole`; status `MERGED`; merged at
+  `2026-05-08T04:39:11Z`; merged by `rysweet`; merge commit SHA
+  `527011aa8337222cddd05d23766edcac908a699b`; head SHA
+  `59272ae077e3e614f3ef30a4b6b37140c8eb80f8`.
+- [RabbitHole PR #298](https://github.com/rysweet/RabbitHole/pull/298):
+  repository `rysweet/RabbitHole`; status `MERGED`; merged at
+  `2026-05-08T02:32:51Z`; merged by `rysweet`; merge commit SHA
+  `fb9da28c2dcaf426b87699ffceebaba7093d994a`; head SHA
+  `6bd52537504d0f88cd0fe6c1919e5a4134eca2a8`.
+- [eatme PR #138](https://github.com/rysweet/eatme/pull/138): repository
+  `rysweet/eatme`; status `MERGED`; merged at `2026-05-08T02:13:51Z`;
+  merged by `rysweet`; merge commit SHA
+  `b412458d6abf4d235dc03f4efb3debabd54e79d1`; head SHA
+  `8cacd14cc51fc09cae20ee421f4bc4a8e285b751`.
+- [amplihack-rs PR #571](https://github.com/rysweet/amplihack-rs/pull/571):
+  repository `rysweet/amplihack-rs`; status `MERGED`; merged at
+  `2026-05-08T04:55:47Z`; merged by `rysweet`; merge commit SHA
+  `0af6f12824778fbff94627dae5da92b57beb6fc9`; head SHA
+  `33582d27e8cac3f00cbd7e702a5304c34768d41a`.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

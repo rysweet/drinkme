@@ -385,34 +385,6 @@ logical `&&`, `||`, and `!` method returns fail clearly when the method declares
 non-Boolean return type; PR #289 is test-only and does not expand decode behavior.
 Full Tweedle/player decode, method calls, loops, conditionals, resource initializers,
 visible rendering, grading, and first-lesson completion remain unproven.
-[atlas journal entry 0126](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)
-records that RabbitHole PR #291 decodes Tweedle `if`/`else` statements in void method
-bodies into Alice `ConditionalStatement` with a `BooleanExpressionBodyPair` for the
-`if` branch and a plain else body. Adds 5 tests; RabbitHole CI all green; focused
-review CLEAN. Local declarations inside `if`/`else` bodies, nested `if`/`else`,
-loops, method calls, constructors, resource fields, full player decode, and full
-Tweedle decode remain unproven. Visible rendering, grading, and first-lesson
-completion remain unproven.
-[atlas journal entry 0128](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md)
-records that RabbitHole PR #293 decodes Tweedle `while (condition) { ... }` to Alice
-`WhileLoop` in void method bodies. Supported Boolean conditions: literal, parameter
-access, relational infix, and logical infix/not. Supported body: assignment-only
-statements; empty body accepted. 6 new tests; 109 total; all five CI checks passed;
-focused review returned CLEAN. Non-void method while loops, non-Boolean conditions,
-non-assignment body statements, method calls, for-each/count-up loops, constructor body
-while loops, resource field initializers, full player decode, and full Tweedle decode
-remain unproven. Visible rendering, grading, and first-lesson completion remain unproven.
-[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)
-records that RabbitHole PR #292 adds `FileMenuSaveNavigationProofTest`. The test starts
-`StageIDE`, finds `FileMenuModel` inside the real `AliceMenuBar`, calls
-`fileMenuModel.createMenu()` to build the actual `JMenu`, locates the `JMenuItem`
-backed by the same `Action` instance as `SaveProjectOperation`, calls `doClick()`, and
-checks that the evidence shows `status=menu_item_dispatched`, `menu_item_dispatch=true`,
-and `trigger_class=ActionEventTrigger`. All five RabbitHole CI checks passed; focused
-review returned CLEAN. The user physically clicking the on-screen File menu, full live
-FileDialog interaction with a confirmed file write, desktop save-menu completion from a
-real rendered click path, visible rendering correctness, grading, and first-lesson
-completion remain unproven.
 [atlas journal entry 0124](docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-status.md)
 records that RabbitHole PR #290 adds seven `SourceCodeGenerator` behavior
 characterization tests: while loop, null literal, logical complement, arithmetic infix,
@@ -425,6 +397,38 @@ missing RabbitHole hook path after the pixel chain in order: `place-object`,
 `edit-procedure-or-code-block`, `run-world`, `save-project`. 203 tests passed; CI is
 green. These hook messages do not prove full UI automation. Full Alice UI automation,
 visible rendering, grading, and first-lesson completion remain unproven.
+[atlas journal entry 0126](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)
+records that RabbitHole PR #291 decodes Tweedle `if`/`else` statements in void method
+bodies into Alice `ConditionalStatement` with a `BooleanExpressionBodyPair` for the
+`if` branch and a plain else body. Adds 5 tests; RabbitHole CI all green; focused
+review CLEAN. Local declarations inside `if`/`else` bodies, nested `if`/`else`,
+loops, method calls, constructors, resource fields, full player decode, and full
+Tweedle decode remain unproven. Visible rendering, grading, and first-lesson
+completion remain unproven.
+[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)
+records that RabbitHole PR #292 adds `FileMenuSaveNavigationProofTest`. The test starts
+`StageIDE`, finds `FileMenuModel` inside the real `AliceMenuBar`, calls
+`fileMenuModel.createMenu()` to build the actual `JMenu`, locates the `JMenuItem`
+backed by the same `Action` instance as `SaveProjectOperation`, calls `doClick()`, and
+checks that the evidence shows `status=menu_item_dispatched`, `menu_item_dispatch=true`,
+and `trigger_class=ActionEventTrigger`. All five RabbitHole CI checks passed; focused
+review returned CLEAN. The user physically clicking the on-screen File menu, full live
+FileDialog interaction with a confirmed file write, desktop save-menu completion from a
+real rendered click path, visible rendering correctness, grading, and first-lesson
+completion remain unproven.
+[atlas journal entry 0128](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md)
+records that RabbitHole PR #293 decodes Tweedle `while (condition) { ... }` to Alice
+`WhileLoop` in void method bodies. Supported Boolean conditions: literal, parameter
+access, relational infix, and logical infix/not. Supported body: assignment-only
+statements; empty body accepted. 6 new tests; 109 total; all five CI checks passed;
+focused review returned CLEAN. Non-void method while loops, non-Boolean conditions,
+non-assignment body statements, method calls, for-each/count-up loops, constructor body
+while loops, resource field initializers, full player decode, and full Tweedle decode
+remain unproven. Visible rendering, grading, and first-lesson completion remain unproven.
+[atlas journal entry 0129](docs/atlas/journal/0129-four-pr-merged-metadata-status.md)
+records GitHub-verified merged metadata for RabbitHole PR #297, RabbitHole PR #298,
+eatme PR #138, and amplihack-rs PR #571: repository, PR number, status `MERGED`,
+merged timestamp, merged-by user, merge commit SHA, and head SHA.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -553,6 +557,10 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #291](https://github.com/rysweet/RabbitHole/pull/291) | Merged at head `0f00c088f20e489b5b3c43bdbdc29e078dfb6b9b`. Decodes Tweedle `if`/`else` statements in void method bodies into Alice `ConditionalStatement` with a `BooleanExpressionBodyPair` and else body. Adds 5 tests; CI all green; focused review CLEAN. Local declarations in `if`/`else` bodies, nested `if`/`else`, loops, method calls, constructors, resource fields, full player decode, and full Tweedle decode remain unproven. Visible rendering, grading, and first-lesson completion remain unproven. |
 | [RabbitHole PR #292](https://github.com/rysweet/RabbitHole/pull/292) | Merged at `17e82091232131de7f1b2169638a2ea1a48fedfd`. Adds `FileMenuSaveNavigationProofTest`: starts `StageIDE`, finds `FileMenuModel` in the real `AliceMenuBar`, calls `fileMenuModel.createMenu()` to build the actual `JMenu`, locates the `JMenuItem` backed by the same `Action` instance as `SaveProjectOperation`, calls `doClick()`, and checks that evidence shows `status=menu_item_dispatched`, `menu_item_dispatch=true`, and `trigger_class=ActionEventTrigger`. All five CI checks passed; focused review returned CLEAN. The user physically clicking the on-screen File menu, desktop save-menu completion from a real rendered click path, full live FileDialog interaction with a confirmed file write, visible rendering correctness, grading, and first-lesson completion remain unproven. |
 | [RabbitHole PR #293](https://github.com/rysweet/RabbitHole/pull/293) | Merged at head `3696670873c6a409046ac6e648e828d95956aa8b`. Decodes Tweedle `while (condition) { ... }` to Alice `WhileLoop` in void method bodies. Supported Boolean conditions: literal, parameter access, relational infix, logical infix/not. Body: assignment-only statements; empty body accepted. 6 new tests; 109 total; 0 failures; all five CI checks passed; focused review returned CLEAN. Non-void method while loops, non-Boolean conditions, non-assignment body statements, method calls, for-each/count-up loops, constructor body while loops, resource field initializers, full player decode, and full Tweedle decode remain unproven. Visible rendering, grading, and first-lesson completion remain unproven. |
+| [RabbitHole PR #297](https://github.com/rysweet/RabbitHole/pull/297) | Repository `rysweet/RabbitHole`; status `MERGED`; merged at `2026-05-08T04:39:11Z`; merged by `rysweet`; merge commit SHA `527011aa8337222cddd05d23766edcac908a699b`; head SHA `59272ae077e3e614f3ef30a4b6b37140c8eb80f8`. |
+| [RabbitHole PR #298](https://github.com/rysweet/RabbitHole/pull/298) | Repository `rysweet/RabbitHole`; status `MERGED`; merged at `2026-05-08T02:32:51Z`; merged by `rysweet`; merge commit SHA `fb9da28c2dcaf426b87699ffceebaba7093d994a`; head SHA `6bd52537504d0f88cd0fe6c1919e5a4134eca2a8`. |
+| [eatme PR #138](https://github.com/rysweet/eatme/pull/138) | Repository `rysweet/eatme`; status `MERGED`; merged at `2026-05-08T02:13:51Z`; merged by `rysweet`; merge commit SHA `b412458d6abf4d235dc03f4efb3debabd54e79d1`; head SHA `8cacd14cc51fc09cae20ee421f4bc4a8e285b751`. |
+| [amplihack-rs PR #571](https://github.com/rysweet/amplihack-rs/pull/571) | Repository `rysweet/amplihack-rs`; status `MERGED`; merged at `2026-05-08T04:55:47Z`; merged by `rysweet`; merge commit SHA `0af6f12824778fbff94627dae5da92b57beb6fc9`; head SHA `33582d27e8cac3f00cbd7e702a5304c34768d41a`. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -563,7 +571,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, PR #270, PR #271, PR #272, PR #273, PR #274, PR #276, PR #277, PR #278, PR #281, PR #282, PR #284, PR #285, PR #287, PR #289, PR #290, PR #291, PR #292, PR #293, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, PR #126, PR #127, PR #129, PR #131, PR #132, PR #133, PR #134, PR #135, and PR #136
+PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, PR #270, PR #271, PR #272, PR #273, PR #274, PR #276, PR #277, PR #278, PR #281, PR #282, PR #284, PR #285, PR #287, PR #289, PR #290, PR #291, PR #292, PR #293, PR #297, PR #298, eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, PR #126, PR #127, PR #129, PR #131, PR #132, PR #133, PR #134, PR #135, PR #136, PR #138, and amplihack-rs PR #571
 merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full
@@ -826,6 +834,7 @@ Hard rules:
 | [RabbitHole PR #291 conditional statement decode status](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md) | RabbitHole PR #291 decodes Tweedle `if`/`else` statements in void method bodies into Alice `ConditionalStatement` with a `BooleanExpressionBodyPair` and else body. Adds 5 tests; CI all green; focused review CLEAN. Local declarations in `if`/`else` bodies, nested `if`/`else`, loops, method calls, constructors, resource fields, full player decode, and full Tweedle decode remain unproven. Visible rendering, grading, and first-lesson completion remain unproven. |
 | [RabbitHole PR #292 File menu save navigation proof status](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md) | RabbitHole PR #292 adds `FileMenuSaveNavigationProofTest`: starts `StageIDE`, finds `FileMenuModel` in the real `AliceMenuBar`, calls `fileMenuModel.createMenu()`, locates the `JMenuItem` backed by the same `Action` instance as `SaveProjectOperation`, calls `doClick()`, and checks that evidence shows `status=menu_item_dispatched`, `menu_item_dispatch=true`, and `trigger_class=ActionEventTrigger`. All five CI checks passed; focused review returned CLEAN. The user physically clicking the on-screen File menu, desktop save-menu completion from a real rendered click path, full live FileDialog interaction with a confirmed file write, visible rendering correctness, grading, and first-lesson completion remain unproven. |
 | [RabbitHole PR #293 WhileLoop decode status](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md) | RabbitHole PR #293 decodes Tweedle `while (condition) { ... }` to Alice `WhileLoop` in void method bodies. Supported Boolean conditions: literal, parameter access, relational infix, logical infix/not. Body: assignment-only statements; empty body accepted. 6 new tests; 109 total; 0 failures; all five CI checks passed; focused review returned CLEAN. Non-void method while loops, non-Boolean conditions, non-assignment body statements, method calls, for-each/count-up loops, constructor body while loops, resource field initializers, full player decode, and full Tweedle decode remain unproven. Visible rendering, grading, and first-lesson completion remain unproven. |
+| [Four-PR merged metadata status](docs/atlas/journal/0129-four-pr-merged-metadata-status.md) | GitHub-verified merged metadata for RabbitHole PR #297, RabbitHole PR #298, eatme PR #138, and amplihack-rs PR #571: repository, PR number, status `MERGED`, merged timestamp, merged-by user, merge commit SHA, and head SHA. |
 
 ## Tool and repository map
 

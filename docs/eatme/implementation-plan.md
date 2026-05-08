@@ -499,6 +499,26 @@ Second-pass review tightened the plan:
   loops, constructor body while loops, resource field initializers, full player
   decode, and full Tweedle decode remain unproven. Visible rendering, grading,
   and first-lesson completion remain unproven.
+- [RabbitHole PR #297](https://github.com/rysweet/RabbitHole/pull/297):
+  repository `rysweet/RabbitHole`; status `MERGED`; merged at
+  `2026-05-08T04:39:11Z`; merged by `rysweet`; merge commit SHA
+  `527011aa8337222cddd05d23766edcac908a699b`; head SHA
+  `59272ae077e3e614f3ef30a4b6b37140c8eb80f8`.
+- [RabbitHole PR #298](https://github.com/rysweet/RabbitHole/pull/298):
+  repository `rysweet/RabbitHole`; status `MERGED`; merged at
+  `2026-05-08T02:32:51Z`; merged by `rysweet`; merge commit SHA
+  `fb9da28c2dcaf426b87699ffceebaba7093d994a`; head SHA
+  `6bd52537504d0f88cd0fe6c1919e5a4134eca2a8`.
+- [eatme PR #138](https://github.com/rysweet/eatme/pull/138): repository
+  `rysweet/eatme`; status `MERGED`; merged at `2026-05-08T02:13:51Z`;
+  merged by `rysweet`; merge commit SHA
+  `b412458d6abf4d235dc03f4efb3debabd54e79d1`; head SHA
+  `8cacd14cc51fc09cae20ee421f4bc4a8e285b751`.
+- [amplihack-rs PR #571](https://github.com/rysweet/amplihack-rs/pull/571):
+  repository `rysweet/amplihack-rs`; status `MERGED`; merged at
+  `2026-05-08T04:55:47Z`; merged by `rysweet`; merge commit SHA
+  `0af6f12824778fbff94627dae5da92b57beb6fc9`; head SHA
+  `33582d27e8cac3f00cbd7e702a5304c34768d41a`.
 - RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, #267, #269, #270, #271, #272, #273, #274, #276, #277, #278, #281, #282, #284, #285, #287, #289, #290, #291, #292, and #293
   and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, #124, #125, #126, #127, #129, #131, #132, #133, #134, #135, and #136 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
