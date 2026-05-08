@@ -188,6 +188,8 @@ README_MISSING_TERMS = [
 README_FORBIDDEN_OVERCLAIMS = [
     "Alice UI automation is complete",
     "visible rendering correctness is proven",
+    "full Save completion",
+    "full desktop Save completion",
     "desktop Save completion is done",
     "grading works",
     "creative assessment works",
