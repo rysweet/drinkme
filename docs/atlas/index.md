@@ -46,6 +46,14 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0126 - RabbitHole PR #291 conditional statement decode status](journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)
+  records that RabbitHole PR #291 decodes Tweedle `if`/`else` statements in void
+  method bodies into Alice `ConditionalStatement` with a `BooleanExpressionBodyPair`
+  for the `if` branch and a plain else body. Adds 5 tests; CI all green; focused
+  review CLEAN. Local declarations in `if`/`else` bodies, nested `if`/`else`,
+  loops, method calls, constructors, resource fields, full player decode, and full
+  Tweedle decode remain unproven. Visible rendering, grading, and first-lesson
+  completion remain unproven.
 - [0125 - eatme PR #136 next-missing-real-desktop-proof hook path status](journal/0125-eatme-pr136-next-missing-hook-path-status.md)
   records that eatme PR #136 improves `next_missing_real_desktop_proof` to show
   the first missing RabbitHole hook path after the pixel chain in order:

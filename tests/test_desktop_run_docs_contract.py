@@ -48,6 +48,7 @@ ENTRY_0122 = ROOT / "docs/atlas/journal/0122-eatme-pr135-audio-camera-and-export
 ENTRY_0123 = ROOT / "docs/atlas/journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md"
 ENTRY_0124 = ROOT / "docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-status.md"
 ENTRY_0125 = ROOT / "docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md"
+ENTRY_0126 = ROOT / "docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -114,6 +115,7 @@ DOCS = {
     "atlas entry 0123": ENTRY_0123,
     "atlas entry 0124": ENTRY_0124,
     "atlas entry 0125": ENTRY_0125,
+    "atlas entry 0126": ENTRY_0126,
 }
 
 README_PLAN_LINKS = [
@@ -162,6 +164,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0123](docs/atlas/journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md)",
     "[atlas journal entry 0124](docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-status.md)",
     "[atlas journal entry 0125](docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md)",
+    "[atlas journal entry 0126](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -413,6 +416,10 @@ EATME_PR136_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/136",
 ]
 
+RABBITHOLE_PR291_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/291",
+]
+
 RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS = (
     RABBITHOLE_PR278_WAVE_PR_LINKS + EATME_PR132_WAVE_PR_LINKS
 )
@@ -456,6 +463,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_PR287_PR289_WAVE_PR_LINKS
     + RABBITHOLE_PR290_WAVE_PR_LINKS
     + EATME_PR136_WAVE_PR_LINKS
+    + RABBITHOLE_PR291_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -1310,6 +1318,16 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "run-world",
         "save-project",
     ],
+    "RabbitHole PR #291": [
+        "RabbitHole PR #291",
+        "Merged",
+        "0f00c088f20e489b5b3c43bdbdc29e078dfb6b9b",
+        "ConditionalStatement",
+        "BooleanExpressionBodyPair",
+        "if",
+        "void method bodies",
+        "Local declarations",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1491,6 +1509,8 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?290",
     r"PR\s*#?136[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?136",
+    r"PR\s*#?291[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?291",
 ]
 
 STALE_README_TABLE_STATUS_TERMS = [
@@ -1787,6 +1807,9 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0125_link = "journal/0125-eatme-pr136-next-missing-hook-path-status.md"
         self.assertEqual(1, text.count(entry_0125_link))
         self.assertIn("next_missing_real_desktop_proof", text)
+        entry_0126_link = "journal/0126-rabbithole-pr291-conditional-statement-decode-status.md"
+        self.assertEqual(1, text.count(entry_0126_link))
+        self.assertIn("ConditionalStatement", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -2645,6 +2668,25 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("run-world", text)
         self.assertIn("save-project", text)
         self.assertIn("203", text)
+
+    def test_0126_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0126"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #291",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR291_WAVE_PR_LINKS, "atlas entry 0126")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0126")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0126", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0126")
+        self.assertIn("0f00c088f20e489b5b3c43bdbdc29e078dfb6b9b", text)
+        self.assertIn("ConditionalStatement", text)
+        self.assertIn("BooleanExpressionBodyPair", text)
+        self.assertIn("void method bodies", text)
+        self.assertIn("Local declarations", text)
 
     def test_no_doc_uses_stale_repo_or_overclaim_language(self):
         forbidden_terms = [
