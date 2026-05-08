@@ -501,6 +501,14 @@ network. Do not open issues or pull requests against
   and `!` method returns fail clearly when the method declares a non-Boolean return
   type. Test-only; does not expand decode behavior. Full Tweedle/player decode,
   visible rendering, grading, and first-lesson completion remain unproven.
+- [RabbitHole PR #291](https://github.com/rysweet/RabbitHole/pull/291) merged at
+  head `0f00c088f20e489b5b3c43bdbdc29e078dfb6b9b`. Decodes Tweedle `if`/`else`
+  statements in void method bodies into Alice `ConditionalStatement` with a
+  `BooleanExpressionBodyPair` and else body. Adds 5 tests; CI all green; focused
+  review CLEAN. Local declarations inside `if`/`else` bodies, nested `if`/`else`,
+  loops, method calls, constructors, resource fields, full player decode, and full
+  Tweedle decode remain unproven. Visible rendering, grading, and first-lesson
+  completion remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

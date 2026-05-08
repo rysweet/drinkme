@@ -358,6 +358,15 @@ and `!` method returns fail clearly when the method declares a non-Boolean retur
 type. Test-only; does not expand decode behavior. Full Tweedle/player decode,
 visible rendering, grading, and first-lesson completion remain unproven.
 
+[RabbitHole PR #291](https://github.com/rysweet/RabbitHole/pull/291) merged at
+head `0f00c088f20e489b5b3c43bdbdc29e078dfb6b9b`. Decodes Tweedle `if`/`else`
+statements in void method bodies into Alice `ConditionalStatement` with a
+`BooleanExpressionBodyPair` and else body. Adds 5 tests; CI all green; focused
+review CLEAN. Local declarations inside `if`/`else` bodies, nested `if`/`else`,
+loops, method calls, constructors, resource fields, full player decode, and full
+Tweedle decode remain unproven. Visible rendering, grading, and first-lesson
+completion remain unproven.
+
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and

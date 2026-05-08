@@ -377,6 +377,14 @@ Gadugi adapter; scenario asset count grew from 91 to 93. No remaining scenario g
 from the list in `docs/persona-assets.md` and `assets/personas/alice-user-crew.yaml`.
 Grading, automated creative assessment, real Alice UI automation, and full lesson
 delivery remain unproven.
+[atlas journal entry 0124](docs/atlas/journal/0124-rabbithole-pr291-conditional-statement-decode-status.md)
+records that RabbitHole PR #291 decodes Tweedle `if`/`else` statements in void method
+bodies into Alice `ConditionalStatement` with a `BooleanExpressionBodyPair` for the
+`if` branch and a plain else body. Adds 5 tests; RabbitHole CI all green; focused
+review CLEAN. Local declarations inside `if`/`else` bodies, nested `if`/`else`,
+loops, method calls, constructors, resource fields, full player decode, and full
+Tweedle decode remain unproven. Visible rendering, grading, and first-lesson
+completion remain unproven.
 [atlas journal entry 0123](docs/atlas/journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md)
 records that RabbitHole PR #287 decodes Tweedle logical expressions: `&&` and `||`
 to `ConditionalInfixExpression` and `!` to `LogicalComplement`, in local initializers,
@@ -508,6 +516,7 @@ All referenced source and status PRs have merged:
 | [eatme PR #135](https://github.com/rysweet/eatme/pull/135) | Merged at `8f82d682aef4d22c3ca4e7bdc4344cae660b13bd`. Adds the `audio-camera-and-export-sharecase` instructor/student scenario and Gadugi adapter; scenario asset count grew from 91 to 93. No remaining scenario gaps from the list in `docs/persona-assets.md` and `assets/personas/alice-user-crew.yaml`. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [RabbitHole PR #287](https://github.com/rysweet/RabbitHole/pull/287) | Merged at `198b482733f3fcb9ae7ecfc5479027393f21cf71`. Decodes Tweedle logical expressions: `&&` and `||` to `ConditionalInfixExpression`; `!` to `LogicalComplement`. Covers local variable initializers, assignment right-hand-side positions, and method return expressions. Full Tweedle/player decode, method calls, loops, conditionals, resource initializers, visible rendering, grading, and first-lesson completion remain unproven. |
 | [RabbitHole PR #289](https://github.com/rysweet/RabbitHole/pull/289) | Merged at `cc119baebb4dd5ad775ac497c9f2318b9f8d2add`. Adds tests that logical `&&`, `||`, and `!` method returns fail clearly when the method declares a non-Boolean return type. Test-only; does not expand decode behavior. Full Tweedle/player decode, visible rendering, grading, and first-lesson completion remain unproven. |
+| [RabbitHole PR #291](https://github.com/rysweet/RabbitHole/pull/291) | Merged at head `0f00c088f20e489b5b3c43bdbdc29e078dfb6b9b`. Decodes Tweedle `if`/`else` statements in void method bodies into Alice `ConditionalStatement` with a `BooleanExpressionBodyPair` and else body. Adds 5 tests; CI all green; focused review CLEAN. Local declarations in `if`/`else` bodies, nested `if`/`else`, loops, method calls, constructors, resource fields, full player decode, and full Tweedle decode remain unproven. Visible rendering, grading, and first-lesson completion remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -518,7 +527,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, PR #270, PR #271, PR #272, PR #273, PR #274, PR #276, PR #277, PR #278, PR #281, PR #282, PR #284, PR #285, PR #287, PR #289, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, PR #126, PR #127, PR #129, PR #131, PR #132, PR #133, PR #134, and PR #135
+PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, PR #270, PR #271, PR #272, PR #273, PR #274, PR #276, PR #277, PR #278, PR #281, PR #282, PR #284, PR #285, PR #287, PR #289, PR #291, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, PR #126, PR #127, PR #129, PR #131, PR #132, PR #133, PR #134, and PR #135
 merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full
@@ -776,6 +785,7 @@ Hard rules:
 | [eatme PR #134 setup-preflight-ready-to-create scenario status](docs/atlas/journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md) | eatme PR #134 adds `setup-preflight-ready-to-create` (assets 89→91). Remaining missing: audio-camera-and-export-sharecase. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [eatme PR #135 audio-camera-and-export-sharecase scenario status](docs/atlas/journal/0122-eatme-pr135-audio-camera-and-export-sharecase-status.md) | eatme PR #135 adds `audio-camera-and-export-sharecase` (assets 91→93). No remaining scenario gaps from the list in `docs/persona-assets.md` and `assets/personas/alice-user-crew.yaml`. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [RabbitHole PR #287 and PR #289 logical expression decode status](docs/atlas/journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md) | RabbitHole PR #287 decodes `&&` and `||` to `ConditionalInfixExpression` and `!` to `LogicalComplement` in local initializers, assignment right-hand sides, and method returns. PR #289 adds tests that logical expressions fail clearly for non-Boolean return types; test-only, no new decode behavior. Full Tweedle/player decode, visible rendering, grading, and first-lesson completion remain unproven. |
+| [RabbitHole PR #291 conditional statement decode status](docs/atlas/journal/0124-rabbithole-pr291-conditional-statement-decode-status.md) | RabbitHole PR #291 decodes Tweedle `if`/`else` statements in void method bodies into Alice `ConditionalStatement` with a `BooleanExpressionBodyPair` and else body. Adds 5 tests; CI all green; focused review CLEAN. Local declarations in `if`/`else` bodies, nested `if`/`else`, loops, method calls, constructors, resource fields, full player decode, and full Tweedle decode remain unproven. Visible rendering, grading, and first-lesson completion remain unproven. |
 
 ## Tool and repository map
 

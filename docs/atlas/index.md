@@ -46,6 +46,14 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0124 - RabbitHole PR #291 conditional statement decode status](journal/0124-rabbithole-pr291-conditional-statement-decode-status.md)
+  records that RabbitHole PR #291 decodes Tweedle `if`/`else` statements in void
+  method bodies into Alice `ConditionalStatement` with a `BooleanExpressionBodyPair`
+  for the `if` branch and a plain else body. Adds 5 tests; CI all green; focused
+  review CLEAN. Local declarations in `if`/`else` bodies, nested `if`/`else`, loops,
+  method calls, constructors, resource fields, full player decode, and full Tweedle
+  decode remain unproven. Visible rendering, grading, and first-lesson completion
+  remain unproven.
 - [0123 - RabbitHole PR #287 and PR #289 logical expression decode status](journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md)
   records that RabbitHole PR #287 decodes `&&` and `||` to `ConditionalInfixExpression`
   and `!` to `LogicalComplement` in local initializers, assignment right-hand sides, and
