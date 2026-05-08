@@ -395,6 +395,18 @@ on-screen File menu, desktop save-menu completion from a real rendered click pat
 full live FileDialog interaction with a confirmed file write, visible rendering
 correctness, grading, and first-lesson completion remain unproven.
 
+[RabbitHole PR #293](https://github.com/rysweet/RabbitHole/pull/293) merged at
+head `3696670873c6a409046ac6e648e828d95956aa8b`. Decodes Tweedle
+`while (condition) { ... }` to Alice `WhileLoop` in void method bodies.
+Supported Boolean conditions: literal, parameter access, relational infix,
+logical infix/not. Supported body: assignment-only statements; empty body
+accepted. 6 new tests; 109 total; 0 failures; all five CI checks passed;
+focused review returned CLEAN. Non-void method while loops, non-Boolean
+conditions, non-assignment body statements, method calls, for-each/count-up
+loops, constructor body while loops, resource field initializers, full player
+decode, and full Tweedle decode remain unproven. Visible rendering, grading,
+and first-lesson completion remain unproven.
+
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and
