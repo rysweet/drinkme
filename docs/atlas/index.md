@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0123 - RabbitHole PR #287 and PR #289 logical expression decode status](journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md)
+  records that RabbitHole PR #287 decodes `&&` and `||` to `ConditionalInfixExpression`
+  and `!` to `LogicalComplement` in local initializers, assignment right-hand sides, and
+  method returns. PR #289 adds tests that logical expressions fail clearly for
+  non-Boolean return types; test-only, no new decode behavior. Full Tweedle/player
+  decode, visible rendering, grading, and first-lesson completion remain unproven.
 - [0122 - eatme PR #135 audio-camera-and-export-sharecase scenario status](journal/0122-eatme-pr135-audio-camera-and-export-sharecase-status.md)
   records that eatme PR #135 adds the `audio-camera-and-export-sharecase` scenario and
   Gadugi adapter; scenario asset count grew from 91 to 93. No remaining scenario gaps

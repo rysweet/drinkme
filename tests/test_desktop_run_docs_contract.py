@@ -45,6 +45,7 @@ ENTRY_0119 = ROOT / "docs/atlas/journal/0119-rabbithole-pr284-save-proof-orderin
 ENTRY_0120 = ROOT / "docs/atlas/journal/0120-rabbithole-pr285-atapi-main-window-post-project-open-status.md"
 ENTRY_0121 = ROOT / "docs/atlas/journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md"
 ENTRY_0122 = ROOT / "docs/atlas/journal/0122-eatme-pr135-audio-camera-and-export-sharecase-status.md"
+ENTRY_0123 = ROOT / "docs/atlas/journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -108,6 +109,7 @@ DOCS = {
     "atlas entry 0120": ENTRY_0120,
     "atlas entry 0121": ENTRY_0121,
     "atlas entry 0122": ENTRY_0122,
+    "atlas entry 0123": ENTRY_0123,
 }
 
 README_PLAN_LINKS = [
@@ -153,6 +155,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0120](docs/atlas/journal/0120-rabbithole-pr285-atapi-main-window-post-project-open-status.md)",
     "[atlas journal entry 0121](docs/atlas/journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md)",
     "[atlas journal entry 0122](docs/atlas/journal/0122-eatme-pr135-audio-camera-and-export-sharecase-status.md)",
+    "[atlas journal entry 0123](docs/atlas/journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -391,6 +394,11 @@ EATME_PR135_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/135",
 ]
 
+RABBITHOLE_PR287_PR289_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/287",
+    "https://github.com/rysweet/RabbitHole/pull/289",
+]
+
 RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS = (
     RABBITHOLE_PR278_WAVE_PR_LINKS + EATME_PR132_WAVE_PR_LINKS
 )
@@ -431,6 +439,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_PR285_WAVE_PR_LINKS
     + EATME_PR134_WAVE_PR_LINKS
     + EATME_PR135_WAVE_PR_LINKS
+    + RABBITHOLE_PR287_PR289_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -1252,6 +1261,19 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "8f82d682aef4d22c3ca4e7bdc4344cae660b13bd",
         "audio-camera-and-export-sharecase",
         "93",
+    ],
+    "RabbitHole PR #287": [
+        "RabbitHole PR #287",
+        "Merged",
+        "198b482733f3fcb9ae7ecfc5479027393f21cf71",
+        "ConditionalInfixExpression",
+        "LogicalComplement",
+    ],
+    "RabbitHole PR #289": [
+        "RabbitHole PR #289",
+        "Merged",
+        "cc119baebb4dd5ad775ac497c9f2318b9f8d2add",
+        "non-Boolean",
     ],
 }
 
@@ -2514,6 +2536,26 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("8f82d682aef4d22c3ca4e7bdc4344cae660b13bd", text)
         self.assertIn("audio-camera-and-export-sharecase", text)
         self.assertIn("93", text)
+
+    def test_0123_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0123"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #287",
+                "RabbitHole PR #289",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR287_PR289_WAVE_PR_LINKS, "atlas entry 0123")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0123")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0123", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0123")
+        self.assertIn("198b482733f3fcb9ae7ecfc5479027393f21cf71", text)
+        self.assertIn("cc119baebb4dd5ad775ac497c9f2318b9f8d2add", text)
+        self.assertIn("ConditionalInfixExpression", text)
+        self.assertIn("LogicalComplement", text)
+        self.assertIn("non-Boolean", text)
 
     def test_no_doc_uses_stale_repo_or_overclaim_language(self):
         forbidden_terms = [

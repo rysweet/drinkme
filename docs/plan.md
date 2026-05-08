@@ -489,6 +489,18 @@ network. Do not open issues or pull requests against
   from the list in `docs/persona-assets.md` and
   `assets/personas/alice-user-crew.yaml`. Grading, automated creative
   assessment, real Alice UI automation, and full lesson delivery remain unproven.
+- [RabbitHole PR #287](https://github.com/rysweet/RabbitHole/pull/287) merged at
+  `198b482733f3fcb9ae7ecfc5479027393f21cf71`. Decodes Tweedle logical expressions:
+  `&&` and `||` to `ConditionalInfixExpression`; `!` to `LogicalComplement`.
+  Covers local variable initializers, assignment right-hand-side positions, and
+  method return expressions. Full Tweedle/player decode, method calls, loops,
+  conditionals, resource initializers, visible rendering, grading, and
+  first-lesson completion remain unproven.
+- [RabbitHole PR #289](https://github.com/rysweet/RabbitHole/pull/289) merged at
+  `cc119baebb4dd5ad775ac497c9f2318b9f8d2add`. Adds tests that logical `&&`, `||`,
+  and `!` method returns fail clearly when the method declares a non-Boolean return
+  type. Test-only; does not expand decode behavior. Full Tweedle/player decode,
+  visible rendering, grading, and first-lesson completion remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.
