@@ -10,21 +10,25 @@ live in the linked docs.
 ## Plan summary
 
 The modernization loop is simple: protect current Alice behavior with focused
-checks, use the evidence to refactor RabbitHole in small steps, compare scenario
-outcomes and gaps in eatme, and keep drinkme as the status-and-evidence index.
+checks, use the evidence to refactor the source in small steps, compare
+automation scenario outcomes and gaps, and keep drinkme as the status and
+evidence index.
 
 ## How the work runs
 
-RabbitHole runs behavior-test-before-refactor, eatme runs scenario comparison, and drinkme runs plan/status/evidence tracking. Use the plan to explain intent, status to show what is happening now, and evidence to make the result reviewable.
+The source modernization work runs behavior checks before refactors, the
+scenario work compares Alice outcomes, and drinkme tracks plan, status, and
+evidence. Use the plan to explain intent, status to show what is happening now,
+and evidence to make the result reviewable.
 
-### RabbitHole behavior-test-before-refactor loop
+### Source behavior-test-before-refactor loop
 ```mermaid
 flowchart LR
-  Check["Behavior check"] --> Evidence["Capture evidence"] --> Refactor["Refactor one RabbitHole slice"] --> Repeat["Run the check again"]
+  Check["Behavior check"] --> Evidence["Capture evidence"] --> Refactor["Refactor one source slice"] --> Repeat["Run the check again"]
   Repeat -->|new evidence| Check
 ```
 
-### eatme scenario comparison loop
+### Automation scenario comparison loop
 ```mermaid
 flowchart LR
   Scenarios["Define automation scenarios"] --> Compare["Compare Alice outcomes"] --> Gaps["Record remaining gaps"] --> Next["Choose next scenario"]
@@ -41,8 +45,9 @@ flowchart LR
 ## Current verdict
 
 The modernization is active and useful, but unfinished. The repository now has
-documentation checks, scenario inventories, readiness reports, source evidence
-for selected Alice areas, and diagrams that make the work easier to navigate.
+documentation checks, linked status docs, automation scenario coverage,
+readiness reports, source evidence for selected Alice areas, and diagrams that
+make the work easier to navigate.
 
 Use drinkme as a map and status index. Do not read it as a claim that Alice
 modernization, classroom assessment, UI automation, rendering, or coverage goals
@@ -75,7 +80,7 @@ flowchart TD
 | Current status | Summarizes what is complete, partial, and still open. | [Current state and next steps](docs/modernization/current-state-and-next-steps.md) |
 | Full-scope status | Keeps the broader modernization boundary explicit. | [Restarted full-scope status](docs/modernization/restarted-full-scope-status.md) |
 | Atlas | Maps repository structure, startup flow, and test roadmap. | [Atlas index](docs/atlas/index.md) |
-| Scenarios | Tracks planned user and classroom-style checks. | [eatme implementation plan](docs/eatme/implementation-plan.md) |
+| Scenarios | Tracks planned user and classroom-style checks. | [Scenario implementation plan](docs/eatme/implementation-plan.md) |
 
 ## What works now
 
@@ -87,7 +92,7 @@ flowchart TD
 
 ## What is partly working
 
-- Browser-side and desktop-side lesson checks provide useful signals, but they are not full Alice UI automation.
+- Lesson automation scenarios provide useful signals, but they are not full Alice UI automation.
 - Save-path work has selected-path, menu-dispatch, chooser, and component-level file-write evidence, but desktop Save menu-to-written-project completion is still missing.
 - Rendering work has surface, window, and blocker records, but not visible rendering correctness.
 - Scenario reports organize classroom-style coverage, but grading and creative assessment are not automated.
@@ -141,7 +146,7 @@ flowchart LR
 - [Investigation plan](docs/plan.md)
 - [Current state and next steps](docs/modernization/current-state-and-next-steps.md)
 - [Restarted full-scope status](docs/modernization/restarted-full-scope-status.md)
-- [eatme implementation plan](docs/eatme/implementation-plan.md)
+- [Scenario implementation plan](docs/eatme/implementation-plan.md)
 - [Atlas index](docs/atlas/index.md)
 - [Repository surface diagram](docs/atlas/diagrams/repo-surface-mermaid.svg) and
   [source](docs/atlas/diagrams/repo-surface.mmd)
@@ -157,4 +162,4 @@ For the shortest status read, open
 For the overall work order, read the [investigation plan](docs/plan.md). For
 structure and diagrams, use the [atlas index](docs/atlas/index.md). For the
 scenario and comparison-runner side, read the
-[eatme implementation plan](docs/eatme/implementation-plan.md).
+[scenario implementation plan](docs/eatme/implementation-plan.md).
