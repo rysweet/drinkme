@@ -165,7 +165,7 @@ Covered areas include:
 ## Important findings
 
 - Characterization is still early relative to the size of Alice.
-- Current coverage is far below the 70% target; the latest coverage run completed successfully, but 70 percent aggregate coverage remains unproven.
+- Current coverage is far below the 70% target; the latest coverage run completed successfully, but 70 percent aggregate coverage remains a target, not a result.
 - Many production classes still exceed the desired 500-line target; the latest reported hotspot count found 52 Java files over 500 lines.
 - NetBeans Java export is a high-value seam because it is both compatibility-sensitive and teaching-facing.
 - Model resource export now has its first active no-Sims characterization, but only for XML serialization and generated resource Java compilation.
@@ -203,8 +203,8 @@ Covered areas include:
 - Loop 63 extended that pattern: implementation tracks ran in parallel, but integration remained serialized and CI-checked after each meaningful merge.
 - Loop 64 recovery/integration completed the crash-resume work:
   - Alice `develop` integrated formal specs/recovery contracts, source save/export tests, Story IO/NetBeans quality fixes, outside-in QA hardening, Wave2 Story JSON boundaries, Wave2 NetBeans export harness, and Wave2 outside-in QA scenarios.
-   - The scenario repository integrated the Building-a-Scene and Code Editor first-run lesson check tracks.
-  - `gadugi-agentic-test` `main` integrated the `cwd`/`workingDirectory` scenario command fix.
+  - The scenario repository integrated the Building-a-Scene and Code Editor first-run lesson check tracks.
+  - Supporting scenario-runner tooling integrated the `cwd`/`workingDirectory` scenario command fix.
 - Code-atlas and crusty review branches remained outside Alice source and were routed to drinkme artifacts instead.
 
 - `tweedle-lang` is a required git submodule for `core/tweedle` ANTLR parser generation. Missing it in worktrees causes `TweedleParser`/`TweedleParserBaseVisitor` compile failures; see `docs/build-baseline/submodule-working-guide.md`.

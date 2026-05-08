@@ -152,16 +152,24 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         for term in FORBIDDEN_READER_JARGON:
             self.assertNotRegex(
                 prose,
-                rf"\b{re.escape(term)}\b",
+                rf"(?i)\b{re.escape(term)}\b",
                 f"{source} uses avoidable internal or test jargon: {term}",
             )
         for claim in FORBIDDEN_OVERCLAIMS:
             self.assertNotIn(claim.lower(), plain(prose).lower())
         self.assertNotRegex(
             prose,
-            r"(?i)\bproven\b",
+            r"(?i)\bunproven\b|\bproven\b",
             f"{source} should not use Proven/proven as user-facing status wording",
         )
+
+    def test_user_facing_docs_use_plain_status_language(self):
+        for name, path in USER_FACING_DOCS.items():
+            with self.subTest(document=name):
+                self.assert_user_facing_status_is_plain(
+                    path.read_text(encoding="utf-8"),
+                    name,
+                )
 
     def test_readme_is_concise_linked_and_diagram_preserving(self):
         readme = self.docs["README"]
