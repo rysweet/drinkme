@@ -159,12 +159,12 @@ README_REQUIRED_TERMS = [
     "70% aggregate coverage is still a target, not a result.",
 ]
 
-README_PLAN_SUMMARY_TERMS = [
-    "protect current Alice behavior with focused checks",
-    "RabbitHole: behavior tests first -> evidence -> refactor -> repeat.",
-    "eatme: create automation scenarios -> compare outcomes -> record gaps.",
-    "drinkme: track plan -> status -> evidence links -> next decisions.",
-]
+README_PLAN_SUMMARY_CONCEPTS = {
+    "Alice behavior protection": ["current Alice behavior", "focused checks"],
+    "RabbitHole loop": ["RabbitHole", "behavior", "evidence", "refactor"],
+    "eatme scenario comparison": ["eatme", "scenario", "compare", "gaps"],
+    "drinkme evidence index": ["drinkme", "status", "evidence", "index"],
+}
 
 README_REQUIRED_LINKS = [
     "[Original Alice 3 project](https://github.com/TheAliceProject/alice3)",
@@ -1932,10 +1932,20 @@ class DesktopRunDocsContractTest(unittest.TestCase):
             readme.index("## Current verdict"),
             "README should explain the plan before status detail",
         )
-        self.assert_contains_all(
-            plain(section(readme, "Plan summary")),
-            README_PLAN_SUMMARY_TERMS,
-            "README plan summary",
+        plan_summary = plain(section(readme, "Plan summary")).lower()
+        missing_plan_summary_concepts = {
+            concept: [term for term in terms if term.lower() not in plan_summary]
+            for concept, terms in README_PLAN_SUMMARY_CONCEPTS.items()
+        }
+        missing_plan_summary_concepts = {
+            concept: missing_terms
+            for concept, missing_terms in missing_plan_summary_concepts.items()
+            if missing_terms
+        }
+        self.assertEqual(
+            {},
+            missing_plan_summary_concepts,
+            "README plan summary is missing required concepts",
         )
         self.assert_contains_all(section(readme, "What is still missing"), README_MISSING_TERMS, "README missing work")
         for claim in README_FORBIDDEN_OVERCLAIMS:

@@ -9,13 +9,13 @@ live in the linked docs.
 
 ## Plan summary
 
-The modernization plan is simple: protect current Alice behavior with focused
-checks, refactor RabbitHole in small steps, compare scenario outcomes in eatme,
-and keep drinkme as the status-and-evidence index.
+The planned modernization loop is simple: protect current Alice behavior with
+focused checks, use the evidence to refactor RabbitHole in small steps, compare
+scenario outcomes in eatme, and keep drinkme as the status-and-evidence index.
 
-- RabbitHole: behavior tests first -> evidence -> refactor -> repeat.
-- eatme: create automation scenarios -> compare outcomes -> record gaps.
-- drinkme: track plan -> status -> evidence links -> next decisions.
+- RabbitHole: add behavior checks -> capture evidence -> refactor one slice -> repeat.
+- eatme: define automation scenarios -> compare Alice outcomes -> record the remaining gaps.
+- drinkme: summarize the plan -> show current status -> link evidence -> guide decisions.
 
 ## Current verdict
 
