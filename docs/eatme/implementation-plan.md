@@ -477,7 +477,18 @@ Second-pass review tightened the plan:
   loops, method calls, constructors, resource fields, full player decode, and full
   Tweedle decode remain unproven. Visible rendering, grading, and first-lesson
   completion remain unproven.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, #267, #269, #270, #271, #272, #273, #274, #276, #277, #278, #281, #282, #284, #285, #287, #289, #290, and #291
+- [RabbitHole PR #292](https://github.com/rysweet/RabbitHole/pull/292) merged at
+  `17e82091232131de7f1b2169638a2ea1a48fedfd`. Adds `FileMenuSaveNavigationProofTest`:
+  starts `StageIDE`, finds `FileMenuModel` in the real `AliceMenuBar`, calls
+  `fileMenuModel.createMenu()` to build the actual `JMenu`, locates the `JMenuItem`
+  backed by the same `Action` instance as `SaveProjectOperation`, calls `doClick()`,
+  and checks that evidence shows `status=menu_item_dispatched`,
+  `menu_item_dispatch=true`, and `trigger_class=ActionEventTrigger`. All five CI
+  checks passed; focused review returned CLEAN. The user physically clicking the
+  on-screen File menu, desktop save-menu completion from a real rendered click path,
+  full live FileDialog interaction with a confirmed file write, visible rendering
+  correctness, grading, and first-lesson completion remain unproven.
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, #267, #269, #270, #271, #272, #273, #274, #276, #277, #278, #281, #282, #284, #285, #287, #289, #290, #291, and #292
   and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, #124, #125, #126, #127, #129, #131, #132, #133, #134, #135, and #136 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
   completion, native FileDialog peer control, project selection or opening,

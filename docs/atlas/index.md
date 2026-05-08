@@ -46,6 +46,17 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0127 - RabbitHole PR #292 File menu save navigation proof status](journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)
+  records that RabbitHole PR #292 adds `FileMenuSaveNavigationProofTest`. The test
+  starts `StageIDE`, finds `FileMenuModel` inside the real `AliceMenuBar`, calls
+  `fileMenuModel.createMenu()` to build the actual `JMenu`, locates the `JMenuItem`
+  backed by the same `Action` instance as `SaveProjectOperation`, calls `doClick()`,
+  and checks that the evidence shows `status=menu_item_dispatched`,
+  `menu_item_dispatch=true`, and `trigger_class=ActionEventTrigger`. All five
+  RabbitHole CI checks passed; focused review returned CLEAN. The user physically
+  clicking the on-screen File menu, desktop save-menu completion from a real rendered
+  click path, full live FileDialog interaction with a confirmed file write, visible
+  rendering correctness, grading, and first-lesson completion remain unproven.
 - [0126 - RabbitHole PR #291 conditional statement decode status](journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)
   records that RabbitHole PR #291 decodes Tweedle `if`/`else` statements in void
   method bodies into Alice `ConditionalStatement` with a `BooleanExpressionBodyPair`

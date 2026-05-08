@@ -49,6 +49,7 @@ ENTRY_0123 = ROOT / "docs/atlas/journal/0123-rabbithole-pr287-pr289-logical-expr
 ENTRY_0124 = ROOT / "docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-status.md"
 ENTRY_0125 = ROOT / "docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md"
 ENTRY_0126 = ROOT / "docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md"
+ENTRY_0127 = ROOT / "docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -116,6 +117,7 @@ DOCS = {
     "atlas entry 0124": ENTRY_0124,
     "atlas entry 0125": ENTRY_0125,
     "atlas entry 0126": ENTRY_0126,
+    "atlas entry 0127": ENTRY_0127,
 }
 
 README_PLAN_LINKS = [
@@ -165,6 +167,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0124](docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-status.md)",
     "[atlas journal entry 0125](docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md)",
     "[atlas journal entry 0126](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)",
+    "[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -420,6 +423,10 @@ RABBITHOLE_PR291_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/291",
 ]
 
+RABBITHOLE_PR292_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/292",
+]
+
 RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS = (
     RABBITHOLE_PR278_WAVE_PR_LINKS + EATME_PR132_WAVE_PR_LINKS
 )
@@ -464,6 +471,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_PR290_WAVE_PR_LINKS
     + EATME_PR136_WAVE_PR_LINKS
     + RABBITHOLE_PR291_WAVE_PR_LINKS
+    + RABBITHOLE_PR292_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -1328,6 +1336,17 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "void method bodies",
         "Local declarations",
     ],
+    "RabbitHole PR #292": [
+        "RabbitHole PR #292",
+        "Merged",
+        "17e82091",
+        "FileMenuSaveNavigationProofTest",
+        "FileMenuModel",
+        "AliceMenuBar",
+        "SaveProjectOperation",
+        "menu_item_dispatched",
+        "ActionEventTrigger",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1810,6 +1829,11 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0126_link = "journal/0126-rabbithole-pr291-conditional-statement-decode-status.md"
         self.assertEqual(1, text.count(entry_0126_link))
         self.assertIn("ConditionalStatement", text)
+        entry_0127_link = "journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md"
+        self.assertEqual(1, text.count(entry_0127_link))
+        self.assertIn("FileMenuSaveNavigationProofTest", text)
+        self.assertIn("FileMenuModel", text)
+        self.assertIn("menu_item_dispatched", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -2688,7 +2712,28 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("void method bodies", text)
         self.assertIn("Local declarations", text)
 
-    def test_no_doc_uses_stale_repo_or_overclaim_language(self):
+    def test_0127_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0127"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #292",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR292_WAVE_PR_LINKS, "atlas entry 0127")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0127")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0127", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0127")
+        self.assertIn("17e82091", text)
+        self.assertIn("FileMenuSaveNavigationProofTest", text)
+        self.assertIn("FileMenuModel", text)
+        self.assertIn("AliceMenuBar", text)
+        self.assertIn("SaveProjectOperation", text)
+        self.assertIn("menu_item_dispatched", text)
+        self.assertIn("ActionEventTrigger", text)
+
+
         forbidden_terms = [
             "alice3-modernization",
             "visible rendering is proven",
