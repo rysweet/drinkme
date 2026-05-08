@@ -509,6 +509,22 @@ Second-pass review tightened the plan:
   `2026-05-08T02:32:51Z`; merged by `rysweet`; merge commit SHA
   `fb9da28c2dcaf426b87699ffceebaba7093d994a`; head SHA
   `6bd52537504d0f88cd0fe6c1919e5a4134eca2a8`.
+- [RabbitHole PR #306](https://github.com/rysweet/RabbitHole/pull/306)
+  merged at `2026-05-08T09:31:58Z`. PR #306 is narrow
+  ModelResourceExporter attribution evidence only.
+- [RabbitHole PR #308](https://github.com/rysweet/RabbitHole/pull/308)
+  merged at `2026-05-08T09:15:55Z`. PR #308 is narrow headless generated
+  Story API runtime-state evidence only.
+- [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307)
+  and [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575)
+  remain active follow-up work.
+- Planned build boundary: RabbitHole PR #307 is the Project I/O recovery shard
+  still to land; amplihack-rs PR #575 is the supporting recipe pre-commit
+  reliability work still to land.
+  Neither follow-up is complete in this evidence entry.
+- PR #306 and PR #308 do not prove visible rendering, JavaFX launch, animation
+  playback, full world execution, grading, full UI automation, full lesson
+  completion, or full Tweedle/player decode.
 - [eatme PR #138](https://github.com/rysweet/eatme/pull/138): repository
   `rysweet/eatme`; status `MERGED`; merged at `2026-05-08T02:13:51Z`;
   merged by `rysweet`; merge commit SHA

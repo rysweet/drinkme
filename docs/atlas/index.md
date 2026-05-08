@@ -46,6 +46,19 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0130 - RabbitHole PR #306/#308 evidence status](journal/0130-rabbithole-306-308-evidence-status.md)
+  records that [RabbitHole PR #306](https://github.com/rysweet/RabbitHole/pull/306)
+  and [RabbitHole PR #308](https://github.com/rysweet/RabbitHole/pull/308) have
+  merged. PR #306 is narrow ModelResourceExporter attribution evidence only.
+  PR #308 is narrow headless generated Story API runtime-state evidence only.
+  [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) and
+  [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575)
+  remain active follow-up work. Planned build boundary: RabbitHole PR #307 is
+  the Project I/O recovery shard still to land; amplihack-rs PR #575 is the
+  supporting recipe pre-commit reliability work still to land. The entry keeps
+  the evidence boundary explicit: PR #306 and PR #308 do not prove visible
+  rendering, JavaFX launch, animation playback, full world execution, grading,
+  full UI automation, full lesson completion, or full Tweedle/player decode.
 - [0129 - Four-PR merged metadata status](journal/0129-four-pr-merged-metadata-status.md)
   records GitHub-verified merged metadata for RabbitHole PR #297, RabbitHole PR #298,
   eatme PR #138, and amplihack-rs PR #571. Each row includes

@@ -429,7 +429,21 @@ remain unproven. Visible rendering, grading, and first-lesson completion remain 
 records GitHub-verified merged metadata for RabbitHole PR #297, RabbitHole PR #298,
 eatme PR #138, and amplihack-rs PR #571: repository, PR number, status `MERGED`,
 merged timestamp, merged-by user, merge commit SHA, and head SHA.
-All referenced source and status PRs have merged:
+[atlas journal entry 0130](docs/atlas/journal/0130-rabbithole-306-308-evidence-status.md)
+records that [RabbitHole PR #306](https://github.com/rysweet/RabbitHole/pull/306)
+and [RabbitHole PR #308](https://github.com/rysweet/RabbitHole/pull/308) have
+merged. PR #306 is narrow ModelResourceExporter attribution evidence only.
+PR #308 is narrow headless generated Story API runtime-state evidence only.
+[RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) and
+[amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575)
+remain active follow-up work.
+Planned build boundary: RabbitHole PR #307 is the Project I/O recovery shard
+still to land; amplihack-rs PR #575 is the supporting recipe pre-commit
+reliability work still to land. Neither follow-up is complete in this evidence
+entry. This evidence entry is narrow. PR #306 and PR #308 do not prove visible
+rendering, JavaFX launch, animation playback, full world execution, grading,
+full UI automation, full lesson completion, or full Tweedle/player decode.
+Referenced source and status work is tracked below:
 
 | Work item | Plain status |
 | --- | --- |
@@ -559,8 +573,12 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #293](https://github.com/rysweet/RabbitHole/pull/293) | Merged at head `3696670873c6a409046ac6e648e828d95956aa8b`. Decodes Tweedle `while (condition) { ... }` to Alice `WhileLoop` in void method bodies. Supported Boolean conditions: literal, parameter access, relational infix, logical infix/not. Body: assignment-only statements; empty body accepted. 6 new tests; 109 total; 0 failures; all five CI checks passed; focused review returned CLEAN. Non-void method while loops, non-Boolean conditions, non-assignment body statements, method calls, for-each/count-up loops, constructor body while loops, resource field initializers, full player decode, and full Tweedle decode remain unproven. Visible rendering, grading, and first-lesson completion remain unproven. |
 | [RabbitHole PR #297](https://github.com/rysweet/RabbitHole/pull/297) | Repository `rysweet/RabbitHole`; status `MERGED`; merged at `2026-05-08T04:39:11Z`; merged by `rysweet`; merge commit SHA `527011aa8337222cddd05d23766edcac908a699b`; head SHA `59272ae077e3e614f3ef30a4b6b37140c8eb80f8`. |
 | [RabbitHole PR #298](https://github.com/rysweet/RabbitHole/pull/298) | Repository `rysweet/RabbitHole`; status `MERGED`; merged at `2026-05-08T02:32:51Z`; merged by `rysweet`; merge commit SHA `fb9da28c2dcaf426b87699ffceebaba7093d994a`; head SHA `6bd52537504d0f88cd0fe6c1919e5a4134eca2a8`. |
+| [RabbitHole PR #306](https://github.com/rysweet/RabbitHole/pull/306) | Merged at `2026-05-08T09:31:58Z`. Narrow ModelResourceExporter attribution evidence only; does not prove visible rendering, JavaFX launch, animation playback, full world execution, grading, full UI automation, full lesson completion, or full Tweedle/player decode. |
+| [RabbitHole PR #308](https://github.com/rysweet/RabbitHole/pull/308) | Merged at `2026-05-08T09:15:55Z`. Narrow headless generated Story API runtime-state evidence only; does not prove visible rendering, JavaFX launch, animation playback, full world execution, grading, full UI automation, full lesson completion, or full Tweedle/player decode. |
+| [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) | Active follow-up work: the Project I/O recovery shard still to land; not complete in this evidence entry. |
 | [eatme PR #138](https://github.com/rysweet/eatme/pull/138) | Repository `rysweet/eatme`; status `MERGED`; merged at `2026-05-08T02:13:51Z`; merged by `rysweet`; merge commit SHA `b412458d6abf4d235dc03f4efb3debabd54e79d1`; head SHA `8cacd14cc51fc09cae20ee421f4bc4a8e285b751`. |
 | [amplihack-rs PR #571](https://github.com/rysweet/amplihack-rs/pull/571) | Repository `rysweet/amplihack-rs`; status `MERGED`; merged at `2026-05-08T04:55:47Z`; merged by `rysweet`; merge commit SHA `0af6f12824778fbff94627dae5da92b57beb6fc9`; head SHA `33582d27e8cac3f00cbd7e702a5304c34768d41a`. |
+| [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575) | Active follow-up work: the supporting recipe pre-commit reliability work still to land; not complete in this evidence entry. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -576,6 +594,11 @@ merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full
 world execution, or complete player/full Tweedle decode support.
+RabbitHole PR #306 and PR #308 are narrow evidence updates only; RabbitHole
+PR #307 and amplihack-rs PR #575 remain active follow-up work. Planned build
+boundary: RabbitHole PR #307 is the Project I/O recovery shard still to land,
+while amplihack-rs PR #575 is the supporting recipe pre-commit reliability work
+still to land.
 
 ## Plain-English terms
 
