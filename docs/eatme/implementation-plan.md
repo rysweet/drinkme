@@ -412,8 +412,32 @@ Second-pass review tightened the plan:
   audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading,
   automated creative assessment, real Alice UI automation, and full lesson
   delivery remain unproven.
-- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, #267, #269, #270, #271, #272, #273, #274, #276, #277, #278, and #281
-  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, #124, #125, #126, #127, #129, #131, #132, and #133 have merged, but they do
+- [RabbitHole PR #282](https://github.com/rysweet/RabbitHole/pull/282) merged at
+  `81db4122fc3270e2a16a02c46c4a1d7f254717e3`. Decodes Tweedle relational
+  comparison expressions (`==`, `!=`, `<`, `<=`, `>`, `>=`) to
+  `RelationalInfixExpression` in local initializers, assignment right-hand sides,
+  and method returns. Logical expressions, method calls, non-`this` member
+  targets, loops, conditionals, resource initializers, and full Tweedle/player
+  decode remain unproven.
+- [RabbitHole PR #284](https://github.com/rysweet/RabbitHole/pull/284) merged at
+  `eca3fb920e3d2b13f5de7117ccc96308378a10f6`. Fixes `approvedSelection` ordering
+  in `StageIdeSaveMenuE2EWriteProofTest` and `SaveFileDialogShowControlProofTest`
+  so all Save proof tests set the proof flag before the approval call. Proof
+  bookkeeping only; does not expand Save proof scope beyond PR #276.
+- [RabbitHole PR #285](https://github.com/rysweet/RabbitHole/pull/285) merged at
+  `8eaa066f98ab173bfa6d0d08f804b5e4eb47a7be`. Proves Alice 3 main-window AT-SPI
+  state after Select Project dismissal via `post-project-open-probe.py`. Requires
+  `projectOpenObserved=true`, waits five seconds, enumerates top-level frames,
+  and records blockers. Full scene load, visible rendering, UI correctness,
+  grading, and lesson completion remain unproven.
+- [eatme PR #134](https://github.com/rysweet/eatme/pull/134) merged at
+  `294ca3319863098c11e3abd712dc661b44a6278e`. Adds the
+  `setup-preflight-ready-to-create` instructor/student scenario and Gadugi
+  adapter; scenario asset count grew from 89 to 91. Remaining missing scenario
+  file: audio-camera-and-export-sharecase. Grading, automated creative
+  assessment, real Alice UI automation, and full lesson delivery remain unproven.
+- RabbitHole PRs #159, #160, #163, #164, #166, #167, #168, #169, #170, #172, #185, #187, #188, #190, #191, #207, #208, #209, #210, #211, #212, #214, #215, #216, #218, #219, #222, #224, #225, #229, #230, #231, #234, #235, #237, #238, #240, #241, #245, #246, #247, #250, #253, #254, #255, #259, #260, #261, #262, #264, #265, #266, #267, #269, #270, #271, #272, #273, #274, #276, #277, #278, #281, #282, #284, and #285
+  and eatme PRs #93, #95, #96, #98, #99, #101, #102, #118, #120, #121, #122, #123, #124, #125, #126, #127, #129, #131, #132, #133, and #134 have merged, but they do
   not prove full Alice UI automation, visible rendering, desktop save-menu
   completion, native FileDialog peer control, project selection or opening,
   grading, creative assessment, learner-world grading, first-lesson

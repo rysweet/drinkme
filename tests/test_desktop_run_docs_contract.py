@@ -40,6 +40,10 @@ ENTRY_0114 = ROOT / "docs/atlas/journal/0114-rabbithole-pr278-select-project-ata
 ENTRY_0115 = ROOT / "docs/atlas/journal/0115-eatme-pr132-accessibility-rescue-camera-captions-status.md"
 ENTRY_0116 = ROOT / "docs/atlas/journal/0116-rabbithole-pr281-save-proof-flag-fix-status.md"
 ENTRY_0117 = ROOT / "docs/atlas/journal/0117-eatme-pr133-design-process-story-or-game-status.md"
+ENTRY_0118 = ROOT / "docs/atlas/journal/0118-rabbithole-pr282-relational-comparison-status.md"
+ENTRY_0119 = ROOT / "docs/atlas/journal/0119-rabbithole-pr284-save-proof-ordering-fix-status.md"
+ENTRY_0120 = ROOT / "docs/atlas/journal/0120-rabbithole-pr285-atapi-main-window-post-project-open-status.md"
+ENTRY_0121 = ROOT / "docs/atlas/journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -98,6 +102,10 @@ DOCS = {
     "atlas entry 0115": ENTRY_0115,
     "atlas entry 0116": ENTRY_0116,
     "atlas entry 0117": ENTRY_0117,
+    "atlas entry 0118": ENTRY_0118,
+    "atlas entry 0119": ENTRY_0119,
+    "atlas entry 0120": ENTRY_0120,
+    "atlas entry 0121": ENTRY_0121,
 }
 
 README_PLAN_LINKS = [
@@ -138,6 +146,10 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0115](docs/atlas/journal/0115-eatme-pr132-accessibility-rescue-camera-captions-status.md)",
     "[atlas journal entry 0116](docs/atlas/journal/0116-rabbithole-pr281-save-proof-flag-fix-status.md)",
     "[atlas journal entry 0117](docs/atlas/journal/0117-eatme-pr133-design-process-story-or-game-status.md)",
+    "[atlas journal entry 0118](docs/atlas/journal/0118-rabbithole-pr282-relational-comparison-status.md)",
+    "[atlas journal entry 0119](docs/atlas/journal/0119-rabbithole-pr284-save-proof-ordering-fix-status.md)",
+    "[atlas journal entry 0120](docs/atlas/journal/0120-rabbithole-pr285-atapi-main-window-post-project-open-status.md)",
+    "[atlas journal entry 0121](docs/atlas/journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -356,6 +368,22 @@ EATME_PR133_WAVE_PR_LINKS = [
     "https://github.com/rysweet/eatme/pull/133",
 ]
 
+RABBITHOLE_PR282_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/282",
+]
+
+RABBITHOLE_PR284_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/284",
+]
+
+RABBITHOLE_PR285_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/285",
+]
+
+EATME_PR134_WAVE_PR_LINKS = [
+    "https://github.com/rysweet/eatme/pull/134",
+]
+
 RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS = (
     RABBITHOLE_PR278_WAVE_PR_LINKS + EATME_PR132_WAVE_PR_LINKS
 )
@@ -391,6 +419,10 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS
     + RABBITHOLE_PR281_WAVE_PR_LINKS
     + EATME_PR133_WAVE_PR_LINKS
+    + RABBITHOLE_PR282_WAVE_PR_LINKS
+    + RABBITHOLE_PR284_WAVE_PR_LINKS
+    + RABBITHOLE_PR285_WAVE_PR_LINKS
+    + EATME_PR134_WAVE_PR_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -1178,6 +1210,34 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "design-process-story-or-game",
         "89",
     ],
+    "RabbitHole PR #282": [
+        "RabbitHole PR #282",
+        "Merged",
+        "81db4122fc3270e2a16a02c46c4a1d7f254717e3",
+        "RelationalInfixExpression",
+        "relational",
+    ],
+    "RabbitHole PR #284": [
+        "RabbitHole PR #284",
+        "Merged",
+        "eca3fb920e3d2b13f5de7117ccc96308378a10f6",
+        "approvedSelection",
+        "SaveFileDialogShowControlProofTest",
+    ],
+    "RabbitHole PR #285": [
+        "RabbitHole PR #285",
+        "Merged",
+        "8eaa066f98ab173bfa6d0d08f804b5e4eb47a7be",
+        "projectOpenObserved",
+        "post-project-open-probe",
+    ],
+    "eatme PR #134": [
+        "eatme PR #134",
+        "Merged",
+        "294ca3319863098c11e3abd712dc661b44a6278e",
+        "setup-preflight-ready-to-create",
+        "91",
+    ],
 }
 
 STALE_STATUS_TERMS = [
@@ -1625,6 +1685,18 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertEqual(1, text.count(entry_0117_link))
         self.assertIn("design-process-story-or-game", text)
         self.assertIn("87 to 89", text)
+        entry_0118_link = "journal/0118-rabbithole-pr282-relational-comparison-status.md"
+        self.assertEqual(1, text.count(entry_0118_link))
+        self.assertIn("RelationalInfixExpression", text)
+        entry_0119_link = "journal/0119-rabbithole-pr284-save-proof-ordering-fix-status.md"
+        self.assertEqual(1, text.count(entry_0119_link))
+        entry_0120_link = "journal/0120-rabbithole-pr285-atapi-main-window-post-project-open-status.md"
+        self.assertEqual(1, text.count(entry_0120_link))
+        self.assertIn("post-project-open-probe", text)
+        entry_0121_link = "journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md"
+        self.assertEqual(1, text.count(entry_0121_link))
+        self.assertIn("setup-preflight-ready-to-create", text)
+        self.assertIn("89 to 91", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -2338,6 +2410,74 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("7d0d05726b970dc9a616ed8aa633e090ceebf88b", text)
         self.assertIn("design-process-story-or-game", text)
         self.assertIn("89", text)
+
+    def test_0118_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0118"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #282",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR282_WAVE_PR_LINKS, "atlas entry 0118")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0118")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0118", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0118")
+        self.assertIn("81db4122fc3270e2a16a02c46c4a1d7f254717e3", text)
+        self.assertIn("RelationalInfixExpression", text)
+        self.assertIn("relational", text)
+
+    def test_0119_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0119"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #284",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR284_WAVE_PR_LINKS, "atlas entry 0119")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0119")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0119", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0119")
+        self.assertIn("eca3fb920e3d2b13f5de7117ccc96308378a10f6", text)
+        self.assertIn("approvedSelection", text)
+        self.assertIn("SaveFileDialogShowControlProofTest", text)
+
+    def test_0120_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0120"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "RabbitHole PR #285",
+            ]
+        }
+        self.assert_contains_all(text, RABBITHOLE_PR285_WAVE_PR_LINKS, "atlas entry 0120")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0120")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0120", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0120")
+        self.assertIn("8eaa066f98ab173bfa6d0d08f804b5e4eb47a7be", text)
+        self.assertIn("projectOpenObserved", text)
+        self.assertIn("post-project-open-probe", text)
+
+    def test_0121_current_merge_status_and_boundaries_are_explicit(self):
+        text = self.docs["atlas entry 0121"]
+
+        requirements = {
+            key: MERGED_CURRENT_PR_REQUIREMENTS[key]
+            for key in [
+                "eatme PR #134",
+            ]
+        }
+        self.assert_contains_all(text, EATME_PR134_WAVE_PR_LINKS, "atlas entry 0121")
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0121")
+        self.assert_current_merge_status_is_plain(text, "atlas entry 0121", requirements)
+        self.assert_current_unproven_behaviors_are_explicit(text, "atlas entry 0121")
+        self.assertIn("294ca3319863098c11e3abd712dc661b44a6278e", text)
+        self.assertIn("setup-preflight-ready-to-create", text)
+        self.assertIn("91", text)
 
     def test_no_doc_uses_stale_repo_or_overclaim_language(self):
         forbidden_terms = [

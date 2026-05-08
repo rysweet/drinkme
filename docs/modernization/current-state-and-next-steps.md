@@ -387,6 +387,14 @@
   `docs/atlas/journal/0116-rabbithole-pr281-save-proof-flag-fix-status.md`.
   eatme PR #133 is tracked in
   `docs/atlas/journal/0117-eatme-pr133-design-process-story-or-game-status.md`.
+  RabbitHole PR #282 is tracked in
+  `docs/atlas/journal/0118-rabbithole-pr282-relational-comparison-status.md`.
+  RabbitHole PR #284 is tracked in
+  `docs/atlas/journal/0119-rabbithole-pr284-save-proof-ordering-fix-status.md`.
+  RabbitHole PR #285 is tracked in
+  `docs/atlas/journal/0120-rabbithole-pr285-atapi-main-window-post-project-open-status.md`.
+  eatme PR #134 is tracked in
+  `docs/atlas/journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md`.
   [RabbitHole PR #272](https://github.com/rysweet/RabbitHole/pull/272) merged at
   `458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9`. Proves AT-SPI reaches the Alice
   Java process via `exec:exec` and `NO_AT_BRIDGE=1`; top-level Swing widgets are
@@ -448,6 +456,30 @@
   audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading,
   automated creative assessment, real Alice UI automation, and full lesson
   delivery remain unproven.
+  [RabbitHole PR #282](https://github.com/rysweet/RabbitHole/pull/282) merged at
+  `81db4122fc3270e2a16a02c46c4a1d7f254717e3`. Decodes Tweedle relational
+  comparison expressions (`==`, `!=`, `<`, `<=`, `>`, `>=`) to
+  `RelationalInfixExpression` in local initializers, assignment right-hand sides,
+  and method returns. Logical expressions, method calls, non-`this` member
+  targets, loops, conditionals, resource initializers, and full Tweedle/player
+  decode remain unproven.
+  [RabbitHole PR #284](https://github.com/rysweet/RabbitHole/pull/284) merged at
+  `eca3fb920e3d2b13f5de7117ccc96308378a10f6`. Fixes `approvedSelection` ordering
+  in `StageIdeSaveMenuE2EWriteProofTest` and `SaveFileDialogShowControlProofTest`
+  so all Save proof tests set the proof flag before the approval call. Proof
+  bookkeeping only; does not expand Save proof scope beyond PR #276.
+  [RabbitHole PR #285](https://github.com/rysweet/RabbitHole/pull/285) merged at
+  `8eaa066f98ab173bfa6d0d08f804b5e4eb47a7be`. Proves Alice 3 main-window AT-SPI
+  state after Select Project dismissal via `post-project-open-probe.py`. Requires
+  `projectOpenObserved=true`, waits five seconds, enumerates top-level frames,
+  and records blockers. Full scene load, visible rendering, UI correctness,
+  grading, and lesson completion remain unproven.
+  [eatme PR #134](https://github.com/rysweet/eatme/pull/134) merged at
+  `294ca3319863098c11e3abd712dc661b44a6278e`. Adds the
+  `setup-preflight-ready-to-create` instructor/student scenario and Gadugi
+  adapter; scenario asset count grew from 89 to 91. Remaining missing scenario
+  file: audio-camera-and-export-sharecase. Grading, automated creative
+  assessment, real Alice UI automation, and full lesson delivery remain unproven.
   [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
   `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
   method and constructor bodies can now decode an `IdentifierReference` RHS to
