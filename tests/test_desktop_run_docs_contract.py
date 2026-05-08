@@ -154,6 +154,7 @@ README_REQUIRED_TERMS = [
     "not automated",
     "component-level file-write evidence",
     "desktop Save menu-to-written-project completion is still missing",
+    "Component-level evidence exists, but desktop Save menu-to-written-project completion is still missing.",
     "70% aggregate coverage is still a target, not a result.",
 ]
 

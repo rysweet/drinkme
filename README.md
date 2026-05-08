@@ -107,7 +107,7 @@ flowchart LR
 | Documentation checks | Works now | Run the unittest command above for the drinkme docs contract. |
 | Project map and diagrams | Works now | Start with the atlas and diagram links below. |
 | Automation scenarios | Partly working | Useful coverage map; not full Alice UI automation. |
-| Desktop Save | Partly working | Component-level evidence exists, but desktop Save menu-to-written-project completion is missing. |
+| Desktop Save | Partly working | Component-level evidence exists, but desktop Save menu-to-written-project completion is still missing. |
 | Rendering and lesson completion | Missing | Do not treat current evidence as visible correctness or a finished lesson. |
 | Grading and creative assessment | Missing | Scenario reports do not grade student work. |
 | Tweedle/player decode | Partly working | Many slices are characterized; full decode is missing. |
