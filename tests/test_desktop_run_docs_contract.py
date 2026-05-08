@@ -82,6 +82,7 @@ FORBIDDEN_READER_JARGON = [
     "Gadugi",
     "smoke",
     "RabbitHole/eatme wave",
+    "automation-scenario",
 ]
 
 FORBIDDEN_OVERCLAIMS = [
@@ -178,7 +179,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_contains_all(readme, README_REQUIRED_HEADINGS, "README")
         self.assert_contains_all(readme, README_REQUIRED_LINK_TARGETS, "README links")
         self.assertIn("This README is a project overview, not a changelog.", readme)
-        self.assertIn("automation-scenario coverage", readme)
+        self.assertIn("automation scenario coverage", readme)
         self.assertIn("Use drinkme as a map and status index.", readme)
         self.assertIn("python3 -m unittest discover -s tests -v", readme)
         self.assertGreaterEqual(readme.count("```mermaid"), 3)
@@ -213,7 +214,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         prose = without_markdown_link_targets(text)
 
         self.assertIn("## Current status by capability", text)
-        self.assertIn("## What changed in the integrated automation-scenario wave", text)
+        self.assertIn("## What changed after automation scenarios were integrated", text)
         self.assertIn("## Latest integrated evidence", text)
         self.assertIn("## Remaining gaps", text)
         self.assert_contains_all(
@@ -250,16 +251,16 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         text = self.docs["latest evidence journal"]
         plain_text = plain(text)
 
-        self.assertIn("RabbitHole PR #306", text)
-        self.assertIn("RabbitHole PR #308", text)
-        self.assertIn("narrow ModelResourceExporter attribution evidence only", text)
-        self.assertIn("narrow headless generated Story API runtime-state evidence only", text)
+        self.assertIn("model export attribution evidence", plain_text)
+        self.assertIn("generated story runtime-state evidence", plain_text)
+        self.assertIn("Runtime-state evidence collected without opening the desktop UI only", text)
         self.assertIn(
-            "do not prove visible rendering, JavaFX launch, animation playback, "
+            "does not prove visible rendering, JavaFX launch, animation playback, "
             "full world execution, grading, full UI automation, full lesson "
             "completion, or full Tweedle/player decode",
             plain_text,
         )
+        self.assert_no_pr_dump(text, "latest evidence journal", max_pr_mentions=0)
         self.assertNotRegex(plain_text, r"(?i)\bproven\b")
 
     def test_linked_docs_keep_internal_markdown_links_valid(self):

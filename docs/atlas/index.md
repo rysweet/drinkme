@@ -47,8 +47,9 @@ decode.
 - Linked status docs now summarize capability status instead of PR chronology.
 - Automation scenarios cover more desktop, classroom, lesson, export/share,
   accessibility, Save-path, and readiness paths.
-- Model export attribution and headless generated Story API runtime-state evidence
-  improved the source characterization map.
+- Model export attribution and generated story-code runtime-state evidence
+  collected without opening the desktop UI improved the source characterization
+  map.
 - Runtime/user gaps remain open: full Alice UI automation, visible rendering,
   desktop Save menu-to-written-project completion, first-lesson completion,
   grading, creative assessment, deployed sharing/platform behavior, and full
@@ -61,10 +62,10 @@ overview.
 
 - [Latest evidence boundary status](journal/0130-rabbithole-306-308-evidence-status.md)
   records the latest source-evidence boundary. The user-facing takeaway is
-  capability-level: model export attribution and headless generated Story API
+  capability-level: model export attribution and generated story-code
   runtime-state evidence improved, while visible rendering, JavaFX launch,
-  animation playback, full world execution, grading, full UI automation, full
-  lesson completion, and full Tweedle/player decode remain open.
+  animation playback, full world execution, grading, full UI automation,
+  full lesson completion, and full Tweedle/player decode remain open.
 - [Merged metadata journal](journal/0129-four-pr-merged-metadata-status.md)
   records verified merge metadata separately from user-facing capability status.
 - [While-loop decode status](journal/0128-rabbithole-pr293-while-loop-decode-status.md)

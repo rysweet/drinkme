@@ -23,18 +23,18 @@ Last updated: 2026-05-08
 
 | Capability area | Plain status |
 | --- | --- |
-| Linked status docs | Updated: README, current-state, restarted-status, and atlas now summarize automation-scenario status without using PR chronology as the user-facing view. |
+| Linked status docs | Updated: README, current-state, restarted-status, and atlas now summarize automation scenario status without using PR chronology as the user-facing view. |
 | Automation scenarios | Partly working: scenarios cover more desktop, classroom, lesson, export/share, accessibility, Save-path, and readiness paths, but they are not full Alice UI automation. |
 | Source characterization | Partly working: selected project IO, generated Story API, model export, NetBeans export, scenegraph, Croquet layout, and Tweedle decode slices have evidence. |
 | Runtime/user behavior | Open: visible rendering, full world execution, first-lesson completion, grading, creative assessment, desktop Save menu-to-written-project completion, and full Tweedle/player decode remain incomplete. |
 | Evidence history | Detailed journal entries remain the evidence source; this tracker uses them to summarize current capability status. |
 
-## What changed in the integrated automation-scenario wave
+## What changed after automation scenarios were integrated
 
 - Documentation/status integration is complete for the linked entry points: README, current-state, restarted-status, and atlas now describe the same current gaps.
-- Automation scenarios now cover a wider set of desktop and classroom-style paths, including launch/readiness evidence, desktop Run status reporting, Save-path evidence, project load/save and export boundaries, generated Story API compile/runtime slices, model export attribution evidence, and instructor/student lesson inventories.
+- Automation scenarios now cover a wider set of desktop and classroom-style paths, including launch/readiness evidence, desktop Run status reporting, Save-path evidence, project load/save and export boundaries, generated story-code compile/runtime slices, model export attribution evidence, and instructor/student lesson inventories.
 - The user-facing status changed from a PR-by-PR merge log to a capability summary: what is covered, what is partial, and what still needs runtime evidence.
-- Model export attribution and headless generated Story API runtime-state evidence improved the source characterization map, but they do not change the open status of visible rendering, JavaFX launch, animation playback, full world execution, grading, full UI automation, full lesson completion, or full Tweedle/player decode.
+- Model export attribution and generated story-code runtime-state evidence collected without opening the desktop UI improved the source characterization map, but they do not change the open status of visible rendering, JavaFX launch, animation playback, full world execution, grading, full UI automation, full lesson completion, or full Tweedle/player decode.
 
 ## Latest integrated evidence
 
@@ -42,7 +42,7 @@ Last updated: 2026-05-08
 - Project IO/load-save has archive fixture, backup, save-to-backup, cancellation, and JSON/XML manifest fallback characterization.
 - Desktop automation scenarios cover open/load/save, package/install checks, wizard/palette/completion contracts, readiness reporting, and blocked next actions at the scenario level.
 - NetBeans export coverage uses a populated `Alice3Library` classpath contract with JavaFX artifacts and install/package checks.
-- Generated Story API Java coverage includes loop, foreach, iterable, local, method, parameter, conditional, story API call compile characterization, and a headless generated runtime-state slice.
+- Generated story-code Java coverage includes loop, foreach, iterable, local, method, parameter, conditional, story API call compile characterization, and a generated runtime-state slice collected without opening the desktop UI.
 - Starter project `.a3p` archives have XML fallback readability coverage using committed fixtures.
 - Croquet palette layout and scenegraph model behavior have headless characterization tests; scenegraph `Joint` bounds/scale bugs exposed by tests were fixed.
 - Public no-Sims builds guard against nonfree library leakage, and includeSims builds explicitly overwrite the no-Sims `Alice3Library.xml` when authorized.

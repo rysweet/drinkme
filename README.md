@@ -11,7 +11,7 @@ live in the linked docs.
 
 The modernization loop is simple: protect current Alice behavior with focused
 checks, use the evidence to refactor the source in small steps, compare
-automation-scenario outcomes and gaps, and keep drinkme as the status and
+automation scenario outcomes and gaps, and keep drinkme as the status and
 evidence index.
 
 ## How the work runs
@@ -44,9 +44,10 @@ flowchart LR
 
 ## Current verdict
 
-The modernization is active and useful, but unfinished. The repository now has documentation checks,
-linked status docs, automation-scenario coverage, readiness reports, source
-evidence for selected Alice areas, and diagrams that make the work easier to navigate.
+The modernization is active and useful, but unfinished. The repository now has
+documentation checks, linked status docs, automation scenario coverage,
+readiness reports, source evidence for selected Alice areas, and diagrams that
+make the work easier to navigate.
 
 Use drinkme as a map and status index. Do not read it as a claim that Alice
 modernization, classroom assessment, UI automation, rendering, or coverage goals

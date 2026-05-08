@@ -17,7 +17,7 @@
   scenario inventories.
 - The linked status docs are integrated: README, this current-state page, the
   restarted full-scope tracker, and the atlas now describe the same distinction
-   between completed documentation/status integration and remaining gaps.
+  between completed documentation/status integration and remaining gaps.
 - Detailed evidence remains available in the atlas journal, especially
   [0085 desktop Run evidence](../atlas/journal/0085-desktop-run-execution-evidence.md),
   [0086 readiness evidence requirements](../atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md),
@@ -36,9 +36,9 @@
 - Source characterization covers selected project IO, generated Story API,
   model export, NetBeans export, scenegraph, Croquet layout, and Tweedle decode
   slices.
-- The latest linked status update records model export attribution and headless
-  generated Story API runtime-state evidence without expanding it into a claim
-  about complete runtime behavior.
+- The latest linked status update records model export attribution and generated
+  story runtime-state evidence collected without opening the desktop UI, without
+  expanding it into a claim about complete runtime behavior.
 
 ### What is partly working
 
