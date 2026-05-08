@@ -1,51 +1,76 @@
 # drinkme
 
-drinkme is the orientation and evidence repository for the Alice 3 modernization
-work. It keeps the plan, status, maps, and diagrams in one place so readers can
-quickly see what is proven, what is partial, and where the next work should go.
+drinkme is the front door for the Alice 3 modernization work. It keeps the
+plan, current status, project map, diagrams, and next-step links in one place so
+readers can understand progress without reading pull request history.
+
+This README is a project overview, not a changelog. Detailed status and evidence
+live in the linked docs.
 
 ## Current verdict
 
-The modernization is active and useful, but not complete. Documentation checks,
-scenario inventories, readiness reports, and focused Alice source proofs exist.
-The missing work is still large enough that this repository should be read as a
-project map and evidence index, not as a claim that Alice modernization is done.
+The modernization is active and useful, but unfinished. The repository now has
+documentation checks, scenario inventories, readiness reports, source evidence
+for selected Alice areas, and diagrams that make the work easier to navigate.
+
+Use drinkme as a map and status index. Do not read it as a claim that Alice
+modernization, classroom assessment, UI automation, rendering, or coverage goals
+are complete.
 
 ## One-page project map
 
 ```mermaid
-flowchart LR
-  Reader --> README
-  README --> Plan
-  README --> Status
-  README --> Atlas
-  Atlas --> Diagrams
-  Plan --> AutomationScenarios
-  AutomationScenarios --> DesktopRun
-  AutomationScenarios --> BrowserRun
+flowchart TD
+  Reader["Reader"] --> README["drinkme README"]
+  README --> Plan["Plan and priorities"]
+  README --> Status["Current status"]
+  README --> Atlas["Atlas and diagrams"]
+  README --> Links["Repositories and tools"]
+
+  Plan --> Source["Modernized Alice source tree"]
+  Plan --> Scenarios["Automation scenarios"]
+  Status --> Works["What works now"]
+  Status --> Partial["What is partly working"]
+  Status --> Missing["What is still missing"]
+  Atlas --> RepoMap["Repository surface"]
+  Atlas --> Startup["Startup flow"]
+  Atlas --> Testing["Testing roadmap"]
+  Scenarios --> Reports["Readiness reports"]
 ```
+
+| Area | Purpose | Start here |
+| --- | --- | --- |
+| Plan | Shows the modernization path and priority order. | [Investigation plan](docs/plan.md) |
+| Current status | Summarizes what is complete, partial, and still open. | [Current state and next steps](docs/modernization/current-state-and-next-steps.md) |
+| Full-scope status | Keeps the broader modernization boundary explicit. | [Restarted full-scope status](docs/modernization/restarted-full-scope-status.md) |
+| Atlas | Maps repository structure, startup flow, and test roadmap. | [Atlas index](docs/atlas/index.md) |
+| Scenarios | Tracks planned user and classroom-style checks. | [eatme implementation plan](docs/eatme/implementation-plan.md) |
 
 ## What works now
 
-- drinkme has a reproducible documentation contract check:
+- The drinkme documentation contract is reproducible:
   `python3 -m unittest discover -s tests -v`.
-- Repository documentation validation covers expected shape, JSON syntax, YAML
-  syntax, and internal Markdown links.
-- The investigation plan, current status, atlas index, and diagrams are tracked
-  in this repository instead of being scattered through pull request history.
-- The automation scenario catalog and readiness reports give a usable map of the
-  Alice lesson surfaces that still need real proof.
+- Repository documentation checks cover expected shape, JSON syntax, YAML syntax,
+  and internal Markdown links.
+- The plan, current status, atlas index, and diagrams are tracked here instead
+  of being scattered across pull request history.
+- Existing diagrams cover the repository surface, Alice startup flow, and testing
+  roadmap.
+- Scenario inventories and readiness reports give a usable map of Alice lesson
+  surfaces that still need direct evidence.
 
 ## What is partly working
 
-- Browser-side and desktop-side lesson checks have useful early coverage, but
-  they are not full lesson automation.
-- Save-path work has evidence for selected steps and small file-write checks,
-  but not completed desktop Save behavior from the full user journey.
-- Tweedle and player decoding has many characterized slices, but remains short
-  of full decode coverage.
-- Scenario assets and reports are useful for planning classroom-style coverage,
-  but grading and creative assessment are not automated.
+- Browser-side and desktop-side lesson checks provide useful signals, but they
+  are not full Alice UI automation.
+- Save-path work has selected-path, menu-dispatch, chooser, and file-write
+  evidence, but full desktop Save completion is still missing.
+- Rendering work has surface, window, and blocker records, but not visible
+  rendering correctness.
+- Scenario reports organize classroom-style coverage, but grading and creative
+  assessment are not automated.
+- Tweedle and player decoding covers many small source cases, but full
+  Tweedle/player decode is still missing.
 
 ## What is still missing
 
@@ -60,12 +85,21 @@ flowchart LR
 
 ## Current focus
 
-Keep the README short and use it as the front door. Put durable plans, status,
-evidence, and diagrams in the linked docs, then continue closing the biggest
-proof gaps: real UI automation, visible rendering, Save completion, first-lesson
-completion, grading, creative assessment, and broader decoder coverage.
+Keep drinkme readable as the map, not the timeline. New work should close the
+largest evidence gaps first: real UI actions, visible rendering, full desktop
+Save completion, first-lesson completion, grading and creative assessment, and
+broader decoder coverage.
+
+When details change, update the linked status docs and diagrams instead of
+turning this README into a chronological pull request list.
 
 ## Progress at a glance
+
+```mermaid
+flowchart LR
+  Works["Works now<br/>docs checks, maps, diagrams"] --> Partial["Partly working<br/>scenarios, Save path, rendering signals, decoder slices"]
+  Partial --> Missing["Still missing<br/>full UI, visible rendering, grading, first lesson, 70% coverage"]
+```
 
 | Area | Status | Reader takeaway |
 | --- | --- | --- |
@@ -80,18 +114,32 @@ completion, grading, creative assessment, and broader decoder coverage.
 
 ## Useful links
 
+### Repositories and tools
+
+- [Original Alice 3 project](https://github.com/TheAliceProject/alice3)
+- [Modernized Alice source tree](https://github.com/rysweet/RabbitHole)
+- [Comparison runner and scenario repository](https://github.com/rysweet/eatme)
+- [drinkme repository](https://github.com/rysweet/drinkme)
+
+### Plans, status, and diagrams
+
 - [Investigation plan](docs/plan.md)
 - [Current state and next steps](docs/modernization/current-state-and-next-steps.md)
 - [Restarted full-scope status](docs/modernization/restarted-full-scope-status.md)
+- [eatme implementation plan](docs/eatme/implementation-plan.md)
 - [Atlas index](docs/atlas/index.md)
-- [Repository surface diagram source](docs/atlas/diagrams/repo-surface.mmd)
-- [Testing roadmap diagram source](docs/atlas/diagrams/testing-roadmap.mmd)
+- [Repository surface diagram](docs/atlas/diagrams/repo-surface-mermaid.svg) and
+  [source](docs/atlas/diagrams/repo-surface.mmd)
+- [Startup flow diagram](docs/atlas/diagrams/startup-flow-mermaid.svg) and
+  [source](docs/atlas/diagrams/startup-flow.mmd)
+- [Testing roadmap diagram](docs/atlas/diagrams/testing-roadmap-mermaid.svg) and
+  [source](docs/atlas/diagrams/testing-roadmap.mmd)
 
 ## Where to go next
 
-If you need the shortest overview, read this page and then the
-[current state](docs/modernization/current-state-and-next-steps.md). If you need
-the system map, use the [atlas index](docs/atlas/index.md). If you are choosing
-the next implementation slice, start with the
-[investigation plan](docs/plan.md) and the
-[testing roadmap](docs/atlas/diagrams/testing-roadmap.mmd).
+For the shortest status read, open
+[current state and next steps](docs/modernization/current-state-and-next-steps.md).
+For the overall work order, read the [investigation plan](docs/plan.md). For
+structure and diagrams, use the [atlas index](docs/atlas/index.md). For the
+scenario and comparison-runner side, read the
+[eatme implementation plan](docs/eatme/implementation-plan.md).

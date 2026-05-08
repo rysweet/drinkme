@@ -144,23 +144,34 @@ README_REQUIRED_HEADINGS = [
 
 README_REQUIRED_TERMS = [
     "drinkme",
-    "orientation and evidence repository",
-    "project map and evidence index",
+    "front door for the Alice 3 modernization work",
+    "This README is a project overview, not a changelog.",
+    "Use drinkme as a map and status index.",
     "python3 -m unittest discover -s tests -v",
-    "automation scenario catalog",
+    "Scenario inventories",
     "readiness reports",
-    "not full lesson automation",
+    "not full Alice UI automation",
     "not automated",
+    "full desktop Save completion is still missing",
     "70% aggregate coverage is still a target, not a result.",
 ]
 
 README_REQUIRED_LINKS = [
+    "[Original Alice 3 project](https://github.com/TheAliceProject/alice3)",
+    "[Modernized Alice source tree](https://github.com/rysweet/RabbitHole)",
+    "[Comparison runner and scenario repository](https://github.com/rysweet/eatme)",
+    "[drinkme repository](https://github.com/rysweet/drinkme)",
     "[Investigation plan](docs/plan.md)",
     "[Current state and next steps](docs/modernization/current-state-and-next-steps.md)",
     "[Restarted full-scope status](docs/modernization/restarted-full-scope-status.md)",
+    "[eatme implementation plan](docs/eatme/implementation-plan.md)",
     "[Atlas index](docs/atlas/index.md)",
-    "[Repository surface diagram source](docs/atlas/diagrams/repo-surface.mmd)",
-    "[Testing roadmap diagram source](docs/atlas/diagrams/testing-roadmap.mmd)",
+    "[Repository surface diagram](docs/atlas/diagrams/repo-surface-mermaid.svg)",
+    "[source](docs/atlas/diagrams/repo-surface.mmd)",
+    "[Startup flow diagram](docs/atlas/diagrams/startup-flow-mermaid.svg)",
+    "[source](docs/atlas/diagrams/startup-flow.mmd)",
+    "[Testing roadmap diagram](docs/atlas/diagrams/testing-roadmap-mermaid.svg)",
+    "[source](docs/atlas/diagrams/testing-roadmap.mmd)",
 ]
 
 README_MISSING_TERMS = [
@@ -184,6 +195,13 @@ README_FORBIDDEN_OVERCLAIMS = [
     "full Tweedle/player decode is complete",
     "70% aggregate coverage is complete",
     "70 percent aggregate coverage is complete",
+]
+
+README_FORBIDDEN_READER_JARGON = [
+    "Gadugi",
+    "plain english",
+    "plain English",
+    "smoke",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -1899,10 +1917,12 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_contains_all(section(readme, "What is still missing"), README_MISSING_TERMS, "README missing work")
         for claim in README_FORBIDDEN_OVERCLAIMS:
             self.assertNotIn(claim.lower(), lower_plain_readme)
+        for term in README_FORBIDDEN_READER_JARGON:
+            self.assertNotIn(term.lower(), readme.lower())
+        self.assertNotRegex(readme, r"(?m)^##\s+Proven\b", "README should not use Proven as a section label")
+        self.assertGreaterEqual(readme.count("```mermaid"), 2, "README should keep useful Mermaid visuals")
         self.assert_readme_has_no_pr_dump(readme)
-        self.assertLessEqual(len(readme.splitlines()), 110, "README should stay concise")
-        self.assertNotIn("plain english", readme.lower())
-        self.assertNotIn("plain English", readme)
+        self.assertLessEqual(len(readme.splitlines()), 160, "README should stay concise")
 
     def test_atlas_index_lists_recent_entries_once_with_bounded_summaries(self):
         text = self.docs["atlas index"]
