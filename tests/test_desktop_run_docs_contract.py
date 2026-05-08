@@ -58,8 +58,11 @@ CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
 EATME_PLAN = ROOT / "docs/eatme/implementation-plan.md"
 
-CONTROL_DOCS = {
+README_DOCS = {
     "README": README,
+}
+
+CONTROL_DOCS = {
     "root plan": ROOT_PLAN,
     "current modernization plan": CURRENT_STATE,
     "restarted full-scope status": RESTARTED_STATUS,
@@ -69,7 +72,6 @@ CONTROL_DOCS = {
 }
 
 CURRENT_MERGE_STATUS_DOCS = {
-    "README": README,
     "root plan": ROOT_PLAN,
     "current modernization plan": CURRENT_STATE,
     "restarted full-scope status": RESTARTED_STATUS,
@@ -77,6 +79,7 @@ CURRENT_MERGE_STATUS_DOCS = {
 }
 
 DOCS = {
+    **README_DOCS,
     **CONTROL_DOCS,
     **CURRENT_MERGE_STATUS_DOCS,
     "atlas index": ATLAS_INDEX,
@@ -126,57 +129,43 @@ DOCS = {
     "atlas entry 0130": ENTRY_0130,
 }
 
-README_PLAN_LINKS = [
-    "[root investigation plan](docs/plan.md)",
-    "[current modernization plan](docs/modernization/current-state-and-next-steps.md)",
-    "[restarted full-scope status](docs/modernization/restarted-full-scope-status.md)",
-    "[eatme implementation plan](docs/eatme/implementation-plan.md)",
-    "[atlas journal entry 0085](docs/atlas/journal/0085-desktop-run-execution-evidence.md)",
-    "[atlas journal entry 0086](docs/atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md)",
-    "[atlas journal entry 0087](docs/atlas/journal/0087-rabbithole-pr159-pr160-eatme-pr93-merge-status.md)",
-    "[atlas journal entry 0088](docs/atlas/journal/0088-rabbithole-pr163-eatme-pr95-merge-status.md)",
-    "[atlas journal entry 0089](docs/atlas/journal/0089-rabbithole-pr164-eatme-pr96-merge-status.md)",
-    "[atlas journal entry 0090](docs/atlas/journal/0090-rabbithole-pr166-pr167-eatme-pr98-merge-status.md)",
-    "[atlas journal entry 0091](docs/atlas/journal/0091-rabbithole-pr168-pr169-eatme-pr99-merge-status.md)",
-    "[atlas journal entry 0092](docs/atlas/journal/0092-rabbithole-pr170-pr171-pr172-eatme-pr101-pr102-merge-status.md)",
-    "[atlas journal entry 0093](docs/atlas/journal/0093-source-eatme-ci-wave-status.md)",
-    "[atlas journal entry 0094](docs/atlas/journal/0094-rabbithole-source-ci-wave-status.md)",
-    "[atlas journal entry 0095](docs/atlas/journal/0095-rabbithole-pr207-pr208-source-evidence.md)",
-    "[atlas journal entry 0096](docs/atlas/journal/0096-rabbithole-pr209-pr210-pr211-source-wave-status.md)",
-    "[atlas journal entry 0097](docs/atlas/journal/0097-rabbithole-pr212-eatme-pr118-save-diagnostics-status.md)",
-    "[atlas journal entry 0098](docs/atlas/journal/0098-rabbithole-pr214-pr215-pr216-pr218-eatme-pr120-pr121-status.md)",
-    "[atlas journal entry 0099](docs/atlas/journal/0099-rabbithole-pr219-pr222-pr224-pr225-pr229-pr230-pr231-pr234-status.md)",
-    "[atlas journal entry 0100](docs/atlas/journal/0100-rabbithole-pr235-through-pr259-status.md)",
-    "[atlas journal entry 0101](docs/atlas/journal/0101-rabbithole-pr260-pr261-pr262-eatme-pr122-status.md)",
-    "[atlas journal entry 0102](docs/atlas/journal/0102-eatme-pr123-weather-wizard-status.md)",
-    "[atlas journal entry 0103](docs/atlas/journal/0103-rabbithole-pr264-eatme-pr124-status.md)",
-    "[atlas journal entry 0104](docs/atlas/journal/0104-rabbithole-pr265-pr266-pr267-status.md)",
-    "[atlas journal entry 0105](docs/atlas/journal/0105-eatme-pr125-ecosystem-balance-loop-status.md)",
-    "[atlas journal entry 0106](docs/atlas/journal/0106-eatme-pr126-rabbithole-pr269-status.md)",
-    "[atlas journal entry 0107](docs/atlas/journal/0107-eatme-pr127-mars-rover-proximity-mission-status.md)",
-    "[atlas journal entry 0108](docs/atlas/journal/0108-rabbithole-pr270-identifier-rhs-status.md)",
-    "[atlas journal entry 0109](docs/atlas/journal/0109-rabbithole-pr271-eatme-pr129-status.md)",
-    "[atlas journal entry 0110](docs/atlas/journal/0110-rabbithole-pr272-pr273-eatme-pr131-status.md)",
-    "[atlas journal entry 0111](docs/atlas/journal/0111-rabbithole-pr274-arithmetic-binary-status.md)",
-    "[atlas journal entry 0112](docs/atlas/journal/0112-rabbithole-pr276-save-menu-doclick-status.md)",
-    "[atlas journal entry 0113](docs/atlas/journal/0113-rabbithole-pr277-tweedle-string-concat-status.md)",
-    "[atlas journal entry 0114](docs/atlas/journal/0114-rabbithole-pr278-select-project-atapi-status.md)",
-    "[atlas journal entry 0115](docs/atlas/journal/0115-eatme-pr132-accessibility-rescue-camera-captions-status.md)",
-    "[atlas journal entry 0116](docs/atlas/journal/0116-rabbithole-pr281-save-proof-flag-fix-status.md)",
-    "[atlas journal entry 0117](docs/atlas/journal/0117-eatme-pr133-design-process-story-or-game-status.md)",
-    "[atlas journal entry 0118](docs/atlas/journal/0118-rabbithole-pr282-relational-comparison-status.md)",
-    "[atlas journal entry 0119](docs/atlas/journal/0119-rabbithole-pr284-save-proof-ordering-fix-status.md)",
-    "[atlas journal entry 0120](docs/atlas/journal/0120-rabbithole-pr285-atapi-main-window-post-project-open-status.md)",
-    "[atlas journal entry 0121](docs/atlas/journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md)",
-    "[atlas journal entry 0122](docs/atlas/journal/0122-eatme-pr135-audio-camera-and-export-sharecase-status.md)",
-    "[atlas journal entry 0123](docs/atlas/journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md)",
-    "[atlas journal entry 0124](docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-status.md)",
-    "[atlas journal entry 0125](docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md)",
-    "[atlas journal entry 0126](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)",
-    "[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)",
-    "[atlas journal entry 0128](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md)",
-    "[atlas journal entry 0129](docs/atlas/journal/0129-four-pr-merged-metadata-status.md)",
-    "[atlas journal entry 0130](docs/atlas/journal/0130-rabbithole-306-308-evidence-status.md)",
+README_REQUIRED_HEADINGS = [
+    "# drinkme",
+    "## What this project is",
+    "## Plan",
+    "## Proven progress",
+    "## Currently in progress",
+    "## Still unproven",
+    "## Detailed history",
+]
+
+README_REQUIRED_TERMS = [
+    "RabbitHole",
+    "modernized Alice source tree",
+    "eatme",
+    "headless browser and runtime side",
+    "drinkme",
+    "documentation and evidence tracker",
+    "Keep Alice lessons loadable outside the legacy desktop path.",
+    "Prove content parsing, project loading, and basic lesson flow in small steps.",
+    "Keep browser and desktop work honest with repeatable checks.",
+    "Move detailed status history into atlas docs instead of the README.",
+]
+
+README_HISTORY_LINKS = [
+    "[atlas index](docs/atlas/index.md)",
+    "[atlas journal](docs/atlas/journal/)",
+]
+
+README_UNPROVEN_TERMS = [
+    "Full Alice UI automation.",
+    "Visible rendering correctness.",
+    "Desktop Save completion.",
+    "Grading.",
+    "Creative assessment.",
+    "First-lesson completion.",
+    "Full Tweedle/player decode.",
+    "70 percent aggregate coverage.",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -1863,47 +1852,36 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                 f"{source} uses stale pending/review wording for a merged current PR",
             )
 
-    def assert_no_stale_readme_table_status(self, text):
-        all_pr_links = REQUIRED_PR_LINKS + CURRENT_MERGED_PR_LINKS
-        source_pr_rows = [
+    def assert_readme_has_no_pr_dump(self, text):
+        pr_mentions = re.findall(r"\bPR\s*#\d+", text)
+        self.assertLessEqual(len(pr_mentions), 2, "README should not be a PR chronology")
+
+        pr_table_rows = [
             row
             for row in text.splitlines()
-            if row.strip().startswith("|")
-            and any(link in row for link in all_pr_links)
+            if row.strip().startswith("|") and re.search(r"\bPR\s*#?\d+|\bpull/\d+", row)
         ]
+        self.assertEqual([], pr_table_rows, "README should not contain PR table rows")
 
-        self.assertGreaterEqual(
-            len(source_pr_rows),
-            len(MERGED_SOURCE_PR_REQUIREMENTS) + len(MERGED_CURRENT_PR_REQUIREMENTS),
-            "README is missing source PR table rows",
+        journal_entry_links = re.findall(r"docs/atlas/journal/\d{4}-", text)
+        self.assertLessEqual(
+            len(journal_entry_links),
+            1,
+            "README should link to the journal directory, not list journal entries",
         )
 
-        self.assert_contains_all("\n".join(source_pr_rows), CURRENT_MERGED_PR_LINKS, "README source PR table")
+    def test_readme_is_concise_project_summary(self):
+        readme = self.docs["README"]
+        plain_readme = plain(readme)
 
-        table_text = plain("\n".join(source_pr_rows)).lower()
-        for term in STALE_README_TABLE_STATUS_TERMS:
-            self.assertNotIn(term, table_text, f"README source PR table uses stale status: {term}")
-
-    def test_readme_plan_summary_links_to_controlling_docs_and_latest_evidence(self):
-        plan_summary = section(self.docs["README"], "Plan summary")
-
-        self.assert_contains_all(plan_summary, README_PLAN_LINKS, "README plan summary")
-        self.assert_contains_all(plan_summary, REQUIRED_PR_LINKS, "README plan summary")
-        self.assert_contains_all(plain(plan_summary), PROOF_BOUNDARY_TERMS, "README plan summary")
-        self.assert_merged_source_status_is_plain(plan_summary, "README plan summary")
-        self.assert_no_stale_status_near_source_prs(plan_summary, "README plan summary")
-        self.assert_no_stale_readme_table_status(self.docs["README"])
-        ordered_latest_entries = [
-            "[atlas journal entry 0124](docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-status.md)",
-            "[atlas journal entry 0125](docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md)",
-            "[atlas journal entry 0126](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)",
-            "[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)",
-            "[atlas journal entry 0128](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md)",
-            "[atlas journal entry 0129](docs/atlas/journal/0129-four-pr-merged-metadata-status.md)",
-            "[atlas journal entry 0130](docs/atlas/journal/0130-rabbithole-306-308-evidence-status.md)",
-        ]
-        ordered_positions = [plan_summary.index(entry) for entry in ordered_latest_entries]
-        self.assertEqual(sorted(ordered_positions), ordered_positions)
+        self.assert_contains_all(readme, README_REQUIRED_HEADINGS, "README")
+        self.assert_contains_all(readme, README_HISTORY_LINKS, "README detailed history")
+        self.assert_contains_all(plain_readme, README_REQUIRED_TERMS, "README")
+        self.assert_contains_all(section(readme, "Still unproven"), README_UNPROVEN_TERMS, "README still unproven")
+        self.assert_readme_has_no_pr_dump(readme)
+        self.assertLessEqual(len(readme.splitlines()), 80, "README should stay concise")
+        self.assertNotIn("plain english", readme.lower())
+        self.assertNotIn("plain English", readme)
 
     def test_atlas_index_lists_recent_entries_once_with_bounded_summaries(self):
         text = self.docs["atlas index"]
@@ -2461,7 +2439,6 @@ class DesktopRunDocsContractTest(unittest.TestCase):
 
 
         status_docs = [
-            "README",
             "root plan",
             "current modernization plan",
             "restarted full-scope status",
@@ -3104,7 +3081,6 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         docs_to_check = {
             name: self.docs[name]
             for name in [
-                "README",
                 "root plan",
                 "current modernization plan",
                 "restarted full-scope status",
