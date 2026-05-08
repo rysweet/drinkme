@@ -318,8 +318,7 @@ records that RabbitHole PR #276 proves a programmatically-created real Save menu
 item `doClick()` dispatches through Croquet, reaches a live `JFileChooser`, the
 dialog is approved, and a non-empty `.a3p` file is written. Real rendered desktop
 menu bar navigation, native FileDialog, visible rendering, grading, and full
-lesson completion remain unproven. RabbitHole PR #281 (proof-flag false-negative
-race) has not merged.
+lesson completion remain unproven.
 [atlas journal entry 0113](docs/atlas/journal/0113-rabbithole-pr277-tweedle-string-concat-status.md)
 records that RabbitHole PR #277 proves Tweedle string concatenation (`..`) decodes
 in assignment right-hand-side values, local variable initializers, and method return
@@ -338,6 +337,18 @@ and Gadugi adapter; scenario asset count grew to 87. Remaining missing scenario
 files: design-process-story-or-game, audio-camera-and-export-sharecase,
 setup-preflight-ready-to-create. Grading, automated creative assessment, real Alice
 UI automation, and full lesson delivery remain unproven.
+[atlas journal entry 0116](docs/atlas/journal/0116-rabbithole-pr281-save-proof-flag-fix-status.md)
+records that RabbitHole PR #281 fixes the Save menu doClick test proof bookkeeping:
+`approvedSelection` is now set before `approveSelection()` is called so the probe
+cannot falsely report unsupported after a successful write. This does not expand the
+Save proof scope beyond PR #276. Real rendered desktop menu bar navigation, native
+FileDialog, visible rendering, grading, and full lesson completion remain unproven.
+[atlas journal entry 0117](docs/atlas/journal/0117-eatme-pr133-design-process-story-or-game-status.md)
+records that eatme PR #133 adds the `design-process-story-or-game` scenario and
+Gadugi adapter; scenario asset count grew from 87 to 89. Remaining missing scenario
+files: audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading,
+automated creative assessment, real Alice UI automation, and full lesson delivery
+remain unproven.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -448,10 +459,12 @@ All referenced source and status PRs have merged:
 | [RabbitHole PR #273](https://github.com/rysweet/RabbitHole/pull/273) | Merged at `c86e8c4747b73921e8c432709c8cf7a741848855`. Proves `SaveProjectOperation.fire()` reaches a live `JFileChooser`, a background probe approves it, and a non-empty `.a3p` is written. Visible rendering, grading, the native FileDialog path, and a full Save menu item `doClick`-to-written-file journey in one path remain unproven. |
 | [eatme PR #131](https://github.com/rysweet/eatme/pull/131) | Merged at `973b65f`. Adds the `neighborhood-data-story` instructor/student scenario; scenario assets grew from 83 to 85, all Gadugi adapters fresh. Remaining missing scenario files: accessibility-rescue-camera-captions, design-process-story-or-game, audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [RabbitHole PR #274](https://github.com/rysweet/RabbitHole/pull/274) | Merged at `5571894e5152482c9fb26ba31fc3d633d372e88e`. Arithmetic binary expressions (`+`, `-`, `*`, `/`) now decode as Tweedle assignment right-hand-side values and as local variable initializer values. String concatenation, logical and comparison expressions, method calls, non-`this` member assignment targets, loops, conditionals, resource field initializers, and full Tweedle/player decode remain unproven. |
-| [RabbitHole PR #276](https://github.com/rysweet/RabbitHole/pull/276) | Merged at `66b38f87090f633f44a403737778c3c01a01c52b`. A programmatically-created real Save menu item has `doClick()` called on it; this dispatches through Croquet, reaches a live `JFileChooser`, the dialog is approved by a background probe, and a non-empty `.a3p` file is written. Real rendered desktop menu bar navigation, native FileDialog, visible rendering, grading, and full lesson completion remain unproven. RabbitHole PR #281 (proof-flag false-negative race) has not merged. |
+| [RabbitHole PR #276](https://github.com/rysweet/RabbitHole/pull/276) | Merged at `66b38f87090f633f44a403737778c3c01a01c52b`. A programmatically-created real Save menu item has `doClick()` called on it; this dispatches through Croquet, reaches a live `JFileChooser`, the dialog is approved by a background probe, and a non-empty `.a3p` file is written. Real rendered desktop menu bar navigation, native FileDialog, visible rendering, grading, and full lesson completion remain unproven. |
 | [RabbitHole PR #277](https://github.com/rysweet/RabbitHole/pull/277) | Merged at `8c1a3fd32c2c1d19aac7ea265909f0d19276273e`. Tweedle string concatenation (`..`) now decodes in assignment right-hand-side values, local variable initializers, and method return expressions. Logical and comparison expressions, method calls, non-`this` member assignment targets, loops, conditionals, resource field initializers, and full Tweedle/player decode remain unproven. |
 | [RabbitHole PR #278](https://github.com/rysweet/RabbitHole/pull/278) | Merged at `e130dac3a6f6431895f72f71733a042f1bb92cb3`. Select Project tab labels are accessible as AT-SPI toggle buttons at depth 11; all five tabs can be clicked programmatically; Starters -> Africa Full -> OK causes `projectOpenObserved: true` and the Select Project frame disappears. Real rendered desktop menu bar navigation, native FileDialog, visible rendering, grading, and full lesson completion remain unproven. |
 | [eatme PR #132](https://github.com/rysweet/eatme/pull/132) | Merged at `ebaf93e85a502f4778aaa194f4cd61ae8ae4cdda`. Adds the `accessibility-rescue-camera-captions` instructor/student scenario and Gadugi adapter; scenario asset count grew to 87. Remaining missing scenario files: design-process-story-or-game, audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
+| [RabbitHole PR #281](https://github.com/rysweet/RabbitHole/pull/281) | Merged at `daaceb0a9648d18e890c5b106327d2ddbe489149`. Fixes the Save menu doClick test proof bookkeeping: `approvedSelection` is now set before `approveSelection()` is called so the probe cannot falsely report unsupported after a successful write. Does not expand Save proof scope beyond PR #276. Real rendered desktop menu bar navigation, native FileDialog, visible rendering, grading, and full lesson completion remain unproven. |
+| [eatme PR #133](https://github.com/rysweet/eatme/pull/133) | Merged at `7d0d05726b970dc9a616ed8aa633e090ceebf88b`. Adds the `design-process-story-or-game` instructor/student scenario and Gadugi adapter; scenario asset count grew from 87 to 89. Remaining missing scenario files: audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -462,7 +475,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, PR #270, PR #271, PR #272, PR #273, PR #274, PR #276, PR #277, PR #278, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, PR #126, PR #127, PR #129, PR #131, and PR #132
+PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, PR #270, PR #271, PR #272, PR #273, PR #274, PR #276, PR #277, PR #278, PR #281, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, PR #126, PR #127, PR #129, PR #131, PR #132, and PR #133
 merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full
@@ -529,7 +542,7 @@ xychart-beta
 | Student/instructor persona links | 33 of 33 scenarios | These links do not prove learner-world behavior. |
 | Docs navigation | 18 of 18 pages | Published sharing and full classroom workflow proof remain unproven. |
 
-Counts updated after eatme PR #132 (scenario assets 87, Gadugi adapters fresh).
+Counts updated after eatme PR #133 (scenario assets 89, Gadugi adapters fresh).
 Plainly: eatme local instructor/student persona coverage, student docs, Gadugi
 adapters, and plain readiness output are complete for now. The remaining blockers
 depend on RabbitHole first-lesson evidence and broader behavior proof.

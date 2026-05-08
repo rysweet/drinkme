@@ -46,6 +46,18 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0117 - eatme PR #133 design-process-story-or-game scenario status](journal/0117-eatme-pr133-design-process-story-or-game-status.md)
+  records that eatme PR #133 adds the `design-process-story-or-game` scenario and
+  Gadugi adapter; scenario asset count grew from 87 to 89. Remaining missing scenario
+  files: `audio-camera-and-export-sharecase`, `setup-preflight-ready-to-create`.
+  Grading, automated creative assessment, real Alice UI automation, and full lesson
+  delivery remain unproven.
+- [0116 - RabbitHole PR #281 Save proof approval flag ordering fix status](journal/0116-rabbithole-pr281-save-proof-flag-fix-status.md)
+  records that RabbitHole PR #281 fixes the Save menu doClick test proof bookkeeping:
+  `approvedSelection` is now set before `approveSelection()` is called so the probe
+  cannot falsely report unsupported after a successful write. This does not expand the
+  Save proof scope beyond PR #276. Real rendered desktop menu bar navigation, native
+  FileDialog, visible rendering, grading, and full lesson completion remain unproven.
 - [0115 - eatme PR #132 accessibility-rescue-camera-captions scenario status](journal/0115-eatme-pr132-accessibility-rescue-camera-captions-status.md)
   records that eatme PR #132 adds the `accessibility-rescue-camera-captions` scenario and
   Gadugi adapter; scenario asset count grew to 87. Remaining missing scenario files:
@@ -67,7 +79,6 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
   dispatches through Croquet, reaches a live `JFileChooser`, the dialog is approved, and a
   non-empty `.a3p` file is written. Real rendered desktop menu bar navigation, native
   FileDialog, visible rendering, grading, and full lesson completion remain unproven.
-  RabbitHole PR #281 (proof-flag false-negative race) has not merged.
 - [0111 - RabbitHole PR #274 arithmetic binary expression status](journal/0111-rabbithole-pr274-arithmetic-binary-status.md)
   records that arithmetic binary expressions (`+`, `-`, `*`, `/`) now decode as Tweedle
   assignment right-hand-side values and local variable initializer values (PR #274). String

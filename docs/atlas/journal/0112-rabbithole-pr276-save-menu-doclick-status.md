@@ -27,8 +27,9 @@ does not copy RabbitHole, eatme, or Alice source.
   automated creative assessment remain unproven. Full Alice UI automation remains
   unproven. First-lesson completion remains unproven.
 
-  **Active follow-up:** RabbitHole PR #281 is an open follow-up that addresses a
-  proof-flag false-negative race; it has not merged and is not counted as done.
+  **Active follow-up:** RabbitHole PR #281 merged at
+  `daaceb0a9648d18e890c5b106327d2ddbe489149` and fixed the proof-flag ordering;
+  see journal entry 0116.
 
 ## Done vs. remaining
 
@@ -52,8 +53,8 @@ does not copy RabbitHole, eatme, or Alice source.
 - First-lesson completion remains unproven.
 - AT-SPI Select Project tab navigation to a real project open remains a separate
   concern; it was addressed independently in RabbitHole PR #278.
-- RabbitHole PR #281 (proof-flag false-negative race fix) has not merged; do not
-  count it as done.
+- RabbitHole PR #281 (proof-flag ordering fix) merged at
+  `daaceb0a9648d18e890c5b106327d2ddbe489149`; see journal entry 0116.
 
 ### Remaining scenario gaps
 

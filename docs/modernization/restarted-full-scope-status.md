@@ -292,6 +292,22 @@ design-process-story-or-game, audio-camera-and-export-sharecase,
 setup-preflight-ready-to-create. Grading, automated creative assessment, real
 Alice UI automation, and full lesson delivery remain unproven.
 
+[RabbitHole PR #281](https://github.com/rysweet/RabbitHole/pull/281) merged at
+`daaceb0a9648d18e890c5b106327d2ddbe489149`. Fixes the Save menu doClick test
+proof bookkeeping: `approvedSelection` is now set before `approveSelection()`
+is called so the probe cannot falsely report unsupported after a successful
+write. Does not expand Save proof scope beyond PR #276. Real rendered desktop
+menu bar navigation, native FileDialog, visible rendering, grading, and full
+lesson completion remain unproven.
+
+[eatme PR #133](https://github.com/rysweet/eatme/pull/133) merged at
+`7d0d05726b970dc9a616ed8aa633e090ceebf88b`. Adds the
+`design-process-story-or-game` instructor/student scenario and Gadugi adapter;
+scenario asset count grew from 87 to 89. Remaining missing scenario files:
+audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading,
+automated creative assessment, real Alice UI automation, and full lesson
+delivery remain unproven.
+
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and
