@@ -152,6 +152,7 @@ README_REQUIRED_TERMS = [
     "readiness reports",
     "not full Alice UI automation",
     "not automated",
+    "component-level file-write evidence",
     "desktop Save menu-to-written-project completion is still missing",
     "70% aggregate coverage is still a target, not a result.",
 ]
