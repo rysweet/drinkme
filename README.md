@@ -15,7 +15,7 @@ outcomes and gaps in eatme, and keep drinkme as the status-and-evidence index.
 
 ## How the work runs
 
-These loops protect behavior first, compare scenarios, and keep every status claim tied to evidence.
+RabbitHole runs behavior-test-before-refactor, eatme runs scenario comparison, and drinkme runs plan/status/evidence tracking. Use the plan to explain intent, status to show what is happening now, and evidence to make the result reviewable.
 
 ### RabbitHole behavior-test-before-refactor loop
 ```mermaid

@@ -239,6 +239,10 @@ README_FORBIDDEN_READER_JARGON = [
     "smoke",
 ]
 
+README_FORBIDDEN_STATUS_WORDING = [
+    "proven",
+]
+
 ENTRY_TRACEABILITY_LINKS = [
     "[drinkme status](../../../README.md)",
     "[root investigation plan](../../plan.md)",
@@ -1991,8 +1995,17 @@ class DesktopRunDocsContractTest(unittest.TestCase):
             self.assertNotIn(claim.lower(), lower_plain_readme)
         for term in README_FORBIDDEN_READER_JARGON:
             self.assertNotIn(term.lower(), readme.lower())
-        self.assertNotRegex(readme, r"\bProven\b", "README should not use Proven as status wording")
-        self.assertNotRegex(readme, r"(?m)^##\s+Proven\b", "README should not use Proven as a section label")
+        for term in README_FORBIDDEN_STATUS_WORDING:
+            self.assertNotRegex(
+                readme,
+                rf"\b{re.escape(term)}\b",
+                "README should not use Proven as status wording",
+            )
+        self.assertNotRegex(
+            readme,
+            r"(?im)^##\s+proven\b",
+            "README should not use Proven as a section label",
+        )
         self.assertGreaterEqual(readme.count("```mermaid"), 2, "README should keep useful Mermaid visuals")
         self.assert_readme_has_no_pr_dump(readme)
         self.assertLessEqual(len(readme.splitlines()), 160, "README should stay concise")
