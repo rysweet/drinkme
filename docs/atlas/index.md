@@ -46,6 +46,12 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0129 - Four PR status for RabbitHole, eatme, and amplihack-rs](journal/0129-four-pr-status-rabbithole-eatme-amplihack-rs.md)
+  records conservative, unverified traceability for cross-repository follow-up
+  references involving RabbitHole PR #297, RabbitHole PR #298, eatme PR #138, and
+  amplihack-rs PR #571. It does not state that any listed PR is merged,
+  approved, complete, deployable, production-impacting, or ready; those outcomes
+  remain unknown unless a later update cites verified metadata.
 - [0128 - RabbitHole PR #293 WhileLoop decode status](journal/0128-rabbithole-pr293-while-loop-decode-status.md)
   records that RabbitHole PR #293 decodes Tweedle `while (condition) { ... }` to
   Alice `WhileLoop` in void method bodies. Supported conditions: Boolean literal,

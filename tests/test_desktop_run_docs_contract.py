@@ -51,6 +51,7 @@ ENTRY_0125 = ROOT / "docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-
 ENTRY_0126 = ROOT / "docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md"
 ENTRY_0127 = ROOT / "docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md"
 ENTRY_0128 = ROOT / "docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md"
+ENTRY_0129 = ROOT / "docs/atlas/journal/0129-four-pr-status-rabbithole-eatme-amplihack-rs.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -120,6 +121,7 @@ DOCS = {
     "atlas entry 0126": ENTRY_0126,
     "atlas entry 0127": ENTRY_0127,
     "atlas entry 0128": ENTRY_0128,
+    "atlas entry 0129": ENTRY_0129,
 }
 
 README_PLAN_LINKS = [
@@ -171,6 +173,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0126](docs/atlas/journal/0126-rabbithole-pr291-conditional-statement-decode-status.md)",
     "[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)",
     "[atlas journal entry 0128](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md)",
+    "[atlas journal entry 0129 four-PR status](docs/atlas/journal/0129-four-pr-status-rabbithole-eatme-amplihack-rs.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -432,6 +435,30 @@ RABBITHOLE_PR292_WAVE_PR_LINKS = [
 
 RABBITHOLE_PR293_WAVE_PR_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/293",
+]
+
+FOUR_PR_STATUS_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/297",
+    "https://github.com/rysweet/RabbitHole/pull/298",
+    "https://github.com/rysweet/eatme/pull/138",
+    "https://github.com/rysweet/amplihack-rs/pull/571",
+]
+
+FOUR_PR_STATUS_ROWS = [
+    "| RabbitHole | [RabbitHole PR #297](https://github.com/rysweet/RabbitHole/pull/297) | Metadata unknown; outcome not confirmed in this entry. |",
+    "| RabbitHole | [RabbitHole PR #298](https://github.com/rysweet/RabbitHole/pull/298) | Metadata unknown; outcome not confirmed in this entry. |",
+    "| eatme | [eatme PR #138](https://github.com/rysweet/eatme/pull/138) | Metadata unknown; outcome not confirmed in this entry. |",
+    "| amplihack-rs | [amplihack-rs PR #571](https://github.com/rysweet/amplihack-rs/pull/571) | Metadata unknown; outcome not confirmed in this entry. |",
+]
+
+FOUR_PR_STATUS_CONSERVATIVE_TERMS = [
+    "exactly four pull requests",
+    "Missing metadata is treated as unknown, not as evidence of success or failure.",
+    "The #138 row is for eatme only. This entry does not record RabbitHole PR #138.",
+    "This entry does not state that any listed PR is merged, approved, complete,",
+    "deployable, production-impacting, or ready.",
+    "Those outcomes remain unknown unless",
+    "a later update cites verified metadata.",
 ]
 
 RABBITHOLE_PR278_EATME_PR132_WAVE_PR_LINKS = (
@@ -1852,6 +1879,13 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0128_link = "journal/0128-rabbithole-pr293-while-loop-decode-status.md"
         self.assertEqual(1, text.count(entry_0128_link))
         self.assertIn("WhileLoop", text)
+        entry_0129_link = "journal/0129-four-pr-status-rabbithole-eatme-amplihack-rs.md"
+        self.assertEqual(1, text.count(entry_0129_link))
+        self.assertIn("Four PR status for RabbitHole, eatme, and amplihack-rs", text)
+        self.assertIn("RabbitHole PR #297", text)
+        self.assertIn("eatme PR #138", text)
+        self.assertIn("amplihack-rs PR #571", text)
+        self.assertIn("does not state that any listed PR is merged", text)
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -2788,6 +2822,64 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                 text = self.docs[name]
                 for term in forbidden_terms:
                     self.assertNotIn(term, text)
+
+    def test_0129_four_pr_status_entry_records_exact_scope_and_rows(self):
+        text = self.docs["atlas entry 0129"]
+        actual_pr_links = re.findall(
+            r"https://github\.com/rysweet/(?:RabbitHole|eatme|amplihack-rs)/pull/\d+",
+            text,
+        )
+        status_rows = [
+            line
+            for line in text.splitlines()
+            if any(link in line for link in FOUR_PR_STATUS_LINKS)
+        ]
+
+        self.assertEqual(FOUR_PR_STATUS_LINKS, actual_pr_links)
+        self.assertEqual(FOUR_PR_STATUS_ROWS, status_rows)
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0129")
+        self.assertIn("[atlas index](../index.md)", text)
+
+    def test_0129_four_pr_status_entry_uses_plain_non_confirmation_language(self):
+        text = self.docs["atlas entry 0129"]
+        normalized = plain(text)
+        status_rows = [
+            line
+            for line in text.splitlines()
+            if any(link in line for link in FOUR_PR_STATUS_LINKS)
+        ]
+
+        self.assert_contains_all(normalized, FOUR_PR_STATUS_CONSERVATIVE_TERMS, "atlas entry 0129")
+        for row in status_rows:
+            status_statement = row.strip("|").split("|")[2].strip().lower()
+            self.assertEqual("metadata unknown; outcome not confirmed in this entry.", status_statement)
+            for overclaim in ["merged", "approved", "complete", "deployable", "production-impacting", "ready"]:
+                self.assertNotIn(overclaim, status_statement)
+
+    def test_0129_four_pr_status_entry_distinguishes_eatme_138_from_rabbithole_138(self):
+        text = self.docs["atlas entry 0129"]
+
+        self.assertIn("[eatme PR #138](https://github.com/rysweet/eatme/pull/138)", text)
+        self.assertIn("The #138 row is for eatme only.", text)
+        self.assertIn("This entry does not record RabbitHole PR #138.", text)
+        self.assertNotIn("https://github.com/rysweet/RabbitHole/pull/138", text)
+        self.assertNotIn("[RabbitHole PR #138]", text)
+
+    def test_0129_four_pr_status_is_discoverable_without_duplicate_detail(self):
+        readme = self.docs["README"]
+        atlas_index = self.docs["atlas index"]
+        readme_link = (
+            "[atlas journal entry 0129 four-PR status]"
+            "(docs/atlas/journal/0129-four-pr-status-rabbithole-eatme-amplihack-rs.md)"
+        )
+        atlas_link = "journal/0129-four-pr-status-rabbithole-eatme-amplihack-rs.md"
+
+        self.assertEqual(1, readme.count(readme_link))
+        self.assertIn("conservative, unverified traceability", readme)
+        self.assertEqual(1, atlas_index.count(atlas_link))
+        self.assertIn("does not state that any listed PR is merged", atlas_index)
+        for row in FOUR_PR_STATUS_ROWS:
+            self.assertNotIn(row, readme)
 
 
 if __name__ == "__main__":
