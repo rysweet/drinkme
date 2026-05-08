@@ -571,6 +571,26 @@ CAPABILITY_BOUNDARY_TERMS = [
     "full Tweedle/player decode",
 ]
 
+SYNTHESIZED_STATUS_TERMS = [
+    "automation scenarios",
+    "linked status docs",
+    "remaining",
+    "full Alice UI automation",
+    "visible rendering",
+    "desktop Save menu-to-written-project completion",
+    "first-lesson completion",
+    "grading",
+    "creative assessment",
+    "full Tweedle/player decode",
+]
+
+SYNTHESIZED_STATUS_FORBIDDEN_TERMS = [
+    "RabbitHole PR #306",
+    "RabbitHole PR #308",
+    "PR #306 is narrow ModelResourceExporter attribution evidence only.",
+    "PR #308 is narrow headless generated Story API runtime-state evidence only.",
+]
+
 RABBITHOLE_306_308_CAPABILITIES = [
     "visible rendering",
     "JavaFX launch",
@@ -1906,6 +1926,20 @@ class DesktopRunDocsContractTest(unittest.TestCase):
             f"{source} must separate merged PR status from product behavior proof",
         )
 
+    def assert_status_summary_is_synthesized(self, text, source):
+        normalized = plain(without_markdown_link_targets(text)).lower()
+        expected_terms = [term.lower() for term in SYNTHESIZED_STATUS_TERMS]
+        self.assert_contains_all(normalized, expected_terms, source)
+        if source == "restarted full-scope status":
+            return
+        for term in SYNTHESIZED_STATUS_FORBIDDEN_TERMS:
+            self.assertNotIn(term.lower(), normalized, f"{source} should not use PR-list status wording")
+        self.assertLessEqual(
+            len(re.findall(r"\bPR\s*#\d+", normalized)),
+            12,
+            f"{source} should summarize status instead of listing recent PR chronology",
+        )
+
     def assert_no_stale_status_near_source_prs(self, text, source):
         normalized = plain(text).lower()
         for pr_name in MERGED_SOURCE_PR_REQUIREMENTS:
@@ -2187,9 +2221,19 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         entry_0130_link = "journal/0130-rabbithole-306-308-evidence-status.md"
         self.assertEqual(1, text.count(entry_0130_link))
         plain_text = plain(text)
-        self.assert_contains_all(plain_text, RABBITHOLE_306_308_EVIDENCE_TERMS, "atlas index")
-        self.assert_contains_all(plain_text, MERGED_FOLLOWUP_TERMS, "atlas index")
-        self.assert_contains_all(plain_text, CAPABILITY_BOUNDARY_TERMS, "atlas index")
+        self.assert_contains_all(
+            plain_text,
+            [
+                "latest evidence boundary status",
+                "model export attribution",
+                "headless generated Story API runtime-state evidence",
+                "visible rendering",
+                "full UI automation",
+                "full lesson completion",
+                "full Tweedle/player decode remain open",
+            ],
+            "atlas index",
+        )
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -2533,9 +2577,12 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("e5b0ac5fce21b4eee1e13ea5861d2e9cee538ca8", text)
 
 
-        for name in CONTROL_DOCS:
+        for name in ["root plan", "eatme implementation plan", "atlas entry 0085"]:
             with self.subTest(document=name):
                 self.assert_contains_all(plain(self.docs[name]), PROOF_BOUNDARY_TERMS, name)
+        for name in ["current modernization plan", "restarted full-scope status"]:
+            with self.subTest(document=name):
+                self.assert_status_summary_is_synthesized(self.docs[name], name)
 
     def test_0101_current_merge_status_and_boundaries_are_explicit(self):
         text = self.docs["atlas entry 0101"]
@@ -2567,8 +2614,6 @@ class DesktopRunDocsContractTest(unittest.TestCase):
 
         status_docs = [
             "root plan",
-            "current modernization plan",
-            "restarted full-scope status",
             "eatme implementation plan",
             "atlas entry 0085",
         ]
@@ -2767,13 +2812,16 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("tab labels", text)
 
 
-        for name in CURRENT_MERGE_STATUS_DOCS:
+        for name in ["root plan", "eatme implementation plan"]:
             with self.subTest(document=name):
                 text = self.docs[name]
                 self.assert_contains_all(text, CURRENT_MERGED_PR_LINKS, name)
                 self.assert_current_merge_status_is_plain(text, name)
                 self.assert_current_unproven_behaviors_are_explicit(text, name)
                 self.assert_no_stale_status_for_current_prs(text, name)
+        for name in ["current modernization plan", "restarted full-scope status"]:
+            with self.subTest(document=name):
+                self.assert_status_summary_is_synthesized(self.docs[name], name)
 
     def test_0111_current_merge_status_and_boundaries_are_explicit(self):
         text = self.docs["atlas entry 0111"]
@@ -3205,19 +3253,17 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                 self.assertNotIn(claim, text)
 
     def test_0130_rabbithole_306_308_evidence_status_is_bounded(self):
-        docs_to_check = {
+        evidence_docs_to_check = {
             name: self.docs[name]
             for name in [
                 "root plan",
-                "current modernization plan",
                 "restarted full-scope status",
                 "eatme implementation plan",
-                "atlas index",
                 "atlas entry 0130",
             ]
         }
 
-        for name, text in docs_to_check.items():
+        for name, text in evidence_docs_to_check.items():
             with self.subTest(document=name):
                 self.assert_contains_all(text, RABBITHOLE_PR306_PR308_EVIDENCE_LINKS, name)
                 self.assert_contains_all(text, MERGED_FOLLOWUP_LINKS, name)
@@ -3239,6 +3285,10 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                 self.assert_contains_all(plain_text, MERGED_FOLLOWUP_TERMS, name)
                 self.assert_contains_all(plain_text, FOLLOWUP_BOUNDARY_TERMS, name)
                 self.assert_contains_all(plain_text, CAPABILITY_BOUNDARY_TERMS, name)
+
+        for name in ["current modernization plan", "atlas index"]:
+            with self.subTest(document=name):
+                self.assert_status_summary_is_synthesized(self.docs[name], name)
 
     def test_0130_rabbithole_306_308_evidence_avoids_overclaims(self):
         for name, text in self.lower_plain_docs.items():

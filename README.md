@@ -40,9 +40,9 @@ flowchart LR
 
 ## Current verdict
 
-The modernization is active and useful, but unfinished. The repository now has
-documentation checks, scenario inventories, readiness reports, source evidence
-for selected Alice areas, and diagrams that make the work easier to navigate.
+The modernization is active and useful, but unfinished. The repository now has documentation checks,
+linked status docs, automation-scenario coverage, readiness reports, source
+evidence for selected Alice areas, and diagrams that make the work easier to navigate.
 
 Use drinkme as a map and status index. Do not read it as a claim that Alice
 modernization, classroom assessment, UI automation, rendering, or coverage goals

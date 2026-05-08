@@ -15,12 +15,22 @@ Last updated: 2026-05-08
 | Workstream | Owner repo | Status |
 | --- | --- | --- |
 | Alice source modernization | `rysweet/RabbitHole` | Open: continue characterization-first source work behind local checks and CI. |
-| Eatme real-Alice user QA | `rysweet/eatme` | Open: continue lesson/persona/scenario smoke coverage against real Alice evidence. |
-| Supporting-tool readiness | `gadugi-agentic-test` and related tooling | Open as needed: fix harness/tool defects only when they block evidence-producing Alice or eatme work. |
+| Eatme real-Alice user QA | `rysweet/eatme` | Open: continue lesson/persona/scenario coverage against real Alice evidence. |
+| Supporting-tool readiness | related tooling | Open as needed: fix harness/tool defects only when they block evidence-producing Alice or eatme work. |
 | Code-atlas / formal-spec / crusty review inputs | `rysweet/drinkme` | Open read-only inputs: use recovered findings to choose and review high-value seams. |
 | Drinkme status and artifact reconciliation | `rysweet/drinkme` | Open: keep issue/status artifacts current as each work round changes state. |
 
-## Current PR status
+## Current status by capability
+
+| Capability area | Plain status |
+| --- | --- |
+| Linked status docs | Updated: README, current-state, restarted-status, and atlas now summarize automation-scenario status without using PR chronology as the user-facing view. |
+| Automation scenarios | Partly working: scenarios cover more desktop, classroom, lesson, export/share, accessibility, Save-path, and readiness paths, but they are not full Alice UI automation. |
+| Source characterization | Partly working: selected project IO, generated Story API, model export, NetBeans export, scenegraph, Croquet layout, and Tweedle decode slices have evidence. |
+| Runtime/user behavior | Open: visible rendering, full world execution, first-lesson completion, grading, creative assessment, desktop Save menu-to-written-project completion, and full Tweedle/player decode remain incomplete. |
+| Evidence history | Detailed journal entries remain the evidence source; this tracker uses them to summarize current capability status. |
+
+## Evidence detail ledger
 
 | Work item | Plain status |
 | --- | --- |
@@ -563,75 +573,15 @@ creative assessment, or first-lesson completion.
 ## Latest integrated evidence
 
 - Coverage tooling now exists through a reporting-only JaCoCo profile and CI artifact baseline.
-- Project IO/load-save has new archive fixture, backup, save-to-backup, cancellation, and JSON/XML manifest fallback characterization.
-- Outside-in Alice desktop QA scenarios now cover open/load/save, package/install smoke, and wizard/palette/completion contracts at the scenario level.
-- NetBeans export coverage now uses a populated `Alice3Library` classpath contract with JavaFX artifacts and install/package smoke assertions.
-- Generated Story API Java coverage now includes loop, foreach, iterable, local, method, parameter, conditional, and story API call compile characterization; stale cached `COUNT__` foreach item names are repaired while explicit item names are preserved.
-- Starter project `.a3p` archives now have XML fallback readability coverage using committed fixtures.
-- Croquet palette layout and scenegraph model behavior have new headless characterization tests; scenegraph `Joint` bounds/scale bugs exposed by tests were fixed.
-- Public no-Sims builds now guard against nonfree library leakage, and includeSims builds explicitly overwrite the no-Sims `Alice3Library.xml` when authorized.
-- Eatme now has expanded instructor/student prompt assets, Alice.org-grounded lesson smoke scenarios, gadugi adapters, and split validation modules below the 500-line target.
-- Formal high-risk data-loss Gherkin scenarios are recorded in drinkme as specified behavior, with implementation status separated from completion claims.
-- The merged source PRs above keep the proof boundary narrow: RabbitHole PR
-  #154 records only the Run window attachment signal; RabbitHole PR #155
-  records launcher steps and no-go messages, but does not prove rendering; and
-  eatme PR #89 does not grade work or prove full lesson completion.
-- The merged eatme PR #92 records the evidence categories RabbitHole must supply
-  before first-lesson readiness can be marked ready. It documents the
-  requirement; it is not the runtime proof.
-- The merged RabbitHole PR #159 records one clear archive failure boundary, not
-  broad Tweedle decode support.
-- The merged RabbitHole PR #160 records that pixel and screenshot proof were not
-  observed by the Run-window attachment signal.
-- The merged eatme PR #93 makes required readiness evidence visible in output;
-  it does not create new runtime evidence.
-- The merged RabbitHole PR #163 turns one silent archive loss case into a clear
-  error for unsupported manifest-declared Tweedle type names.
-- The merged eatme PR #95 reports the pixel-boundary file state explicitly as
-  missing, invalid, or `not_observed`; it does not add pixel proof.
-- The merged RabbitHole PR #164 adds constructor-bearing sibling archive coverage
-  for the same clear-failure behavior.
-- The merged eatme PR #96 makes readiness progress countable without adding new
-  runtime proof.
-- The merged RabbitHole PR #166 adds complex-initializer sibling archive coverage
-  for the same clear-failure behavior.
-- The merged RabbitHole PR #167 adds a pixel observation file that records an
-  observation when possible and a clear blocker when not.
-- The merged eatme PR #98 shows readiness progress in plain text without adding
-  new runtime proof.
-- The merged RabbitHole PR #168 adds unresolved-parent sibling archive coverage
-  for the same clear-failure behavior.
-- The merged RabbitHole PR #169 adds blocker details to the pixel observation
-  file without proving visible rendering.
-- The merged eatme PR #99 reports the pixel observation file without adding new
-  runtime proof.
-- The merged RabbitHole PR #170 improves pixel observation fallback without
-  proving visible rendering correctness.
-- The merged RabbitHole PR #171 adds resource-initializer clear-failure coverage,
-  not full Tweedle decode support.
-- The merged RabbitHole PR #172 records the next blocked UI action targets.
-- The merged eatme PR #101 shows next-action evidence in plain output without
-  adding runtime proof.
-- The merged eatme PR #102 adds one media/audio student scenario without grading
-  student work.
-- The merged RabbitHole PR #185 adds model resource array grouping, skip behavior,
-  and duplicate index rejection tests without proving 70 percent aggregate coverage.
-- The merged RabbitHole PR #187 adds narrow `TextString label <- null` support and
-  keeps broader null/player/Tweedle decode work open.
-- The merged RabbitHole PR #188 adds `ProcedureTabSelection` as a design and test
-  boundary, not live procedure invocation.
-- The merged RabbitHole PR #190 adds `IssueReportWorker` non-retryable failure tests;
-  transient `jogamp.org` failures delayed CI until rerun.
-- The merged RabbitHole PR #191 restores the Maven cache fallback and fixes the stuck
-  coverage path; coverage run `25492250204` completed successfully.
-- The merged RabbitHole PR #209 supports literal sized Tweedle array field initializers
-  such as `new WholeNumber[2]`, while non-literal sizes still fail clearly.
-- The merged RabbitHole PR #210 adds launcher/runtime proof beyond the earlier
-  `Program.main` null-Stage guard without proving rendering, installer success, or
-  full world execution.
-- The merged RabbitHole PR #211 adds story-api keyboard event characterization tests;
-  reported `core/story-api` coverage moved from 4.55% to 6.21% with 260 more
-  covered lines, while the 70 percent aggregate coverage target and manual QA gaps remain.
+- Project IO/load-save has archive fixture, backup, save-to-backup, cancellation, and JSON/XML manifest fallback characterization.
+- Desktop automation scenarios cover open/load/save, package/install checks, wizard/palette/completion contracts, readiness reporting, and blocked next actions at the scenario level.
+- NetBeans export coverage uses a populated `Alice3Library` classpath contract with JavaFX artifacts and install/package checks.
+- Generated Story API Java coverage includes loop, foreach, iterable, local, method, parameter, conditional, story API call compile characterization, and a headless generated runtime-state slice.
+- Starter project `.a3p` archives have XML fallback readability coverage using committed fixtures.
+- Croquet palette layout and scenegraph model behavior have headless characterization tests; scenegraph `Joint` bounds/scale bugs exposed by tests were fixed.
+- Public no-Sims builds guard against nonfree library leakage, and includeSims builds explicitly overwrite the no-Sims `Alice3Library.xml` when authorized.
+- Instructor/student scenario assets and readiness reports now cover more classroom and lesson paths, with implementation status separated from completion claims.
+- Model export attribution has targeted evidence; it does not change the open status of visible rendering, JavaFX launch, animation playback, full world execution, grading, full UI automation, full lesson completion, or full Tweedle/player decode.
 
 ## No-premature-completion rule
 
