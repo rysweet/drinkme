@@ -336,6 +336,14 @@ adapter; scenario asset count grew from 89 to 91. Remaining missing scenario
 file: audio-camera-and-export-sharecase. Grading, automated creative
 assessment, real Alice UI automation, and full lesson delivery remain unproven.
 
+[eatme PR #135](https://github.com/rysweet/eatme/pull/135) merged at
+`8f82d682aef4d22c3ca4e7bdc4344cae660b13bd`. Adds the
+`audio-camera-and-export-sharecase` instructor/student scenario and Gadugi
+adapter; scenario asset count grew from 91 to 93. No remaining scenario gaps
+from the list in `docs/persona-assets.md` and
+`assets/personas/alice-user-crew.yaml`. Grading, automated creative
+assessment, real Alice UI automation, and full lesson delivery remain unproven.
+
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and
