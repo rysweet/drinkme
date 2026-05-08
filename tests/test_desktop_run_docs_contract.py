@@ -131,6 +131,8 @@ DOCS = {
 
 README_REQUIRED_HEADINGS = [
     "# drinkme",
+    "## Plan summary",
+    "## How the work runs",
     "## Current verdict",
     "## One-page project map",
     "## What works now",
@@ -148,15 +150,43 @@ README_REQUIRED_TERMS = [
     "This README is a project overview, not a changelog.",
     "Use drinkme as a map and status index.",
     "python3 -m unittest discover -s tests -v",
-    "Scenario inventories",
+    "scenario inventories",
     "readiness reports",
     "not full Alice UI automation",
     "not automated",
     "component-level file-write evidence",
     "desktop Save menu-to-written-project completion is still missing",
-    "Component-level evidence exists, but desktop Save menu-to-written-project completion is still missing.",
     "70% aggregate coverage is still a target, not a result.",
 ]
+
+README_PLAN_SUMMARY_CONCEPTS = {
+    "Alice behavior protection": ["current Alice behavior", "focused checks"],
+    "RabbitHole loop": ["RabbitHole", "behavior", "evidence", "refactor"],
+    "eatme scenario comparison": ["eatme", "scenario", "compare", "gaps"],
+    "drinkme evidence index": ["drinkme", "status", "evidence", "index"],
+}
+
+README_PROCESS_DIAGRAM_REQUIREMENTS = {
+    "RabbitHole behavior-test-before-refactor loop": [
+        'Check["Behavior check"]',
+        'Evidence["Capture evidence"]',
+        'Refactor["Refactor one RabbitHole slice"]',
+        "Repeat -->|new evidence| Check",
+    ],
+    "eatme scenario comparison loop": [
+        'Scenarios["Define automation scenarios"]',
+        'Compare["Compare Alice outcomes"]',
+        'Gaps["Record remaining gaps"]',
+        "Next -->|next gap| Scenarios",
+    ],
+    "drinkme plan/status/evidence tracking loop": [
+        'Plan["Summarize plan"]',
+        'Status["Show current status"]',
+        'Evidence["Link evidence"]',
+        'Decisions["Guide decisions"]',
+        "Decisions -->|updated plan| Plan",
+    ],
+}
 
 README_REQUIRED_LINKS = [
     "[Original Alice 3 project](https://github.com/TheAliceProject/alice3)",
@@ -177,14 +207,14 @@ README_REQUIRED_LINKS = [
 ]
 
 README_MISSING_TERMS = [
-    "Alice UI automation.",
-    "Visible rendering correctness.",
-    "Desktop Save menu-to-written-project completion.",
-    "Grading.",
-    "Creative assessment.",
-    "First-lesson completion.",
-    "Full Tweedle/player decode.",
-    "70% aggregate coverage.",
+    "Alice UI automation",
+    "visible rendering correctness",
+    "desktop Save menu-to-written-project completion",
+    "grading",
+    "creative assessment",
+    "first-lesson completion",
+    "full Tweedle/player decode",
+    "70% aggregate coverage",
 ]
 
 README_FORBIDDEN_OVERCLAIMS = [
@@ -203,9 +233,14 @@ README_FORBIDDEN_OVERCLAIMS = [
 
 README_FORBIDDEN_READER_JARGON = [
     "Gadugi",
+    "Plan english",
     "plain english",
     "plain English",
     "smoke",
+]
+
+README_FORBIDDEN_STATUS_WORDING = [
+    "proven",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -1918,12 +1953,59 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_contains_all(readme, README_REQUIRED_HEADINGS, "README")
         self.assert_contains_all(readme, README_REQUIRED_LINKS, "README useful links")
         self.assert_contains_all(plain_readme, README_REQUIRED_TERMS, "README")
-        self.assert_contains_all(section(readme, "What is still missing"), README_MISSING_TERMS, "README missing work")
+        self.assertLess(
+            readme.index("## Plan summary"),
+            readme.index("## How the work runs"),
+            "README should put the process loops near the top after the plan summary",
+        )
+        self.assertLess(
+            readme.index("## How the work runs"),
+            readme.index("## Current verdict"),
+            "README should explain how the work runs before status detail",
+        )
+        plan_summary = plain(section(readme, "Plan summary")).lower()
+        missing_plan_summary_concepts = {
+            concept: [term for term in terms if term.lower() not in plan_summary]
+            for concept, terms in README_PLAN_SUMMARY_CONCEPTS.items()
+        }
+        missing_plan_summary_concepts = {
+            concept: missing_terms
+            for concept, missing_terms in missing_plan_summary_concepts.items()
+            if missing_terms
+        }
+        self.assertEqual(
+            {},
+            missing_plan_summary_concepts,
+            "README plan summary is missing required concepts",
+        )
+        how_work_runs = section(readme, "How the work runs")
+        self.assertEqual(
+            3,
+            how_work_runs.count("```mermaid"),
+            "README should include exactly the three requested process diagrams",
+        )
+        for label, required_terms in README_PROCESS_DIAGRAM_REQUIREMENTS.items():
+            self.assert_contains_all(
+                how_work_runs,
+                [label, *required_terms],
+                f"README process diagram for {label}",
+            )
+        self.assert_contains_all(plain(section(readme, "What is still missing")), README_MISSING_TERMS, "README missing work")
         for claim in README_FORBIDDEN_OVERCLAIMS:
             self.assertNotIn(claim.lower(), lower_plain_readme)
         for term in README_FORBIDDEN_READER_JARGON:
             self.assertNotIn(term.lower(), readme.lower())
-        self.assertNotRegex(readme, r"(?m)^##\s+Proven\b", "README should not use Proven as a section label")
+        for term in README_FORBIDDEN_STATUS_WORDING:
+            self.assertNotRegex(
+                readme,
+                rf"\b{re.escape(term)}\b",
+                "README should not use Proven as status wording",
+            )
+        self.assertNotRegex(
+            readme,
+            r"(?im)^##\s+proven\b",
+            "README should not use Proven as a section label",
+        )
         self.assertGreaterEqual(readme.count("```mermaid"), 2, "README should keep useful Mermaid visuals")
         self.assert_readme_has_no_pr_dump(readme)
         self.assertLessEqual(len(readme.splitlines()), 160, "README should stay concise")
