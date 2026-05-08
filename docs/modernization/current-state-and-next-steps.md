@@ -515,6 +515,14 @@
   `save-project` / `tools/eatme-save-project`. 203 tests passed; CI is green.
   These hook messages do not prove full UI automation. Full Alice UI automation,
   visible rendering, grading, and first-lesson completion remain unproven.
+  [RabbitHole PR #291](https://github.com/rysweet/RabbitHole/pull/291) merged at
+  head `0f00c088f20e489b5b3c43bdbdc29e078dfb6b9b`. Decodes Tweedle `if`/`else`
+  statements in void method bodies into Alice `ConditionalStatement` with a
+  `BooleanExpressionBodyPair` for the `if` branch and a plain else body. Adds 5
+  tests; RabbitHole CI all green; focused review CLEAN. Local declarations inside
+  `if`/`else` bodies, nested `if`/`else`, loops, method calls, constructors,
+  resource field initializers, full player decode, and full Tweedle decode remain
+  unproven. Visible rendering, grading, and first-lesson completion remain unproven.
   [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
   `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
   method and constructor bodies can now decode an `IdentifierReference` RHS to
