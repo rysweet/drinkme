@@ -458,6 +458,30 @@ network. Do not open issues or pull requests against
   audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading,
   automated creative assessment, real Alice UI automation, and full lesson
   delivery remain unproven.
+- [RabbitHole PR #282](https://github.com/rysweet/RabbitHole/pull/282) merged at
+  `81db4122fc3270e2a16a02c46c4a1d7f254717e3`. Decodes Tweedle relational
+  comparison expressions (`==`, `!=`, `<`, `<=`, `>`, `>=`) to
+  `RelationalInfixExpression` in local initializers, assignment right-hand sides,
+  and method returns. Logical expressions, method calls, non-`this` member
+  targets, loops, conditionals, resource initializers, and full Tweedle/player
+  decode remain unproven.
+- [RabbitHole PR #284](https://github.com/rysweet/RabbitHole/pull/284) merged at
+  `eca3fb920e3d2b13f5de7117ccc96308378a10f6`. Fixes `approvedSelection` ordering
+  in `StageIdeSaveMenuE2EWriteProofTest` and `SaveFileDialogShowControlProofTest`
+  so all Save proof tests set the proof flag before the approval call. Proof
+  bookkeeping only; does not expand Save proof scope beyond PR #276.
+- [RabbitHole PR #285](https://github.com/rysweet/RabbitHole/pull/285) merged at
+  `8eaa066f98ab173bfa6d0d08f804b5e4eb47a7be`. Proves Alice 3 main-window AT-SPI
+  state after Select Project dismissal via `post-project-open-probe.py`. Requires
+  `projectOpenObserved=true`, waits five seconds, enumerates top-level frames,
+  and records blockers. Full scene load, visible rendering, UI correctness,
+  grading, and lesson completion remain unproven.
+- [eatme PR #134](https://github.com/rysweet/eatme/pull/134) merged at
+  `294ca3319863098c11e3abd712dc661b44a6278e`. Adds the
+  `setup-preflight-ready-to-create` instructor/student scenario and Gadugi
+  adapter; scenario asset count grew from 89 to 91. Remaining missing scenario
+  file: audio-camera-and-export-sharecase. Grading, automated creative
+  assessment, real Alice UI automation, and full lesson delivery remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

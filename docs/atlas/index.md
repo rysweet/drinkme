@@ -46,6 +46,28 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0121 - eatme PR #134 setup-preflight-ready-to-create scenario status](journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md)
+  records that eatme PR #134 adds the `setup-preflight-ready-to-create` scenario and
+  Gadugi adapter; scenario asset count grew from 89 to 91. Remaining missing scenario
+  file: `audio-camera-and-export-sharecase`. Grading, automated creative assessment,
+  real Alice UI automation, and full lesson delivery remain unproven.
+- [0120 - RabbitHole PR #285 AT-SPI main-window state after Select Project dismissal](journal/0120-rabbithole-pr285-atapi-main-window-post-project-open-status.md)
+  records that `post-project-open-probe.py` proves Alice 3 main-window AT-SPI state
+  after Select Project dismissal when `projectOpenObserved=true`; waits five seconds,
+  enumerates top-level frames, and records blockers. Full scene load, visible
+  rendering, UI correctness, grading, and lesson completion remain unproven.
+- [0119 - RabbitHole PR #284 Save proof ordering fix status](journal/0119-rabbithole-pr284-save-proof-ordering-fix-status.md)
+  records that all Save proof tests now set the proof flag before the approval call;
+  `StageIdeSaveMenuE2EWriteProofTest` and `SaveFileDialogShowControlProofTest` are
+  fixed. This does not expand the Save proof scope beyond PR #276. Real rendered
+  desktop menu bar navigation, native FileDialog, visible rendering, grading, and full
+  lesson completion remain unproven.
+- [0118 - RabbitHole PR #282 relational comparison decode status](journal/0118-rabbithole-pr282-relational-comparison-status.md)
+  records that Tweedle relational comparison expressions (`==`, `!=`, `<`, `<=`, `>`,
+  `>=`) now decode to `RelationalInfixExpression` in local initializers, assignment
+  right-hand sides, and method returns. Logical expressions, method calls, non-`this`
+  member targets, loops, conditionals, resource initializers, and full Tweedle/player
+  decode remain unproven.
 - [0117 - eatme PR #133 design-process-story-or-game scenario status](journal/0117-eatme-pr133-design-process-story-or-game-status.md)
   records that eatme PR #133 adds the `design-process-story-or-game` scenario and
   Gadugi adapter; scenario asset count grew from 87 to 89. Remaining missing scenario
