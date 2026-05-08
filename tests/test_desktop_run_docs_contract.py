@@ -131,41 +131,59 @@ DOCS = {
 
 README_REQUIRED_HEADINGS = [
     "# drinkme",
-    "## What this project is",
-    "## Plan",
-    "## Proven progress",
-    "## Currently in progress",
-    "## Still unproven",
-    "## Detailed history",
+    "## Current verdict",
+    "## One-page project map",
+    "## What works now",
+    "## What is partly working",
+    "## What is still missing",
+    "## Current focus",
+    "## Progress at a glance",
+    "## Useful links",
+    "## Where to go next",
 ]
 
 README_REQUIRED_TERMS = [
-    "RabbitHole",
-    "modernized Alice source tree",
-    "eatme",
-    "headless browser and runtime side",
     "drinkme",
-    "documentation and evidence tracker",
-    "Keep Alice lessons loadable outside the legacy desktop path.",
-    "Prove content parsing, project loading, and basic lesson flow in small steps.",
-    "Keep browser and desktop work honest with repeatable checks.",
-    "Move detailed status history into atlas docs instead of the README.",
+    "orientation and evidence repository",
+    "project map and evidence index",
+    "python3 -m unittest discover -s tests -v",
+    "automation scenario catalog",
+    "readiness reports",
+    "not full lesson automation",
+    "not automated",
+    "70% aggregate coverage is still a target, not a result.",
 ]
 
-README_HISTORY_LINKS = [
-    "[atlas index](docs/atlas/index.md)",
-    "[atlas journal](docs/atlas/journal/)",
+README_REQUIRED_LINKS = [
+    "[Investigation plan](docs/plan.md)",
+    "[Current state and next steps](docs/modernization/current-state-and-next-steps.md)",
+    "[Restarted full-scope status](docs/modernization/restarted-full-scope-status.md)",
+    "[Atlas index](docs/atlas/index.md)",
+    "[Repository surface diagram source](docs/atlas/diagrams/repo-surface.mmd)",
+    "[Testing roadmap diagram source](docs/atlas/diagrams/testing-roadmap.mmd)",
 ]
 
-README_UNPROVEN_TERMS = [
-    "Full Alice UI automation.",
+README_MISSING_TERMS = [
+    "Alice UI automation.",
     "Visible rendering correctness.",
     "Desktop Save completion.",
     "Grading.",
     "Creative assessment.",
     "First-lesson completion.",
     "Full Tweedle/player decode.",
-    "70 percent aggregate coverage.",
+    "70% aggregate coverage.",
+]
+
+README_FORBIDDEN_OVERCLAIMS = [
+    "Alice UI automation is complete",
+    "visible rendering correctness is proven",
+    "desktop Save completion is done",
+    "grading works",
+    "creative assessment works",
+    "first-lesson completion is complete",
+    "full Tweedle/player decode is complete",
+    "70% aggregate coverage is complete",
+    "70 percent aggregate coverage is complete",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -1873,13 +1891,16 @@ class DesktopRunDocsContractTest(unittest.TestCase):
     def test_readme_is_concise_project_summary(self):
         readme = self.docs["README"]
         plain_readme = plain(readme)
+        lower_plain_readme = plain_readme.lower()
 
         self.assert_contains_all(readme, README_REQUIRED_HEADINGS, "README")
-        self.assert_contains_all(readme, README_HISTORY_LINKS, "README detailed history")
+        self.assert_contains_all(readme, README_REQUIRED_LINKS, "README useful links")
         self.assert_contains_all(plain_readme, README_REQUIRED_TERMS, "README")
-        self.assert_contains_all(section(readme, "Still unproven"), README_UNPROVEN_TERMS, "README still unproven")
+        self.assert_contains_all(section(readme, "What is still missing"), README_MISSING_TERMS, "README missing work")
+        for claim in README_FORBIDDEN_OVERCLAIMS:
+            self.assertNotIn(claim.lower(), lower_plain_readme)
         self.assert_readme_has_no_pr_dump(readme)
-        self.assertLessEqual(len(readme.splitlines()), 80, "README should stay concise")
+        self.assertLessEqual(len(readme.splitlines()), 110, "README should stay concise")
         self.assertNotIn("plain english", readme.lower())
         self.assertNotIn("plain English", readme)
 
