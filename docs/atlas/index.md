@@ -53,9 +53,10 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
   PR #308 is narrow headless generated Story API runtime-state evidence only.
   [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) and
   [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575)
-  remain active follow-up work outside this PR #306/#308 evidence entry.
-  PR #307 is bounded Project I/O recovery follow-up. PR #575 is supporting
-  recipe pre-commit reliability follow-up. The entry keeps the evidence boundary
+  have also merged; they remain follow-up records outside this PR #306/#308
+  evidence entry. PR #307 is bounded Project I/O recovery follow-up, merged at
+  `2026-05-08T10:26:17Z`. PR #575 is supporting recipe pre-commit reliability
+  follow-up, merged at `2026-05-08T10:44:40Z`. The entry keeps the evidence boundary
   explicit: PR #306 and PR #308 do not prove visible
   rendering, JavaFX launch, animation playback, full world execution, grading,
   full UI automation, full lesson completion, or full Tweedle/player decode.

@@ -9,10 +9,12 @@ PR #308 is narrow headless generated Story API runtime-state evidence only.
 
 [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) and
 [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575)
-remain active follow-up work outside this PR #306/#308 evidence entry.
+have also merged; they remain follow-up records outside this PR #306/#308
+evidence entry.
 
-PR #307 is bounded Project I/O recovery follow-up. PR #575 is supporting recipe
-pre-commit reliability follow-up.
+PR #307 is bounded Project I/O recovery follow-up, merged at
+`2026-05-08T10:26:17Z`. PR #575 is supporting recipe pre-commit reliability
+follow-up, merged at `2026-05-08T10:44:40Z`.
 
 ## Evidence status
 
@@ -20,8 +22,8 @@ pre-commit reliability follow-up.
 | --- | --- | --- |
 | [RabbitHole PR #306](https://github.com/rysweet/RabbitHole/pull/306) | `MERGED` at `2026-05-08T09:31:58Z` | Narrow ModelResourceExporter attribution evidence only. |
 | [RabbitHole PR #308](https://github.com/rysweet/RabbitHole/pull/308) | `MERGED` at `2026-05-08T09:15:55Z` | Narrow headless generated Story API runtime-state evidence only. |
-| [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) | active follow-up work | Bounded Project I/O recovery follow-up; remains outside PR #306/#308 capability evidence. |
-| [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575) | active follow-up work | Supporting recipe pre-commit reliability follow-up; remains outside this evidence entry. |
+| [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) | `MERGED` at `2026-05-08T10:26:17Z` | Bounded Project I/O recovery follow-up; remains outside PR #306/#308 capability evidence. |
+| [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575) | `MERGED` at `2026-05-08T10:44:40Z` | Supporting recipe pre-commit reliability follow-up; remains outside this evidence entry. |
 
 ## Capability boundary
 
