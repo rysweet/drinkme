@@ -63,8 +63,9 @@ flowchart TD
 
 - Browser-side and desktop-side lesson checks provide useful signals, but they
   are not full Alice UI automation.
-- Save-path work has selected-path, menu-dispatch, chooser, and file-write
-  evidence, but full desktop Save completion is still missing.
+- Save-path work has selected-path, menu-dispatch, chooser, and
+  component-level file-write evidence, but desktop Save
+  menu-to-written-project completion is still missing.
 - Rendering work has surface, window, and blocker records, but not visible
   rendering correctness.
 - Scenario reports organize classroom-style coverage, but grading and creative
@@ -76,7 +77,7 @@ flowchart TD
 
 - Alice UI automation.
 - Visible rendering correctness.
-- Desktop Save completion.
+- Desktop Save menu-to-written-project completion.
 - Grading.
 - Creative assessment.
 - First-lesson completion.
@@ -86,9 +87,9 @@ flowchart TD
 ## Current focus
 
 Keep drinkme readable as the map, not the timeline. New work should close the
-largest evidence gaps first: real UI actions, visible rendering, full desktop
-Save completion, first-lesson completion, grading and creative assessment, and
-broader decoder coverage.
+largest evidence gaps first: real UI actions, visible rendering, desktop Save
+menu-to-written-project completion, first-lesson completion, grading and
+creative assessment, and broader decoder coverage.
 
 When details change, update the linked status docs and diagrams instead of
 turning this README into a chronological pull request list.
@@ -106,7 +107,7 @@ flowchart LR
 | Documentation checks | Works now | Run the unittest command above for the drinkme docs contract. |
 | Project map and diagrams | Works now | Start with the atlas and diagram links below. |
 | Automation scenarios | Partly working | Useful coverage map; not full Alice UI automation. |
-| Desktop Save | Partly working | Evidence exists, but full desktop Save completion is missing. |
+| Desktop Save | Partly working | Component-level evidence exists, but desktop Save menu-to-written-project completion is still missing. |
 | Rendering and lesson completion | Missing | Do not treat current evidence as visible correctness or a finished lesson. |
 | Grading and creative assessment | Missing | Scenario reports do not grade student work. |
 | Tweedle/player decode | Partly working | Many slices are characterized; full decode is missing. |

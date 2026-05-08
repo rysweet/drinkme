@@ -152,7 +152,9 @@ README_REQUIRED_TERMS = [
     "readiness reports",
     "not full Alice UI automation",
     "not automated",
-    "full desktop Save completion is still missing",
+    "component-level file-write evidence",
+    "desktop Save menu-to-written-project completion is still missing",
+    "Component-level evidence exists, but desktop Save menu-to-written-project completion is still missing.",
     "70% aggregate coverage is still a target, not a result.",
 ]
 
@@ -177,7 +179,7 @@ README_REQUIRED_LINKS = [
 README_MISSING_TERMS = [
     "Alice UI automation.",
     "Visible rendering correctness.",
-    "Desktop Save completion.",
+    "Desktop Save menu-to-written-project completion.",
     "Grading.",
     "Creative assessment.",
     "First-lesson completion.",
@@ -188,6 +190,8 @@ README_MISSING_TERMS = [
 README_FORBIDDEN_OVERCLAIMS = [
     "Alice UI automation is complete",
     "visible rendering correctness is proven",
+    "full Save completion",
+    "full desktop Save completion",
     "desktop Save completion is done",
     "grading works",
     "creative assessment works",
