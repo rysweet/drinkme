@@ -452,11 +452,8 @@ RABBITHOLE_PR306_PR308_EVIDENCE_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/308",
 ]
 
-RABBITHOLE_PR307_BOUNDED_LINKS = [
-    "https://github.com/rysweet/RabbitHole/pull/307",
-]
-
 ACTIVE_FOLLOWUP_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/307",
     "https://github.com/rysweet/amplihack-rs/pull/575",
 ]
 
@@ -473,23 +470,23 @@ RABBITHOLE_306_308_APPROVED_WORDING = [
 ]
 
 ACTIVE_FOLLOWUP_TERMS = [
+    "RabbitHole PR #307",
     "amplihack-rs PR #575",
     "active follow-up work",
 ]
 
 RABBITHOLE_PR307_BOUNDED_TERMS = [
-    "RabbitHole PR #307",
-    "PR #307 is merged bounded Project I/O recovery evidence only.",
+    "PR #307 is bounded Project I/O recovery follow-up.",
 ]
 
 ACTIVE_FOLLOWUP_STATUS_SENTENCE = (
-    "amplihack-rs PR #575 remains active follow-up work."
+    "RabbitHole PR #307 and amplihack-rs PR #575 remain active follow-up work "
+    "outside this PR #306/#308 evidence entry."
 )
 
 PLANNED_BUILD_BOUNDARY_TERMS = [
-    "RabbitHole PR #307 has landed as bounded evidence only",
-    "amplihack-rs PR #575 is the supporting recipe pre-commit reliability work",
-    "still to land",
+    "PR #307 is bounded Project I/O recovery follow-up",
+    "PR #575 is supporting recipe pre-commit reliability follow-up",
 ]
 
 CAPABILITY_BOUNDARY_SENTENCE = (
@@ -3119,7 +3116,6 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         for name, text in docs_to_check.items():
             with self.subTest(document=name):
                 self.assert_contains_all(text, RABBITHOLE_PR306_PR308_EVIDENCE_LINKS, name)
-                self.assert_contains_all(text, RABBITHOLE_PR307_BOUNDED_LINKS, name)
                 self.assert_contains_all(text, ACTIVE_FOLLOWUP_LINKS, name)
                 plain_text = plain(without_markdown_link_targets(text))
                 self.assert_contains_all(
@@ -3130,11 +3126,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                 self.assert_contains_all(plain_text, RABBITHOLE_PR307_BOUNDED_TERMS, name)
                 self.assertIn(ACTIVE_FOLLOWUP_STATUS_SENTENCE, plain_text)
                 self.assertNotIn(
-                    "RabbitHole PR #307 and amplihack-rs PR #575 remain active follow-up work.",
-                    plain_text,
-                )
-                self.assertNotIn(
-                    "RabbitHole PR #307 is the Project I/O recovery shard still to land",
+                    "RabbitHole PR #307 is merged bounded Project I/O recovery evidence only.",
                     plain_text,
                 )
                 self.assertIn(CAPABILITY_BOUNDARY_SENTENCE, plain_text)
