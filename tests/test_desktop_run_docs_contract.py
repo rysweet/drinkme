@@ -452,7 +452,7 @@ RABBITHOLE_PR306_PR308_EVIDENCE_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/308",
 ]
 
-ACTIVE_FOLLOWUP_LINKS = [
+MERGED_FOLLOWUP_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/307",
     "https://github.com/rysweet/amplihack-rs/pull/575",
 ]
@@ -469,24 +469,25 @@ RABBITHOLE_306_308_APPROVED_WORDING = [
     "PR #308 is narrow headless generated Story API runtime-state evidence only.",
 ]
 
-ACTIVE_FOLLOWUP_TERMS = [
+MERGED_FOLLOWUP_TERMS = [
     "RabbitHole PR #307",
     "amplihack-rs PR #575",
-    "active follow-up work",
+    "merged at `2026-05-08T10:26:17Z`",
+    "merged at `2026-05-08T10:44:40Z`",
 ]
 
 RABBITHOLE_PR307_BOUNDED_TERMS = [
-    "PR #307 is bounded Project I/O recovery follow-up.",
+    "bounded Project I/O recovery follow-up",
 ]
 
-ACTIVE_FOLLOWUP_STATUS_SENTENCE = (
-    "RabbitHole PR #307 and amplihack-rs PR #575 remain active follow-up work "
-    "outside this PR #306/#308 evidence entry."
-)
+FOLLOWUP_BOUNDARY_TERMS = [
+    "bounded Project I/O recovery follow-up",
+    "supporting recipe pre-commit reliability follow-up",
+]
 
-PLANNED_BUILD_BOUNDARY_TERMS = [
-    "PR #307 is bounded Project I/O recovery follow-up",
-    "PR #575 is supporting recipe pre-commit reliability follow-up",
+STALE_FOLLOWUP_STATUS_TERMS = [
+    "active follow-up work",
+    "remain active follow-up work",
 ]
 
 CAPABILITY_BOUNDARY_SENTENCE = (
@@ -2082,7 +2083,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertEqual(1, text.count(entry_0130_link))
         plain_text = plain(text)
         self.assert_contains_all(plain_text, RABBITHOLE_306_308_EVIDENCE_TERMS, "atlas index")
-        self.assert_contains_all(plain_text, ACTIVE_FOLLOWUP_TERMS, "atlas index")
+        self.assert_contains_all(plain_text, MERGED_FOLLOWUP_TERMS, "atlas index")
         self.assert_contains_all(plain_text, CAPABILITY_BOUNDARY_TERMS, "atlas index")
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
@@ -3116,7 +3117,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         for name, text in docs_to_check.items():
             with self.subTest(document=name):
                 self.assert_contains_all(text, RABBITHOLE_PR306_PR308_EVIDENCE_LINKS, name)
-                self.assert_contains_all(text, ACTIVE_FOLLOWUP_LINKS, name)
+                self.assert_contains_all(text, MERGED_FOLLOWUP_LINKS, name)
                 plain_text = plain(without_markdown_link_targets(text))
                 self.assert_contains_all(
                     plain_text,
@@ -3124,15 +3125,16 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                     name,
                 )
                 self.assert_contains_all(plain_text, RABBITHOLE_PR307_BOUNDED_TERMS, name)
-                self.assertIn(ACTIVE_FOLLOWUP_STATUS_SENTENCE, plain_text)
                 self.assertNotIn(
                     "RabbitHole PR #307 is merged bounded Project I/O recovery evidence only.",
                     plain_text,
                 )
+                for stale_status in STALE_FOLLOWUP_STATUS_TERMS:
+                    self.assertNotIn(stale_status, plain_text)
                 self.assertIn(CAPABILITY_BOUNDARY_SENTENCE, plain_text)
                 self.assert_contains_all(plain_text, RABBITHOLE_306_308_EVIDENCE_TERMS, name)
-                self.assert_contains_all(plain_text, ACTIVE_FOLLOWUP_TERMS, name)
-                self.assert_contains_all(plain_text, PLANNED_BUILD_BOUNDARY_TERMS, name)
+                self.assert_contains_all(plain_text, MERGED_FOLLOWUP_TERMS, name)
+                self.assert_contains_all(plain_text, FOLLOWUP_BOUNDARY_TERMS, name)
                 self.assert_contains_all(plain_text, CAPABILITY_BOUNDARY_TERMS, name)
 
     def test_0130_rabbithole_306_308_evidence_avoids_overclaims(self):
@@ -3145,11 +3147,11 @@ class DesktopRunDocsContractTest(unittest.TestCase):
             with self.subTest(document=name):
                 self.assertEqual([], found_claims, f"{name} contains forbidden overclaims")
 
-    def test_0130_atlas_entry_links_previous_status_and_active_followups(self):
+    def test_0130_atlas_entry_links_previous_status_and_merged_followups(self):
         text = self.docs["atlas entry 0130"]
 
         self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0130")
-        self.assert_contains_all(text, ACTIVE_FOLLOWUP_LINKS, "atlas entry 0130")
+        self.assert_contains_all(text, MERGED_FOLLOWUP_LINKS, "atlas entry 0130")
         self.assertIn("Previous entry: [0129 - Four-PR merged metadata status]", text)
 
 
