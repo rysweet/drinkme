@@ -9,13 +9,34 @@ live in the linked docs.
 
 ## Plan summary
 
-The planned modernization loop is simple: protect current Alice behavior with
-focused checks, use the evidence to refactor RabbitHole in small steps, compare
-scenario outcomes in eatme, and keep drinkme as the status-and-evidence index.
+The modernization loop is simple: protect current Alice behavior with focused
+checks, use the evidence to refactor RabbitHole in small steps, compare scenario
+outcomes and gaps in eatme, and keep drinkme as the status-and-evidence index.
 
-- RabbitHole: add behavior checks -> capture evidence -> refactor one slice -> repeat.
-- eatme: define automation scenarios -> compare Alice outcomes -> record the remaining gaps.
-- drinkme: summarize the plan -> show current status -> link evidence -> guide decisions.
+## How the work runs
+
+These loops protect behavior first, compare scenarios, and keep every status claim tied to evidence.
+
+### RabbitHole behavior-test-before-refactor loop
+```mermaid
+flowchart LR
+  Check["Behavior check"] --> Evidence["Capture evidence"] --> Refactor["Refactor one RabbitHole slice"] --> Repeat["Run the check again"]
+  Repeat --> Check
+```
+
+### eatme scenario comparison loop
+```mermaid
+flowchart LR
+  Scenarios["Define automation scenarios"] --> Compare["Compare Alice outcomes"] --> Gaps["Record remaining gaps"] --> Next["Choose next scenario"]
+  Next --> Scenarios
+```
+
+### drinkme plan/status/evidence tracking loop
+```mermaid
+flowchart LR
+  Plan["Summarize plan"] --> Status["Show current status"] --> Evidence["Link evidence"] --> Decisions["Guide decisions"]
+  Decisions --> Plan
+```
 
 ## Current verdict
 
@@ -58,51 +79,34 @@ flowchart TD
 
 ## What works now
 
-- The drinkme documentation contract is reproducible:
+- The drinkme documentation contract is reproducible with
   `python3 -m unittest discover -s tests -v`.
-- Repository documentation checks cover expected shape, JSON syntax, YAML syntax,
-  and internal Markdown links.
-- The plan, current status, atlas index, and diagrams are tracked here instead
-  of being scattered across pull request history.
-- Existing diagrams cover the repository surface, Alice startup flow, and testing
-  roadmap.
-- Scenario inventories and readiness reports give a usable map of Alice lesson
-  surfaces that still need direct evidence.
+- Repository documentation checks cover expected shape, JSON syntax, YAML syntax, and internal Markdown links.
+- The plan, current status, atlas index, diagrams, scenario inventories, and readiness reports are tracked here instead of pull request history.
+- Existing diagrams cover the repository surface, Alice startup flow, and testing roadmap.
 
 ## What is partly working
 
-- Browser-side and desktop-side lesson checks provide useful signals, but they
-  are not full Alice UI automation.
-- Save-path work has selected-path, menu-dispatch, chooser, and
-  component-level file-write evidence, but desktop Save
-  menu-to-written-project completion is still missing.
-- Rendering work has surface, window, and blocker records, but not visible
-  rendering correctness.
-- Scenario reports organize classroom-style coverage, but grading and creative
-  assessment are not automated.
-- Tweedle and player decoding covers many small source cases, but full
-  Tweedle/player decode is still missing.
+- Browser-side and desktop-side lesson checks provide useful signals, but they are not full Alice UI automation.
+- Save-path work has selected-path, menu-dispatch, chooser, and component-level file-write evidence, but desktop Save menu-to-written-project completion is still missing.
+- Rendering work has surface, window, and blocker records, but not visible rendering correctness.
+- Scenario reports organize classroom-style coverage, but grading and creative assessment are not automated.
+- Tweedle and player decoding covers many small source cases, but full Tweedle/player decode is still missing.
 
 ## What is still missing
 
-- Alice UI automation.
-- Visible rendering correctness.
-- Desktop Save menu-to-written-project completion.
-- Grading.
-- Creative assessment.
-- First-lesson completion.
-- Full Tweedle/player decode.
-- 70% aggregate coverage.
+Still missing: Alice UI automation, visible rendering correctness, desktop Save
+menu-to-written-project completion, grading, creative assessment, first-lesson
+completion, full Tweedle/player decode, and 70% aggregate coverage.
 
 ## Current focus
 
 Keep drinkme readable as the map, not the timeline. New work should close the
 largest evidence gaps first: real UI actions, visible rendering, desktop Save
 menu-to-written-project completion, first-lesson completion, grading and
-creative assessment, and broader decoder coverage.
-
-When details change, update the linked status docs and diagrams instead of
-turning this README into a chronological pull request list.
+creative assessment, and broader decoder coverage. When details change, update
+the linked status docs and diagrams instead of turning this README into a
+chronological pull request list.
 
 ## Progress at a glance
 
