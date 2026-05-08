@@ -52,6 +52,7 @@ ENTRY_0126 = ROOT / "docs/atlas/journal/0126-rabbithole-pr291-conditional-statem
 ENTRY_0127 = ROOT / "docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md"
 ENTRY_0128 = ROOT / "docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md"
 ENTRY_0129 = ROOT / "docs/atlas/journal/0129-four-pr-merged-metadata-status.md"
+ENTRY_0130 = ROOT / "docs/atlas/journal/0130-rabbithole-306-308-evidence-status.md"
 ROOT_PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
@@ -122,6 +123,7 @@ DOCS = {
     "atlas entry 0127": ENTRY_0127,
     "atlas entry 0128": ENTRY_0128,
     "atlas entry 0129": ENTRY_0129,
+    "atlas entry 0130": ENTRY_0130,
 }
 
 README_PLAN_LINKS = [
@@ -174,6 +176,7 @@ README_PLAN_LINKS = [
     "[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)",
     "[atlas journal entry 0128](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md)",
     "[atlas journal entry 0129](docs/atlas/journal/0129-four-pr-merged-metadata-status.md)",
+    "[atlas journal entry 0130](docs/atlas/journal/0130-rabbithole-306-308-evidence-status.md)",
 ]
 
 ENTRY_TRACEABILITY_LINKS = [
@@ -444,6 +447,106 @@ FOUR_PR_MERGED_METADATA_LINKS = [
     "https://github.com/rysweet/amplihack-rs/pull/571",
 ]
 
+RABBITHOLE_PR306_PR308_EVIDENCE_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/306",
+    "https://github.com/rysweet/RabbitHole/pull/308",
+]
+
+ACTIVE_FOLLOWUP_LINKS = [
+    "https://github.com/rysweet/RabbitHole/pull/307",
+    "https://github.com/rysweet/amplihack-rs/pull/575",
+]
+
+RABBITHOLE_306_308_EVIDENCE_TERMS = [
+    "RabbitHole PR #306",
+    "narrow ModelResourceExporter attribution evidence",
+    "RabbitHole PR #308",
+    "narrow headless generated Story API runtime-state evidence",
+]
+
+RABBITHOLE_306_308_APPROVED_WORDING = [
+    "PR #306 is narrow ModelResourceExporter attribution evidence only.",
+    "PR #308 is narrow headless generated Story API runtime-state evidence only.",
+]
+
+ACTIVE_FOLLOWUP_TERMS = [
+    "RabbitHole PR #307",
+    "amplihack-rs PR #575",
+    "active follow-up work",
+]
+
+RABBITHOLE_PR307_BOUNDED_TERMS = [
+    "PR #307 is bounded Project I/O recovery follow-up.",
+]
+
+ACTIVE_FOLLOWUP_STATUS_SENTENCE = (
+    "RabbitHole PR #307 and amplihack-rs PR #575 remain active follow-up work "
+    "outside this PR #306/#308 evidence entry."
+)
+
+PLANNED_BUILD_BOUNDARY_TERMS = [
+    "PR #307 is bounded Project I/O recovery follow-up",
+    "PR #575 is supporting recipe pre-commit reliability follow-up",
+]
+
+CAPABILITY_BOUNDARY_SENTENCE = (
+    "PR #306 and PR #308 do not prove visible rendering, JavaFX launch, "
+    "animation playback, full world execution, grading, full UI automation, "
+    "full lesson completion, or full Tweedle/player decode."
+)
+
+CAPABILITY_BOUNDARY_TERMS = [
+    "do not prove visible rendering",
+    "JavaFX launch",
+    "animation playback",
+    "full world execution",
+    "grading",
+    "full UI automation",
+    "full lesson completion",
+    "full Tweedle/player decode",
+]
+
+RABBITHOLE_306_308_CAPABILITIES = [
+    "visible rendering",
+    "JavaFX launch",
+    "animation playback",
+    "full world execution",
+    "grading",
+    "full UI automation",
+    "full lesson completion",
+    "full Tweedle/player decode",
+]
+
+RABBITHOLE_306_308_OVERCLAIM_VERBS = [
+    "proves",
+    "shows",
+    "demonstrates",
+    "confirms",
+    "launches",
+    "renders",
+    "plays",
+    "executes",
+    "grades",
+    "automates",
+    "completes",
+    "decodes",
+]
+
+RABBITHOLE_306_308_FORBIDDEN_OVERCLAIMS = [
+    *(f"{capability} is proven" for capability in RABBITHOLE_306_308_CAPABILITIES),
+    "full Tweedle/player decode support is complete",
+    *(
+        f"PR #{number} {verb} {capability}"
+        for number in ("306", "308")
+        for verb in RABBITHOLE_306_308_OVERCLAIM_VERBS
+        for capability in RABBITHOLE_306_308_CAPABILITIES
+    ),
+]
+
+RABBITHOLE_306_308_FORBIDDEN_OVERCLAIMS_NORMALIZED = [
+    (claim, claim.lower()) for claim in RABBITHOLE_306_308_FORBIDDEN_OVERCLAIMS
+]
+
 FOUR_PR_MERGED_METADATA_TABLE_LINES = [
     "| Repository | PR | Status | Merged at | Merged by | Merge commit SHA | Head SHA |",
     "| --- | --- | --- | --- | --- | --- | --- |",
@@ -500,6 +603,7 @@ CURRENT_MERGED_PR_LINKS = (
     + RABBITHOLE_PR292_WAVE_PR_LINKS
     + RABBITHOLE_PR293_WAVE_PR_LINKS
     + FOUR_PR_MERGED_METADATA_LINKS
+    + RABBITHOLE_PR306_PR308_EVIDENCE_LINKS
 )
 
 PROOF_BOUNDARY_TERMS = [
@@ -1398,6 +1502,32 @@ MERGED_CURRENT_PR_REQUIREMENTS = {
         "fb9da28c2dcaf426b87699ffceebaba7093d994a",
         "6bd52537504d0f88cd0fe6c1919e5a4134eca2a8",
     ],
+    "RabbitHole PR #306": [
+        "RabbitHole PR #306",
+        "Merged",
+        "2026-05-08T09:31:58Z",
+        "narrow ModelResourceExporter attribution evidence",
+        "do not prove visible rendering",
+        "JavaFX launch",
+        "animation playback",
+        "full world execution",
+        "full UI automation",
+        "full lesson completion",
+        "full Tweedle/player decode",
+    ],
+    "RabbitHole PR #308": [
+        "RabbitHole PR #308",
+        "Merged",
+        "2026-05-08T09:15:55Z",
+        "narrow headless generated Story API runtime-state evidence",
+        "do not prove visible rendering",
+        "JavaFX launch",
+        "animation playback",
+        "full world execution",
+        "full UI automation",
+        "full lesson completion",
+        "full Tweedle/player decode",
+    ],
     "eatme PR #138": [
         "eatme PR #138",
         "rysweet/eatme",
@@ -1608,6 +1738,10 @@ STALE_CURRENT_PR_PATTERNS = [
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?297",
     r"PR\s*#?298[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?298",
+    r"PR\s*#?306[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?306",
+    r"PR\s*#?308[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
+    r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?308",
     r"PR\s*#?138[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
     r"(?:pending|waiting|under review|blocked on review|still needs review)[^.\n|]*PR\s*#?138",
     r"PR\s*#?571[^.\n|]*(?:pending|waiting|under review|blocked on review|still needs review)",
@@ -1639,15 +1773,19 @@ EVIDENCE_TERMS = [
 ]
 
 
+PLAIN_WHITESPACE_RE = re.compile(r"\s+")
+MARKDOWN_LINK_RE = re.compile(r"\[(?P<label>[^\]]+)\]\([^)]+\)")
+
+
 def plain(text):
-    return re.sub(r"\s+", " ", text.replace("**", " "))
+    return PLAIN_WHITESPACE_RE.sub(" ", text.replace("**", " "))
 
 
 def without_markdown_link_targets(text):
     def keep_label(match):
         return match.group("label")
 
-    return re.sub(r"\[(?P<label>[^\]]+)\]\([^)]+\)", keep_label, text)
+    return MARKDOWN_LINK_RE.sub(keep_label, text)
 
 
 def section(text, heading):
@@ -1665,6 +1803,8 @@ class DesktopRunDocsContractTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.docs = {name: path.read_text(encoding="utf-8") for name, path in DOCS.items()}
+        cls.plain_docs = {name: plain(text) for name, text in cls.docs.items()}
+        cls.lower_plain_docs = {name: text.lower() for name, text in cls.plain_docs.items()}
 
     def assert_contains_all(self, text, expected, source):
         missing = [term for term in expected if term not in text]
@@ -1759,6 +1899,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
             "[atlas journal entry 0127](docs/atlas/journal/0127-rabbithole-pr292-file-menu-save-navigation-proof-status.md)",
             "[atlas journal entry 0128](docs/atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md)",
             "[atlas journal entry 0129](docs/atlas/journal/0129-four-pr-merged-metadata-status.md)",
+            "[atlas journal entry 0130](docs/atlas/journal/0130-rabbithole-306-308-evidence-status.md)",
         ]
         ordered_positions = [plan_summary.index(entry) for entry in ordered_latest_entries]
         self.assertEqual(sorted(ordered_positions), ordered_positions)
@@ -1937,6 +2078,12 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("eatme PR #138", text)
         self.assertIn("amplihack-rs PR #571", text)
         self.assertIn("merge commit SHA", text)
+        entry_0130_link = "journal/0130-rabbithole-306-308-evidence-status.md"
+        self.assertEqual(1, text.count(entry_0130_link))
+        plain_text = plain(text)
+        self.assert_contains_all(plain_text, RABBITHOLE_306_308_EVIDENCE_TERMS, "atlas index")
+        self.assert_contains_all(plain_text, ACTIVE_FOLLOWUP_TERMS, "atlas index")
+        self.assert_contains_all(plain_text, CAPABILITY_BOUNDARY_TERMS, "atlas index")
 
     def test_0085_traceability_and_evidence_contract_are_explicit(self):
         text = self.docs["atlas entry 0085"]
@@ -2951,6 +3098,59 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         for claim in forbidden_claims:
             with self.subTest(claim=claim):
                 self.assertNotIn(claim, text)
+
+    def test_0130_rabbithole_306_308_evidence_status_is_bounded(self):
+        docs_to_check = {
+            name: self.docs[name]
+            for name in [
+                "README",
+                "root plan",
+                "current modernization plan",
+                "restarted full-scope status",
+                "eatme implementation plan",
+                "atlas index",
+                "atlas entry 0130",
+            ]
+        }
+
+        for name, text in docs_to_check.items():
+            with self.subTest(document=name):
+                self.assert_contains_all(text, RABBITHOLE_PR306_PR308_EVIDENCE_LINKS, name)
+                self.assert_contains_all(text, ACTIVE_FOLLOWUP_LINKS, name)
+                plain_text = plain(without_markdown_link_targets(text))
+                self.assert_contains_all(
+                    plain_text,
+                    RABBITHOLE_306_308_APPROVED_WORDING,
+                    name,
+                )
+                self.assert_contains_all(plain_text, RABBITHOLE_PR307_BOUNDED_TERMS, name)
+                self.assertIn(ACTIVE_FOLLOWUP_STATUS_SENTENCE, plain_text)
+                self.assertNotIn(
+                    "RabbitHole PR #307 is merged bounded Project I/O recovery evidence only.",
+                    plain_text,
+                )
+                self.assertIn(CAPABILITY_BOUNDARY_SENTENCE, plain_text)
+                self.assert_contains_all(plain_text, RABBITHOLE_306_308_EVIDENCE_TERMS, name)
+                self.assert_contains_all(plain_text, ACTIVE_FOLLOWUP_TERMS, name)
+                self.assert_contains_all(plain_text, PLANNED_BUILD_BOUNDARY_TERMS, name)
+                self.assert_contains_all(plain_text, CAPABILITY_BOUNDARY_TERMS, name)
+
+    def test_0130_rabbithole_306_308_evidence_avoids_overclaims(self):
+        for name, text in self.lower_plain_docs.items():
+            found_claims = [
+                claim
+                for claim, normalized in RABBITHOLE_306_308_FORBIDDEN_OVERCLAIMS_NORMALIZED
+                if normalized in text
+            ]
+            with self.subTest(document=name):
+                self.assertEqual([], found_claims, f"{name} contains forbidden overclaims")
+
+    def test_0130_atlas_entry_links_previous_status_and_active_followups(self):
+        text = self.docs["atlas entry 0130"]
+
+        self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0130")
+        self.assert_contains_all(text, ACTIVE_FOLLOWUP_LINKS, "atlas entry 0130")
+        self.assertIn("Previous entry: [0129 - Four-PR merged metadata status]", text)
 
 
 if __name__ == "__main__":
