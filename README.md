@@ -21,21 +21,21 @@ RabbitHole runs behavior-test-before-refactor, eatme runs scenario comparison, a
 ```mermaid
 flowchart LR
   Check["Behavior check"] --> Evidence["Capture evidence"] --> Refactor["Refactor one RabbitHole slice"] --> Repeat["Run the check again"]
-  Repeat --> Check
+  Repeat -->|new evidence| Check
 ```
 
 ### eatme scenario comparison loop
 ```mermaid
 flowchart LR
   Scenarios["Define automation scenarios"] --> Compare["Compare Alice outcomes"] --> Gaps["Record remaining gaps"] --> Next["Choose next scenario"]
-  Next --> Scenarios
+  Next -->|next gap| Scenarios
 ```
 
 ### drinkme plan/status/evidence tracking loop
 ```mermaid
 flowchart LR
   Plan["Summarize plan"] --> Status["Show current status"] --> Evidence["Link evidence"] --> Decisions["Guide decisions"]
-  Decisions --> Plan
+  Decisions -->|updated plan| Plan
 ```
 
 ## Current verdict

@@ -171,20 +171,20 @@ README_PROCESS_DIAGRAM_REQUIREMENTS = {
         'Check["Behavior check"]',
         'Evidence["Capture evidence"]',
         'Refactor["Refactor one RabbitHole slice"]',
-        "Repeat --> Check",
+        "Repeat -->|new evidence| Check",
     ],
     "eatme scenario comparison loop": [
         'Scenarios["Define automation scenarios"]',
         'Compare["Compare Alice outcomes"]',
         'Gaps["Record remaining gaps"]',
-        "Next --> Scenarios",
+        "Next -->|next gap| Scenarios",
     ],
     "drinkme plan/status/evidence tracking loop": [
         'Plan["Summarize plan"]',
         'Status["Show current status"]',
         'Evidence["Link evidence"]',
         'Decisions["Guide decisions"]',
-        "Decisions --> Plan",
+        "Decisions -->|updated plan| Plan",
     ],
 }
 
