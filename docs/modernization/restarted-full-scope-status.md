@@ -427,14 +427,15 @@ attribution evidence only.
 merged at `2026-05-08T09:15:55Z`. PR #308 is narrow headless generated Story
 API runtime-state evidence only.
 
-[RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) and
+[RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) is
+merged bounded Project I/O recovery evidence only.
 [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575)
-remain active follow-up work.
+remains active follow-up work.
 
-Planned build boundary: RabbitHole PR #307 is the Project I/O recovery shard
-still to land; amplihack-rs PR #575 is the supporting recipe pre-commit
-reliability work still to land.
-Neither follow-up is complete in this evidence entry.
+Planned build boundary: RabbitHole PR #307 has landed as bounded evidence only;
+amplihack-rs PR #575 is the supporting recipe pre-commit reliability work still
+to land.
+PR #575 is not complete in this evidence entry.
 
 PR #306 and PR #308 do not prove visible rendering, JavaFX launch, animation
 playback, full world execution, grading, full UI automation, full lesson

@@ -452,8 +452,11 @@ RABBITHOLE_PR306_PR308_EVIDENCE_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/308",
 ]
 
-ACTIVE_FOLLOWUP_LINKS = [
+RABBITHOLE_PR307_BOUNDED_LINKS = [
     "https://github.com/rysweet/RabbitHole/pull/307",
+]
+
+ACTIVE_FOLLOWUP_LINKS = [
     "https://github.com/rysweet/amplihack-rs/pull/575",
 ]
 
@@ -470,17 +473,21 @@ RABBITHOLE_306_308_APPROVED_WORDING = [
 ]
 
 ACTIVE_FOLLOWUP_TERMS = [
-    "RabbitHole PR #307",
     "amplihack-rs PR #575",
     "active follow-up work",
 ]
 
+RABBITHOLE_PR307_BOUNDED_TERMS = [
+    "RabbitHole PR #307",
+    "PR #307 is merged bounded Project I/O recovery evidence only.",
+]
+
 ACTIVE_FOLLOWUP_STATUS_SENTENCE = (
-    "RabbitHole PR #307 and amplihack-rs PR #575 remain active follow-up work."
+    "amplihack-rs PR #575 remains active follow-up work."
 )
 
 PLANNED_BUILD_BOUNDARY_TERMS = [
-    "RabbitHole PR #307 is the Project I/O recovery shard",
+    "RabbitHole PR #307 has landed as bounded evidence only",
     "amplihack-rs PR #575 is the supporting recipe pre-commit reliability work",
     "still to land",
 ]
@@ -500,6 +507,47 @@ CAPABILITY_BOUNDARY_TERMS = [
     "full UI automation",
     "full lesson completion",
     "full Tweedle/player decode",
+]
+
+RABBITHOLE_306_308_CAPABILITIES = [
+    "visible rendering",
+    "JavaFX launch",
+    "animation playback",
+    "full world execution",
+    "grading",
+    "full UI automation",
+    "full lesson completion",
+    "full Tweedle/player decode",
+]
+
+RABBITHOLE_306_308_OVERCLAIM_VERBS = [
+    "proves",
+    "shows",
+    "demonstrates",
+    "confirms",
+    "launches",
+    "renders",
+    "plays",
+    "executes",
+    "grades",
+    "automates",
+    "completes",
+    "decodes",
+]
+
+RABBITHOLE_306_308_FORBIDDEN_OVERCLAIMS = [
+    *(f"{capability} is proven" for capability in RABBITHOLE_306_308_CAPABILITIES),
+    "full Tweedle/player decode support is complete",
+    *(
+        f"PR #{number} {verb} {capability}"
+        for number in ("306", "308")
+        for verb in RABBITHOLE_306_308_OVERCLAIM_VERBS
+        for capability in RABBITHOLE_306_308_CAPABILITIES
+    ),
+]
+
+RABBITHOLE_306_308_FORBIDDEN_OVERCLAIMS_NORMALIZED = [
+    (claim, claim.lower()) for claim in RABBITHOLE_306_308_FORBIDDEN_OVERCLAIMS
 ]
 
 FOUR_PR_MERGED_METADATA_TABLE_LINES = [
@@ -1728,15 +1776,19 @@ EVIDENCE_TERMS = [
 ]
 
 
+PLAIN_WHITESPACE_RE = re.compile(r"\s+")
+MARKDOWN_LINK_RE = re.compile(r"\[(?P<label>[^\]]+)\]\([^)]+\)")
+
+
 def plain(text):
-    return re.sub(r"\s+", " ", text.replace("**", " "))
+    return PLAIN_WHITESPACE_RE.sub(" ", text.replace("**", " "))
 
 
 def without_markdown_link_targets(text):
     def keep_label(match):
         return match.group("label")
 
-    return re.sub(r"\[(?P<label>[^\]]+)\]\([^)]+\)", keep_label, text)
+    return MARKDOWN_LINK_RE.sub(keep_label, text)
 
 
 def section(text, heading):
@@ -1754,6 +1806,8 @@ class DesktopRunDocsContractTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.docs = {name: path.read_text(encoding="utf-8") for name, path in DOCS.items()}
+        cls.plain_docs = {name: plain(text) for name, text in cls.docs.items()}
+        cls.lower_plain_docs = {name: text.lower() for name, text in cls.plain_docs.items()}
 
     def assert_contains_all(self, text, expected, source):
         missing = [term for term in expected if term not in text]
@@ -3065,6 +3119,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         for name, text in docs_to_check.items():
             with self.subTest(document=name):
                 self.assert_contains_all(text, RABBITHOLE_PR306_PR308_EVIDENCE_LINKS, name)
+                self.assert_contains_all(text, RABBITHOLE_PR307_BOUNDED_LINKS, name)
                 self.assert_contains_all(text, ACTIVE_FOLLOWUP_LINKS, name)
                 plain_text = plain(without_markdown_link_targets(text))
                 self.assert_contains_all(
@@ -3072,7 +3127,16 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                     RABBITHOLE_306_308_APPROVED_WORDING,
                     name,
                 )
+                self.assert_contains_all(plain_text, RABBITHOLE_PR307_BOUNDED_TERMS, name)
                 self.assertIn(ACTIVE_FOLLOWUP_STATUS_SENTENCE, plain_text)
+                self.assertNotIn(
+                    "RabbitHole PR #307 and amplihack-rs PR #575 remain active follow-up work.",
+                    plain_text,
+                )
+                self.assertNotIn(
+                    "RabbitHole PR #307 is the Project I/O recovery shard still to land",
+                    plain_text,
+                )
                 self.assertIn(CAPABILITY_BOUNDARY_SENTENCE, plain_text)
                 self.assert_contains_all(plain_text, RABBITHOLE_306_308_EVIDENCE_TERMS, name)
                 self.assert_contains_all(plain_text, ACTIVE_FOLLOWUP_TERMS, name)
@@ -3080,86 +3144,20 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                 self.assert_contains_all(plain_text, CAPABILITY_BOUNDARY_TERMS, name)
 
     def test_0130_rabbithole_306_308_evidence_avoids_overclaims(self):
-        forbidden_claims = [
-            "PR #306 proves visible rendering",
-            "PR #306 proves JavaFX launch",
-            "PR #306 proves animation playback",
-            "PR #306 proves full world execution",
-            "PR #306 proves grading",
-            "PR #306 proves full UI automation",
-            "PR #306 proves full lesson completion",
-            "PR #306 proves full Tweedle/player decode",
-            "PR #308 proves visible rendering",
-            "PR #308 proves JavaFX launch",
-            "PR #308 proves animation playback",
-            "PR #308 proves full world execution",
-            "PR #308 proves grading",
-            "PR #308 proves full UI automation",
-            "PR #308 proves full lesson completion",
-            "PR #308 proves full Tweedle/player decode",
-            "visible rendering is proven",
-            "JavaFX launch is proven",
-            "animation playback is proven",
-            "full world execution is proven",
-            "grading is proven",
-            "full UI automation is proven",
-            "full lesson completion is proven",
-            "full Tweedle/player decode is proven",
-            "full Tweedle/player decode support is complete",
-        ]
-        forbidden_claims.extend(
-            f"PR #{number} {verb} {capability}"
-            for number in ("306", "308")
-            for verb in (
-                "proves",
-                "shows",
-                "demonstrates",
-                "confirms",
-                "launches",
-                "renders",
-                "plays",
-                "executes",
-                "grades",
-                "automates",
-                "completes",
-                "decodes",
-            )
-            for capability in (
-                "visible rendering",
-                "JavaFX launch",
-                "animation playback",
-                "full world execution",
-                "grading",
-                "full UI automation",
-                "full lesson completion",
-                "full Tweedle/player decode",
-            )
-        )
-
-        for name in DOCS:
-            text = plain(self.docs[name])
-            for claim in forbidden_claims:
-                with self.subTest(document=name, claim=claim):
-                    self.assertNotIn(claim.lower(), text.lower())
+        for name, text in self.lower_plain_docs.items():
+            found_claims = [
+                claim
+                for claim, normalized in RABBITHOLE_306_308_FORBIDDEN_OVERCLAIMS_NORMALIZED
+                if normalized in text
+            ]
+            with self.subTest(document=name):
+                self.assertEqual([], found_claims, f"{name} contains forbidden overclaims")
 
     def test_0130_atlas_entry_links_previous_status_and_active_followups(self):
         text = self.docs["atlas entry 0130"]
 
         self.assert_contains_all(text, ENTRY_TRACEABILITY_LINKS, "atlas entry 0130")
-        self.assert_contains_all(text, RABBITHOLE_PR306_PR308_EVIDENCE_LINKS, "atlas entry 0130")
         self.assert_contains_all(text, ACTIVE_FOLLOWUP_LINKS, "atlas entry 0130")
-        plain_text = plain(without_markdown_link_targets(text))
-        self.assert_contains_all(
-            plain_text,
-            RABBITHOLE_306_308_APPROVED_WORDING,
-            "atlas entry 0130",
-        )
-        self.assertIn(ACTIVE_FOLLOWUP_STATUS_SENTENCE, plain_text)
-        self.assertIn(CAPABILITY_BOUNDARY_SENTENCE, plain_text)
-        self.assert_contains_all(plain_text, RABBITHOLE_306_308_EVIDENCE_TERMS, "atlas entry 0130")
-        self.assert_contains_all(plain_text, ACTIVE_FOLLOWUP_TERMS, "atlas entry 0130")
-        self.assert_contains_all(plain_text, PLANNED_BUILD_BOUNDARY_TERMS, "atlas entry 0130")
-        self.assert_contains_all(plain_text, CAPABILITY_BOUNDARY_TERMS, "atlas entry 0130")
         self.assertIn("Previous entry: [0129 - Four-PR merged metadata status]", text)
 
 

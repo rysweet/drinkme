@@ -51,12 +51,13 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
   and [RabbitHole PR #308](https://github.com/rysweet/RabbitHole/pull/308) have
   merged. PR #306 is narrow ModelResourceExporter attribution evidence only.
   PR #308 is narrow headless generated Story API runtime-state evidence only.
-  [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) and
+  [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) is
+  merged bounded Project I/O recovery evidence only.
   [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575)
-  remain active follow-up work. Planned build boundary: RabbitHole PR #307 is
-  the Project I/O recovery shard still to land; amplihack-rs PR #575 is the
-  supporting recipe pre-commit reliability work still to land. The entry keeps
-  the evidence boundary explicit: PR #306 and PR #308 do not prove visible
+  remains active follow-up work. Planned build boundary: RabbitHole PR #307 has
+  landed as bounded evidence only; amplihack-rs PR #575 is the supporting recipe
+  pre-commit reliability work still to land. The entry keeps the evidence
+  boundary explicit: PR #306 and PR #308 do not prove visible
   rendering, JavaFX launch, animation playback, full world execution, grading,
   full UI automation, full lesson completion, or full Tweedle/player decode.
 - [0129 - Four-PR merged metadata status](journal/0129-four-pr-merged-metadata-status.md)

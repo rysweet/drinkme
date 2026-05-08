@@ -434,13 +434,14 @@ records that [RabbitHole PR #306](https://github.com/rysweet/RabbitHole/pull/306
 and [RabbitHole PR #308](https://github.com/rysweet/RabbitHole/pull/308) have
 merged. PR #306 is narrow ModelResourceExporter attribution evidence only.
 PR #308 is narrow headless generated Story API runtime-state evidence only.
-[RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) and
+[RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) is
+merged bounded Project I/O recovery evidence only.
 [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575)
-remain active follow-up work.
-Planned build boundary: RabbitHole PR #307 is the Project I/O recovery shard
-still to land; amplihack-rs PR #575 is the supporting recipe pre-commit
-reliability work still to land. Neither follow-up is complete in this evidence
-entry. This evidence entry is narrow. PR #306 and PR #308 do not prove visible
+remains active follow-up work.
+Planned build boundary: RabbitHole PR #307 has landed as bounded evidence only;
+amplihack-rs PR #575 is the supporting recipe pre-commit reliability work still
+to land. PR #575 is not complete in this evidence entry. This evidence entry is
+narrow. PR #306 and PR #308 do not prove visible
 rendering, JavaFX launch, animation playback, full world execution, grading,
 full UI automation, full lesson completion, or full Tweedle/player decode.
 Referenced source and status work is tracked below:
@@ -575,7 +576,7 @@ Referenced source and status work is tracked below:
 | [RabbitHole PR #298](https://github.com/rysweet/RabbitHole/pull/298) | Repository `rysweet/RabbitHole`; status `MERGED`; merged at `2026-05-08T02:32:51Z`; merged by `rysweet`; merge commit SHA `fb9da28c2dcaf426b87699ffceebaba7093d994a`; head SHA `6bd52537504d0f88cd0fe6c1919e5a4134eca2a8`. |
 | [RabbitHole PR #306](https://github.com/rysweet/RabbitHole/pull/306) | Merged at `2026-05-08T09:31:58Z`. Narrow ModelResourceExporter attribution evidence only; does not prove visible rendering, JavaFX launch, animation playback, full world execution, grading, full UI automation, full lesson completion, or full Tweedle/player decode. |
 | [RabbitHole PR #308](https://github.com/rysweet/RabbitHole/pull/308) | Merged at `2026-05-08T09:15:55Z`. Narrow headless generated Story API runtime-state evidence only; does not prove visible rendering, JavaFX launch, animation playback, full world execution, grading, full UI automation, full lesson completion, or full Tweedle/player decode. |
-| [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) | Active follow-up work: the Project I/O recovery shard still to land; not complete in this evidence entry. |
+| [RabbitHole PR #307](https://github.com/rysweet/RabbitHole/pull/307) | Merged at `2026-05-08T10:26:17Z`. Bounded Project I/O recovery evidence only; remains outside PR #306/#308 capability evidence. |
 | [eatme PR #138](https://github.com/rysweet/eatme/pull/138) | Repository `rysweet/eatme`; status `MERGED`; merged at `2026-05-08T02:13:51Z`; merged by `rysweet`; merge commit SHA `b412458d6abf4d235dc03f4efb3debabd54e79d1`; head SHA `8cacd14cc51fc09cae20ee421f4bc4a8e285b751`. |
 | [amplihack-rs PR #571](https://github.com/rysweet/amplihack-rs/pull/571) | Repository `rysweet/amplihack-rs`; status `MERGED`; merged at `2026-05-08T04:55:47Z`; merged by `rysweet`; merge commit SHA `0af6f12824778fbff94627dae5da92b57beb6fc9`; head SHA `33582d27e8cac3f00cbd7e702a5304c34768d41a`. |
 | [amplihack-rs PR #575](https://github.com/rysweet/amplihack-rs/pull/575) | Active follow-up work: the supporting recipe pre-commit reliability work still to land; not complete in this evidence entry. |
@@ -595,10 +596,10 @@ desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full
 world execution, or complete player/full Tweedle decode support.
 RabbitHole PR #306 and PR #308 are narrow evidence updates only; RabbitHole
-PR #307 and amplihack-rs PR #575 remain active follow-up work. Planned build
-boundary: RabbitHole PR #307 is the Project I/O recovery shard still to land,
-while amplihack-rs PR #575 is the supporting recipe pre-commit reliability work
-still to land.
+PR #307 is merged bounded Project I/O recovery evidence only, and amplihack-rs
+PR #575 remains active follow-up work. Planned build boundary: RabbitHole
+PR #307 has landed as bounded evidence only, while amplihack-rs PR #575 is the
+supporting recipe pre-commit reliability work still to land.
 
 ## Plain-English terms
 
