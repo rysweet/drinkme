@@ -523,6 +523,17 @@
   `if`/`else` bodies, nested `if`/`else`, loops, method calls, constructors,
   resource field initializers, full player decode, and full Tweedle decode remain
   unproven. Visible rendering, grading, and first-lesson completion remain unproven.
+  [RabbitHole PR #292](https://github.com/rysweet/RabbitHole/pull/292) merged at
+  `17e82091232131de7f1b2169638a2ea1a48fedfd`. Adds `FileMenuSaveNavigationProofTest`:
+  starts `StageIDE`, finds `FileMenuModel` in the real `AliceMenuBar`, calls
+  `fileMenuModel.createMenu()` to build the actual `JMenu`, locates the `JMenuItem`
+  backed by the same `Action` instance as `SaveProjectOperation`, calls `doClick()`,
+  and checks that evidence shows `status=menu_item_dispatched`,
+  `menu_item_dispatch=true`, and `trigger_class=ActionEventTrigger`. All five CI
+  checks passed; focused review returned CLEAN. The user physically clicking the
+  on-screen File menu, desktop save-menu completion from a real rendered click path,
+  full live FileDialog interaction with a confirmed file write, visible rendering
+  correctness, grading, and first-lesson completion remain unproven.
   [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
   `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
   method and constructor bodies can now decode an `IdentifierReference` RHS to
