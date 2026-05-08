@@ -46,6 +46,22 @@ This is the first-pass atlas for the Alice 3 investigation. It is intentionally 
 
 ## Recent journal entries
 
+- [0125 - eatme PR #136 next-missing-real-desktop-proof hook path status](journal/0125-eatme-pr136-next-missing-hook-path-status.md)
+  records that eatme PR #136 improves `next_missing_real_desktop_proof` to show
+  the first missing RabbitHole hook path after the pixel chain in order:
+  `place-object` / `tools/eatme-place-object`,
+  `edit-procedure-or-code-block` / `tools/eatme-edit-procedure`,
+  `run-world` / `tools/eatme-run-world`, `save-project` / `tools/eatme-save-project`.
+  203 tests passed; CI is green. These hook messages do not prove full UI automation.
+  Full Alice UI automation, visible rendering, grading, and first-lesson completion
+  remain unproven.
+- [0124 - RabbitHole PR #290 SourceCodeGenerator behavior characterization tests status](journal/0124-rabbithole-pr290-scg-char-tests-status.md)
+  records that RabbitHole PR #290 adds seven `SourceCodeGenerator` behavior
+  characterization tests: while loop, null literal, logical complement, arithmetic
+  infix, relational infix, array access, and array length. All five RabbitHole
+  checks passed; focused review returned CLEAN. Full Alice UI automation, visible
+  rendering, grading, full Tweedle/player decode, and first-lesson completion remain
+  unproven.
 - [0123 - RabbitHole PR #287 and PR #289 logical expression decode status](journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md)
   records that RabbitHole PR #287 decodes `&&` and `||` to `ConditionalInfixExpression`
   and `!` to `LogicalComplement` in local initializers, assignment right-hand sides, and

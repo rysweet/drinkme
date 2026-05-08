@@ -358,6 +358,22 @@ and `!` method returns fail clearly when the method declares a non-Boolean retur
 type. Test-only; does not expand decode behavior. Full Tweedle/player decode,
 visible rendering, grading, and first-lesson completion remain unproven.
 
+[RabbitHole PR #290](https://github.com/rysweet/RabbitHole/pull/290) merged at
+`65c11f6`. Adds seven `SourceCodeGenerator` behavior characterization tests:
+while loop, null literal, logical complement, arithmetic infix, relational infix,
+array access, and array length. All five RabbitHole checks passed; focused review
+returned CLEAN. Full Alice UI automation, visible rendering, grading, full
+Tweedle/player decode, and first-lesson completion remain unproven.
+
+[eatme PR #136](https://github.com/rysweet/eatme/pull/136) merged. Improves
+`next_missing_real_desktop_proof` so after the pixel chain users see the first
+missing RabbitHole hook path in order: `place-object` /
+`tools/eatme-place-object`, `edit-procedure-or-code-block` /
+`tools/eatme-edit-procedure`, `run-world` / `tools/eatme-run-world`,
+`save-project` / `tools/eatme-save-project`. 203 tests passed; CI is green.
+These hook messages do not prove full UI automation. Full Alice UI automation,
+visible rendering, grading, and first-lesson completion remain unproven.
+
 eatme PR #92 now documents the RabbitHole evidence needed before first-lesson
 readiness can be marked ready: launch evidence, Run-window evidence, desktop
 execution evidence, screenshot/log/window artifacts, and

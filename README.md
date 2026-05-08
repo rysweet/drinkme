@@ -385,6 +385,18 @@ logical `&&`, `||`, and `!` method returns fail clearly when the method declares
 non-Boolean return type; PR #289 is test-only and does not expand decode behavior.
 Full Tweedle/player decode, method calls, loops, conditionals, resource initializers,
 visible rendering, grading, and first-lesson completion remain unproven.
+[atlas journal entry 0124](docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-status.md)
+records that RabbitHole PR #290 adds seven `SourceCodeGenerator` behavior
+characterization tests: while loop, null literal, logical complement, arithmetic infix,
+relational infix, array access, and array length. All five RabbitHole checks passed;
+focused review returned CLEAN. Full Alice UI automation, visible rendering, grading,
+full Tweedle/player decode, and first-lesson completion remain unproven.
+[atlas journal entry 0125](docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md)
+records that eatme PR #136 improves `next_missing_real_desktop_proof` to show the first
+missing RabbitHole hook path after the pixel chain in order: `place-object`,
+`edit-procedure-or-code-block`, `run-world`, `save-project`. 203 tests passed; CI is
+green. These hook messages do not prove full UI automation. Full Alice UI automation,
+visible rendering, grading, and first-lesson completion remain unproven.
 All referenced source and status PRs have merged:
 
 | Work item | Plain status |
@@ -508,6 +520,8 @@ All referenced source and status PRs have merged:
 | [eatme PR #135](https://github.com/rysweet/eatme/pull/135) | Merged at `8f82d682aef4d22c3ca4e7bdc4344cae660b13bd`. Adds the `audio-camera-and-export-sharecase` instructor/student scenario and Gadugi adapter; scenario asset count grew from 91 to 93. No remaining scenario gaps from the list in `docs/persona-assets.md` and `assets/personas/alice-user-crew.yaml`. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [RabbitHole PR #287](https://github.com/rysweet/RabbitHole/pull/287) | Merged at `198b482733f3fcb9ae7ecfc5479027393f21cf71`. Decodes Tweedle logical expressions: `&&` and `||` to `ConditionalInfixExpression`; `!` to `LogicalComplement`. Covers local variable initializers, assignment right-hand-side positions, and method return expressions. Full Tweedle/player decode, method calls, loops, conditionals, resource initializers, visible rendering, grading, and first-lesson completion remain unproven. |
 | [RabbitHole PR #289](https://github.com/rysweet/RabbitHole/pull/289) | Merged at `cc119baebb4dd5ad775ac497c9f2318b9f8d2add`. Adds tests that logical `&&`, `||`, and `!` method returns fail clearly when the method declares a non-Boolean return type. Test-only; does not expand decode behavior. Full Tweedle/player decode, visible rendering, grading, and first-lesson completion remain unproven. |
+| [RabbitHole PR #290](https://github.com/rysweet/RabbitHole/pull/290) | Merged at `65c11f6`. Adds seven `SourceCodeGenerator` behavior characterization tests: while loop, null literal, logical complement, arithmetic infix, relational infix, array access, and array length. All five RabbitHole checks passed; focused review returned CLEAN. Full Alice UI automation, visible rendering, grading, full Tweedle/player decode, and first-lesson completion remain unproven. |
+| [eatme PR #136](https://github.com/rysweet/eatme/pull/136) | Merged. Improves `next_missing_real_desktop_proof` so after the pixel chain users see the first missing RabbitHole hook path in order: `place-object` / `tools/eatme-place-object`, `edit-procedure-or-code-block` / `tools/eatme-edit-procedure`, `run-world` / `tools/eatme-run-world`, `save-project` / `tools/eatme-save-project`. 203 tests passed; CI is green. These hook messages do not prove full UI automation. Full Alice UI automation, visible rendering, grading, and first-lesson completion remain unproven. |
 
 The proof boundary remains a narrow Run window attachment signal: Alice put the
 Run panel into the Run window area. This evidence does not prove pixels were
@@ -518,7 +532,7 @@ PR #166, PR #167, PR #168, PR #169, PR #170, PR #171, PR #172, PR #93, PR #95,
 PR #96, PR #98, PR #99, PR #101, PR #102, PR #105, PR #106, PR #108, PR #109,
 PR #110, PR #111, PR #112, PR #113, PR #114, PR #115, PR #116, RabbitHole PR
 #173 through PR #184, RabbitHole PR #185, PR #187, PR #188, PR #190, PR #191,
-PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, PR #270, PR #271, PR #272, PR #273, PR #274, PR #276, PR #277, PR #278, PR #281, PR #282, PR #284, PR #285, PR #287, PR #289, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, PR #126, PR #127, PR #129, PR #131, PR #132, PR #133, PR #134, and PR #135
+PR #207, PR #208, PR #209, PR #210, PR #211, PR #212, PR #214, PR #215, PR #216, PR #218, PR #219, PR #222, PR #224, PR #225, PR #229, PR #230, PR #231, PR #234, PR #235, PR #237, PR #238, PR #240, PR #241, PR #245, PR #246, PR #247, PR #250, PR #253, PR #254, PR #255, PR #259, PR #260, PR #261, PR #262, PR #264, PR #265, PR #266, PR #267, PR #269, PR #270, PR #271, PR #272, PR #273, PR #274, PR #276, PR #277, PR #278, PR #281, PR #282, PR #284, PR #285, PR #287, PR #289, PR #290, and eatme PR #118, PR #120, PR #121, PR #122, PR #123, PR #124, PR #125, PR #126, PR #127, PR #129, PR #131, PR #132, PR #133, PR #134, PR #135, and PR #136
 merge updates do not prove full Alice UI automation, visible rendering,
 desktop save-menu completion, grading, creative assessment, learner-world
 grading, first-lesson completion, procedure UI invocation, real desktop proof, project save, deployed installer success, full
@@ -776,6 +790,8 @@ Hard rules:
 | [eatme PR #134 setup-preflight-ready-to-create scenario status](docs/atlas/journal/0121-eatme-pr134-setup-preflight-ready-to-create-status.md) | eatme PR #134 adds `setup-preflight-ready-to-create` (assets 89→91). Remaining missing: audio-camera-and-export-sharecase. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [eatme PR #135 audio-camera-and-export-sharecase scenario status](docs/atlas/journal/0122-eatme-pr135-audio-camera-and-export-sharecase-status.md) | eatme PR #135 adds `audio-camera-and-export-sharecase` (assets 91→93). No remaining scenario gaps from the list in `docs/persona-assets.md` and `assets/personas/alice-user-crew.yaml`. Grading, automated creative assessment, real Alice UI automation, and full lesson delivery remain unproven. |
 | [RabbitHole PR #287 and PR #289 logical expression decode status](docs/atlas/journal/0123-rabbithole-pr287-pr289-logical-expression-decode-status.md) | RabbitHole PR #287 decodes `&&` and `||` to `ConditionalInfixExpression` and `!` to `LogicalComplement` in local initializers, assignment right-hand sides, and method returns. PR #289 adds tests that logical expressions fail clearly for non-Boolean return types; test-only, no new decode behavior. Full Tweedle/player decode, visible rendering, grading, and first-lesson completion remain unproven. |
+| [RabbitHole PR #290 SourceCodeGenerator behavior characterization tests status](docs/atlas/journal/0124-rabbithole-pr290-scg-char-tests-status.md) | RabbitHole PR #290 adds seven `SourceCodeGenerator` behavior characterization tests: while loop, null literal, logical complement, arithmetic infix, relational infix, array access, and array length. All five checks passed; focused review returned CLEAN. Full Alice UI automation, visible rendering, grading, full Tweedle/player decode, and first-lesson completion remain unproven. |
+| [eatme PR #136 next-missing-real-desktop-proof hook path status](docs/atlas/journal/0125-eatme-pr136-next-missing-hook-path-status.md) | eatme PR #136 improves `next_missing_real_desktop_proof` to show the first missing hook path after the pixel chain in order: `place-object`, `edit-procedure-or-code-block`, `run-world`, `save-project`. 203 tests passed; CI is green. These hook messages do not prove full UI automation. Full Alice UI automation, visible rendering, grading, and first-lesson completion remain unproven. |
 
 ## Tool and repository map
 
