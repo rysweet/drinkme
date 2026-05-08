@@ -7,6 +7,16 @@ readers can understand progress without reading pull request history.
 This README is a project overview, not a changelog. Detailed status and evidence
 live in the linked docs.
 
+## Plan summary
+
+The modernization plan is simple: protect current Alice behavior with focused
+checks, refactor RabbitHole in small steps, compare scenario outcomes in eatme,
+and keep drinkme as the status-and-evidence index.
+
+- RabbitHole: behavior tests first -> evidence -> refactor -> repeat.
+- eatme: create automation scenarios -> compare outcomes -> record gaps.
+- drinkme: track plan -> status -> evidence links -> next decisions.
+
 ## Current verdict
 
 The modernization is active and useful, but unfinished. The repository now has

@@ -131,6 +131,7 @@ DOCS = {
 
 README_REQUIRED_HEADINGS = [
     "# drinkme",
+    "## Plan summary",
     "## Current verdict",
     "## One-page project map",
     "## What works now",
@@ -156,6 +157,13 @@ README_REQUIRED_TERMS = [
     "desktop Save menu-to-written-project completion is still missing",
     "Component-level evidence exists, but desktop Save menu-to-written-project completion is still missing.",
     "70% aggregate coverage is still a target, not a result.",
+]
+
+README_PLAN_SUMMARY_TERMS = [
+    "protect current Alice behavior with focused checks",
+    "RabbitHole: behavior tests first -> evidence -> refactor -> repeat.",
+    "eatme: create automation scenarios -> compare outcomes -> record gaps.",
+    "drinkme: track plan -> status -> evidence links -> next decisions.",
 ]
 
 README_REQUIRED_LINKS = [
@@ -203,6 +211,7 @@ README_FORBIDDEN_OVERCLAIMS = [
 
 README_FORBIDDEN_READER_JARGON = [
     "Gadugi",
+    "Plan english",
     "plain english",
     "plain English",
     "smoke",
@@ -1918,11 +1927,22 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_contains_all(readme, README_REQUIRED_HEADINGS, "README")
         self.assert_contains_all(readme, README_REQUIRED_LINKS, "README useful links")
         self.assert_contains_all(plain_readme, README_REQUIRED_TERMS, "README")
+        self.assertLess(
+            readme.index("## Plan summary"),
+            readme.index("## Current verdict"),
+            "README should explain the plan before status detail",
+        )
+        self.assert_contains_all(
+            plain(section(readme, "Plan summary")),
+            README_PLAN_SUMMARY_TERMS,
+            "README plan summary",
+        )
         self.assert_contains_all(section(readme, "What is still missing"), README_MISSING_TERMS, "README missing work")
         for claim in README_FORBIDDEN_OVERCLAIMS:
             self.assertNotIn(claim.lower(), lower_plain_readme)
         for term in README_FORBIDDEN_READER_JARGON:
             self.assertNotIn(term.lower(), readme.lower())
+        self.assertNotRegex(readme, r"\bProven\b", "README should not use Proven as status wording")
         self.assertNotRegex(readme, r"(?m)^##\s+Proven\b", "README should not use Proven as a section label")
         self.assertGreaterEqual(readme.count("```mermaid"), 2, "README should keep useful Mermaid visuals")
         self.assert_readme_has_no_pr_dump(readme)
