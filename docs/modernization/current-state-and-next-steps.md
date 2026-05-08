@@ -489,6 +489,18 @@
   from the list in `docs/persona-assets.md` and
   `assets/personas/alice-user-crew.yaml`. Grading, automated creative
   assessment, real Alice UI automation, and full lesson delivery remain unproven.
+  [RabbitHole PR #287](https://github.com/rysweet/RabbitHole/pull/287) merged at
+  `198b482733f3fcb9ae7ecfc5479027393f21cf71`. Decodes Tweedle logical expressions:
+  `&&` and `||` to `ConditionalInfixExpression`; `!` to `LogicalComplement`.
+  Covers local variable initializers, assignment right-hand-side positions, and
+  method return expressions. Full Tweedle/player decode, method calls, loops,
+  conditionals, resource initializers, visible rendering, grading, and
+  first-lesson completion remain unproven.
+  [RabbitHole PR #289](https://github.com/rysweet/RabbitHole/pull/289) merged at
+  `cc119baebb4dd5ad775ac497c9f2318b9f8d2add`. Adds tests that logical `&&`, `||`,
+  and `!` method returns fail clearly when the method declares a non-Boolean return
+  type. Test-only; does not expand decode behavior. Full Tweedle/player decode,
+  visible rendering, grading, and first-lesson completion remain unproven.
   [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
   `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
   method and constructor bodies can now decode an `IdentifierReference` RHS to
