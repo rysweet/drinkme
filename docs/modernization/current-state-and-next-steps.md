@@ -2,10 +2,10 @@
 
 ## Repository state
 
-- Source work is in `rysweet/RabbitHole`.
-- Private investigation artifacts are in `rysweet/drinkme` on branch `main`.
-- Upstream issue/PR usage is prohibited. Findings are journaled in `drinkme`.
-- The active source repo has guardrails in `AGENTS.md`.
+- Source work happens in the modernized Alice source tree.
+- Investigation artifacts are journaled in `drinkme`.
+- Upstream issue/PR usage is prohibited for this effort. Findings are journaled here.
+- The active source tree has guardrails in `AGENTS.md`.
 - Current restarted campaign status is tracked in `docs/modernization/restarted-full-scope-status.md`.
 - Latest status is no longer tracked here as a pull-request chronology. The
   current user-facing state is summarized by capability below, with detailed
@@ -17,7 +17,7 @@
   scenario inventories.
 - The linked status docs are integrated: README, this current-state page, the
   restarted full-scope tracker, and the atlas now describe the same distinction
-  between completed documentation/status integration and remaining product gaps.
+   between completed documentation/status integration and remaining gaps.
 - Detailed evidence remains available in the atlas journal, especially
   [0085 desktop Run evidence](../atlas/journal/0085-desktop-run-execution-evidence.md),
   [0086 readiness evidence requirements](../atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md),
@@ -62,9 +62,12 @@
 - Deployed sharing/platform behavior.
 - Full Tweedle/player decode.
 - The 70 percent aggregate coverage target.
+
 ## Build and CI state
 
-The no-Sims local and CI path is healthy. RabbitHole PR #191 restored the Maven cache fallback, fixed the stuck coverage path, and coverage run `25492250204` completed successfully after merge. Develop checks after PR #190 also completed successfully at `fd71bfb96fe9c82aa4cdd3de8f967f7c410af629`.
+The no-Sims local and CI path is healthy. Current evidence includes a restored
+Maven cache fallback, a fixed stuck coverage path, one completed coverage run,
+and completed develop checks after the latest related source merge.
 
 Current important checks:
 
@@ -124,7 +127,7 @@ Covered areas include:
 - AST-referenced image resource editor save-copy and reopen fidelity;
 - project save/export snapshot source selection and default auto-backup migration;
 - project save target planning for new/default-backup/backup saves;
-- NetBeans generated launcher shape, launcher argument handoff, and launcher/runtime proof beyond the earlier `Program.main` null-Stage guard;
+- NetBeans generated launcher shape, launcher argument handoff, and launcher/runtime evidence beyond the earlier `Program.main` null-Stage guard;
 - NetBeans project-template archive and generated metadata;
 - exported build-property contract;
 - `Alice3Library` registration and packaging source;
@@ -200,7 +203,7 @@ Covered areas include:
 - Loop 63 extended that pattern: implementation tracks ran in parallel, but integration remained serialized and CI-checked after each meaningful merge.
 - Loop 64 recovery/integration completed the crash-resume work:
   - Alice `develop` integrated formal specs/recovery contracts, source save/export tests, Story IO/NetBeans quality fixes, outside-in QA hardening, Wave2 Story JSON boundaries, Wave2 NetBeans export harness, and Wave2 outside-in QA scenarios.
-  - `eatme` `master` integrated the Building-a-Scene and Code Editor first-run lesson check tracks.
+   - The scenario repository integrated the Building-a-Scene and Code Editor first-run lesson check tracks.
   - `gadugi-agentic-test` `main` integrated the `cwd`/`workingDirectory` scenario command fix.
 - Code-atlas and crusty review branches remained outside Alice source and were routed to drinkme artifacts instead.
 
@@ -225,7 +228,7 @@ Covered areas include:
 - Real JavaFX launcher startup is not covered.
 - Palette layout behavior has headless coverage, but full palette/completion UI behavior is not covered.
 - Deep NBM install semantics are still thin; rename/package check coverage exists but not full IDE install execution.
-- A standalone exported Ant project build/run against a populated `Alice3Library` is still not fully proven; current coverage validates populated classpath contracts and compile behavior, not a full launched exported project.
+- A standalone exported Ant project build/run against a populated `Alice3Library` is still not fully covered; current coverage validates populated classpath contracts and compile behavior, not a full launched exported project.
 - Some scene/model story API and scenegraph behavior is characterized, but events, runtime story execution, and rendering behavior remain mostly unprotected.
 - Player export JSON reads are currently resource-only; the program type is still `null` because the Tweedle decoder remains a stub.
 - JSON `.a3c` type reads are also resource-only; the type remains `null` until Tweedle type decoding is implemented.
@@ -261,7 +264,7 @@ Covered areas include:
 5. Keep desktop Run completion claims narrow:
    - launcher-step and no-go-message evidence is not rendering evidence;
    - readiness reporting is not grading or full lesson completion;
-   - status integration is not runtime proof;
+   - status integration is not runtime behavior evidence;
    - add separate evidence before claiming pixel drawing, lesson completion, or
      grading.
 6. Use the recovered code-atlas bug-hunt artifacts on the next high-value seam:
@@ -282,4 +285,3 @@ The safest modernization path remains incremental:
 5. only consider rewrite or non-Java components after enough evidence exists.
 
 Core Alice should remain Java for now. Rust or other languages may be useful later for optional tooling, static analysis, packaging helpers, graphing, or external AI-assisted tools, but moving core runtime behavior out of Java would be premature without much stronger test coverage.
-
