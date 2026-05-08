@@ -423,8 +423,7 @@ network. Do not open issues or pull requests against
   reaches a live `JFileChooser`, the dialog is approved by a background probe,
   and a non-empty `.a3p` file is written. Real rendered desktop menu bar
   navigation, native FileDialog, visible rendering, grading, and full lesson
-  completion remain unproven. RabbitHole PR #281 (proof-flag false-negative race)
-  has not merged; do not count it as done.
+  completion remain unproven.
 - [RabbitHole PR #277](https://github.com/rysweet/RabbitHole/pull/277) merged at
   `8c1a3fd32c2c1d19aac7ea265909f0d19276273e`. Tweedle string concatenation (`..`)
   now decodes in assignment right-hand-side values, local variable initializers,
@@ -445,6 +444,20 @@ network. Do not open issues or pull requests against
   design-process-story-or-game, audio-camera-and-export-sharecase,
   setup-preflight-ready-to-create. Grading, automated creative assessment, real
   Alice UI automation, and full lesson delivery remain unproven.
+- [RabbitHole PR #281](https://github.com/rysweet/RabbitHole/pull/281) merged at
+  `daaceb0a9648d18e890c5b106327d2ddbe489149`. Fixes the Save menu doClick test
+  proof bookkeeping: `approvedSelection` is now set before `approveSelection()`
+  is called so the probe cannot falsely report unsupported after a successful
+  write. Does not expand Save proof scope beyond PR #276. Real rendered desktop
+  menu bar navigation, native FileDialog, visible rendering, grading, and full
+  lesson completion remain unproven.
+- [eatme PR #133](https://github.com/rysweet/eatme/pull/133) merged at
+  `7d0d05726b970dc9a616ed8aa633e090ceebf88b`. Adds the
+  `design-process-story-or-game` instructor/student scenario and Gadugi adapter;
+  scenario asset count grew from 87 to 89. Remaining missing scenario files:
+  audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading,
+  automated creative assessment, real Alice UI automation, and full lesson
+  delivery remain unproven.
 - Existing tests mostly cover Tweedle parsing, manifest encoding, version parsing, and math utilities.
 - First implementation slice added launch-argument characterization tests and extracted a tested `LaunchConfiguration` seam.
 - Second implementation slice added project migration/version characterization tests without production code changes.

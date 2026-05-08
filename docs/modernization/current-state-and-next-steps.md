@@ -383,6 +383,10 @@
   RabbitHole PR #278 and eatme PR #132 are tracked in
   `docs/atlas/journal/0114-rabbithole-pr278-select-project-atapi-status.md` and
   `docs/atlas/journal/0115-eatme-pr132-accessibility-rescue-camera-captions-status.md`.
+  RabbitHole PR #281 is tracked in
+  `docs/atlas/journal/0116-rabbithole-pr281-save-proof-flag-fix-status.md`.
+  eatme PR #133 is tracked in
+  `docs/atlas/journal/0117-eatme-pr133-design-process-story-or-game-status.md`.
   [RabbitHole PR #272](https://github.com/rysweet/RabbitHole/pull/272) merged at
   `458bed0f4b409d207a2610b8ccfa8e8dfbbce6c9`. Proves AT-SPI reaches the Alice
   Java process via `exec:exec` and `NO_AT_BRIDGE=1`; top-level Swing widgets are
@@ -430,6 +434,20 @@
   design-process-story-or-game, audio-camera-and-export-sharecase,
   setup-preflight-ready-to-create. Grading, automated creative assessment, real
   Alice UI automation, and full lesson delivery remain unproven.
+  [RabbitHole PR #281](https://github.com/rysweet/RabbitHole/pull/281) merged at
+  `daaceb0a9648d18e890c5b106327d2ddbe489149`. Fixes the Save menu doClick test
+  proof bookkeeping: `approvedSelection` is now set before `approveSelection()`
+  is called so the probe cannot falsely report unsupported after a successful
+  write. Does not expand Save proof scope beyond PR #276. Real rendered desktop
+  menu bar navigation, native FileDialog, visible rendering, grading, and full
+  lesson completion remain unproven.
+  [eatme PR #133](https://github.com/rysweet/eatme/pull/133) merged at
+  `7d0d05726b970dc9a616ed8aa633e090ceebf88b`. Adds the
+  `design-process-story-or-game` instructor/student scenario and Gadugi adapter;
+  scenario asset count grew from 87 to 89. Remaining missing scenario files:
+  audio-camera-and-export-sharecase, setup-preflight-ready-to-create. Grading,
+  automated creative assessment, real Alice UI automation, and full lesson
+  delivery remain unproven.
   [RabbitHole PR #270](https://github.com/rysweet/RabbitHole/pull/270) merged at
   `b887a14e85a514b5bf7504eeffd3fbeff490e0a2`. Assignment statements in Tweedle
   method and constructor bodies can now decode an `IdentifierReference` RHS to
