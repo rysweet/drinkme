@@ -123,7 +123,7 @@ instead of turning this README into a chronological pull request list.
 ```mermaid
 flowchart LR
   Works["Works now<br/>docs checks, maps, diagrams"] --> Partial["Partly working<br/>scenarios, Save path, rendering signals, decoder slices"]
-  Partial --> Missing["Still missing<br/>full UI, visible rendering, grading, first lesson, 70 percent coverage"]
+  Partial --> Missing["Still missing examples<br/>full UI, visible rendering, grading, first lesson, 70 percent coverage"]
 ```
 
 | Area | Status | Reader takeaway |
@@ -143,7 +143,7 @@ flowchart LR
 
 - [Original Alice 3 project](https://github.com/TheAliceProject/alice3)
 - [Modernized Alice source tree](https://github.com/rysweet/RabbitHole)
-- [Comparison runner and scenario repository](https://github.com/rysweet/eatme)
+- [Automation scenario repository](https://github.com/rysweet/eatme)
 - [drinkme repository](https://github.com/rysweet/drinkme)
 
 ### Plans, status, and diagrams
@@ -166,5 +166,5 @@ For the shortest status read, open
 [current state and next steps](docs/modernization/current-state-and-next-steps.md).
 For the overall work order, read the [investigation plan](docs/plan.md). For
 structure and diagrams, use the [atlas index](docs/atlas/index.md). For the
-scenario and comparison-runner side, read the
+automation scenario side, read the
 [scenario implementation plan](docs/eatme/implementation-plan.md).

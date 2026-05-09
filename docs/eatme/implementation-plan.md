@@ -3,11 +3,8 @@
 This `drinkme` copy records the current scenario and readiness direction for the
 Alice modernization documentation corpus. It is part of the linked status docs
 and keeps the remaining gaps visible for readiness planning. The canonical
-implementation plan is maintained in the private `eatme` repo at:
-
-```text
-/home/azureuser/src/eatme/docs/implementation-plan.md
-```
+implementation plan is maintained in the private `eatme` repo at
+`docs/implementation-plan.md`.
 
 ## Current direction
 
@@ -34,7 +31,7 @@ Automation scenarios should answer plain user questions:
 | Can reports explain readiness and gaps? | Instructors know what is ready, partial, or blocked. |
 
 Use "automation scenarios" or "scenarios" in user-facing copy. Avoid exposing
-internal runner mechanics unless a link or artifact contract requires them.
+internal mechanics unless a link or artifact contract requires them.
 
 ## Current scenario coverage
 
@@ -48,17 +45,17 @@ internal runner mechanics unless a link or artifact contract requires them.
 
 ## Remaining coverage gaps
 
-| Remaining coverage gap | eatme responsibility |
-| --- | --- |
-| Full Alice UI automation | Consume RabbitHole UI evidence in scenarios; do not claim this until RabbitHole capability exists. |
-| Visible rendering correctness | Report RabbitHole rendering evidence and blockers in scenario readiness. |
-| Desktop Save menu-to-written-project completion from a real rendered click path | Share ownership with RabbitHole: RabbitHole closes the UI/write capability, eatme covers and reports the scenario. |
-| First-lesson completion | Own the scenario coverage and readiness report. |
-| Grading | Own grading workflow coverage and report language. |
-| Creative assessment | Own creative-assessment workflow coverage and report language. |
-| Deployed sharing/platform behavior | Own platform-facing automation scenarios and report language. |
-| Full Tweedle/player decode | Report RabbitHole decoder readiness when scenarios depend on player or Tweedle behavior. |
-| 70 percent aggregate coverage target | Share ownership with RabbitHole by combining source coverage and scenario coverage reporting. |
+| Remaining coverage gap | Next workstream | eatme responsibility |
+| --- | --- | --- |
+| Full Alice UI automation | RabbitHole | Consume RabbitHole UI evidence in scenarios; do not claim this until RabbitHole capability exists. |
+| Visible rendering correctness | RabbitHole | Report RabbitHole rendering evidence and blockers in scenario readiness. |
+| Desktop Save menu-to-written-project completion from a real rendered click path | RabbitHole + eatme | Cover and report the scenario after RabbitHole closes the UI/write capability. |
+| First-lesson completion | eatme | Own the scenario coverage and readiness report. |
+| Grading | eatme | Own grading workflow coverage and report language. |
+| Creative assessment | eatme | Own creative-assessment workflow coverage and report language. |
+| Deployed sharing/platform behavior | eatme | Own platform-facing automation scenarios and report language. |
+| Full Tweedle/player decode | RabbitHole | Report RabbitHole decoder readiness when scenarios depend on player or Tweedle behavior. |
+| 70 percent aggregate coverage target | RabbitHole + eatme | Combine source coverage and scenario coverage reporting. |
 
 ## Scenario priorities
 
@@ -98,8 +95,8 @@ user-facing plan above is the source of truth for scenario direction:
 - [0001 crusty-old-engineer review](reviews/0001-crusty-old-engineer.md)
 - [0002 rust memory architecture review](reviews/0002-rust-memory-architecture.md)
 - [0003 capability audit](reviews/0003-gadugi-capability-audit.md)
-- [0004 real Alice harness design](reviews/0004-real-alice-harness-design.md)
-- [0005 second-pass harness review](reviews/0005-second-pass-harness-review.md)
+- [0004 real Alice automation design](reviews/0004-real-alice-harness-design.md)
+- [0005 second-pass automation review](reviews/0005-second-pass-harness-review.md)
 - [0006 second-pass crusty review](reviews/0006-second-pass-crusty-review.md)
 - [0007 second-pass curriculum review](reviews/0007-second-pass-curriculum-review.md)
 - [0008 second-pass capability review](reviews/0008-second-pass-gadugi-review.md)

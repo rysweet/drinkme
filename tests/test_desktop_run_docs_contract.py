@@ -81,6 +81,11 @@ SYNTHESIZED_STATUS_TERMS = [
     "70 percent aggregate coverage target",
 ]
 
+SILVER_THREAD_JOURNEY = (
+    "launch Alice -> build or change a starter world/program -> run and observe "
+    "it -> save and reopen it -> report instructor/student readiness"
+)
+
 REMAINING_GAPS = [
     "Full Alice UI automation",
     "Visible rendering correctness",
@@ -107,6 +112,8 @@ GAP_WORKSTREAMS = [
 
 FORBIDDEN_READER_JARGON = [
     "Gadugi",
+    "harness",
+    "runner",
     "smoke",
     "RabbitHole/eatme wave",
     "automation-scenario",
@@ -127,6 +134,16 @@ FORBIDDEN_OVERCLAIMS = [
 MARKDOWN_LINK_RE = re.compile(r"!?\[[^\]]+\]\((?P<target>[^)#]+)(?:#[^)]+)?\)")
 PLAIN_WHITESPACE_RE = re.compile(r"\s+")
 MARKDOWN_LINK_TARGET_RE = re.compile(r"\[(?P<label>[^\]]+)\]\([^)]+\)")
+LOCAL_ABSOLUTE_PATH_RE = re.compile(
+    r"(?i)(?:"
+    r"/home/[A-Za-z0-9._-]+/"
+    r"|/Users/[A-Za-z0-9._-]+/"
+    r"|C:\\Users\\"
+    r"|/tmp/"
+    r"|/workspace/"
+    r"|/mnt/[A-Za-z]/"
+    r")"
+)
 
 
 def plain(text):
@@ -175,6 +192,20 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         ]
         self.assertEqual([], pr_table_rows, f"{source} should not contain PR table rows")
 
+    def assert_exact_gap_mapping(self, text, source):
+        expected = set(GAP_WORKSTREAMS)
+        allowed_workstreams = {workstream for _, workstream in GAP_WORKSTREAMS}
+        actual = set()
+        for line in text.splitlines():
+            cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+            if len(cells) < 2:
+                continue
+            gap, workstream = cells[0], cells[1]
+            if gap in REMAINING_GAPS and workstream in allowed_workstreams:
+                actual.add((gap, workstream))
+
+        self.assertEqual(expected, actual, f"{source} should map exact gaps to workstreams")
+
     def assert_user_facing_status_is_plain(self, text, source):
         prose = without_markdown_link_targets(text)
         for term in FORBIDDEN_READER_JARGON:
@@ -191,10 +222,24 @@ class DesktopRunDocsContractTest(unittest.TestCase):
             f"{source} should not use Proven/proven as user-facing status wording",
         )
 
+    def assert_no_local_absolute_paths(self, text, source):
+        self.assertIsNone(
+            LOCAL_ABSOLUTE_PATH_RE.search(text),
+            f"{source} should not expose local absolute filesystem paths",
+        )
+
     def test_user_facing_docs_use_plain_status_language(self):
         for name, path in USER_FACING_DOCS.items():
             with self.subTest(document=name):
                 self.assert_user_facing_status_is_plain(
+                    path.read_text(encoding="utf-8"),
+                    name,
+                )
+
+    def test_user_facing_docs_do_not_expose_local_absolute_paths(self):
+        for name, path in USER_FACING_DOCS.items():
+            with self.subTest(document=name):
+                self.assert_no_local_absolute_paths(
                     path.read_text(encoding="utf-8"),
                     name,
                 )
@@ -218,6 +263,10 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_user_facing_status_is_plain(readme, "README")
 
     def test_silver_thread_and_gap_mapping_are_consistent(self):
+        for name in ["README", "plan", "current state", "restarted status", "eatme plan", "atlas index"]:
+            with self.subTest(document=name):
+                self.assertIn(SILVER_THREAD_JOURNEY, plain(self.docs[name]))
+
         for name in ["plan", "current state", "restarted status", "eatme plan"]:
             with self.subTest(document=name):
                 text = self.docs[name]
@@ -233,11 +282,9 @@ class DesktopRunDocsContractTest(unittest.TestCase):
                     f"{name} gaps",
                 )
 
-        for name in ["plan", "current state", "restarted status"]:
+        for name in ["plan", "current state", "restarted status", "eatme plan"]:
             with self.subTest(document=name):
-                text = plain(self.docs[name])
-                for gap, workstream in GAP_WORKSTREAMS:
-                    self.assertIn(f"{gap} | {workstream}", text)
+                self.assert_exact_gap_mapping(self.docs[name], name)
 
         eatme_text = plain(self.docs["eatme plan"])
         self.assertIn("automation scenarios", eatme_text)
