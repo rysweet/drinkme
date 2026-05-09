@@ -2,12 +2,16 @@
 
 drinkme is the front door for the Alice 3 modernization work. It keeps the
 plan, current status, project map, diagrams, and next-step links in one place so
-readers can understand progress without reading pull request history.
+readers can understand the work without reading pull request history.
 
 This README is a project overview, not a changelog. Detailed status and evidence
 live in the linked docs.
 
 ## Plan summary
+
+The silver-thread journey is: launch Alice -> build or change a starter
+world/program -> run and observe it -> save and reopen it -> report
+instructor/student readiness.
 
 The modernization loop is simple: protect current Alice behavior with focused
 checks, use the evidence to refactor the source in small steps, compare
@@ -16,10 +20,9 @@ evidence index.
 
 ## How the work runs
 
-The source modernization work runs behavior checks before refactors, the
-scenario work compares Alice outcomes, and drinkme tracks plan, status, and
-evidence. Use the plan to explain intent, status to show what is happening now,
-and evidence to make the result reviewable.
+Source work improves Alice capability, scenario work compares Alice outcomes,
+and drinkme tracks plan, status, and evidence. Use the plan to explain intent,
+status to show what is happening now, and evidence to make the result reviewable.
 
 ### Source behavior-test-before-refactor loop
 ```mermaid
@@ -100,25 +103,27 @@ flowchart TD
 
 ## What is still missing
 
-Still missing: Alice UI automation, visible rendering correctness, desktop Save
-menu-to-written-project completion, grading, creative assessment, first-lesson
-completion, full Tweedle/player decode, and 70% aggregate coverage.
+Still missing: full Alice UI automation, visible rendering correctness, desktop
+Save menu-to-written-project completion from a real rendered click path,
+first-lesson completion, grading, creative assessment, deployed
+sharing/platform behavior, full Tweedle/player decode, and the 70 percent
+aggregate coverage target; see the [investigation plan](docs/plan.md) for the authoritative remaining gap list.
 
 ## Current focus
 
 Keep drinkme readable as the map, not the timeline. New work should close the
 largest evidence gaps first: real UI actions, visible rendering, desktop Save
 menu-to-written-project completion, first-lesson completion, grading and
-creative assessment, and broader decoder coverage. When details change, update
-the linked status docs and diagrams instead of turning this README into a
-chronological pull request list.
+creative assessment, deployed sharing/platform behavior, and broader decoder
+coverage. When details change, update the linked status docs and diagrams
+instead of turning this README into a chronological pull request list.
 
 ## Progress at a glance
 
 ```mermaid
 flowchart LR
   Works["Works now<br/>docs checks, maps, diagrams"] --> Partial["Partly working<br/>scenarios, Save path, rendering signals, decoder slices"]
-  Partial --> Missing["Still missing<br/>full UI, visible rendering, grading, first lesson, 70% coverage"]
+  Partial --> Missing["Still missing examples<br/>full UI, visible rendering, grading, first lesson, 70 percent coverage"]
 ```
 
 | Area | Status | Reader takeaway |
@@ -130,7 +135,7 @@ flowchart LR
 | Rendering and lesson completion | Missing | Do not treat current evidence as visible correctness or a finished lesson. |
 | Grading and creative assessment | Missing | Scenario reports do not grade student work. |
 | Tweedle/player decode | Partly working | Many slices are characterized; full decode is missing. |
-| Coverage target | Missing | 70% aggregate coverage is still a target, not a result. |
+| Coverage target | Missing | 70 percent aggregate coverage is still a target, not a result. |
 
 ## Useful links
 
@@ -138,7 +143,7 @@ flowchart LR
 
 - [Original Alice 3 project](https://github.com/TheAliceProject/alice3)
 - [Modernized Alice source tree](https://github.com/rysweet/RabbitHole)
-- [Comparison runner and scenario repository](https://github.com/rysweet/eatme)
+- [Automation scenario repository](https://github.com/rysweet/eatme)
 - [drinkme repository](https://github.com/rysweet/drinkme)
 
 ### Plans, status, and diagrams
@@ -161,5 +166,5 @@ For the shortest status read, open
 [current state and next steps](docs/modernization/current-state-and-next-steps.md).
 For the overall work order, read the [investigation plan](docs/plan.md). For
 structure and diagrams, use the [atlas index](docs/atlas/index.md). For the
-scenario and comparison-runner side, read the
+automation scenario side, read the
 [scenario implementation plan](docs/eatme/implementation-plan.md).

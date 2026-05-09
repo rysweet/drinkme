@@ -3,11 +3,16 @@
 This atlas maps the Alice 3 investigation. It is intentionally stored in
 `drinkme`, not in the Alice source fork.
 
-The atlas is part of the linked status docs. Its current user-facing summary
-tracks automation scenarios and remaining gaps, including full Alice UI
-automation, visible rendering, desktop Save menu-to-written-project completion,
-first-lesson completion, grading, creative assessment, and full Tweedle/player
-decode.
+The atlas is part of the linked status docs. The shared silver-thread journey
+is: launch Alice -> build or change a starter world/program -> run and observe
+it -> save and reopen it -> report instructor/student readiness.
+
+Its current user-facing summary tracks automation scenarios and remaining gaps,
+including full Alice UI automation, visible rendering correctness, desktop Save
+menu-to-written-project completion from a real rendered click path,
+first-lesson completion, grading, creative assessment, deployed sharing/platform
+behavior, full Tweedle/player decode, and the 70 percent aggregate coverage
+target.
 
 ## Current diagrams
 
@@ -50,10 +55,18 @@ decode.
 - Model export attribution and generated story-code runtime-state evidence
   collected without opening the desktop UI improved the source characterization
   map.
-- Runtime/user gaps remain open: full Alice UI automation, visible rendering,
-  desktop Save menu-to-written-project completion, first-lesson completion,
-  grading, creative assessment, deployed sharing/platform behavior, and full
-  Tweedle/player decode.
+- Runtime/user gaps remain open: full Alice UI automation, visible rendering
+  correctness, desktop Save menu-to-written-project completion from a real
+  rendered click path, first-lesson completion, grading, creative assessment,
+  deployed sharing/platform behavior, full Tweedle/player decode, and the 70
+  percent aggregate coverage target.
+
+## Silver-thread status pages
+
+- [Investigation plan](../plan.md)
+- [Current state and next steps](../modernization/current-state-and-next-steps.md)
+- [Restarted full-scope status](../modernization/restarted-full-scope-status.md)
+- [Scenario implementation plan](../eatme/implementation-plan.md)
 
 ## Evidence history
 
