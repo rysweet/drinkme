@@ -109,6 +109,10 @@ GAP_WORKSTREAMS = [
     ("Full Tweedle/player decode", "RabbitHole"),
     ("70 percent aggregate coverage target", "RabbitHole + eatme"),
 ]
+GAP_WORKSTREAM_SET = set(GAP_WORKSTREAMS)
+ALLOWED_WORKSTREAMS = {workstream for _, workstream in GAP_WORKSTREAMS}
+LOWER_SYNTHESIZED_STATUS_TERMS = [term.lower() for term in SYNTHESIZED_STATUS_TERMS]
+LOWER_REMAINING_GAPS = [gap.lower() for gap in REMAINING_GAPS]
 
 FORBIDDEN_READER_JARGON = [
     "Gadugi",
@@ -130,6 +134,7 @@ FORBIDDEN_OVERCLAIMS = [
     "70% aggregate coverage is complete",
     "70 percent aggregate coverage is complete",
 ]
+LOWER_FORBIDDEN_OVERCLAIMS = [claim.lower() for claim in FORBIDDEN_OVERCLAIMS]
 
 MARKDOWN_LINK_RE = re.compile(r"!?\[[^\]]+\]\((?P<target>[^)#]+)(?:#[^)]+)?\)")
 PLAIN_WHITESPACE_RE = re.compile(r"\s+")
@@ -172,6 +177,11 @@ class DesktopRunDocsContractTest(unittest.TestCase):
             name: path.read_text(encoding="utf-8")
             for name, path in LINKED_DOCS.items()
         }
+        cls.plain_docs = {name: plain(text) for name, text in cls.docs.items()}
+        cls.lower_plain_docs = {
+            name: text.lower()
+            for name, text in cls.plain_docs.items()
+        }
 
     def assert_contains_all(self, text, expected, source):
         missing = [term for term in expected if term not in text]
@@ -193,29 +203,28 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertEqual([], pr_table_rows, f"{source} should not contain PR table rows")
 
     def assert_exact_gap_mapping(self, text, source):
-        expected = set(GAP_WORKSTREAMS)
-        allowed_workstreams = {workstream for _, workstream in GAP_WORKSTREAMS}
         actual = set()
         for line in text.splitlines():
             cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
             if len(cells) < 2:
                 continue
             gap, workstream = cells[0], cells[1]
-            if gap in REMAINING_GAPS and workstream in allowed_workstreams:
+            if gap in REMAINING_GAPS and workstream in ALLOWED_WORKSTREAMS:
                 actual.add((gap, workstream))
 
-        self.assertEqual(expected, actual, f"{source} should map exact gaps to workstreams")
+        self.assertEqual(GAP_WORKSTREAM_SET, actual, f"{source} should map exact gaps to workstreams")
 
     def assert_user_facing_status_is_plain(self, text, source):
         prose = without_markdown_link_targets(text)
+        plain_prose_lower = plain(prose).lower()
         for term in FORBIDDEN_READER_JARGON:
             self.assertNotRegex(
                 prose,
                 rf"(?i)\b{re.escape(term)}\b",
                 f"{source} uses avoidable internal or test jargon: {term}",
             )
-        for claim in FORBIDDEN_OVERCLAIMS:
-            self.assertNotIn(claim.lower(), plain(prose).lower())
+        for claim in LOWER_FORBIDDEN_OVERCLAIMS:
+            self.assertNotIn(claim, plain_prose_lower)
         self.assertNotRegex(
             prose,
             r"(?i)\bunproven\b|\bproven\b",
@@ -229,18 +238,18 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         )
 
     def test_user_facing_docs_use_plain_status_language(self):
-        for name, path in USER_FACING_DOCS.items():
+        for name in USER_FACING_DOCS:
             with self.subTest(document=name):
                 self.assert_user_facing_status_is_plain(
-                    path.read_text(encoding="utf-8"),
+                    self.docs[name],
                     name,
                 )
 
     def test_user_facing_docs_do_not_expose_local_absolute_paths(self):
-        for name, path in USER_FACING_DOCS.items():
+        for name in USER_FACING_DOCS:
             with self.subTest(document=name):
                 self.assert_no_local_absolute_paths(
-                    path.read_text(encoding="utf-8"),
+                    self.docs[name],
                     name,
                 )
 
@@ -265,26 +274,24 @@ class DesktopRunDocsContractTest(unittest.TestCase):
     def test_silver_thread_and_gap_mapping_are_consistent(self):
         for name in ["README", "plan", "current state", "restarted status", "eatme plan", "atlas index"]:
             with self.subTest(document=name):
-                self.assertIn(SILVER_THREAD_JOURNEY, plain(self.docs[name]))
+                self.assertIn(SILVER_THREAD_JOURNEY, self.plain_docs[name])
 
-        self.assertIn("authoritative remaining gap list", plain(self.docs["README"]).lower())
-        self.assertIn("authoritative remaining coverage gap list", plain(self.docs["plan"]).lower())
+        self.assertIn("authoritative remaining gap list", self.lower_plain_docs["README"])
+        self.assertIn("authoritative remaining coverage gap list", self.lower_plain_docs["plan"])
         for name in ["current state", "restarted status", "eatme plan"]:
             with self.subTest(document=f"{name} exact gap list marker"):
-                self.assertIn("same exact remaining gap list", plain(self.docs[name]).lower())
+                self.assertIn("same exact remaining gap list", self.lower_plain_docs[name])
 
         for name in ["plan", "current state", "restarted status", "eatme plan"]:
             with self.subTest(document=name):
-                text = self.docs[name]
-                plain_text = plain(text).lower()
                 self.assert_contains_all(
-                    plain_text,
-                    [term.lower() for term in SYNTHESIZED_STATUS_TERMS],
+                    self.lower_plain_docs[name],
+                    LOWER_SYNTHESIZED_STATUS_TERMS,
                     name,
                 )
                 self.assert_contains_all(
-                    plain_text,
-                    [gap.lower() for gap in REMAINING_GAPS],
+                    self.lower_plain_docs[name],
+                    LOWER_REMAINING_GAPS,
                     f"{name} gaps",
                 )
 
@@ -292,7 +299,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
             with self.subTest(document=name):
                 self.assert_exact_gap_mapping(self.docs[name], name)
 
-        eatme_text = plain(self.docs["eatme plan"])
+        eatme_text = self.plain_docs["eatme plan"]
         self.assertIn("automation scenarios", eatme_text)
         self.assertIn("instructor/student readiness", eatme_text)
 
@@ -314,8 +321,8 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("### What is partly working", text)
         self.assertIn("### What is still missing", text)
         self.assert_contains_all(
-            plain(text).lower(),
-            [term.lower() for term in REMAINING_GAPS],
+            self.lower_plain_docs["current state"],
+            LOWER_REMAINING_GAPS,
             "current state remaining gaps",
         )
         self.assert_no_pr_dump(opening_status, "current state opening status", max_pr_mentions=0)
@@ -330,8 +337,8 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertIn("## Latest integrated evidence", text)
         self.assertIn("## Remaining gaps", text)
         self.assert_contains_all(
-            plain(text).lower(),
-            [term.lower() for term in SYNTHESIZED_STATUS_TERMS],
+            self.lower_plain_docs["restarted status"],
+            LOWER_SYNTHESIZED_STATUS_TERMS,
             "restarted status",
         )
         self.assert_contains_all(plain(section(text, "Remaining gaps")), REMAINING_GAPS, "restarted gaps")
@@ -351,8 +358,8 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertGreaterEqual(text.count("![Startup flow"), 2)
         self.assertGreaterEqual(text.count("![Testing roadmap"), 2)
         self.assert_contains_all(
-            plain(text).lower(),
-            [term.lower() for term in SYNTHESIZED_STATUS_TERMS],
+            self.lower_plain_docs["atlas index"],
+            LOWER_SYNTHESIZED_STATUS_TERMS,
             "atlas index",
         )
         self.assertLessEqual(text.count("journal/"), 8)
