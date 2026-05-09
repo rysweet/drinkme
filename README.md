@@ -107,7 +107,7 @@ Still missing: full Alice UI automation, visible rendering correctness, desktop
 Save menu-to-written-project completion from a real rendered click path,
 first-lesson completion, grading, creative assessment, deployed
 sharing/platform behavior, full Tweedle/player decode, and the 70 percent
-aggregate coverage target.
+aggregate coverage target; see the [investigation plan](docs/plan.md) for the authoritative remaining gap list.
 
 ## Current focus
 

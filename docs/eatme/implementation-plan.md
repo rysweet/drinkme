@@ -45,6 +45,9 @@ internal mechanics unless a link or artifact contract requires them.
 
 ## Remaining coverage gaps
 
+This table uses the same exact remaining gap list as the plan and shows the
+eatme-facing responsibility for each RabbitHole, eatme, or shared workstream.
+
 | Remaining coverage gap | Next workstream | eatme responsibility |
 | --- | --- | --- |
 | Full Alice UI automation | RabbitHole | Consume RabbitHole UI evidence in scenarios; do not claim this until RabbitHole capability exists. |

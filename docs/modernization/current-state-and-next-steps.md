@@ -54,6 +54,9 @@ scenario inventories. The linked status docs describe the same remaining gaps.
 
 ### What is still missing
 
+The linked status docs use this same exact remaining gap list and workstream
+mapping.
+
 | Remaining coverage gap | Next workstream |
 | --- | --- |
 | Full Alice UI automation | RabbitHole |

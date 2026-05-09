@@ -267,6 +267,12 @@ class DesktopRunDocsContractTest(unittest.TestCase):
             with self.subTest(document=name):
                 self.assertIn(SILVER_THREAD_JOURNEY, plain(self.docs[name]))
 
+        self.assertIn("authoritative remaining gap list", plain(self.docs["README"]).lower())
+        self.assertIn("authoritative remaining coverage gap list", plain(self.docs["plan"]).lower())
+        for name in ["current state", "restarted status", "eatme plan"]:
+            with self.subTest(document=f"{name} exact gap list marker"):
+                self.assertIn("same exact remaining gap list", plain(self.docs[name]).lower())
+
         for name in ["plan", "current state", "restarted status", "eatme plan"]:
             with self.subTest(document=name):
                 text = self.docs[name]

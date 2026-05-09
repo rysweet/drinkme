@@ -47,6 +47,9 @@ student and instructor experience.
 
 ## Remaining coverage gaps
 
+This is the authoritative remaining coverage gap list for the linked status
+docs. Keep these names exact so RabbitHole and eatme ownership stays clear.
+
 | Remaining coverage gap | Current meaning |
 | --- | --- |
 | Full Alice UI automation | Alice must be driven through representative real UI paths, not only component seams or status files. |
@@ -60,6 +63,9 @@ student and instructor experience.
 | 70 percent aggregate coverage target | The modernization suite must reach the stated aggregate coverage target. |
 
 ## Next workstream mapping
+
+This table maps the same exact remaining gaps to the next RabbitHole, eatme, or
+shared workstream.
 
 | Remaining coverage gap | Next workstream |
 | --- | --- |

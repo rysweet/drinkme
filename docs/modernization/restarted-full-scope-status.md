@@ -74,6 +74,9 @@ modernization completion.
 
 ## Remaining gaps
 
+This is the same exact remaining gap list and workstream mapping used by the
+plan and current-state docs.
+
 | Remaining coverage gap | Next workstream |
 | --- | --- |
 | Full Alice UI automation | RabbitHole |
