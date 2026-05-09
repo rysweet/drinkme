@@ -6,23 +6,29 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 README = ROOT / "README.md"
+PLAN = ROOT / "docs/plan.md"
 CURRENT_STATE = ROOT / "docs/modernization/current-state-and-next-steps.md"
 RESTARTED_STATUS = ROOT / "docs/modernization/restarted-full-scope-status.md"
+EATME_PLAN = ROOT / "docs/eatme/implementation-plan.md"
 ATLAS_INDEX = ROOT / "docs/atlas/index.md"
 ENTRY_0130 = ROOT / "docs/atlas/journal/0130-rabbithole-306-308-evidence-status.md"
 
 LINKED_DOCS = {
     "README": README,
+    "plan": PLAN,
     "current state": CURRENT_STATE,
     "restarted status": RESTARTED_STATUS,
+    "eatme plan": EATME_PLAN,
     "atlas index": ATLAS_INDEX,
     "latest evidence journal": ENTRY_0130,
 }
 
 USER_FACING_DOCS = {
     "README": README,
+    "plan": PLAN,
     "current state": CURRENT_STATE,
     "restarted status": RESTARTED_STATUS,
+    "eatme plan": EATME_PLAN,
     "atlas index": ATLAS_INDEX,
 }
 
@@ -56,26 +62,47 @@ README_REQUIRED_LINK_TARGETS = [
 ]
 
 SYNTHESIZED_STATUS_TERMS = [
+    "launch Alice",
+    "build or change a starter world/program",
+    "run and observe it",
+    "save and reopen it",
+    "report instructor/student readiness",
     "automation scenarios",
     "linked status docs",
     "remaining gaps",
     "full Alice UI automation",
-    "visible rendering",
-    "desktop Save menu-to-written-project completion",
+    "visible rendering correctness",
+    "desktop Save menu-to-written-project completion from a real rendered click path",
     "first-lesson completion",
     "grading",
     "creative assessment",
+    "deployed sharing/platform behavior",
     "full Tweedle/player decode",
+    "70 percent aggregate coverage target",
 ]
 
 REMAINING_GAPS = [
-    "full Alice UI automation",
-    "visible rendering",
-    "desktop Save menu-to-written-project completion",
-    "first-lesson completion",
-    "grading",
-    "creative assessment",
-    "full Tweedle/player decode",
+    "Full Alice UI automation",
+    "Visible rendering correctness",
+    "Desktop Save menu-to-written-project completion from a real rendered click path",
+    "First-lesson completion",
+    "Grading",
+    "Creative assessment",
+    "Deployed sharing/platform behavior",
+    "Full Tweedle/player decode",
+    "70 percent aggregate coverage target",
+]
+
+GAP_WORKSTREAMS = [
+    ("Full Alice UI automation", "RabbitHole"),
+    ("Visible rendering correctness", "RabbitHole"),
+    ("Desktop Save menu-to-written-project completion from a real rendered click path", "RabbitHole + eatme"),
+    ("First-lesson completion", "eatme"),
+    ("Grading", "eatme"),
+    ("Creative assessment", "eatme"),
+    ("Deployed sharing/platform behavior", "eatme"),
+    ("Full Tweedle/player decode", "RabbitHole"),
+    ("70 percent aggregate coverage target", "RabbitHole + eatme"),
 ]
 
 FORBIDDEN_READER_JARGON = [
@@ -179,6 +206,7 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assert_contains_all(readme, README_REQUIRED_HEADINGS, "README")
         self.assert_contains_all(readme, README_REQUIRED_LINK_TARGETS, "README links")
         self.assertIn("This README is a project overview, not a changelog.", readme)
+        self.assertIn("launch Alice -> build or change a starter", readme)
         self.assertIn("automation scenario coverage", readme)
         self.assertIn("Use drinkme as a map and status index.", readme)
         self.assertIn("python3 -m unittest discover -s tests -v", readme)
@@ -189,13 +217,44 @@ class DesktopRunDocsContractTest(unittest.TestCase):
         self.assertNotIn("eatme", prose)
         self.assert_user_facing_status_is_plain(readme, "README")
 
+    def test_silver_thread_and_gap_mapping_are_consistent(self):
+        for name in ["plan", "current state", "restarted status", "eatme plan"]:
+            with self.subTest(document=name):
+                text = self.docs[name]
+                plain_text = plain(text).lower()
+                self.assert_contains_all(
+                    plain_text,
+                    [term.lower() for term in SYNTHESIZED_STATUS_TERMS],
+                    name,
+                )
+                self.assert_contains_all(
+                    plain_text,
+                    [gap.lower() for gap in REMAINING_GAPS],
+                    f"{name} gaps",
+                )
+
+        for name in ["plan", "current state", "restarted status"]:
+            with self.subTest(document=name):
+                text = plain(self.docs[name])
+                for gap, workstream in GAP_WORKSTREAMS:
+                    self.assertIn(f"{gap} | {workstream}", text)
+
+        eatme_text = plain(self.docs["eatme plan"])
+        self.assertIn("automation scenarios", eatme_text)
+        self.assertIn("instructor/student readiness", eatme_text)
+
     def test_current_state_summarizes_automation_status_not_pr_chronology(self):
         text = self.docs["current state"]
         opening_status = section(text, "Repository state")
 
         self.assert_contains_all(
             plain(opening_status).lower(),
-            [term.lower() for term in SYNTHESIZED_STATUS_TERMS],
+            [
+                "launch alice",
+                "automation scenarios",
+                "linked status docs",
+                "remaining gaps",
+            ],
             "current state",
         )
         self.assertIn("### What works now", text)

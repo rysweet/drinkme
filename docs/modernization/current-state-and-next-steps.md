@@ -2,74 +2,74 @@
 
 ## Repository state
 
-- Source work happens in the modernized Alice source tree.
-- Investigation artifacts are journaled in `drinkme`.
-- Upstream issue/PR usage is prohibited for this effort. Findings are journaled here.
-- The active source tree has guardrails in `AGENTS.md`.
-- Current restarted campaign status is tracked in `docs/modernization/restarted-full-scope-status.md`.
-- Latest status is no longer tracked here as a pull-request chronology. The
-  current user-facing state is summarized by capability below, with detailed
-  evidence kept in the atlas journal.
-- Automation scenarios now cover a broader set of classroom and desktop paths:
-  launch/readiness evidence, desktop Run status reporting, Save-path evidence,
-  project load/save and export boundaries, generated Story API compile/runtime
-  slices, model export attribution evidence, and instructor/student lesson
-  scenario inventories.
-- The linked status docs are integrated: README, this current-state page, the
-  restarted full-scope tracker, and the atlas now describe the same distinction
-  between completed documentation/status integration and remaining gaps.
+The current silver-thread journey is: launch Alice -> build or change a starter
+world/program -> run and observe it -> save and reopen it -> report
+instructor/student readiness.
+
+- Source capability work happens in `rysweet/RabbitHole`.
+- Scenario coverage and readiness reporting happen in `rysweet/eatme`.
+- Investigation artifacts, status, diagrams, and evidence links are journaled in
+  `drinkme`.
+- Latest status is summarized by capability below, not as pull request
+  chronology.
 - Detailed evidence remains available in the atlas journal, especially
   [0085 desktop Run evidence](../atlas/journal/0085-desktop-run-execution-evidence.md),
   [0086 readiness evidence requirements](../atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md),
-  [0093 source, scenario, and CI status](../atlas/journal/0093-source-eatme-ci-wave-status.md),
   [0100 Save-path and source status](../atlas/journal/0100-rabbithole-pr235-through-pr259-status.md),
   [0128 Tweedle while-loop decode status](../atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md),
   [0129 merged metadata](../atlas/journal/0129-four-pr-merged-metadata-status.md),
   and [0130 latest evidence boundary status](../atlas/journal/0130-rabbithole-306-308-evidence-status.md).
 
+Automation scenarios now cover a broader set of classroom and desktop paths:
+launch/readiness evidence, desktop Run status reporting, Save-path evidence,
+project load/save and export boundaries, generated Story API compile/runtime
+slices, model export attribution evidence, and instructor/student lesson
+scenario inventories. The linked status docs describe the same remaining gaps.
+
 ### What works now
 
 - Documentation checks, Markdown link checks, and status-doc contracts run from
   this repository.
-- Scenario inventories and readiness reports organize the known Alice
-  automation paths and the evidence each path still needs.
-- Source characterization covers selected project IO, generated Story API,
-  model export, NetBeans export, scenegraph, Croquet layout, and Tweedle decode
-  slices.
-- The latest linked status update records model export attribution and generated
-  story runtime-state evidence collected without opening the desktop UI, without
-  expanding it into a claim about complete runtime behavior.
+- Scenario inventories and readiness reports organize known Alice automation
+  paths and the evidence each path still needs.
+- Source characterization covers selected project IO, generated Story API, model
+  export, NetBeans export, scenegraph, Croquet layout, and Tweedle decode slices.
+- Current scenarios provide useful signals for launch, Run, Save-path, lesson,
+  classroom, export/share, and accessibility-style paths.
 
 ### What is partly working
 
 - Desktop Run and Save-path evidence provide useful signals, but not full Alice
   UI automation.
+- Rendering-adjacent checks document surfaces, windows, blockers, and status
+  files, but not visible rendering correctness.
+- Save-path checks cover selected-path, menu-dispatch, chooser, and file-write
+  slices, but not desktop Save menu-to-written-project completion from a real
+  rendered click path.
 - Automation scenarios describe launch, lesson, classroom, export/share, and
   accessibility-style paths, but they do not grade student work or complete a
   full lesson.
 - Tweedle and player decoding cover many small cases, but full decoder support
   remains open.
-- Rendering-adjacent checks document surfaces, blockers, and status files, but
-  not visible rendering correctness.
 
 ### What is still missing
 
-- Full Alice UI automation.
-- Visible rendering correctness.
-- Desktop Save menu-to-written-project completion from a real rendered click path.
-- First-lesson completion.
-- Grading and creative assessment.
-- Deployed sharing/platform behavior.
-- Full Tweedle/player decode.
-- The 70 percent aggregate coverage target.
+| Remaining coverage gap | Next workstream |
+| --- | --- |
+| Full Alice UI automation | RabbitHole |
+| Visible rendering correctness | RabbitHole |
+| Desktop Save menu-to-written-project completion from a real rendered click path | RabbitHole + eatme |
+| First-lesson completion | eatme |
+| Grading | eatme |
+| Creative assessment | eatme |
+| Deployed sharing/platform behavior | eatme |
+| Full Tweedle/player decode | RabbitHole |
+| 70 percent aggregate coverage target | RabbitHole + eatme |
 
 ## Build and CI state
 
-The no-Sims local and CI path is healthy. Current evidence includes a restored
-Maven cache fallback, a fixed stuck coverage path, one completed coverage run,
-and completed develop checks after the latest related source merge.
-
-Current important checks:
+The no-Sims local and CI path is healthy enough to keep characterization-first
+work moving. Current important source-side checks remain:
 
 ```bash
 mvn -DincludeSims=false -Dinstall4j.skip -pl netbeans -am test
@@ -78,201 +78,34 @@ mvn checkstyle:check -Dcheckstyle.config.location=checkstyle.xml
 mvn -DincludeSims=false -Dinstall4j.skip -pl netbeans -am package -DskipTests
 ```
 
-GitHub Actions now includes:
+The drinkme documentation contract remains:
 
-- Alice Test CI: no-Sims clean test.
-- Alice Checkstyle CI.
-- Alice NetBeans Package CI.
-
-The NetBeans package workflow intentionally avoids Git LFS checkout and verifies representative package artifacts:
-
-- one top-level `netbeans-*.nbm`;
-- `org-alice-netbeans.jar`;
-- `aliceSource.jar`;
-- `aliceDocs.zip`;
-- `Alice3Library.xml`;
-- `layer.xml`;
-- `SProgram.java`;
-- javadoc overview entry.
-
-## Characterization progress
-
-The work has focused on building a compatibility safety net before broad refactoring.
-
-Covered areas include:
-
-- launch argument parsing;
-- project migration/version behavior;
-- corrupt project-load failure delegation;
-- project backup candidate selection and branch planning;
-- backup recovery candidate skipping when a newer backup is known unloadable;
-- backup recovery IO path from corrupt files to valid backup load;
-- VR project-loader save-path behavior;
-- model resource XML metadata, manifest behavior, tag parsing, subresource lookup, array grouping, skip behavior, duplicate index rejection, and edge cases;
-- synthetic `.a3p` project IO round trips;
-- synthetic resource IO round trips;
-- headless player export archive shape through `ProjectFileUtilities`;
-- resource-bearing player export archive boundary and current editor-reader rejection;
-- manifest-based JSON reader dispatch and image-resource restoration for player exports;
-- JSON/player audio resource restoration through the same resource-only reader boundary;
-- future-version detection for JSON/player archives through the shared `ProjectReader` seam;
-- explicit corrupt-manifest IO dispatch errors instead of silent XML fallback;
-- JSON/player image/audio resource identity isolation when separate archive reads reuse UUIDs;
-- JSON/player model/generated type manifest-reference boundaries;
-- JSON `.a3c` resource-only type archive reads;
-- Tweedle `TextString`, Numeric, and Boolean `null` field initializer decoding to AST `NullLiteral`, while primitive statement contexts such as `if(null)` and `while(null)` still fail;
-- literal sized Tweedle array field initializer support such as `new WholeNumber[2]`, while non-literal sizes still fail clearly;
-- duplicate-safe and path-safe JSON/player resource zip entries;
-- headless editor save-copy archive shape and reload fidelity through `ProjectFileUtilities`;
-- AST-referenced image resource editor save-copy and reopen fidelity;
-- project save/export snapshot source selection and default auto-backup migration;
-- project save target planning for new/default-backup/backup saves;
-- NetBeans generated launcher shape, launcher argument handoff, and launcher/runtime evidence beyond the earlier `Program.main` null-Stage guard;
-- NetBeans project-template archive and generated metadata;
-- exported build-property contract;
-- `Alice3Library` registration and packaging source;
-- populated `Alice3Library` compile classpath entries, including authorized JavaFX and includeSims/nonfree boundary variants;
-- NetBeans package-phase CI and artifact assertions;
-- NetBeans template compiler-surrogate structure;
-- NetBeans install NBM rename behavior and timeout-hardened Ant check handling;
-- generated resource export/runtime loading;
-- generated resource filename mismatch, duplicate name, blank name, and unsafe path behavior;
-- generated Java source compilation for:
-  - empty/minimal program;
-  - resource-backed program;
-  - non-empty user method;
-  - local declaration;
-  - method parameter access;
-  - user-method invocation;
-  - invocation with argument;
-  - conditional;
-  - count loop;
-  - while loop;
-  - foreach-array loop;
-  - foreach item access;
-  - named foreach item access;
-  - iterable foreach loop;
-- story API call on `SProgram`;
-- story-api keyboard event characterization tests, with reported `core/story-api` coverage moving from 4.55% to 6.21% and 260 more covered lines.
-- generated foreach loops with stale cached `COUNT__` item names, now repaired to readable generated item names while preserving explicit item names;
-- committed starter `.a3p` archive XML fallback readability for representative fixtures;
-- headless Croquet tool-palette layout invariants;
-- scenegraph Mesh, WeightedMesh, SkeletonVisual, and Joint behavior, including Joint scale/bounds fixes;
-- public no-Sims package boundaries and authorized includeSims library overwrite behavior;
-- `ProcedureTabSelection` design and tests for future procedure UI work;
-- `IssueReportWorker` non-retryable failure behavior;
+```bash
+python3 -m unittest discover -s tests -v
+```
 
 ## Important findings
 
 - Characterization is still early relative to the size of Alice.
-- Current coverage is far below the 70% target; the latest coverage run completed successfully, but 70 percent aggregate coverage remains a target, not a result.
-- Many production classes still exceed the desired 500-line target; the latest reported hotspot count found 52 Java files over 500 lines.
-- NetBeans Java export is a high-value seam because it is both compatibility-sensitive and teaching-facing.
-- Model resource export now has its first active no-Sims characterization, but only for XML serialization and generated resource Java compilation.
-- NetBeans export now has a standalone-style compile/launcher check, but not a full Ant/NetBeans run with a populated `Alice3Library`.
-- NetBeans export now also has a template-shaped project check that extracts the packaged template, checks the `Alice3Library` classpath contract, and compiles generated sources into `build/classes` using the test classpath as a surrogate.
-- The template-shaped NetBeans compile check now verifies the template build/classpath properties and resolves its classes directory from the template rather than hardcoding `build/classes`.
-- Generated source now includes one actual story API call check, `this.setSimulationSpeedFactor(1.5);`, in a new focused test class.
-- `ProjectFileUtilities.exportCopyOfProjectTo` now has a headless player artifact check for version, manifest, thumbnail, and program Tweedle entries.
-- Resource-bearing player export now records referenced image bytes and manifest metadata. `IoUtilities.readProject(...)` now routes manifest-declared `.a3w` archives to `JsonProjectIo` and can restore manifest-listed image resources, but Tweedle program-type decoding is still not implemented.
-- Narrow `TextString` null decoding now exists, but broader null support, method and constructor body decode, complete player decode, and full Tweedle decode support remain open.
-- JSON/player export/readback now also covers AST-referenced `AudioResource` with synthetic bytes, preserving UUID, names, content type, byte payload, and normalized duration.
-- JSON/player archives now report future `version.txt` values through `JsonProjectIo.checkForFutureVersion()`, so loader warning behavior is no longer XML-only at that seam.
-- Corrupt `manifest.json` in IO dispatch now surfaces an `IOException` instead of being treated like an absent manifest and falling through to XML.
-- JSON/player resource reads no longer reuse mutable static UUID-map instances for image/audio resources, preventing one archive read from mutating an earlier read with the same UUID.
-- JSON/player archives with model and generated type manifest references are characterized as manifest entries, not binary `Resource`s, until Tweedle/model decoding is implemented.
-- JSON `.a3c` archives now route to JSON IO, restore manifest-listed resources, and still return `null` type while Tweedle decoding is unimplemented.
-- JSON/player export now flattens path-like image resource filenames and allocates distinct `resources`, `resources2`, ... entry directories for duplicate filenames while preserving resource bytes on reopen.
-- `ProjectFileUtilities.saveCopyOfProjectTo` now has a headless editor-save roundtrip check for manifest, thumbnail, program XML, resource XML/bytes, and reload fidelity.
-- Editor save-copy now has a real `ImageResource` roundtrip: an AST-referenced image resource is written to `resources/picture.png` and reopens with identity and bytes intact.
-- `ProjectFileUtilities` now has source-selection tests proving export forces a fresh project snapshot while save-copy uses the normal up-to-date snapshot, plus default backup migration coverage for auto backups.
-- `ProjectApplication.saveProjectTo` now delegates its target decision to `ProjectSaveTargetPlan`, giving the oversized application class a characterized save-orchestration seam without changing save order or UI behavior.
-- Recent-backup recovery now covers the case where the newest candidate is known unloadable: the next candidate is considered, but still must be newer than the main project to be selected.
-- Backup recovery now has a real-file headless path covering corrupt main file, skipped unloadable backup, selected valid backup, failure-plan action, and `FileProjectLoader` resource fidelity.
-- Project-load success planning now has a pure seam for backup-prompt/open-loader decisions, while UI dialogs and application state mutations remain in `ProjectApplication`.
-- Generated foreach loops no longer emit stale cached synthetic `COUNT__` item names; the repaired path emits readable generated item names and preserves explicit item names.
-- Iterable foreach loops over a generated `Arrays.asList(...)` expression compile and import `java.util.Arrays`; the current characterization preserves explicit item local naming.
-- Public no-Sims package checks now assert nonfree jars are omitted, while authorized includeSims checks assert `models-nonfree.jar` and `story-api-nonfree.jar` are restored through an explicit resources overwrite.
-- Starter `.a3p` fixtures now prove XML fallback readability for selected committed archives, but not full semantic migration of historical project content.
-- Headless Croquet and scenegraph characterization caught real behavior seams without requiring a full JavaFX desktop.
-- Headless tests can cover important exported-code behavior without launching real JavaFX.
-- Real JavaFX/UI behavior, story execution, and rendering-adjacent behavior remain mostly unprotected.
-- Git LFS budget exhaustion can break CI checkout if no-Sims workflows fetch LFS objects; no-Sims CI should avoid LFS unless a job explicitly needs it.
-- Process correction: every coding track and subagent must follow `DEFAULT_WORKFLOW`; parallel coding should use isolated worktrees/branches, while this main track remains serialized for integration.
-- Loop 62 proved the parallel pattern: six isolated implementation branches were developed concurrently, then rebased and integrated sequentially behind local checks and CI.
-- Loop 63 extended that pattern: implementation tracks ran in parallel, but integration remained serialized and CI-checked after each meaningful merge.
-- Loop 64 recovery/integration completed the crash-resume work:
-  - Alice `develop` integrated formal specs/recovery contracts, source save/export tests, Story IO/NetBeans quality fixes, outside-in QA hardening, Wave2 Story JSON boundaries, Wave2 NetBeans export harness, and Wave2 outside-in QA scenarios.
-  - The scenario repository integrated the Building-a-Scene and Code Editor first-run lesson check tracks.
-  - Supporting scenario-runner tooling integrated the `cwd`/`workingDirectory` scenario command fix.
-- Code-atlas and crusty review branches remained outside Alice source and were routed to drinkme artifacts instead.
-
-- `tweedle-lang` is a required git submodule for `core/tweedle` ANTLR parser generation. Missing it in worktrees causes `TweedleParser`/`TweedleParserBaseVisitor` compile failures; see `docs/build-baseline/submodule-working-guide.md`.
-- Recovered artifact-only tracks have been consolidated into `drinkme` rather than Alice source:
-  - Crusty modernization review: `docs/artifacts/alice-audit/2026-05-03-crusty-modernization-review.md`.
-  - Code-atlas bug-hunt artifacts: `docs/artifacts/alice-audit/code-atlas-alice-source-truth.md`, `docs/artifacts/alice-audit/code-atlas-alice-bughunt-findings.md`, `docs/artifacts/alice-audit/code-atlas-alice-hotspots.md`, `docs/artifacts/alice-audit/code-atlas-alice-staleness-map.md`, and the companion module graphs.
-  - Formal save/load/export specification artifacts: `docs/artifacts/alice-audit/formal-spec/evaluation.md`, Gherkin scenarios, TLA+ recovery model/config, and usage/reference notes under `docs/artifacts/alice-audit/formal-spec/`.
-- This recovery wave is closed: the source/support-tool workstreams that passed review were integrated, and the artifact-only tracks were preserved in drinkme without merging inappropriate runtime code into Alice.
-
-## Known limits
-
-- Historical `.a3p` semantic migration remains thinly covered; selected committed starter `.a3p` archives now have XML fallback readability coverage.
-- Real StageIDE-generated projects, thumbnails, gallery resources, and provenance-sensitive assets remain mostly uncovered.
-- The player export artifact check uses a synthetic project and 1x1 thumbnail; it does not prove the full StageIDE export UI journey.
-- The editor save-copy roundtrip also uses a synthetic project and test resource; it does not prove the full StageIDE save UI journey.
-- Model binary export, thumbnails, real gallery resources, and full model package output remain mostly untested.
-- Backup recovery dialogs and recursive UI side effects are not directly tested.
-- Project-load success branching is now tested through `ProjectLoadSuccessPlan`, but the higher-level UI side effects still need characterization.
-- Project-load failure dispatch branching is now tested through `ProjectLoadFailureDispatchPlan`, but the higher-level dialog and recursive load UI side effects still need characterization.
-- Full wizard execution is not covered.
-- Real JavaFX launcher startup is not covered.
-- Palette layout behavior has headless coverage, but full palette/completion UI behavior is not covered.
-- Deep NBM install semantics are still thin; rename/package check coverage exists but not full IDE install execution.
-- A standalone exported Ant project build/run against a populated `Alice3Library` is still not fully covered; current coverage validates populated classpath contracts and compile behavior, not a full launched exported project.
-- Some scene/model story API and scenegraph behavior is characterized, but events, runtime story execution, and rendering behavior remain mostly unprotected.
-- Player export JSON reads are currently resource-only; the program type is still `null` because the Tweedle decoder remains a stub.
-- JSON `.a3c` type reads are also resource-only; the type remains `null` until Tweedle type decoding is implemented.
-- XML project reads now avoid static resource instance reuse across archive reads while preserving AST resource-expression binding to decoded resources.
-- Default-backup copy now has direct seam coverage for populated, missing, and empty `.defaultbak` directories.
-- The generated-source export tests were split so both focused NetBeans export test classes are under 500 lines.
-- Desktop Run evidence is narrow: Alice put the Run panel into the Run window
-  area, but pixels, lesson completion, and grading are still not covered.
-- Readiness documentation names the source evidence required before
-  first-lesson readiness can be marked ready, but full Alice UI automation,
-  creative assessment, learner-world grading, visible rendering correctness, and
-  first-lesson completion remain open.
+- Current coverage is below the 70 percent aggregate coverage target.
+- Headless tests cover important exported-code and persistence behavior without
+  launching the desktop UI.
+- Real JavaFX/UI behavior, story execution, visible rendering, and complete
+  classroom assessment remain the highest-risk user-facing gaps.
 - Merge state alone is not product behavior evidence; keep claims tied to the
   capability evidence summarized above.
 
 ## Immediate next steps
 
-1. Continue project IO/load-save characterization where it protects data-loss seams:
-   - complete player export JSON reads beyond resource restoration;
-   - backup/save-as behavior with real temporary files;
-   - failure/recovery journey branches above the headless selector/plan seams.
-2. Continue generated-source characterization where it protects real exported Java behavior:
-   - more scene/model story API calls that compile against exported project dependencies;
-   - event/listener and runtime story execution seams that can be tested headlessly.
-3. Prove exported project behavior beyond compile/classpath-contract tests:
-   - run an actual Ant/NetBeans project build once the required tool/runtime harness is stable;
-   - compile/run the exported launcher against real JavaFX where possible.
-4. Add higher-level user journey tests where feasible:
-    - export project journey;
-    - open/load/save journey;
-    - failure/recovery journey;
-   - package/install check path.
-5. Keep desktop Run completion claims narrow:
-   - launcher-step and no-go-message evidence is not rendering evidence;
-   - readiness reporting is not grading or full lesson completion;
-   - status integration is not runtime behavior evidence;
-   - add separate evidence before claiming pixel drawing, lesson completion, or
-     grading.
-6. Use the recovered code-atlas bug-hunt artifacts on the next high-value seam:
-    - NetBeans export path;
-    - project IO/load-save path;
-    - resource/model path.
-7. Keep journaling every slice in `drinkme`.
-8. Do not start broad refactors until the affected behavior has characterization coverage.
+1. RabbitHole: close the launch, rendered UI action, visible rendering, Save/Open,
+   and Tweedle/player behavior gaps that block the silver-thread journey.
+2. eatme: expand automation scenarios and readiness reporting so instructor and
+   student outcomes are readable, including first-lesson completion, grading,
+   creative assessment, and deployed sharing/platform behavior.
+3. RabbitHole + eatme: complete the desktop Save menu-to-written-project path
+   from a real rendered click, then reopen the saved project and report it.
+4. RabbitHole + eatme: keep expanding source and scenario coverage toward the
+   70 percent aggregate coverage target.
 
 ## Strategic direction
 
@@ -284,4 +117,7 @@ The safest modernization path remains incremental:
 4. refactor production code behind characterization checks;
 5. only consider rewrite or non-Java components after enough evidence exists.
 
-Core Alice should remain Java for now. Rust or other languages may be useful later for optional tooling, static analysis, packaging helpers, graphing, or external AI-assisted tools, but moving core runtime behavior out of Java would be premature without much stronger test coverage.
+Core Alice should remain Java for now. Other languages may be useful later for
+optional tooling, static analysis, packaging helpers, graphing, or external
+AI-assisted tools, but moving core runtime behavior out of Java would be
+premature without much stronger test coverage.
