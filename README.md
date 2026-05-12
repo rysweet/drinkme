@@ -47,7 +47,7 @@ flowchart LR
 ## Current verdict
 
 The modernization is active and useful, but unfinished. 74 pull requests are
-merged. Two large production classes have been decomposed. Eight silver-thread
+merged. Three large production classes have been decomposed. Eight silver-thread
 end-to-end tests cover the full student journey. 44 of 46 automation scenarios
 pass. The repository now has documentation checks, linked status docs,
 automation scenario coverage, readiness reports, source evidence for selected
@@ -100,7 +100,7 @@ flowchart TD
 ## What is partly working
 
 - Two automation scenarios score 18/23; the remaining assertion failures are in the edit, run, and save chain.
-- Text renderer extraction started (1842 to 1318 lines) but has test compilation failures.
+- NonCachingTextRenderer reduced from 1842 to 842 lines with 9 inner classes extracted. 159 tests pass.
 - Save-path work has selected-path, menu-dispatch, chooser, and component-level file-write evidence, but desktop Save menu-to-written-project completion from a real rendered click path is still missing.
 - Rendering work has surface, window, and blocker records, but not visible rendering correctness.
 - Tweedle and player decoding covers many small source cases, but full decode is still missing.
