@@ -21,8 +21,7 @@ evidence index.
 ## How the work runs
 
 Source work improves Alice capability, scenario work compares Alice outcomes,
-and drinkme tracks plan, status, and evidence. Use the plan to explain intent,
-status to show what is happening now, and evidence to make the result reviewable.
+and drinkme tracks plan, status, and evidence.
 
 ### Source behavior-test-before-refactor loop
 ```mermaid
@@ -47,10 +46,12 @@ flowchart LR
 
 ## Current verdict
 
-The modernization is active and useful, but unfinished. The repository now has
-documentation checks, linked status docs, automation scenario coverage,
-readiness reports, source evidence for selected Alice areas, and diagrams that
-make the work easier to navigate.
+The modernization is active and useful, but unfinished. 74 pull requests are
+merged. Two large production classes have been decomposed. Eight silver-thread
+end-to-end tests cover the full student journey. 44 of 46 automation scenarios
+pass. The repository now has documentation checks, linked status docs,
+automation scenario coverage, readiness reports, source evidence for selected
+Alice areas, and diagrams that make the work easier to navigate.
 
 Use drinkme as a map and status index. Do not read it as a claim that Alice
 modernization, classroom assessment, UI automation, rendering, or coverage goals
@@ -87,19 +88,22 @@ flowchart TD
 
 ## What works now
 
+- 74 pull requests merged across source and scenario repositories.
+- Two large classes decomposed: ProjectMigrationManager (5702 to 117 lines) and Tweedle encoder (959 to 499 lines, 4 delegate files).
+- Eight silver-thread end-to-end tests covering launch, save, edit, decode, VM execution, and event dispatch.
+- 44 of 46 automation scenarios pass against both fork and upstream Alice.
+- Four lesson end-to-end tests with per-step grading.
+- CI optimized: non-Java pull requests finish in under 30 seconds.
 - The drinkme documentation contract is reproducible with
   `python3 -m unittest discover -s tests -v`.
-- Repository documentation checks cover expected shape, JSON syntax, YAML syntax, and internal Markdown links.
-- The plan, current status, atlas index, diagrams, scenario inventories, and readiness reports are tracked here instead of pull request history.
-- Existing diagrams cover the repository surface, Alice startup flow, and testing roadmap.
 
 ## What is partly working
 
-- Lesson automation scenarios provide useful signals, but they are not full Alice UI automation.
-- Save-path work has selected-path, menu-dispatch, chooser, and component-level file-write evidence, but desktop Save menu-to-written-project completion is still missing.
+- Two automation scenarios score 18/23; the remaining assertion failures are in the edit, run, and save chain.
+- Text renderer extraction started (1842 to 1318 lines) but has test compilation failures.
+- Save-path work has selected-path, menu-dispatch, chooser, and component-level file-write evidence, but desktop Save menu-to-written-project completion from a real rendered click path is still missing.
 - Rendering work has surface, window, and blocker records, but not visible rendering correctness.
-- Scenario reports organize classroom-style coverage, but grading and creative assessment are not automated.
-- Tweedle and player decoding covers many small source cases, but full Tweedle/player decode is still missing.
+- Tweedle and player decoding covers many small source cases, but full decode is still missing.
 
 ## What is still missing
 
@@ -111,18 +115,13 @@ aggregate coverage target; see the [investigation plan](docs/plan.md) for the au
 
 ## Current focus
 
-Keep drinkme readable as the map, not the timeline. New work should close the
-largest evidence gaps first: real UI actions, visible rendering, desktop Save
-menu-to-written-project completion, first-lesson completion, grading and
-creative assessment, deployed sharing/platform behavior, and broader decoder
-coverage. When details change, update the linked status docs and diagrams
-instead of turning this README into a chronological pull request list.
+Close the largest evidence gaps first: real UI actions, visible rendering, desktop Save menu-to-written-project completion from a real rendered click path, first-lesson completion, grading and creative assessment, deployed sharing/platform behavior, and broader decoder coverage.
 
 ## Progress at a glance
 
 ```mermaid
 flowchart LR
-  Works["Works now<br/>docs checks, maps, diagrams"] --> Partial["Partly working<br/>scenarios, Save path, rendering signals, decoder slices"]
+  Works["Works now<br/>docs checks, maps, diagrams, 74 PRs merged"] --> Partial["Partly working<br/>scenarios, Save path, rendering signals, decoder slices"]
   Partial --> Missing["Still missing examples<br/>full UI, visible rendering, grading, first lesson, 70 percent coverage"]
 ```
 

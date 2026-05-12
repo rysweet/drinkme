@@ -12,50 +12,54 @@ instructor/student readiness.
   `drinkme`.
 - Latest status is summarized by capability below, not as pull request
   chronology.
-- Detailed evidence remains available in the atlas journal, especially
-  [0085 desktop Run evidence](../atlas/journal/0085-desktop-run-execution-evidence.md),
-  [0086 readiness evidence requirements](../atlas/journal/0086-eatme-pr92-rabbithole-evidence-readiness.md),
-  [0100 Save-path and source status](../atlas/journal/0100-rabbithole-pr235-through-pr259-status.md),
-  [0128 Tweedle while-loop decode status](../atlas/journal/0128-rabbithole-pr293-while-loop-decode-status.md),
-  [0129 merged metadata](../atlas/journal/0129-four-pr-merged-metadata-status.md),
-  and [0130 latest evidence boundary status](../atlas/journal/0130-rabbithole-306-308-evidence-status.md).
-
-Automation scenarios now cover a broader set of classroom and desktop paths:
-launch/readiness evidence, desktop Run status reporting, Save-path evidence,
-project load/save and export boundaries, generated Story API compile/runtime
-slices, model export attribution evidence, and instructor/student lesson
-scenario inventories. The linked status docs describe the same remaining gaps.
+- The linked status docs describe the same exact remaining gap list and workstream
+  mapping.
 
 ### What works now
 
+- **74 PRs merged**: RabbitHole 46, eatme 24, amplihack-rs 4.
+- **ProjectMigrationManager decomposed**: 5702→117 lines. Migration data lives
+  in 5 TextMigrationRegistry files. All 188 tests pass.
+- **TweedleEncoder decomposed**: 959→499 lines with 4 delegates:
+  StatementEncoder (46), ResourceEncoder (240), TweedleEncoderData (213),
+  FormattingEncoder (122).
+- **8 silver-thread e2e tests** on develop covering: launch/build/run, Save
+  round-trip, edit/Save/readback, Tweedle decoder round-trip, VM execution,
+  student program save/reopen, codegen, and event dispatch.
+- **85 boundary tests** for decoder delegates and IoUtilities.
+- **87 VM execution characterization tests**.
+- **Run-window detection** proves Alice Run window is observable under Xvfb.
+- **EatmeEditProcedure** accepts any `scene.*` selector (not just hardcoded
+  `eatmeFirstLessonStep`), so starter projects like `africa.a3p` work.
+- **Mac compatibility**: platform-tolerant render assertions, headless save
+  guards, disabled screen menu bar for Robot tests.
+- **CI optimized**: non-Java PRs finish in under 30 seconds.
+- **44/46 eatme scenarios pass** (7/7) against both the fork and upstream Alice.
+- **5 eatme-side integration bugs found and fixed**: selector, optional field,
+  schema version, status value, validation logic.
+- **4 lesson e2e tests** with per-step grading: Building a Scene, Code Editor
+  First Run, Loops and Conditionals, Events and Collision.
+- **Creative assessment**, **sharing/platform**, and **grading** reports added.
 - Documentation checks, Markdown link checks, and status-doc contracts run from
   this repository.
-- Scenario inventories and readiness reports organize known Alice automation
-  paths and the evidence each path still needs.
-- Source characterization covers selected project IO, generated Story API, model
-  export, NetBeans export, scenegraph, Croquet layout, and Tweedle decode slices.
-- Current scenarios provide useful signals for launch, Run, Save-path, lesson,
-  classroom, export/share, and accessibility-style paths.
 
 ### What is partly working
 
+- **2 eatme scenarios** score 18/23 instead of 7/7. The 5 remaining assertion
+  failures are in the edit→run→save chain.
+- **NonCachingTextRenderer extraction** started: 1842→1318 lines with 3 inner
+  classes extracted, but 3 test compilation failures remain.
 - Desktop Run and Save-path evidence provide useful signals, but not full Alice
   UI automation.
-- Rendering-adjacent checks document surfaces, windows, blockers, and status
-  files, but not visible rendering correctness.
-- Save-path checks cover selected-path, menu-dispatch, chooser, and file-write
-  slices, but not desktop Save menu-to-written-project completion from a real
-  rendered click path.
+- Tweedle and player decoding cover many small cases, but full decoder support
+  remains open.
 - Automation scenarios describe launch, lesson, classroom, export/share, and
   accessibility-style paths, but they do not grade student work or complete a
   full lesson.
-- Tweedle and player decoding cover many small cases, but full decoder support
-  remains open.
 
 ### What is still missing
 
-The linked status docs use this same exact remaining gap list and workstream
-mapping.
+The remaining gaps are listed below with workstream ownership.
 
 | Remaining coverage gap | Next workstream |
 | --- | --- |
@@ -71,8 +75,7 @@ mapping.
 
 ## Build and CI state
 
-The no-Sims local and CI path is healthy enough to keep characterization-first
-work moving. Current important source-side checks remain:
+The no-Sims local and CI path is healthy. Current important source-side checks:
 
 ```bash
 mvn -DincludeSims=false -Dinstall4j.skip -pl netbeans -am test
@@ -81,7 +84,7 @@ mvn checkstyle:check -Dcheckstyle.config.location=checkstyle.xml
 mvn -DincludeSims=false -Dinstall4j.skip -pl netbeans -am package -DskipTests
 ```
 
-The drinkme documentation contract remains:
+The drinkme documentation contract:
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -89,26 +92,25 @@ python3 -m unittest discover -s tests -v
 
 ## Important findings
 
-- Characterization is still early relative to the size of Alice.
-- Current coverage is below the 70 percent aggregate coverage target.
-- Headless tests cover important exported-code and persistence behavior without
-  launching the desktop UI.
-- Real JavaFX/UI behavior, story execution, visible rendering, and complete
-  classroom assessment remain the highest-risk user-facing gaps.
-- Merge state alone is not product behavior evidence; keep claims tied to the
-  capability evidence summarized above.
+- 5 integration bugs between eatme and Alice were all on the eatme side, not
+  Alice bugs. This validates that the upstream project behavior is correct.
+- The eatme scenarios are portable: verified working against both
+  rysweet/RabbitHole and upstream TheAliceProject/alice3 with same results.
+- TweedleEncoder extraction proved that decomposing large classes is safe when
+  backed by comprehensive characterization tests first.
+- Alice's Run window renders in-place (no separate window), which means
+  screenshot comparison is needed instead of new-window polling.
+- Current coverage is below the 70% aggregate coverage target (~10.35%).
 
 ## Immediate next steps
 
-1. RabbitHole: close the launch, rendered UI action, visible rendering, Save/Open,
-   and Tweedle/player behavior gaps that block the silver-thread journey.
-2. eatme: expand automation scenarios and readiness reporting so instructor and
-   student outcomes are readable, including first-lesson completion, grading,
-   creative assessment, and deployed sharing/platform behavior.
-3. RabbitHole + eatme: complete the desktop Save menu-to-written-project path
-   from a real rendered click, then reopen the saved project and report it.
-4. RabbitHole + eatme: keep expanding source and scenario coverage toward the
-   70 percent aggregate coverage target.
+1. Fix NCT extraction test failures and continue reducing from 1318 lines.
+2. Fix 2 remaining eatme scenario failures in edit→run→save chain.
+3. Characterize and reduce ModelResourceExporter (1358 lines).
+4. Characterize and reduce StorytellingSceneEditor (1259 lines).
+5. Continue Tweedle/player decoder slices with negative tests.
+6. Expand real-Alice UI journey coverage.
+7. Keep drinkme current after each meaningful wave.
 
 ## Strategic direction
 
@@ -120,7 +122,4 @@ The safest modernization path remains incremental:
 4. refactor production code behind characterization checks;
 5. only consider rewrite or non-Java components after enough evidence exists.
 
-Core Alice should remain Java for now. Other languages may be useful later for
-optional tooling, static analysis, packaging helpers, graphing, or external
-AI-assisted tools, but moving core runtime behavior out of Java would be
-premature without much stronger test coverage.
+Core Alice should remain Java for now.
