@@ -47,12 +47,11 @@ flowchart LR
 ## Current verdict
 
 The modernization is active and useful, but unfinished. Over 200 pull requests
-are merged. Forty refactoring PRs have decomposed large production classes.
-Only 46 production Java files remain over 500 lines (down from 100+). Eight
+are merged. Forty-seven refactoring PRs have decomposed large production classes.
+Only 41 production Java files remain over 500 lines (down from 100+). Eight
 silver-thread end-to-end tests cover the full student journey. All 37 automation
-scenarios validate. Four lesson end-to-end tests with per-step grading cover
-Building a Scene, Code Editor First Run, Loops and Conditionals, and Events and
-Collision. A TypeScript .a3p parser prototype exists in alice-web-prototype.
+scenarios validate. All 8 Alice.org curriculum lessons have grading coverage.
+A TypeScript prototype runs the silver thread journey against a web API.
 The repository has automation scenario coverage, readiness reports, and diagrams.
 
 Use drinkme as a map and status index. Do not read it as a claim that Alice
@@ -91,11 +90,10 @@ flowchart TD
 ## What works now
 
 - Over 200 pull requests merged across source and scenario repositories.
-- Forty refactoring PRs: ProjectMigrationManager (5702→117), VirtualMachine (938→104), AbstractComposite (1113→479), JointedModelImp (955→462), AbstractTransformableImp (977→367), AliceResourceUtilities (916→490), JsonProjectIo (798→333), JointedModelColladaExporter (1181→426), and more.
-- Only 46 production Java files remain over 500 lines (down from 100+).
+- 47 refactoring PRs decomposing large classes. 41 files remain over 500 lines.
 - Eight silver-thread end-to-end tests, all 37 automation scenarios validate.
-- Four lesson end-to-end tests with per-step grading.
-- TypeScript .a3p parser prototype in alice-web-prototype. CI optimized: non-Java PRs finish in under 30 seconds.
+- All 8 Alice.org curriculum lessons have automation grading coverage (650 tests).
+- TypeScript prototype runs the silver thread journey against web API (39 tests).
 - The drinkme documentation contract is reproducible with `python3 -m unittest discover -s tests -v`.
 
 ## What is partly working
@@ -130,7 +128,7 @@ flowchart LR
 | Project map and diagrams | Works now | Start with the atlas and diagram links below. |
 | Automation scenarios | Works now | All 37 scenarios validate. |
 | Desktop Save | Partly working | Component-level evidence exists, but full desktop Save completion is missing. |
-| Lesson grading | Partly working | Four lesson e2e tests with per-step grading; not yet complete. |
+| Lesson grading | Works now | All 8 curriculum lessons graded; TS prototype tested. |
 | Rendering | Missing | Do not treat current evidence as visible correctness. |
 | Tweedle/player decode | Partly working | Many slices are characterized; full decode is missing. |
 | Coverage target | Missing | 70 percent aggregate coverage is still a target, not a result. |
