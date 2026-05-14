@@ -46,12 +46,14 @@ flowchart LR
 
 ## Current verdict
 
-The modernization is active and useful, but unfinished. 74 pull requests are
-merged. Three large production classes have been decomposed. Eight silver-thread
-end-to-end tests cover the full student journey. 44 of 46 automation scenarios
-pass. The repository now has documentation checks, linked status docs,
-automation scenario coverage, readiness reports, source evidence for selected
-Alice areas, and diagrams that make the work easier to navigate.
+The modernization is active and useful, but unfinished. Over 200 pull requests
+are merged. Forty refactoring PRs have decomposed large production classes.
+Only 46 production Java files remain over 500 lines (down from 100+). Eight
+silver-thread end-to-end tests cover the full student journey. All 37 automation
+scenarios validate. Four lesson end-to-end tests with per-step grading cover
+Building a Scene, Code Editor First Run, Loops and Conditionals, and Events and
+Collision. A TypeScript .a3p parser prototype exists in alice-web-prototype.
+The repository has automation scenario coverage, readiness reports, and diagrams.
 
 Use drinkme as a map and status index. Do not read it as a claim that Alice
 modernization, classroom assessment, UI automation, rendering, or coverage goals
@@ -88,40 +90,37 @@ flowchart TD
 
 ## What works now
 
-- 74 pull requests merged across source and scenario repositories.
-- Two large classes decomposed: ProjectMigrationManager (5702 to 117 lines) and Tweedle encoder (959 to 499 lines, 4 delegate files).
-- Eight silver-thread end-to-end tests covering launch, save, edit, decode, VM execution, and event dispatch.
-- 44 of 46 automation scenarios pass against both fork and upstream Alice.
+- Over 200 pull requests merged across source and scenario repositories.
+- Forty refactoring PRs: ProjectMigrationManager (5702→117), VirtualMachine (938→104), AbstractComposite (1113→479), JointedModelImp (955→462), AbstractTransformableImp (977→367), AliceResourceUtilities (916→490), JsonProjectIo (798→333), JointedModelColladaExporter (1181→426), and more.
+- Only 46 production Java files remain over 500 lines (down from 100+).
+- Eight silver-thread end-to-end tests, all 37 automation scenarios validate.
 - Four lesson end-to-end tests with per-step grading.
-- CI optimized: non-Java pull requests finish in under 30 seconds.
-- The drinkme documentation contract is reproducible with
-  `python3 -m unittest discover -s tests -v`.
+- TypeScript .a3p parser prototype in alice-web-prototype. CI optimized: non-Java PRs finish in under 30 seconds.
+- The drinkme documentation contract is reproducible with `python3 -m unittest discover -s tests -v`.
 
 ## What is partly working
 
-- Two automation scenarios score 18/23; the remaining assertion failures are in the edit, run, and save chain.
-- NonCachingTextRenderer reduced from 1842 to 842 lines with 9 inner classes extracted. 159 tests pass.
-- Save-path work has selected-path, menu-dispatch, chooser, and component-level file-write evidence, but desktop Save menu-to-written-project completion from a real rendered click path is still missing.
-- Rendering work has surface, window, and blocker records, but not visible rendering correctness.
-- Tweedle and player decoding covers many small source cases, but full decode is still missing.
+- NonCachingTextRenderer reduced from 1842 to 476 lines.
+- Save-path work has component-level evidence, but full desktop Save completion is missing.
+- Rendering work has surface and blocker records, but not visible correctness.
+- Tweedle and player decoding covers many cases, but full decode is still missing.
+- Agentic test composability work is in progress.
 
 ## What is still missing
 
-Still missing: full Alice UI automation, visible rendering correctness, desktop
-Save menu-to-written-project completion from a real rendered click path,
-first-lesson completion, grading, creative assessment, deployed
-sharing/platform behavior, full Tweedle/player decode, and the 70 percent
-aggregate coverage target; see the [investigation plan](docs/plan.md) for the authoritative remaining gap list.
+Still missing: full Alice UI automation, visible rendering correctness, full desktop Save
+completion, full Tweedle/player decode, and the 70 percent coverage target; see
+the [investigation plan](docs/plan.md) for the authoritative remaining gap list.
 
 ## Current focus
 
-Close the largest evidence gaps first: real UI actions, visible rendering, desktop Save menu-to-written-project completion from a real rendered click path, first-lesson completion, grading and creative assessment, deployed sharing/platform behavior, and broader decoder coverage.
+Close the largest evidence gaps: real UI actions, visible rendering, desktop Save completion, decoder coverage, and the TypeScript/.a3p prototype.
 
 ## Progress at a glance
 
 ```mermaid
 flowchart LR
-  Works["Works now<br/>docs checks, maps, diagrams, 74 PRs merged"] --> Partial["Partly working<br/>scenarios, Save path, rendering signals, decoder slices"]
+  Works["Works now<br/>200+ PRs, 40 refactors, 37 scenarios"] --> Partial["Partly working<br/>Save path, rendering, decoder, lesson grading"]
   Partial --> Missing["Still missing examples<br/>full UI, visible rendering, grading, first lesson, 70 percent coverage"]
 ```
 
@@ -129,10 +128,10 @@ flowchart LR
 | --- | --- | --- |
 | Documentation checks | Works now | Run the unittest command above for the drinkme docs contract. |
 | Project map and diagrams | Works now | Start with the atlas and diagram links below. |
-| Automation scenarios | Partly working | Useful coverage map; not full Alice UI automation. |
-| Desktop Save | Partly working | Component-level evidence exists, but desktop Save menu-to-written-project completion is still missing. |
-| Rendering and lesson completion | Missing | Do not treat current evidence as visible correctness or a finished lesson. |
-| Grading and creative assessment | Missing | Scenario reports do not grade student work. |
+| Automation scenarios | Works now | All 37 scenarios validate. |
+| Desktop Save | Partly working | Component-level evidence exists, but full desktop Save completion is missing. |
+| Lesson grading | Partly working | Four lesson e2e tests with per-step grading; not yet complete. |
+| Rendering | Missing | Do not treat current evidence as visible correctness. |
 | Tweedle/player decode | Partly working | Many slices are characterized; full decode is missing. |
 | Coverage target | Missing | 70 percent aggregate coverage is still a target, not a result. |
 
@@ -144,6 +143,8 @@ flowchart LR
 - [Modernized Alice source tree](https://github.com/rysweet/RabbitHole)
 - [Automation scenario repository](https://github.com/rysweet/eatme)
 - [drinkme repository](https://github.com/rysweet/drinkme)
+- [TypeScript .a3p prototype](https://github.com/rysweet/alice-web-prototype)
+- [Agentic test framework](https://github.com/rysweet/gadugi-agentic-test)
 
 ### Plans, status, and diagrams
 
