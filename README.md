@@ -83,6 +83,7 @@ flowchart TD
 | --- | --- | --- |
 | Plan | Shows the modernization path and priority order. | [Investigation plan](docs/plan.md) |
 | Current status | Summarizes what is complete, partial, and still open. | [Current state and next steps](docs/modernization/current-state-and-next-steps.md) |
+| Refactoring lessons | Captures durable engineering lessons from successful source refactors. | [Refactoring teaching record](docs/modernization/refactor-teaching-record.md) |
 | Full-scope status | Keeps the broader modernization boundary explicit. | [Restarted full-scope status](docs/modernization/restarted-full-scope-status.md) |
 | Atlas | Maps repository structure, startup flow, and test roadmap. | [Atlas index](docs/atlas/index.md) |
 | Scenarios | Tracks planned user and classroom-style checks. | [Scenario implementation plan](docs/eatme/implementation-plan.md) |
