@@ -222,6 +222,12 @@ still needs a normal test with a direct call and clear assertions.
 loaded and lightly touched." They should not try to prove every method's
 behavior. Important behavior needs explicit tests.
 
+**Agentic review note:** coding agents often reproduce the same lazy shortcut a
+rushed developer would take: "get coverage" by invoking everything generically.
+When reviewing agentically generated tests, look for reflection loops that claim
+behavioral confidence without naming the behavior, expected result, or unsafe
+method families they intentionally avoid.
+
 **Exercise:**
 
 1. Find helpers that use `Class`, `Method`, `getDeclaredMethods`, or
@@ -318,6 +324,12 @@ of the entire test suite.
 coverage should come from headless tests, contract tests, and focused behavior
 tests.
 
+**Agentic review note:** coding agents tend to make CI "more comprehensive" by
+piling unrelated checks into one job. That is the same lazy developer habit as
+"just run everything here." When reviewing agentically generated CI, look for
+jobs that mix setup validation, dependency downloads, unit tests, GUI startup,
+coverage, and cleanup without a single named contract.
+
 **Exercise:**
 
 1. Name the exact GUI contract the job proves.
@@ -367,6 +379,12 @@ flowchart LR
 must compare the old registry, generated representation, committed resource, and
 runtime loader.
 
+**Agentic review note:** agents are good at moving data from code to JSON, but
+they may stop after the mechanical conversion. That mirrors the lazy developer
+shortcut of assuming "generated" means "correct." When reviewing agentic
+migrations, look for parity tests that prove the old source, generated data,
+committed file, and runtime loader still agree.
+
 **Exercise:**
 
 1. Extract canonical migration data from the legacy source.
@@ -401,6 +419,73 @@ operation.
 lifetime. If the lifetime is "current clipboard operation" or "current project,"
 do not store the state in a process-wide static map.
 
+**Agentic review note:** coding agents often preserve static state because it is
+the smallest diff and keeps old call sites compiling. That repeats the lazy
+developer habit of clearing globals in tests instead of removing the global
+lifetime. When reviewing agentically generated tests, look for suites that pass
+only because they reset shared state between cases.
+
+**Code example:** the old shape was a process-wide cache hidden behind a static
+factory. Once a statement key entered the map, every later caller in the same JVM
+could see the cached operation, even if the later caller was a different test or
+project.
+
+```java
+// Before: one JVM-wide map owns every clipboard operation.
+public final class CopyToClipboardOperation {
+  private static final Map<Statement, CopyToClipboardOperation> INSTANCES =
+      new HashMap<>();
+
+  public static synchronized CopyToClipboardOperation getInstance(
+      Statement statement) {
+    return INSTANCES.computeIfAbsent(
+        statement,
+        CopyToClipboardOperation::new);
+  }
+}
+```
+
+The refactor moved the cache into an object whose lifetime can be chosen by the
+caller. Production code can still use the compatibility facade, but tests and
+temporary operations can create a fresh registry and prove that state does not
+leak.
+
+```java
+// After: each registry owns its own memoized operations.
+ClipboardOperationRegistry firstRegistry = new ClipboardOperationRegistry();
+ClipboardOperationRegistry secondRegistry = new ClipboardOperationRegistry();
+Statement statement = new Comment("shared-key");
+
+CopyToClipboardOperation firstCopy =
+    firstRegistry.getCopyToClipboardOperation(statement);
+CopyToClipboardOperation secondCopy =
+    secondRegistry.getCopyToClipboardOperation(statement);
+
+assertNotSame(firstCopy, secondCopy);
+```
+
+The compatibility facade was kept, but it now resolves through the active scoped
+registry. That lets old call sites keep using `CopyToClipboardOperation.getInstance`
+while tests can install a temporary registry and automatically restore the
+previous one.
+
+```java
+ClipboardOperationRegistry scopedRegistry = new ClipboardOperationRegistry();
+Statement statement = new Comment("override");
+
+CopyToClipboardOperation scopedCopy;
+try (ClipboardOperationRegistries.RegistryScope scope =
+    ClipboardOperationRegistries.useRegistry(scopedRegistry)) {
+  scopedCopy = CopyToClipboardOperation.getInstance(statement);
+
+  assertSame(
+      scopedRegistry.getCopyToClipboardOperation(statement),
+      scopedCopy);
+}
+
+assertNotSame(scopedCopy, CopyToClipboardOperation.getInstance(statement));
+```
+
 **Exercise:**
 
 1. Find static maps, sets, or lists that hold operation state.
@@ -433,6 +518,12 @@ responsible for both packaging and source-generator correctness.
 **Engineering lesson:** generated-source correctness is its own contract. Package
 tests should prove package ownership and assembly. Generator tests should prove
 the generated text, ownership boundaries, and story-api assumptions directly.
+
+**Agentic review note:** agents often add assertions to the first test that
+already exercises a flow, even when that test is at the wrong layer. That is the
+lazy developer habit of "there is already a test here, so add more to it." When
+reviewing agentically generated tests, look for slow outer-boundary tests that
+hide a small generator contract that could fail faster and closer to the cause.
 
 **Exercise:**
 
@@ -469,6 +560,48 @@ That hides the race without identifying the condition the test actually needs.
 **Engineering lesson:** tests should wait for conditions, not time. A good wait
 helper polls a named condition, stops as soon as the condition is true, and fails
 with a useful message when the condition never becomes true.
+
+**Agentic review note:** coding agents frequently "fix" flaky async tests by
+adding `Thread.sleep`, longer timeouts, or arbitrary delays. That is not an AI
+quirk; it is the same lazy developer patch that hides a race instead of naming
+the synchronization condition. When reviewing agentically generated tests, treat
+raw sleeps as a smell unless the test is explicitly about semantic time.
+
+**Code example:** the lazy fix waits for time and then hopes the event happened.
+If the event already happened, the test is slow. If the event never happens, the
+failure does not say what condition was missing.
+
+```java
+// Before: time is used as a proxy for "the background load finished."
+startBackgroundLoad(project);
+
+Thread.sleep(1000);
+
+assertTrue(project.isLoaded());
+```
+
+The deterministic version names the condition. The timeout is still present, but
+only as a failure bound. It is no longer the synchronization mechanism.
+
+```java
+// After: the test waits for the condition it actually needs.
+startBackgroundLoad(project);
+
+TestWait.until(project::isLoaded, "project to finish loading");
+
+assertTrue(project.isLoaded());
+```
+
+The same rule applies to futures: wait for the result with a named description
+instead of sleeping and then checking whether the result happened to arrive.
+
+```java
+Future<RenderResult> renderResult = startRender();
+
+RenderResult result = TestWait.future(renderResult, "render result");
+
+assertTrue(result.isComplete());
+```
 
 **Exercise:**
 
